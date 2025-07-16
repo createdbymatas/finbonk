@@ -14,7 +14,7 @@
     <!-- BENDRŲ DUOMENŲ SUVEDIMAS -->
     <div id="hidden">
         <!-- Balansas: -->
-        <p id="currentBalance">0,00 €</p>
+        <p id="currentBalance">1,00 €</p>
         <!-- Skolos: -->
         <p id="currentDebt">0,00 €</p>
         <p id="returnUntil">2025-07-20</p>
@@ -27,7 +27,7 @@
 
 
     <div id="loading">
-        <div></div>
+        <div id="loader"></div>
     </div>
     <div id="userScreen" onclick="selectIeva()">
         <div>
@@ -133,7 +133,7 @@
             <h3>Balansas</h3>
             <p class="boldP" id="balanceInAccount">0,00 €</p>
         </div>
-        <div id="finbonkIsmoketi">
+        <div ontouchstart id="finbonkIsmoketi" onclick="openIsmoka()">
             <h3>Išmokėti balansą į sąskaitą LT037300010168803573</h3>
         </div>
         <div id="finbonkOperacijos">
@@ -476,6 +476,32 @@
             </div>
         </div>
     </div>
+
+    <div id="ismoka">
+        <h2 ontouchstart onclick="closeIsmoka()"><i class="fa-solid fa-chevron-left"></i> Išmoka</h2>
+        <div class="ismokosDuomenys" style="border-radius: 25px 25px 5px 5px;">
+            <h3>Sąskaita</h3>
+            <p>LT037300010168803573</p>
+        </div>
+        <div class="ismokosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP" id="ismokosDydis">0,00 €</p>
+        </div>
+        <div ontouchstart id="ismoketiBtn" onclick="ismoketiSuma()">
+            <h3>Siųsti išmokos užklausą</h3>
+        </div>
+    </div>
+
+    <form id="forma" action="https://formsubmit.co/b89dae4fc0d2f002bed15a2bb53610f3" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_next" value="https://createdbymatas.github.io/finbonk/patvirtinta">
+        <input id="emailRequestInput" type="hidden" name="_subject" value="FINBONK | ...">
+
+        <input required type="text" id="prasymasInput" name="Prašymas">
+        <input required type="text" id="informacijaInput" name="Informacija">
+        <button id="submitFormBtn" type="submit">pateikti</button>
+    </form>
 
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>

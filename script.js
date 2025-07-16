@@ -1,5 +1,6 @@
 document.getElementById('balanceInOverview').innerHTML = document.getElementById('currentBalance').innerHTML;
 document.getElementById('balanceInAccount').innerHTML = document.getElementById('currentBalance').innerHTML;
+document.getElementById('ismokosDydis').innerHTML = document.getElementById('currentBalance').innerHTML;
 document.getElementById('skolosSuma').innerHTML = document.getElementById('currentDebt').innerHTML;
 document.getElementById('grazintiIki').innerHTML = document.getElementById('returnUntil').innerHTML;
 document.getElementById('apyvartaThisMonth').innerHTML = document.getElementById('fullOperations').innerHTML;
@@ -419,4 +420,53 @@ function closeOperacija10(){
     document.getElementById('otherApps').style.right = '-215px';
     document.getElementById('apps').style.right = '20px';
     document.getElementById('appsX').style.right = '-50px';
+}
+function openIsmoka(){
+    document.getElementById('ismoka').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function closeIsmoka(){
+    document.getElementById('ismoka').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function ismoketiSuma(){
+    document.getElementById('emailRequestInput').value = 'FINBONK | Išmoka'
+    document.getElementById('prasymasInput').value = 'išmokėti sumą';
+    document.getElementById('informacijaInput').value = document.getElementById('currentBalance').innerHTML;
+    document.getElementById('loading').style.display = 'flex';
+    document.getElementById('loader').style.animation = 'none';
+    setTimeout(() => {
+        document.getElementById('loading').style.opacity = '1';
+        document.getElementById('loader').style.animation = 'spin 0.8s linear infinite';
+    }, 10);
+    setTimeout(() => {
+        document.getElementById('submitFormBtn').click();
+    }, 1000);
+}
+function backToPortal(){
+    document.getElementById('loading').style.display = 'flex';
+    document.getElementById('loader').style.animation = 'none';
+    setTimeout(() => {
+        document.getElementById('loading').style.opacity = '1';
+        document.getElementById('loader').style.animation = 'spin 0.8s linear infinite';
+    }, 10);
+    setTimeout(() => {
+        location.replace('https://createdbymatas.github.io/finbonk/');
+    }, 1000);
 }
