@@ -22,6 +22,7 @@
         <p id="fullOperations">15,92 €</p><!-- NEPAMIRŠTI PAKEISTI BAR'O IR APYVARTOS KATEGORIJŲ -->
         <p id="received">7,96 €</p>
         <p id="spent">7,96 €</p>
+        <p id="currentMonth">2025 liepa</p>
     </div>
     <!-- BENDRŲ DUOMENŲ SUVEDIMOPABAIGA -->
 
@@ -62,7 +63,7 @@
     </div>
     <div ontouchstart id="apyvarta" onclick="openApyvarta()">
         <h3>Apyvarta <i class="fa-solid fa-chevron-right fa-chevron-right2"></i></h3>
-        <p id="apyvartaMonth">Šį mėnesį (2025 Liepa): <b id="apyvartaThisMonth">0,00 €</b></p>
+        <p id="apyvartaMonth">Šį mėnesį (<span id="thisMonth">2025 ...</span>): <b id="apyvartaThisMonth">0,00 €</b></p>
         <div id="gautaIsleistaDiv">
             <p>Gauta: <b id="gauta1">0,00 €</b></p>
             <p>Išleista: <b id="isleista1">0,00 €</b></p>
@@ -184,7 +185,7 @@
     <div id="visaApyvarta">
         <h2 ontouchstart onclick="closeApyvarta()"><i class="fa-solid fa-chevron-left"></i> Apyvarta</h2>
         <div id="apyvartaSiMenesi">
-            <h3>Šį mėnesį (2025 Liepa)</h3>
+            <h3>Šį mėnesį (<span id="thisMonth2">2025 ...</span>)</h3>
             <p class="boldP" id="apyvartaThisMonth2">0,00 €</p>
         </div>
         <div id="apyvartosRodikliai">

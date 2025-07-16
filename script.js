@@ -9,6 +9,8 @@ document.getElementById('gauta1').innerHTML = document.getElementById('received'
 document.getElementById('isleista1').innerHTML = document.getElementById('received').innerHTML;
 document.getElementById('gauta2').innerHTML = document.getElementById('received').innerHTML;
 document.getElementById('isleista2').innerHTML = document.getElementById('received').innerHTML;
+document.getElementById('thisMonth').innerHTML = document.getElementById('currentMonth').innerHTML;
+document.getElementById('thisMonth2').innerHTML = document.getElementById('currentMonth').innerHTML;
 
 setTimeout(() => {
     if (document.getElementById('skolosSuma').innerHTML === '0,00 €'){
