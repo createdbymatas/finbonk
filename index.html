@@ -11,6 +11,21 @@
     <link rel="shortcut icon" type="image/png" href="favicon.ico">
 </head>
 <body onload="loadFunction()">
+    <!-- BENDRŲ DUOMENŲ SUVEDIMAS -->
+    <div id="hidden">
+        <!-- Balansas: -->
+        <p id="currentBalance">0,00 €</p>
+        <!-- Skolos: -->
+        <p id="currentDebt">0,00 €</p>
+        <p id="returnUntil">2025-07-20</p>
+        <!-- Apyvarta: -->
+        <p id="fullOperations">15,92 €</p><!-- NEPAMIRŠTI PAKEISTI BAR'O IR APYVARTOS KATEGORIJŲ -->
+        <p id="received">7,96 €</p>
+        <p id="spent">7,96 €</p>
+    </div>
+    <!-- BENDRŲ DUOMENŲ SUVEDIMOPABAIGA -->
+
+
     <div id="loading">
         <div></div>
     </div>
@@ -35,22 +50,22 @@
         <h3>Sąskaitos</h3>
         <div ontouchstart id="finbonkSaskaita" onclick="openFinbonkAccount()">
             <p class="boldP">FINBONK sąskaita <i class="fa-solid fa-chevron-right"></i></p>
-            <p>balansas: <b>0,00 €</b></p>
+            <p>balansas: <b id="balanceInOverview">0,00 €</b></p>
         </div>
         <div id="skolos">
             <div>
                 <p class="boldP">Skolos</p>
                 <p class="boldP" id="skolosSuma">0,00 €</p>
             </div>
-            <p id="grazinimoTerminas">grąžinti iki: 20...-...-...</p>
+            <p id="grazinimoTerminas">grąžinti iki: <span id="grazintiIki">20...-...-...</span></p>
         </div>
     </div>
     <div ontouchstart id="apyvarta" onclick="openApyvarta()">
         <h3>Apyvarta <i class="fa-solid fa-chevron-right fa-chevron-right2"></i></h3>
-        <p id="apyvartaMonth">Šį mėnesį (2025 Liepa): <b>15,92 €</b></p>
+        <p id="apyvartaMonth">Šį mėnesį (2025 Liepa): <b id="apyvartaThisMonth">0,00 €</b></p>
         <div id="gautaIsleistaDiv">
-            <p>Gauta: <b>7,96 €</b></p>
-            <p>Išleista: <b>7,96 €</b></p>
+            <p>Gauta: <b id="gauta1">0,00 €</b></p>
+            <p>Išleista: <b id="isleista1">0,00 €</b></p>
         </div>
         <div id="apyvartosBar">
             <div id="gautaBar"></div>
@@ -116,7 +131,7 @@
         <h2 ontouchstart onclick="closeFinbonkAccount()"><i class="fa-solid fa-chevron-left"></i> FINBONK sąskaita</h2>
         <div id="finbonkBalansas">
             <h3>Balansas</h3>
-            <p class="boldP">0,00 €</p>
+            <p class="boldP" id="balanceInAccount">0,00 €</p>
         </div>
         <div id="finbonkIsmoketi">
             <h3>Išmokėti balansą į sąskaitą LT037300010168803573</h3>
@@ -170,12 +185,12 @@
         <h2 ontouchstart onclick="closeApyvarta()"><i class="fa-solid fa-chevron-left"></i> Apyvarta</h2>
         <div id="apyvartaSiMenesi">
             <h3>Šį mėnesį (2025 Liepa)</h3>
-            <p class="boldP">15,92 €</p>
+            <p class="boldP" id="apyvartaThisMonth2">0,00 €</p>
         </div>
         <div id="apyvartosRodikliai">
             <div id="gautaIsleistaDiv2">
-                <p>Gauta: <b>7,96 €</b></p>
-                <p>Išleista: <b>7,96 €</b></p>
+                <p>Gauta: <b id="gauta2">0,00 €</b></p>
+                <p>Išleista: <b id="isleista2">0,00 €</b></p>
             </div>
             <div id="apyvartosBar2">
                 <div id="gautaBar2"></div>

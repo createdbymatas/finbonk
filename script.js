@@ -1,11 +1,33 @@
-if (document.getElementById('skolosSuma').innerHTML === '0,00 €'){
-    document.getElementById('skolosSuma').style.color = 'forestgreen';
-    document.getElementById('grazinimoTerminas').style.display = 'none';
-}
-else {
-    document.getElementById('skolosSuma').style.color = 'crimson';
-    document.getElementById('grazinimoTerminas').style.display = 'block';
-}
+document.getElementById('balanceInOverview').innerHTML = document.getElementById('currentBalance').innerHTML;
+document.getElementById('balanceInAccount').innerHTML = document.getElementById('currentBalance').innerHTML;
+document.getElementById('skolosSuma').innerHTML = document.getElementById('currentDebt').innerHTML;
+document.getElementById('grazintiIki').innerHTML = document.getElementById('returnUntil').innerHTML;
+document.getElementById('apyvartaThisMonth').innerHTML = document.getElementById('fullOperations').innerHTML;
+document.getElementById('apyvartaThisMonth2').innerHTML = document.getElementById('fullOperations').innerHTML;
+document.getElementById('gauta1').innerHTML = document.getElementById('received').innerHTML;
+document.getElementById('isleista1').innerHTML = document.getElementById('received').innerHTML;
+document.getElementById('gauta2').innerHTML = document.getElementById('received').innerHTML;
+document.getElementById('isleista2').innerHTML = document.getElementById('received').innerHTML;
+
+setTimeout(() => {
+    if (document.getElementById('skolosSuma').innerHTML === '0,00 €'){
+        document.getElementById('skolosSuma').style.color = 'forestgreen';
+        document.getElementById('grazinimoTerminas').style.display = 'none';
+    }
+    else {
+        document.getElementById('skolosSuma').style.color = 'crimson';
+        document.getElementById('grazinimoTerminas').style.display = 'block';
+    }
+}, 1);
+setTimeout(() => {
+    if (document.getElementById('currentBalance').innerHTML === '0,00 €'){
+        document.getElementById('finbonkIsmoketi').style.display = 'none';
+    }
+    else {
+        document.getElementById('finbonkIsmoketi').style.display = 'flex';
+    }
+}, 2);
+
 
 function loadFunction(){
     setTimeout(() => {
