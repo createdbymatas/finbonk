@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&copy; FINBONK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+</head>
+<body onload="loadFunction()">
+    <div id="loading">
+        <div></div>
+    </div>
+    <div id="userScreen" onclick="selectIeva()">
+        <div>
+            <h1>Sveiki sugrįžę!</h1>
+            <i class="fa-solid fa-kiwi-bird" on></i>
+            <p>Ieva Kasparavičiūtė</p>
+        </div>
+    </div>
+    <nav>
+        <h1>&copy; FINBONK</h1>
+        <h1 ontouchstart id="account" onclick="openSettings()"><i class="fa-solid fa-user-gear"></i> Ieva<span id="surname1"> Kasparavičiūtė</span></h1>
+        <h1 ontouchstart id="accountX" onclick="closeSettings()"><i class="fa-solid fa-xmark"></i> Ieva<span id="surname2"> Kasparavičiūtė</span></h1>
+        <i ontouchstart class="fa-solid fa-bell" id="notifications" onclick="openNotifications()"></i>
+        <i ontouchstart class="fa-solid fa-xmark" id="notificationsX" onclick="closeNotifications()"></i>
+        <i ontouchstart class="fa-solid fa-border-all" id="apps" onclick="openApps()"></i>
+        <i ontouchstart class="fa-solid fa-xmark" id="appsX" onclick="closeApps()"></i>
+    </nav>
+    <h2>Apžvalga</h2>
+    <div id="saskaitos">
+        <h3>Sąskaitos</h3>
+        <div ontouchstart id="finbonkSaskaita" onclick="openFinbonkAccount()">
+            <p class="boldP">FINBONK sąskaita <i class="fa-solid fa-chevron-right"></i></p>
+            <p>balansas: <b>0,00 €</b></p>
+        </div>
+        <div id="skolos">
+            <div>
+                <p class="boldP">Skolos</p>
+                <p class="boldP" id="skolosSuma">0,00 €</p>
+            </div>
+            <p id="grazinimoTerminas">grąžinti iki: 20...-...-...</p>
+        </div>
+    </div>
+    <div ontouchstart id="apyvarta" onclick="openApyvarta()">
+        <h3>Apyvarta <i class="fa-solid fa-chevron-right fa-chevron-right2"></i></h3>
+        <p id="apyvartaMonth">Šį mėnesį (2025 Liepa): <b>15,92 €</b></p>
+        <div id="gautaIsleistaDiv">
+            <p>Gauta: <b>7,96 €</b></p>
+            <p>Išleista: <b>7,96 €</b></p>
+        </div>
+        <div id="apyvartosBar">
+            <div id="gautaBar"></div>
+            <div id="isleistaBar"></div>
+        </div>
+    </div>
+
+
+
+    <div id="settings">
+        <p>Paskyra</p>
+        <div style="pointer-events: none; opacity: 0.2;">
+            <i class="fa-solid fa-key"></i> Keisti PIN kodą
+        </div>
+        <div style="pointer-events: none; opacity: 0.2;">
+            <i class="fa-solid fa-images"></i> Keisti profilio paveikslėlį
+        </div>
+        <div ontouchstart onclick="openContactInfo()">
+            <i class="fa-solid fa-id-card"></i> Peržiūrėti kontaktinę informaciją
+        </div>
+    </div>
+    <div id="notifs">
+        <p>Pranešimai</p>
+        <div style="pointer-events: none;">
+            Nėra pranešimų.
+        </div>
+    </div>
+    <div id="otherApps">
+        <p>Kitos programos</p>
+        <div ontouchstart onclick="atidarytiKonsultacijas()">
+            <i class="fa-solid fa-handshake-angle"></i> Konsultacijos <i class="fa-solid fa-arrow-up-right-from-square newWindow"></i>
+        </div>
+        <div ontouchstart onclick="atidarytiKorteliuSkaitytuva()">
+            <i class="fa-solid fa-credit-card"></i> Banko kortelių skaitytuvas <i class="fa-solid fa-arrow-up-right-from-square newWindow"></i>
+        </div>
+    </div>
+
+    <div id="kontaktineInformacija">
+        <h2 ontouchstart onclick="closeContactInfo()"><i class="fa-solid fa-xmark"></i> Kontaktinė informacija</h2>
+        <div id="pilnasVardas">
+            <h3>Pilnas vardas</h3>
+            <p>Ieva Kasparavičiūtė</p>
+        </div>
+        <div id="lytisIvardziai">
+            <h3>Lytis, įvardžiai</h3>
+            <p>Moteris, ji/ją/jos</p>
+        </div>
+        <div id="susietaSaskaita">
+            <h3>Susieta sąskaita</h3>
+            <p>LT037300010168803573, Swedbank AB</p>
+        </div>
+        <div id="elPastas">
+            <h3>El. paštas</h3>
+            <p>ievakasparav@gmail.com</p>
+        </div>
+       <div id="whatsapp">
+            <h3>WhatsApp</h3>
+            <p>Ieva</p>
+        </div>
+    </div>
+    
+    <div id="finbonkAccount">
+        <h2 ontouchstart onclick="closeFinbonkAccount()"><i class="fa-solid fa-chevron-left"></i> FINBONK sąskaita</h2>
+        <div id="finbonkBalansas">
+            <h3>Balansas</h3>
+            <p class="boldP">0,00 €</p>
+        </div>
+        <div id="finbonkIsmoketi">
+            <h3>Išmokėti balansą į sąskaitą LT037300010168803573</h3>
+        </div>
+        <div id="finbonkOperacijos">
+            <h3>Operacijos</h3>
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija10()">
+                <p>2025-07-16 <b>Išmoka į sąskaitą LT037300010168803573</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-4,80 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija9()">
+                <p>2025-07-16 <b>Įmoka iš Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+4,80 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija8()">
+                <p>2025-07-13 <b>Įmoka iš sąskaitos LT037300010168803573</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+1,63 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija7()">
+                <p>2025-07-11 <b>2 x 30 min VVT bilietai</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,60 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija6()">
+                <p>2025-07-08 <b>1 x 30 min VVT bilietai</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,21 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija5()">
+                <p>2025-07-07 <b>4 x 30 min VVT bilietai</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,82 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija4()">
+                <p>2025-07-01 <b>Įmoka iš sąskaitos LT037300010168803573</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+0,31 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija3()">
+                <p>2025-07-01 <b>Post'o pavadinimo išrinkimas</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,31 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija2()">
+                <p>2025-07-01 <b>Įmoka iš sąskaitos LT037300010168803573</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+1,22 €</p>
+            </div>
+            <div ontouchstart class="operacija" style="border-radius: 5px 5px 25px 25px;" onclick="openOperacija1()">
+                <p>2025-07-01 <b>Post'o pavadinimo išrinkimas</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-1,22 €</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="visaApyvarta">
+        <h2 ontouchstart onclick="closeApyvarta()"><i class="fa-solid fa-chevron-left"></i> Apyvarta</h2>
+        <div id="apyvartaSiMenesi">
+            <h3>Šį mėnesį (2025 Liepa)</h3>
+            <p class="boldP">15,92 €</p>
+        </div>
+        <div id="apyvartosRodikliai">
+            <div id="gautaIsleistaDiv2">
+                <p>Gauta: <b>7,96 €</b></p>
+                <p>Išleista: <b>7,96 €</b></p>
+            </div>
+            <div id="apyvartosBar2">
+                <div id="gautaBar2"></div>
+                <div id="isleistaBar2"></div>
+            </div>
+        </div>
+        <div id="apyvartosKategorijos">
+            <h3>Išlaidų kategorijos</h3>
+            <div class="kategorija" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-money-bill-transfer"></i> <b>Išmokos</b></p>
+                <p class="boldP">4,80 €</p>
+            </div>
+            <div class="kategorija">
+                <p><i class="fa-solid fa-train-subway"></i> <b>Viešasis transportas</b></p>
+                <p class="boldP">1,63 €</p>
+            </div>
+            <div class="kategorija" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-hashtag"></i> <b>Socialiniai tinklai</b></p>
+                <p class="boldP">1,43 €</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="operacija1" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija1()"><i class="fa-solid fa-chevron-left"></i> Operacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-01</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Post'o pavadinimo išrinkimas</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-1,22 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Gryna suma</p>
+                <p class="boldP">1,20 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis</p>
+                <p class="boldP">0,02 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija2" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija2()"><i class="fa-solid fa-chevron-left"></i> Operacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-01</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka iš sąskaitos LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+1,22 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Gryna suma</p>
+                <p class="boldP">1,20 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis</p>
+                <p class="boldP">0,02 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija3" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija3()"><i class="fa-solid fa-chevron-left"></i> Operacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-01</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Post'o pavadinimo išrinkimas</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-0,31 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Gryna suma</p>
+                <p class="boldP">0,30 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis</p>
+                <p class="boldP">0,01 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija4" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija4()"><i class="fa-solid fa-chevron-left"></i> Operacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-01</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka iš sąskaitos LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+0,31 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Gryna suma</p>
+                <p class="boldP">0,30 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis</p>
+                <p class="boldP">0,01 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija5" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija5()"><i class="fa-solid fa-chevron-left"></i> Operacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-07</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>4 x 30 min VVT bilietai</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-0,82 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Gryna suma</p>
+                <p class="boldP">0,80 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis</p>
+                <p class="boldP">0,02 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija6" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija6()"><i class="fa-solid fa-chevron-left"></i> Operacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-08</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>1 x 30 min VVT bilietai</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-0,21 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Gryna suma</p>
+                <p class="boldP">0,20 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis</p>
+                <p class="boldP">0,01 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija7" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija7()"><i class="fa-solid fa-chevron-left"></i> Operacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-11</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>2 x 30 min VVT bilietai</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-0,60 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Gryna suma</p>
+                <p class="boldP">0,40 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis</p>
+                <p class="boldP">0,20 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija8" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija8()"><i class="fa-solid fa-chevron-left"></i> Operacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-13</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka iš sąskaitos LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+1,63 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Gryna suma</p>
+                <p class="boldP">1,40 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis</p>
+                <p class="boldP">0,23 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija9" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija9()"><i class="fa-solid fa-chevron-left"></i> Operacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-16</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka iš Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+4,80 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Gryna suma</p>
+                <p class="boldP">5,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis</p>
+                <p class="boldP">0,20 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija10" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija10()"><i class="fa-solid fa-chevron-left"></i> Operacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-16</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Išmoka į sąskaitą LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-4,80 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Gryna suma</p>
+                <p class="boldP">5,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis</p>
+                <p class="boldP">0,20 €</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1144 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ancizar Sans", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+body{
+    background-color: #202020;
+    overflow: hidden;
+    padding: 15px;
+}
+#loading{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    background-color: #202020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.1s;
+    opacity: 1;
+}
+#loading div{
+    width: 50px;
+    height: 50px;
+    border: 7px solid #606060;
+    border-top-color: #F5F5DC;
+    border-radius: 100%;
+    animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+#userScreen{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 29;
+    background-color: #202020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.1s;
+    opacity: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#userScreen h1{
+    cursor: pointer;
+}
+#userScreen i{
+    background-color: #F5F5DC;
+    font-size: 50px;
+    color: #202020;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+#userScreen p{
+    color: #F5F5DC;
+    margin-left: 10px;
+    font-size: 20px;
+}
+nav{
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #F5F5DC;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background-color: #202020;
+    z-index: 10;
+}
+#account{
+    position: absolute;
+    right: 110px;
+    top: 17.5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 400;
+    font-size: 17px;
+}
+#account:hover{
+    opacity: 0.7;
+}
+#account:active{
+    opacity: 0.2;
+}
+#accountX{
+    position: absolute;
+    right: 110px;
+    top: 17.5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 400;
+    font-size: 17px;
+    display: none;
+}
+#accountX:hover{
+    opacity: 0.7;
+}
+#accountX:active{
+    opacity: 0.2;
+}
+#notifications{
+    color: #F5F5DC;
+    font-size: 22px;
+    position: absolute;
+    right: 60px;
+    top: 15.5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#notifications:hover{
+    opacity: 0.7;
+}
+#notifications:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+#notificationsX{
+    color: #F5F5DC;
+    font-size: 25px;
+    position: absolute;
+    right: -50px;
+    top: 15.5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#notificationsX:hover{
+    opacity: 0.7;
+}
+#notificationsX:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+#apps{
+    color: #F5F5DC;
+    font-size: 25px;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#apps:hover{
+    opacity: 0.7;
+}
+#apps:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+#appsX{
+    color: #F5F5DC;
+    font-size: 25px;
+    position: absolute;
+    right: -50px;
+    top: 15.5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#appsX:hover{
+    opacity: 0.7;
+}
+#appsX:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+h1{
+    color: #F5F5DC;
+    font-size: 20px;
+    margin-left: 5px;
+    cursor: default;
+}
+h2{
+    color: #F5F5DC;
+    font-size: 30px;
+    margin-top: 55px;
+    cursor: default;
+}
+h3{
+    color: #F5F5DC;
+    font-size: 20px;
+    cursor: default;
+}
+.boldP{
+    font-weight: 600;
+    text-align: right;
+}
+.fa-chevron-right{
+    font-size: 13px;
+}
+.fa-chevron-right2{
+    font-size: 16px;
+}
+.fa-chevron-left{
+    font-size: 22px;
+}
+#saskaitos{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 25px 25px 5px 5px;
+    padding: 15px;
+    margin-top: 10px;
+    position: relative;
+}
+#saskaitos p{
+    font-size: 17px;
+}
+#finbonkSaskaita{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: #404040;
+    padding: 10px;
+    border-radius: 25px 25px 5px 5px;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+#finbonkSaskaita:hover{
+    opacity: 0.7;
+}
+#finbonkSaskaita:active{
+    opacity: 0.2;
+}
+#skolos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    cursor: default;
+    background-color: #404040;
+    padding: 10px;
+    border-radius: 5px 5px 25px 25px;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+#skolos div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#grazinimoTerminas{
+    display: none;
+}
+#apyvarta{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#apyvarta:hover{
+    opacity: 0.7;
+}
+#apyvarta:active{
+    opacity: 0.2;
+}
+#apyvarta h3{
+    cursor: pointer;
+}
+#apyvarta p{
+    font-size: 17px;
+}
+#apyvartaMonth{
+    font-size: 19px;
+}
+#gautaIsleistaDiv{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+#apyvartosBar{
+    width: 100%;
+    height: 15px;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#gautaBar{
+    width: 50%;
+    height: 100%;
+    background-color: forestgreen;
+}
+#isleistaBar{
+    width: 50%;
+    height: 100%;
+    background-color: crimson;
+}
+
+#settings{
+    width: 200px;
+    height: auto;
+    position: fixed;
+    top: 50px;
+    right: -215px;
+    background-color: #454545;
+    border-radius: 25px;
+    border: 1px solid #F5F5DC;
+    padding: 15px;
+    box-shadow: 0 0 15px #202020;
+    transition: 0.3s;
+    z-index: 13;
+}
+#settings p{
+    font-size: 20px;
+    font-weight: 600;
+    color: #F5F5DC;
+    text-align: center;
+    cursor: default;
+}
+#settings div{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    color: #F5F5DC;
+    background-color: #555555;
+    border-radius: 25px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 5px;
+    transition: 0.3s;
+}
+#settings div:hover{
+    opacity: 0.7;
+}
+#settings div:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+#notifs{
+    width: 200px;
+    height: auto;
+    position: fixed;
+    top: 50px;
+    right: -215px;
+    background-color: #454545;
+    border-radius: 25px;
+    border: 1px solid #F5F5DC;
+    padding: 15px;
+    box-shadow: 0 0 15px #202020;
+    transition: 0.3s;
+    z-index: 12;
+}
+#notifs p{
+    font-size: 20px;
+    font-weight: 600;
+    color: #F5F5DC;
+    text-align: center;
+    cursor: default;
+}
+#notifs div{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    color: #F5F5DC;
+    background-color: #555555;
+    border-radius: 25px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 5px;
+    transition: 0.3s;
+}
+#notifs div:hover{
+    opacity: 0.7;
+}
+#notifs div:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+#otherApps{
+    width: 200px;
+    height: auto;
+    position: fixed;
+    top: 50px;
+    right: -215px;
+    background-color: #454545;
+    border-radius: 25px;
+    border: 1px solid #F5F5DC;
+    padding: 15px;
+    box-shadow: 0 0 15px #202020;
+    transition: 0.3s;
+    z-index: 11;
+}
+#otherApps p{
+    font-size: 20px;
+    font-weight: 600;
+    color: #F5F5DC;
+    text-align: center;
+    cursor: default;
+}
+#otherApps div{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    color: #F5F5DC;
+    background-color: #555555;
+    border-radius: 25px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 5px;
+    transition: 0.3s;
+}
+#otherApps div:hover{
+    opacity: 0.7;
+}
+#otherApps div:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+.newWindow{
+    font-size: 13px;
+}
+
+#kontaktineInformacija{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 8;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#kontaktineInformacija h2{
+    cursor: pointer;
+    transition: 0.3s;
+}
+#kontaktineInformacija h2:hover{
+    opacity: 0.7;
+}
+#kontaktineInformacija h2:active{
+    opacity: 0.2;
+}
+#pilnasVardas{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 25px 25px 5px 5px;
+    padding: 15px;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#pilnasVardas p{
+    font-size: 20px;
+    text-align: right;
+}
+#lytisIvardziai{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#lytisIvardziai p{
+    font-size: 20px;
+    text-align: right;
+}
+#susietaSaskaita{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#susietaSaskaita p{
+    font-size: 20px;
+    text-align: right;
+}
+#elPastas{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#elPastas p{
+    font-size: 20px;
+    text-align: right;
+}
+#whatsapp{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#whatsapp p{
+    font-size: 20px;
+    text-align: right;
+}
+
+
+#finbonkAccount{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 5;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#finbonkAccount h2{
+    cursor: pointer;
+    transition: 0.3s;
+}
+#finbonkAccount h2:hover{
+    opacity: 0.7;
+}
+#finbonkAccount h2:active{
+    opacity: 0.2;
+}
+#finbonkBalansas{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 25px 25px 5px 5px;
+    padding: 15px;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#finbonkBalansas p{
+    font-size: 20px;
+}
+#finbonkIsmoketi{
+    width: 100%;
+    height: auto;
+    color: #323232;
+    background-color: #F5F5DC;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0.2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#finbonkIsmoketi:hover{
+    opacity: 0.7;
+}
+#finbonkIsmoketi:active{
+    opacity: 0.2;
+}
+#finbonkIsmoketi h3{
+    color: #323232;
+    font-size: 17px;
+}
+#finbonkOperacijos{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+}
+#finbonkOperacijos p{
+    font-size: 17px;
+}
+.operacija{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: #404040;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+.operacija:hover{
+    opacity: 0.7;
+}
+.operacija:active{
+    opacity: 0.2;
+}
+.pajamos{
+    color: forestgreen;
+}
+.islaidos{
+    color: crimson;
+}
+
+#visaApyvarta{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 5;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#visaApyvarta h2{
+    cursor: pointer;
+    transition: 0.3s;
+}
+#visaApyvarta h2:hover{
+    opacity: 0.7;
+}
+#visaApyvarta h2:active{
+    opacity: 0.2;
+}
+#apyvartaSiMenesi{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 25px 25px 5px 5px;
+    padding: 15px;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#apyvartaSiMenesi p{
+    font-size: 20px;
+}
+#apyvartosRodikliai{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+}
+#apyvartosRodikliai p{
+    font-size: 17px;
+}
+#gautaIsleistaDiv2{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#apyvartosBar2{
+    width: 100%;
+    height: 15px;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#gautaBar2{
+    width: 50%;
+    height: 100%;
+    background-color: forestgreen;
+}
+#isleistaBar2{
+    width: 50%;
+    height: 100%;
+    background-color: crimson;
+}
+#apyvartosKategorijos{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+}
+#apyvartosKategorijos p{
+    font-size: 17px;
+}
+.kategorija{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+    background-color: #404040;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.operacijaWindow h2{
+    cursor: pointer;
+    transition: 0.3s;
+}
+.operacijaWindow h2:hover{
+    opacity: 0.7;
+}
+.operacijaWindow h2:active{
+    opacity: 0.2;
+}
+.operacijosDuomenys{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.operacijosDuomenys p{
+    font-size: 20px;
+    text-align: right;
+}
+.operacijosData{
+    margin-top: 10px;
+    border-radius: 25px 25px 5px 5px;
+}
+.isklotine{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+}
+.isklotine p{
+    font-size: 17px;
+}
+.isklotinesDalis{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+    background-color: #404040;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+
+#operacija1{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija2{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija3{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija4{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija5{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija6{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija7{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija8{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija9{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija10{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+@media only screen and (max-width: 600px){
+    #surname1{
+        display: none;
+    }
+    #surname2{
+        display: none;
+    }
+    #pilnasVardas{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    #pilnasVardas h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    #pilnasVardas p{
+        width: 100%;
+        text-align: right;
+    }
+    #lytisIvardziai{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    #lytisIvardziai h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    #lytisIvardziai p{
+        width: 100%;
+        text-align: right;
+    }
+    #susietaSaskaita{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    #susietaSaskaita h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    #susietaSaskaita p{
+        width: 100%;
+        text-align: right;
+    }
+    #elPastas{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    #elPastas h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    #elPastas p{
+        width: 100%;
+        text-align: right;
+    }
+    #whatsApp{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    #whatsApp h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    #whatsApp p{
+        width: 100%;
+        text-align: right;
+    }
+    .operacija{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-bottom: 30px;
+    }
+    .operacija .boldP{
+        position: absolute;
+        right: 15px;
+        bottom: 10px;
+    }
+    .operacijosDuomenys{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    .operacijosDuomenys h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    #account:hover{
+        opacity: 1;
+    }
+    #accountX:hover{
+        opacity: 1;
+    }
+    #notifications:hover{
+        opacity: 1;
+    }
+    #notificationsX:hover{
+        opacity: 1;
+    }
+    #apps:hover{
+        opacity: 1;
+    }
+    #appsX:hover{
+        opacity: 1;
+    }
+    #finbonkSaskaita:hover{
+        opacity: 1;
+    }
+    #apyvarta:hover{
+        opacity: 1;
+    }
+    #settings div:hover{
+        opacity: 1;
+    }
+    #notifs div:hover{
+        opacity: 1;
+    }
+    #otherApps div:hover{
+        opacity: 1;
+    }
+    #kontaktineInformacija h2:hover{
+        opacity: 1;
+    }
+    #finbonkAccount h2:hover{
+        opacity: 1;
+    }
+    #finbonkIsmoketi:hover{
+        opacity: 1;
+    }
+    .operacija:hover{
+        opacity: 1;
+    }
+    #visaApyvarta h2:hover{
+        opacity: 1;
+    }
+    .operacijaWindow h2:hover{
+        opacity: 1;
+    }
+}
