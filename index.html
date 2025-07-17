@@ -30,11 +30,45 @@
     <div id="loading">
         <div id="loader"></div>
     </div>
-    <div id="userScreen" onclick="selectIeva()">
-        <div>
-            <h1>Sveiki sugrįžę!</h1>
-            <i class="fa-solid fa-kiwi-bird" on></i>
+    <div id="userScreen">
+        <h1>Sveiki sugrįžę!</h1>
+        <div id="profilisLogin">
+            <i class="fa-solid fa-kiwi-bird profileIcon"></i>
             <p>Ieva Kasparavičiūtė</p>
+        </div>
+        <p id="prisijunkiteSuPin">Prisijunkite su PIN kodu:</p>
+        <div id="keypad">
+            <form>
+                <input type="text" name="pin" id="kodas">
+                <div id="taskeliai">
+                    <div id="taskelis1"></div>
+                    <div id="taskelis2"></div>
+                    <div id="taskelis3"></div>
+                    <div id="taskelis4"></div>
+                    <div id="taskelis5"></div>
+                    <div id="taskelis6"></div>
+                </div>
+                <div style="width: 100%; display: flex; justify-content: space-around; align-items: center;" id="key1">
+                    <button ontouchstart type="button" onclick="pirmas()" id="vienasY">1<i class="fa-solid fa-plus" style="opacity: 0;"></i></button>
+                    <button ontouchstart type="button" onclick="antras()" id="duY">2<p>A B C</p></button>
+                    <button ontouchstart type="button" onclick="trecias()" id="trysY">3<p>D E F</p></button>
+                </div>
+                <div style="width: 100%; display: flex; justify-content: space-around; align-items: center;" id="key2">
+                    <button ontouchstart type="button" onclick="ketvirtas()" id="keturiY">4<p>G H I</p></button>
+                    <button ontouchstart type="button" onclick="penktas()" id="penkiY">5<p>J K L</p></button>
+                    <button ontouchstart type="button" onclick="sestas()" id="sesiY">6<p>M N O</p></button>
+                </div>
+                <div style="width: 100%; display: flex; justify-content: space-around; align-items: center;" id="key3">
+                    <button ontouchstart type="button" onclick="septintas()" id="septyniY">7<p>P Q R S</p></button>
+                    <button ontouchstart type="button" onclick="astuntas()" id="astuoniY">8<p>T U V</p></button>
+                    <button ontouchstart type="button" onclick="devintas()" id="devyniY">9<p>W X Y Z</p></button>
+                </div>
+                <div style="width: 100%; display: flex; justify-content: space-around; align-items: center;" id="key4">
+                    <button ontouchstart type="button" onclick="check(this.form)" id="checkBtn" style="opacity: 0; pointer-events: none;">OK</button>
+                    <button ontouchstart type="button" onclick="nulinis()" id="nulisY">0<i class="fa-solid fa-plus"></i></button>
+                    <button ontouchstart type="button" onclick="istrinti()" id="istrinimas" style="font-size: 18px; border: none; background-color: transparent; color: transparent; pointer-events: none;">Trinti</button>
+                </div>
+            </form>
         </div>
     </div>
     <nav>

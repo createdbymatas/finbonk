@@ -67,30 +67,115 @@ body{
     transition: 0.1s;
     opacity: 1;
     text-align: center;
-    cursor: pointer;
     transition: 0.3s;
 }
-#userScreen h1{
-    cursor: pointer;
+#profilisLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
 }
-#userScreen i{
+.profileIcon{
     background-color: #F5F5DC;
-    font-size: 50px;
+    font-size: 25px;
     color: #202020;
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     border-radius: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: 30px;
+    padding-top: 12px;
+    margin-right: 10px;
 }
 #userScreen p{
     color: #F5F5DC;
-    margin-left: 10px;
     font-size: 20px;
+    cursor: default;
+}
+#prisijunkiteSuPin{
+    transition: 0.3s;
+}
+#keypad{
+    width: 260px; 
+    height: 370px; 
+    border-radius: 25px; 
+    border: none; 
+    background-color: #202020; 
+    color: #F5F5DC; 
+    font-size: 25px;
+    margin: 10px auto;
+    margin-top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+#keypad div{
+    transition: 0.3s;
+}
+#keypad form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+#keypad button{
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    border: 2px solid #202020;
+    font-size: 30px;
+    background-color: #F5F5DC;
+    cursor: pointer;
+    transition: 0.15s;
+    color: #202020;
+}
+#keypad button:active{
+    background-color: #202020;
+}
+#keypad button p{
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: block;
+    transition: 0.01s;
+    color: #202020;
+    cursor: pointer;
+}
+#keypad button i{
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: block;
+    transition: 0.01s;
+    color: #202020;
+}
+#istrinimas:active{
+    opacity: 0.5;
+}
+#keypad input{
+    width: 0;
+    height: 0;
+    display: none;
+}
+#taskeliai{
+    width: 80%;
+    height: 30px;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#taskeliai div{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #F5F5DC;
+    background-color: #202020;
+    border-radius: 100%;
+    transition: 0.15s;
 }
 nav{
     width: 100%;

@@ -40,12 +40,6 @@ function loadFunction(){
         document.getElementById('loading').style.display = 'none';
     }, 1100);
 }
-function selectIeva(){
-    document.getElementById('userScreen').style.opacity = '0';
-    setTimeout(() => {
-        document.getElementById('userScreen').style.display = 'none';
-    }, 300);
-}
 
 
 function openSettings(){
@@ -471,4 +465,196 @@ function backToPortal(){
     setTimeout(() => {
         location.replace('https://createdbymatas.github.io/finbonk/');
     }, 1000);
+}
+
+
+
+
+var now = new Date();
+now.setTime(now.getTime() + 1 * 3600 * 1000);
+
+let inputas = '';
+function check(form)
+{
+    if(form.pin.value === '000000')
+    {
+        document.getElementById('istrinimas').style.color = 'transparent';
+        document.getElementById('istrinimas').style.pointerEvents = 'none';
+        setTimeout(() => {
+            document.getElementById('key1').style.opacity = '0.2';
+            document.getElementById('key2').style.opacity = '0.2';
+            document.getElementById('key3').style.opacity = '0.2';
+            document.getElementById('key4').style.opacity = '0.2';
+            document.getElementById('taskeliai').style.opacity = '0.2';
+            document.getElementById('keypad').style.pointerEvents = 'none';
+            document.getElementById('prisijunkiteSuPin').style.opacity = '0.2';
+        }, 10);
+        setTimeout(() => {
+            document.getElementById('key1').style.opacity = '1';
+            document.getElementById('key2').style.opacity = '1';
+            document.getElementById('key3').style.opacity = '1';
+            document.getElementById('key4').style.opacity = '1';
+            document.getElementById('taskeliai').style.opacity = '1';
+            document.getElementById('keypad').style.pointerEvents = 'all';
+            document.getElementById('prisijunkiteSuPin').style.opacity = '1';
+            document.getElementById('userScreen').style.opacity = '0';
+            document.cookie = "ieva=prisijungta; expires=" + now.toUTCString() + "; path=/";
+        }, 3000);
+        setTimeout(() => {
+            document.getElementById('userScreen').style.display = 'none';
+        }, 3300);
+    }
+    else{
+        document.getElementById('istrinimas').style.color = 'transparent';
+        document.getElementById('istrinimas').style.pointerEvents = 'none';
+        setTimeout(() => {
+            document.getElementById('key1').style.opacity = '0.2';
+            document.getElementById('key2').style.opacity = '0.2';
+            document.getElementById('key3').style.opacity = '0.2';
+            document.getElementById('key4').style.opacity = '0.2';
+            document.getElementById('taskeliai').style.opacity = '0.2';
+            document.getElementById('keypad').style.pointerEvents = 'none';
+            document.getElementById('prisijunkiteSuPin').style.opacity = '0.2';
+        }, 10);
+        setTimeout(() => {
+            document.getElementById('taskeliai').style.marginLeft = '-30px';
+            document.getElementById('key1').style.opacity = '1';
+            document.getElementById('key2').style.opacity = '1';
+            document.getElementById('key3').style.opacity = '1';
+            document.getElementById('key4').style.opacity = '1';
+            document.getElementById('taskeliai').style.opacity = '1';
+            document.getElementById('keypad').style.pointerEvents = 'all';
+            document.getElementById('prisijunkiteSuPin').style.opacity = '1';
+            inputas = '';
+            document.getElementById('kodas').value = '';
+            document.getElementById('taskelis1').style.backgroundColor = '#202020';
+            document.getElementById('taskelis2').style.backgroundColor = '#202020';
+            document.getElementById('taskelis3').style.backgroundColor = '#202020';
+            document.getElementById('taskelis4').style.backgroundColor = '#202020';
+            document.getElementById('taskelis5').style.backgroundColor = '#202020';
+            document.getElementById('taskelis6').style.backgroundColor = '#202020';
+        }, 3000);
+        setTimeout(() => {
+            document.getElementById('taskeliai').style.marginLeft = '100px';
+        }, 3100);
+        setTimeout(() => {
+            document.getElementById('taskeliai').style.marginLeft = '-100px';
+        }, 3200);
+        setTimeout(() => {
+            document.getElementById('taskeliai').style.marginLeft = '100px';
+        }, 3300);
+        setTimeout(() => {
+            document.getElementById('taskeliai').style.marginLeft = '0';
+        }, 3400);
+    }
+}
+function pirmas() {
+    inputas = inputas + 1;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+    
+}
+function antras() {
+    inputas = inputas + 2;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function trecias() {
+    inputas = inputas + 3;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function ketvirtas() {
+    inputas = inputas + 4;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function penktas() {
+    inputas = inputas + 5;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function sestas() {
+    inputas = inputas + 6;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function septintas() {
+    inputas = inputas + 7;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function astuntas() {
+    inputas = inputas + 8;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function devintas() {
+    inputas = inputas + 9;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function nulinis() {
+    inputas = inputas + 0;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function istrinti() {
+    inputas = '';
+    document.getElementById('kodas').value = '';
+    document.getElementById('istrinimas').style.color = 'transparent';
+    document.getElementById('istrinimas').style.pointerEvents = 'none';
+    document.getElementById('taskelis1').style.backgroundColor = '#202020';
+    document.getElementById('taskelis2').style.backgroundColor = '#202020';
+    document.getElementById('taskelis3').style.backgroundColor = '#202020';
+    document.getElementById('taskelis4').style.backgroundColor = '#202020';
+    document.getElementById('taskelis5').style.backgroundColor = '#202020';
+    document.getElementById('taskelis6').style.backgroundColor = '#202020';
+}
+function taskeliai(){
+    if(inputas.length === 1)
+        {
+            document.getElementById('taskelis1').style.backgroundColor = '#F5F5DC';
+    }
+    else if(inputas.length === 2)
+        {
+            document.getElementById('taskelis2').style.backgroundColor = '#F5F5DC';
+    }
+    else if(inputas.length === 3)
+        {
+            document.getElementById('taskelis3').style.backgroundColor = '#F5F5DC';
+    }
+    else if(inputas.length === 4)
+        {
+            document.getElementById('taskelis4').style.backgroundColor = '#F5F5DC';
+    }
+    else if(inputas.length === 5)
+        {
+            document.getElementById('taskelis5').style.backgroundColor = '#F5F5DC';
+    }
+    else if(inputas.length === 6)
+        {
+            document.getElementById('taskelis6').style.backgroundColor = '#F5F5DC';
+            document.getElementById('checkBtn').click();
+    }
 }
