@@ -1365,64 +1365,127 @@ form{
     #keypad button:hover{
         opacity: 1;
     }
+    #keypad button:active{
+        opacity: 0.2;
+    }
     #account:hover{
         opacity: 1;
+    }
+    #account:active{
+        opacity: 0.2;
     }
     #accountX:hover{
         opacity: 1;
     }
+    #accountX:active{
+        opacity: 0.2;
+    }
     #notifications:hover{
         opacity: 1;
+    }
+    #notifications:active{
+        opacity: 0.2;
     }
     #notificationsX:hover{
         opacity: 1;
     }
+    #notificationsX:active{
+        opacity: 0.2;
+    }
     #apps:hover{
         opacity: 1;
+    }
+    #apps:active{
+        opacity: 0.2;
     }
     #appsX:hover{
         opacity: 1;
     }
+    #appsX:active{
+        opacity: 0.2;
+    }
     #finbonkSaskaita:hover{
         opacity: 1;
+    }
+    #finbonkSaskaita:active{
+        opacity: 0.2;
     }
     #apyvarta:hover{
         opacity: 1;
     }
+    #apyvarta:active{
+        opacity: 0.2;
+    }
     #settings div:hover{
         opacity: 1;
+    }
+    #settings div:active{
+        opacity: 0.2;
     }
     #notifs div:hover{
         opacity: 1;
     }
+    #notifs div:active{
+        opacity: 0.2;
+    }
     #otherApps div:hover{
         opacity: 1;
+    }
+    #otherApps div:active{
+        opacity: 0.2;
     }
     #kontaktineInformacija h2:hover{
         opacity: 1;
     }
+    #kontaktineInformacija h2:active{
+        opacity: 0.2;
+    }
     #finbonkAccount h2:hover{
         opacity: 1;
+    }
+    #finbonkAccount h2:active{
+        opacity: 0.2;
     }
     #finbonkIsmoketi:hover{
         opacity: 1;
     }
+    #finbonkIsmoketi:active{
+        opacity: 0.2;
+    }
     .operacija:hover{
         opacity: 1;
+    }
+    .operacija:active{
+        opacity: 0.2;
     }
     #visaApyvarta h2:hover{
         opacity: 1;
     }
+    #visaApyvarta h2:active{
+        opacity: 0.2;
+    }
     .operacijaWindow h2:hover{
         opacity: 1;
+    }
+    .operacijaWindow h2:active{
+        opacity: 0.2;
     }
     #ismoka h2:hover{
         opacity: 1;
     }
+    #ismoka h2:active{
+        opacity: 0.2;
+    }
     #ismoketiBtn:hover{
         opacity: 1;
     }
+    #ismoketiBtn:active{
+        opacity: 0.2;
+    }
     #uzklausaIssiusta button:hover{
         opacity: 1;
+    }
+    #uzklausaIssiusta button:active{
+        opacity: 0.2;
     }
 }

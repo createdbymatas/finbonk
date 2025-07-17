@@ -123,6 +123,22 @@ function closeContactInfo(){
     document.getElementById('apps').style.right = '20px';
     document.getElementById('appsX').style.right = '-50px';
 }
+function logout(){
+    document.cookie = "ieva=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+    document.getElementById('userScreen').style.display = 'flex';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+    setTimeout(() => {
+        document.getElementById('userScreen').style.opacity = '1';
+    }, 10);
+}
 
 
 
@@ -490,11 +506,14 @@ let ieva = getCookie("ieva");
 setTimeout(() => {
     if (ieva != "") {
         document.getElementById('userScreen').style.display = 'none';
+        document.getElementById('userScreen').style.opacity = '0';
     }
     else {
         document.getElementById('userScreen').style.display = 'flex';
+        document.getElementById('userScreen').style.opacity = '1';
         if (ieva != "" && ieva != null) {
             document.getElementById('userScreen').style.display = 'flex';
+            document.getElementById('userScreen').style.opacity = '1';
         }
     }
 }, 5);
@@ -533,6 +552,14 @@ function check(form)
         }, 3000);
         setTimeout(() => {
             document.getElementById('userScreen').style.display = 'none';
+            inputas = '';
+            document.getElementById('kodas').value = '';
+            document.getElementById('taskelis1').style.backgroundColor = '#202020';
+            document.getElementById('taskelis2').style.backgroundColor = '#202020';
+            document.getElementById('taskelis3').style.backgroundColor = '#202020';
+            document.getElementById('taskelis4').style.backgroundColor = '#202020';
+            document.getElementById('taskelis5').style.backgroundColor = '#202020';
+            document.getElementById('taskelis6').style.backgroundColor = '#202020';
         }, 3300);
         setTimeout(() => {
             document.getElementById('loginTimeRemaining').innerHTML = '59:59';
