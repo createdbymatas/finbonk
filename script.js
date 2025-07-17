@@ -137,7 +137,28 @@ function logout(){
     document.getElementById('appsX').style.right = '-50px';
     setTimeout(() => {
         document.getElementById('userScreen').style.opacity = '1';
+        document.getElementById('logoutAlert').style.top = '15px';
     }, 10);
+    setTimeout(() => {
+        document.getElementById('kontaktineInformacija').style.top = '100%';
+        document.getElementById('finbonkAccount').style.right = '-100%';
+        document.getElementById('visaApyvarta').style.right = '-100%';
+        document.getElementById('operacija1').style.right = '-100%';
+        document.getElementById('operacija2').style.right = '-100%';
+        document.getElementById('operacija3').style.right = '-100%';
+        document.getElementById('operacija4').style.right = '-100%';
+        document.getElementById('operacija5').style.right = '-100%';
+        document.getElementById('operacija6').style.right = '-100%';
+        document.getElementById('operacija7').style.right = '-100%';
+        document.getElementById('operacija8').style.right = '-100%';
+        document.getElementById('operacija9').style.right = '-100%';
+        document.getElementById('operacija10').style.right = '-100%';
+        document.getElementById('operacija11').style.right = '-100%';
+        document.getElementById('ismoka').style.right = '-100%';
+    }, 310);
+    setTimeout(() => {
+        document.getElementById('logoutAlert').style.top = '-100px';
+    }, 3010);
 }
 
 
