@@ -50,6 +50,32 @@ body{
         transform: rotate(360deg);
     }
 }
+#loginAlert{
+    width: 95%;
+    height: auto;
+    background-color: #454545;
+    border-radius: 25px;
+    border: 1px solid #F5F5DC;
+    box-shadow: 0 0 15px #202020;
+    position: fixed;
+    top: -100px;
+    left: 2.5%;
+    right: 2.5%;
+    z-index: 29;
+    color: #F5F5DC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    padding-left: 45px;
+    font-size: 17px;
+    transition: 0.3s;
+}
+#loginAlert i{
+    position: absolute;
+    left: 15px;
+    font-size: 20px;
+}
 #userScreen{
     width: 100%;
     height: 100%;
@@ -58,7 +84,7 @@ body{
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 29;
+    z-index: 28;
     background-color: #202020;
     display: flex;
     justify-content: center;
@@ -135,8 +161,11 @@ body{
     transition: 0.15s;
     color: #202020;
 }
+#keypad button:hover{
+    opacity: 0.7;
+}
 #keypad button:active{
-    background-color: #202020;
+    opacity: 0.2;
 }
 #keypad button p{
     font-size: 12px;
@@ -303,7 +332,6 @@ h3{
 }
 .boldP{
     font-weight: 600;
-    text-align: right;
 }
 .fa-chevron-right{
     font-size: 13px;
@@ -1194,6 +1222,24 @@ form{
 }
 
 @media only screen and (max-width: 600px){
+    #loginAlert{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    #loginSuccessful{
+        position: absolute;
+        left: 45px;
+        top: 15px;
+    }
+    #loginAlert i{
+        top: 15px;
+    }
+    #likesLaikas{
+        width: 100%;
+        text-align: right;
+    }
     #surname1{
         display: none;
     }
@@ -1315,6 +1361,9 @@ form{
     .ismokosDuomenys p{
         width: 100%;
         text-align: right;
+    }
+    #keypad button:hover{
+        opacity: 1;
     }
     #account:hover{
         opacity: 1;

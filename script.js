@@ -525,6 +525,8 @@ function check(form)
             document.getElementById('keypad').style.pointerEvents = 'all';
             document.getElementById('prisijunkiteSuPin').style.opacity = '1';
             document.getElementById('userScreen').style.opacity = '0';
+            document.getElementById('loginAlert').style.top = '15px';
+
             var now = new Date();
             now.setTime(now.getTime() + 1 * 3600 * 1000);
             document.cookie = "ieva=prisijungta; expires=" + now.toUTCString() + "; path=/";
@@ -532,6 +534,16 @@ function check(form)
         setTimeout(() => {
             document.getElementById('userScreen').style.display = 'none';
         }, 3300);
+        setTimeout(() => {
+            document.getElementById('loginTimeRemaining').innerHTML = '59:59';
+        }, 4000);
+        setTimeout(() => {
+            document.getElementById('loginTimeRemaining').innerHTML = '59:58';
+        }, 5000);
+        setTimeout(() => {
+            document.getElementById('loginAlert').style.top = '-100px';
+            document.getElementById('loginTimeRemaining').innerHTML = '59:57';
+        }, 6000);
     }
     else{
         document.getElementById('istrinimas').style.color = 'transparent';
