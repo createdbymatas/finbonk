@@ -470,13 +470,40 @@ function backToPortal(){
 
 
 
-var now = new Date();
-now.setTime(now.getTime() + 1 * 3600 * 1000);
+function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+// document.cookie = "ieva=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+
+let ieva = getCookie("ieva");
+setTimeout(() => {
+    if (ieva != "") {
+        document.getElementById('userScreen').style.display = 'none';
+    }
+    else {
+        document.getElementById('userScreen').style.display = 'flex';
+        if (ieva != "" && ieva != null) {
+            document.getElementById('userScreen').style.display = 'flex';
+        }
+    }
+}, 5);
+
 
 let inputas = '';
 function check(form)
 {
-    if(form.pin.value === '000000')
+    if(form.pin.value === '159075')
     {
         document.getElementById('istrinimas').style.color = 'transparent';
         document.getElementById('istrinimas').style.pointerEvents = 'none';
@@ -498,6 +525,8 @@ function check(form)
             document.getElementById('keypad').style.pointerEvents = 'all';
             document.getElementById('prisijunkiteSuPin').style.opacity = '1';
             document.getElementById('userScreen').style.opacity = '0';
+            var now = new Date();
+            now.setTime(now.getTime() + 1 * 3600 * 1000);
             document.cookie = "ieva=prisijungta; expires=" + now.toUTCString() + "; path=/";
         }, 3000);
         setTimeout(() => {
