@@ -6,9 +6,9 @@ document.getElementById('grazintiIki').innerHTML = document.getElementById('retu
 document.getElementById('apyvartaThisMonth').innerHTML = document.getElementById('fullOperations').innerHTML;
 document.getElementById('apyvartaThisMonth2').innerHTML = document.getElementById('fullOperations').innerHTML;
 document.getElementById('gauta1').innerHTML = document.getElementById('received').innerHTML;
-document.getElementById('isleista1').innerHTML = document.getElementById('received').innerHTML;
+document.getElementById('isleista1').innerHTML = document.getElementById('spent').innerHTML;
 document.getElementById('gauta2').innerHTML = document.getElementById('received').innerHTML;
-document.getElementById('isleista2').innerHTML = document.getElementById('received').innerHTML;
+document.getElementById('isleista2').innerHTML = document.getElementById('spent').innerHTML;
 document.getElementById('thisMonth').innerHTML = document.getElementById('currentMonth').innerHTML;
 document.getElementById('thisMonth2').innerHTML = document.getElementById('currentMonth').innerHTML;
 
@@ -433,6 +433,31 @@ function closeOperacija10(){
     document.getElementById('apps').style.right = '20px';
     document.getElementById('appsX').style.right = '-50px';
 }
+function openOperacija11(){
+    document.getElementById('operacija11').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function closeOperacija11(){
+    document.getElementById('operacija11').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+
 function openIsmoka(){
     document.getElementById('ismoka').style.right = '0';
     document.getElementById('settings').style.right = '-215px';
