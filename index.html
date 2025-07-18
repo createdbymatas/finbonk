@@ -14,14 +14,14 @@
     <!-- BENDRŲ DUOMENŲ SUVEDIMAS -->
     <div id="hidden">
         <!-- Balansas: -->
-        <p id="currentBalance">3,80 €</p>
+        <p id="currentBalance">0,00 €</p>
         <!-- Skolos: -->
         <p id="currentDebt">0,00 €</p>
         <p id="returnUntil">2025-...-...</p>
         <!-- Apyvarta: -->
-        <p id="fullOperations">19,72 €</p><!-- NEPAMIRŠTI PAKEISTI BAR'O (DU ATSKIRI) IR APYVARTOS IŠLAIDŲ KATEGORIJŲ -->
+        <p id="fullOperations">23,52 €</p><!-- NEPAMIRŠTI PAKEISTI BAR'O (DU ATSKIRI) IR APYVARTOS IŠLAIDŲ KATEGORIJŲ -->
         <p id="received">11,76 €</p>
-        <p id="spent">7,96 €</p>
+        <p id="spent">11,76 €</p>
         <p id="currentMonth">2025 liepa</p>
     </div>
     <!-- BENDRŲ DUOMENŲ SUVEDIMOPABAIGA -->
@@ -43,7 +43,7 @@
         <h1>Sveiki sugrįžę!</h1>
         <div id="profilisLogin">
             <i class="fa-solid fa-kiwi-bird profileIcon"></i>
-            <p>Pupulė Pupulienė</p>
+            <p>Ieva Kasparavičiūtė</p>
         </div>
         <p id="prisijunkiteSuPin">Prisijunkite su PIN kodu:</p>
         <div id="keypad">
@@ -185,7 +185,11 @@
         </div>
         <div id="finbonkOperacijos">
             <h3>Operacijos</h3>
-            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija11()">
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija12()">
+                <p>2025-07-18 <b>Išmoka į sąskaitą LT037300010168803573</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-3,80 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija11()">
                 <p>2025-07-18 <b>Įmoka iš Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP pajamos">+3,80 €</p>
             </div>
@@ -252,7 +256,7 @@
             <h3>Išlaidų kategorijos</h3>
             <div class="kategorija" style="border-radius: 25px 25px 5px 5px;">
                 <p><i class="fa-solid fa-money-bill-transfer"></i> <b>Išmokos</b></p>
-                <p class="boldP">4,80 €</p>
+                <p class="boldP">8,60 €</p>
             </div>
             <div class="kategorija">
                 <p><i class="fa-solid fa-train-subway"></i> <b>Viešasis transportas</b></p>
@@ -540,6 +544,32 @@
         <div class="operacijosDuomenys">
             <h3>Suma</h3>
             <p class="boldP pajamos">+3,80 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">4,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis</p>
+                <p class="boldP">0,20 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija12" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija12()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-18</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Išmoka į sąskaitą LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-3,80 €</p>
         </div>
         <div class="isklotine">
             <h3>Išklotinė</h3>
