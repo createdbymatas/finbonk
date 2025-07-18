@@ -14,13 +14,13 @@
     <!-- BENDRŲ DUOMENŲ SUVEDIMAS -->
     <div id="hidden">
         <!-- Balansas: -->
-        <p id="currentBalance">0,00 €</p>
+        <p id="currentBalance">3,80 €</p>
         <!-- Skolos: -->
         <p id="currentDebt">0,00 €</p>
-        <p id="returnUntil">2025-07-20</p>
+        <p id="returnUntil">2025-...-...</p>
         <!-- Apyvarta: -->
-        <p id="fullOperations">15,92 €</p><!-- NEPAMIRŠTI PAKEISTI BAR'O IR APYVARTOS KATEGORIJŲ -->
-        <p id="received">7,96 €</p>
+        <p id="fullOperations">19,72 €</p><!-- NEPAMIRŠTI PAKEISTI BAR'O (DU ATSKIRI) IR APYVARTOS IŠLAIDŲ KATEGORIJŲ -->
+        <p id="received">11,76 €</p>
         <p id="spent">7,96 €</p>
         <p id="currentMonth">2025 liepa</p>
     </div>
@@ -34,6 +34,10 @@
         <i class="fa-regular fa-circle-check"></i>
         <p class="boldP" id="loginSuccessful">Prisijungta sėkmingai</p>
         <p id="likesLaikas">likęs prisijungimo laikas: <span id="loginTimeRemaining" class="boldP">60:00</span></p>
+    </div>
+    <div id="logoutAlert">
+        <i class="fa-regular fa-circle-check"></i>
+        <p class="boldP" id="logoutSuccessful">Atsijungta sėkmingai</p>
     </div>
     <div id="userScreen">
         <h1>Sveiki sugrįžę!</h1>
@@ -90,22 +94,22 @@
         <h3>Sąskaitos</h3>
         <div ontouchstart id="finbonkSaskaita" onclick="openFinbonkAccount()">
             <p class="boldP">FINBONK sąskaita <i class="fa-solid fa-chevron-right"></i></p>
-            <p>balansas: <b id="balanceInOverview">0,00 €</b></p>
+            <p>balansas: <b id="balanceInOverview">...,... €</b></p>
         </div>
         <div id="skolos">
             <div>
                 <p class="boldP">Skolos</p>
-                <p class="boldP" id="skolosSuma">0,00 €</p>
+                <p class="boldP" id="skolosSuma">...,... €</p>
             </div>
             <p id="grazinimoTerminas">grąžinti iki: <span id="grazintiIki">20...-...-...</span></p>
         </div>
     </div>
     <div ontouchstart id="apyvarta" onclick="openApyvarta()">
         <h3>Apyvarta <i class="fa-solid fa-chevron-right fa-chevron-right2"></i></h3>
-        <p id="apyvartaMonth">Šį mėnesį (<span id="thisMonth">2025 ...</span>): <b id="apyvartaThisMonth">0,00 €</b></p>
+        <p id="apyvartaMonth">Šį mėnesį (<span id="thisMonth">20... ...</span>): <b id="apyvartaThisMonth">...,... €</b></p>
         <div id="gautaIsleistaDiv">
-            <p>Gauta: <b id="gauta1">0,00 €</b></p>
-            <p>Išleista: <b id="isleista1">0,00 €</b></p>
+            <p>Gauta: <b id="gauta1">...,... €</b></p>
+            <p>Išleista: <b id="isleista1">...,... €</b></p>
         </div>
         <div id="apyvartosBar">
             <div id="gautaBar"></div>
@@ -174,14 +178,18 @@
         <h2 ontouchstart onclick="closeFinbonkAccount()"><i class="fa-solid fa-chevron-left"></i> FINBONK sąskaita</h2>
         <div id="finbonkBalansas">
             <h3>Balansas</h3>
-            <p class="boldP" id="balanceInAccount">0,00 €</p>
+            <p class="boldP" id="balanceInAccount">...,... €</p>
         </div>
         <div ontouchstart id="finbonkIsmoketi" onclick="openIsmoka()">
             <h3>Išmokėti balansą į sąskaitą LT037300010168803573</h3>
         </div>
         <div id="finbonkOperacijos">
             <h3>Operacijos</h3>
-            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija10()">
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija11()">
+                <p>2025-07-18 <b>Įmoka iš Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+3,80 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija10()">
                 <p>2025-07-16 <b>Išmoka į sąskaitą LT037300010168803573</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP islaidos">-4,80 €</p>
             </div>
@@ -227,13 +235,13 @@
     <div id="visaApyvarta">
         <h2 ontouchstart onclick="closeApyvarta()"><i class="fa-solid fa-chevron-left"></i> Apyvarta</h2>
         <div id="apyvartaSiMenesi">
-            <h3>Šį mėnesį (<span id="thisMonth2">2025 ...</span>)</h3>
-            <p class="boldP" id="apyvartaThisMonth2">0,00 €</p>
+            <h3>Šį mėnesį (<span id="thisMonth2">20... ...</span>)</h3>
+            <p class="boldP" id="apyvartaThisMonth2">...,... €</p>
         </div>
         <div id="apyvartosRodikliai">
             <div id="gautaIsleistaDiv2">
-                <p>Gauta: <b id="gauta2">0,00 €</b></p>
-                <p>Išleista: <b id="isleista2">0,00 €</b></p>
+                <p>Gauta: <b id="gauta2">...,... €</b></p>
+                <p>Išleista: <b id="isleista2">...,... €</b></p>
             </div>
             <div id="apyvartosBar2">
                 <div id="gautaBar2"></div>
@@ -519,6 +527,32 @@
             </div>
         </div>
     </div>
+    <div id="operacija11" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija11()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-18</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka iš Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+3,80 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">4,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis</p>
+                <p class="boldP">0,20 €</p>
+            </div>
+        </div>
+    </div>
 
     <div id="ismoka">
         <h2 ontouchstart onclick="closeIsmoka()"><i class="fa-solid fa-chevron-left"></i> Išmoka</h2>
@@ -527,8 +561,12 @@
             <p>LT037300010168803573</p>
         </div>
         <div class="ismokosDuomenys">
+            <h3>Pilnas vardas</h3>
+            <p>Ieva Kasparavičiūtė</p>
+        </div>
+        <div class="ismokosDuomenys">
             <h3>Suma</h3>
-            <p class="boldP" id="ismokosDydis">0,00 €</p>
+            <p class="boldP" id="ismokosDydis">...,... €</p>
         </div>
         <div ontouchstart id="ismoketiBtn" onclick="ismoketiSuma()">
             <h3>Siųsti išmokos užklausą</h3>
