@@ -468,12 +468,10 @@ h3{
     align-items: center;
 }
 #gautaBar{
-    width: 50%;
     height: 100%;
     background-color: forestgreen;
 }
 #isleistaBar{
-    width: 50%;
     height: 100%;
     background-color: crimson;
 }
@@ -892,12 +890,10 @@ h3{
     align-items: center;
 }
 #gautaBar2{
-    width: 50%;
     height: 100%;
     background-color: forestgreen;
 }
 #isleistaBar2{
-    width: 50%;
     height: 100%;
     background-color: crimson;
 }
@@ -1154,6 +1150,48 @@ h3{
     overflow: hidden;
     overflow-y: scroll;
 }
+#operacija13{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija14{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija15{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 
 form{
     display: none;
@@ -1198,6 +1236,19 @@ form{
 .ismokosDuomenys p{
     font-size: 20px;
     text-align: right;
+}
+.ismokosInformacija{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+}
+.ismokosInformacija p{
+    font-size: 17px;
 }
 #ismoketiBtn{
     width: 100%;

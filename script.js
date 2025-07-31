@@ -1,16 +1,43 @@
-document.getElementById('balanceInOverview').innerHTML = document.getElementById('currentBalance').innerHTML;
-document.getElementById('balanceInAccount').innerHTML = document.getElementById('currentBalance').innerHTML;
-document.getElementById('ismokosDydis').innerHTML = document.getElementById('currentBalance').innerHTML;
-document.getElementById('skolosSuma').innerHTML = document.getElementById('currentDebt').innerHTML;
+let currentBalanceDot = document.getElementById('currentBalance').innerHTML;
+currentBalanceDot = currentBalanceDot.replace(",", ".");
+let fullOperationsDot = document.getElementById('fullOperations').innerHTML;
+fullOperationsDot = fullOperationsDot.replace(",", ".");
+let receivedDot = document.getElementById('received').innerHTML;
+receivedDot = receivedDot.replace(",", ".");
+let spentDot = document.getElementById('spent').innerHTML;
+spentDot = spentDot.replace(",", ".");
+
+document.getElementById('balanceInOverview').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
+document.getElementById('balanceInAccount').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
+
+document.getElementById('ismokosGrynojiSuma').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
+document.getElementById('ismokosMokestis').innerHTML = 0.1+(currentBalanceDot*0.02) +  ' €';
+document.getElementById('ismokosMokestis').innerHTML = document.getElementById('ismokosMokestis').innerHTML.replace(".", ",");
+document.getElementById('ismokosSuma').innerHTML = currentBalanceDot - (0.1+(currentBalanceDot*0.02)) +  ' €';
+document.getElementById('ismokosSuma').innerHTML = document.getElementById('ismokosSuma').innerHTML.replace(".", ",");
+
+document.getElementById('skolosSuma').innerHTML = document.getElementById('currentDebt').innerHTML + ' €';
 document.getElementById('grazintiIki').innerHTML = document.getElementById('returnUntil').innerHTML;
-document.getElementById('apyvartaThisMonth').innerHTML = document.getElementById('fullOperations').innerHTML;
-document.getElementById('apyvartaThisMonth2').innerHTML = document.getElementById('fullOperations').innerHTML;
-document.getElementById('gauta1').innerHTML = document.getElementById('received').innerHTML;
-document.getElementById('isleista1').innerHTML = document.getElementById('spent').innerHTML;
-document.getElementById('gauta2').innerHTML = document.getElementById('received').innerHTML;
-document.getElementById('isleista2').innerHTML = document.getElementById('spent').innerHTML;
+
+document.getElementById('apyvartaThisMonth').innerHTML = document.getElementById('fullOperations').innerHTML + ' €';
+document.getElementById('apyvartaThisMonth2').innerHTML = document.getElementById('fullOperations').innerHTML + ' €';
+document.getElementById('gauta1').innerHTML = document.getElementById('received').innerHTML + ' €';
+document.getElementById('isleista1').innerHTML = document.getElementById('spent').innerHTML + ' €';
+document.getElementById('gauta2').innerHTML = document.getElementById('received').innerHTML + ' €';
+document.getElementById('isleista2').innerHTML = document.getElementById('spent').innerHTML + ' €';
+
+document.getElementById('receivedBar').innerHTML = receivedDot * 100 / fullOperationsDot + '%';
+document.getElementById('gautaBar').style.width = document.getElementById('receivedBar').innerHTML;
+document.getElementById('gautaBar2').style.width = document.getElementById('receivedBar').innerHTML;
+document.getElementById('spentBar').innerHTML = spentDot * 100 / fullOperationsDot + '%';
+document.getElementById('isleistaBar').style.width = document.getElementById('spentBar').innerHTML;
+document.getElementById('isleistaBar2').style.width = document.getElementById('spentBar').innerHTML;
+
 document.getElementById('thisMonth').innerHTML = document.getElementById('currentMonth').innerHTML;
 document.getElementById('thisMonth2').innerHTML = document.getElementById('currentMonth').innerHTML;
+
+
+
 
 setTimeout(() => {
     if (document.getElementById('skolosSuma').innerHTML === '0,00 €'){
@@ -23,7 +50,7 @@ setTimeout(() => {
     }
 }, 1);
 setTimeout(() => {
-    if (document.getElementById('currentBalance').innerHTML === '0,00 €'){
+    if (document.getElementById('currentBalance').innerHTML === '0,00'){
         document.getElementById('finbonkIsmoketi').style.display = 'none';
     }
     else {
@@ -530,7 +557,7 @@ function closeIsmoka(){
 function ismoketiSuma(){
     document.getElementById('emailRequestInput').value = 'FINBONK | Išmoka'
     document.getElementById('prasymasInput').value = 'išmokėti sumą';
-    document.getElementById('informacijaInput').value = document.getElementById('currentBalance').innerHTML;
+    document.getElementById('informacijaInput').value = document.getElementById('ismokosSuma').innerHTML;
     document.getElementById('loading').style.display = 'flex';
     document.getElementById('loader').style.animation = 'none';
     setTimeout(() => {
