@@ -61,6 +61,9 @@ setTimeout(() => {
 
 function loadFunction(){
     setTimeout(() => {
+        document.getElementById('loading').style.transition = '0.1s';
+    }, 990);
+    setTimeout(() => {
         document.getElementById('loading').style.opacity = '0';
     }, 1000);
     setTimeout(() => {
