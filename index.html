@@ -51,6 +51,7 @@
         </div>
         <p id="prisijunkiteSuPin">Prisijunkite su PIN kodu:</p>
         <div id="keypad">
+            <input type="text" id="checkDigit" style="display: none;">
             <form>
                 <input type="text" name="pin" id="kodas">
                 <div id="taskeliai">
@@ -61,7 +62,7 @@
                     <div id="taskelis5"></div>
                     <div id="taskelis6"></div>
                 </div>
-                <div style="width: 100%; display: flex; justify-content: space-around; align-items: center;" id="key1">
+                <div style="width: 100%; display: flex; justify-content: space-around; align-items: center; opacity: 1;" id="key1">
                     <button ontouchstart type="button" onclick="pirmas()" id="vienasY">1<i class="fa-solid fa-plus" style="opacity: 0;"></i></button>
                     <button ontouchstart type="button" onclick="antras()" id="duY">2<p>A B C</p></button>
                     <button ontouchstart type="button" onclick="trecias()" id="trysY">3<p>D E F</p></button>

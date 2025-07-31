@@ -1,10 +1,52 @@
 // išjungti right-click
-// document.addEventListener('contextmenu', (e) => e.preventDefault());
+document.addEventListener('contextmenu', (e) => e.preventDefault());
 
 // išjungti f12, ctrl+shift+i, ctrl+shift+j, ctrl+u (inspect tool)
 function ctrlShiftKey(e, keyCode) {
     return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
 }
+
+document.onkeypress = function(evt) {
+    evt = evt || window.event;
+    var charCode = evt.keyCode || evt.which;
+    var charStr = String.fromCharCode(charCode);
+    document.getElementById('checkDigit').value = charStr;
+    setTimeout(() => {
+        if (document.getElementById('checkDigit').value === '1' && document.getElementById('key1').style.opacity === '1'){
+            pirmas();
+        }
+        else if (document.getElementById('checkDigit').value === '2' && document.getElementById('key1').style.opacity === '1'){
+            antras();
+        }
+        else if (document.getElementById('checkDigit').value === '3' && document.getElementById('key1').style.opacity === '1'){
+            trecias();
+        }
+        else if (document.getElementById('checkDigit').value === '4' && document.getElementById('key1').style.opacity === '1'){
+            ketvirtas();
+        }
+        else if (document.getElementById('checkDigit').value === '5' && document.getElementById('key1').style.opacity === '1'){
+            penktas();
+        }
+        else if (document.getElementById('checkDigit').value === '6' && document.getElementById('key1').style.opacity === '1'){
+            sestas();
+        }
+        else if (document.getElementById('checkDigit').value === '7' && document.getElementById('key1').style.opacity === '1'){
+            septintas();
+        }
+        else if (document.getElementById('checkDigit').value === '8' && document.getElementById('key1').style.opacity === '1'){
+            astuntas();
+        }
+        else if (document.getElementById('checkDigit').value === '9' && document.getElementById('key1').style.opacity === '1'){
+            devintas();
+        }
+        else if (document.getElementById('checkDigit').value === '0' && document.getElementById('key1').style.opacity === '1'){
+            nulinis();
+        }
+        else {
+            
+        }
+    }, 1);
+};
 
 document.onkeydown = (e) => {
 if (
@@ -230,7 +272,7 @@ function kiwiIcon(){
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
     document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
     document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
-    document.getElementById('informacijaInput').value = 'fa-kiwi';
+    document.getElementById('informacijaInput').value = 'fa-kiwi-bird';
 }
 function crowIcon(){
     document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
