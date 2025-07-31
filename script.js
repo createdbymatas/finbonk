@@ -1,5 +1,5 @@
 // išjungti right-click
-document.addEventListener('contextmenu', (e) => e.preventDefault());
+// document.addEventListener('contextmenu', (e) => e.preventDefault());
 
 // išjungti f12, ctrl+shift+i, ctrl+shift+j, ctrl+u (inspect tool)
 function ctrlShiftKey(e, keyCode) {
@@ -31,7 +31,7 @@ let spentDot = document.getElementById('spent').innerHTML;
 spentDot = spentDot.replace(",", ".");
 
 document.getElementById('balanceInOverview').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
-document.getElementById('balanceInAccount').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
+document.getElementById('balanceInWallet').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
 
 document.getElementById('ismokosGrynojiSuma').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
 document.getElementById('ismokosMokestis').innerHTML = 0.1+(currentBalanceDot*0.02) +  ' €';
@@ -152,7 +152,352 @@ function atidarytiKorteliuSkaitytuva(){
     window.open('https://createdbymatas.github.io/mokejimas/')
 }
 
+function openProfileIcon(){
+    document.getElementById('kontaktineInformacija').style.top = '100%';
+    document.getElementById('profilioPaveikslelis').style.top = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function closeProfileIcon(){
+    document.getElementById('profilioPaveikslelis').style.top = '100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+    
+    document.getElementById('profilePicChangeBtn').style.opacity = '0.2';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'none';
+    document.getElementById('emailRequestInput').value = 'FINBONK | XXXXX'
+    document.getElementById('prasymasInput').value = '';
+    document.getElementById('informacijaInput').value = '';
+}
+function kiwiIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#404040';
+    document.getElementById('kiwi').style.color = '#F5F5DC';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+    
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-kiwi';
+}
+function crowIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#404040';
+    document.getElementById('crow').style.color = '#F5F5DC';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-crow';
+}
+function cowIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#404040';
+    document.getElementById('cow').style.color = '#F5F5DC';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+    
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-cow';
+}
+function hippoIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#404040';
+    document.getElementById('hippo').style.color = '#F5F5DC';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-hippo';
+}
+function dogIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#404040';
+    document.getElementById('dog').style.color = '#F5F5DC';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+    
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-dog';
+}
+function catIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '##202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#404040';
+    document.getElementById('cat').style.color = '#F5F5DC';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-cat';
+}
+function horseIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#404040';
+    document.getElementById('horse').style.color = '#F5F5DC';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-horse';
+}
+function otterIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#404040';
+    document.getElementById('otter').style.color = '#F5F5DC';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-otter';
+}
+function fishIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#404040';
+    document.getElementById('fish').style.color = '#F5F5DC';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-fish';
+}
+function frogIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#404040';
+    document.getElementById('frog').style.color = '#F5F5DC';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-frog';
+}
+function keistiPaveiksleli(){
+    document.getElementById('loading').style.display = 'flex';
+    document.getElementById('loader').style.animation = 'none';
+    setTimeout(() => {
+        document.getElementById('loading').style.opacity = '1';
+        document.getElementById('loader').style.animation = 'spin 0.8s linear infinite';
+    }, 10);
+    setTimeout(() => {
+        document.getElementById('submitFormBtn').click();
+    }, 1000);
+}
+
 function openContactInfo(){
+    document.getElementById('profilioPaveikslelis').style.top = '100%';
     document.getElementById('kontaktineInformacija').style.top = '0';
     document.getElementById('settings').style.right = '-215px';
     document.getElementById('account').style.display = 'block';
@@ -194,7 +539,7 @@ function logout(){
     }, 10);
     setTimeout(() => {
         document.getElementById('kontaktineInformacija').style.top = '100%';
-        document.getElementById('finbonkAccount').style.right = '-100%';
+        document.getElementById('finbonkWallet').style.right = '-100%';
         document.getElementById('visaApyvarta').style.right = '-100%';
         document.getElementById('operacija1').style.right = '-100%';
         document.getElementById('operacija2').style.right = '-100%';
@@ -216,8 +561,8 @@ function logout(){
 
 
 
-function openFinbonkAccount(){
-    document.getElementById('finbonkAccount').style.right = '0';
+function openFinbonkWallet(){
+    document.getElementById('finbonkWallet').style.right = '0';
     document.getElementById('settings').style.right = '-215px';
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
@@ -228,8 +573,8 @@ function openFinbonkAccount(){
     document.getElementById('apps').style.right = '20px';
     document.getElementById('appsX').style.right = '-50px';
 }
-function closeFinbonkAccount(){
-    document.getElementById('finbonkAccount').style.right = '-100%';
+function closeFinbonkWallet(){
+    document.getElementById('finbonkWallet').style.right = '-100%';
     document.getElementById('settings').style.right = '-215px';
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
@@ -609,6 +954,7 @@ function backToPortal(){
 
 
 
+
 function getCookie(cname) {
     let name = cname + "=";
     let ca = document.cookie.split(';');
@@ -694,6 +1040,9 @@ function check(form)
             document.getElementById('loginAlert').style.top = '-100px';
             document.getElementById('loginTimeRemaining').innerHTML = '59:57';
         }, 6000);
+        setTimeout(() => {
+            document.getElementById('loginTimeRemaining').innerHTML = '60:00';
+        }, 7000);
     }
     else{
         document.getElementById('istrinimas').style.color = 'transparent';

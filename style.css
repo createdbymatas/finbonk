@@ -70,6 +70,7 @@ body{
     padding-left: 45px;
     font-size: 17px;
     transition: 0.3s;
+    cursor: default;
 }
 #loginAlert i{
     position: absolute;
@@ -96,6 +97,7 @@ body{
     padding-left: 45px;
     font-size: 17px;
     transition: 0.3s;
+    cursor: default;
 }
 #logoutAlert i{
     position: absolute;
@@ -368,7 +370,7 @@ h3{
 .fa-chevron-left{
     font-size: 22px;
 }
-#saskaitos{
+#pinigines{
     width: 100%;
     height: auto;
     color: #F5F5DC;
@@ -378,10 +380,10 @@ h3{
     margin-top: 10px;
     position: relative;
 }
-#saskaitos p{
+#pinigines p{
     font-size: 17px;
 }
-#finbonkSaskaita{
+#finbonkPinigine{
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -394,10 +396,10 @@ h3{
     transition: 0.3s;
     position: relative;
 }
-#finbonkSaskaita:hover{
+#finbonkPinigine:hover{
     opacity: 0.7;
 }
-#finbonkSaskaita:active{
+#finbonkPinigine:active{
     opacity: 0.2;
 }
 #skolos{
@@ -603,6 +605,102 @@ h3{
     font-size: 13px;
 }
 
+#profilioPaveikslelis{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 8;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#profilioPaveikslelis h2{
+    cursor: pointer;
+    transition: 0.3s;
+}
+#profilioPaveikslelis h2:hover{
+    opacity: 0.7;
+}
+#profilioPaveikslelis h2:active{
+    opacity: 0.2;
+}
+#pictureSort{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 25px 25px 5px 5px;
+    padding: 15px;
+    margin-top: 10px;
+}
+#sortIcons{
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
+.icon{
+    width: 100px;
+    height: 100px;
+    background-color: #F5F5DC;
+    font-size: 50px;
+    color: #202020;
+    border-radius: 100%;
+    display: inline-block;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+.icon:hover{
+    opacity: 0.7;
+}
+.icon:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+.icon i{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#profilePicChangeBtn{
+    width: 100%;
+    height: auto;
+    color: #323232;
+    background-color: #F5F5DC;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+    pointer-events: none;
+    opacity: 0.2;
+}
+#profilePicChangeBtn:hover{
+    opacity: 0.7;
+}
+#profilePicChangeBtn:active{
+    opacity: 0.2;
+}
+#profilePicChangeBtn h3{
+    color: #323232;
+    font-size: 17px;
+    cursor: pointer;
+}
 #kontaktineInformacija{
     width: 100%;
     height: 100%;
@@ -714,7 +812,7 @@ h3{
 }
 
 
-#finbonkAccount{
+#finbonkWallet{
     width: 100%;
     height: 100%;
     background-color: #202020;
@@ -728,14 +826,14 @@ h3{
     overflow: hidden;
     overflow-y: scroll;
 }
-#finbonkAccount h2{
+#finbonkWallet h2{
     cursor: pointer;
     transition: 0.3s;
 }
-#finbonkAccount h2:hover{
+#finbonkWallet h2:hover{
     opacity: 0.7;
 }
-#finbonkAccount h2:active{
+#finbonkWallet h2:active{
     opacity: 0.2;
 }
 #finbonkBalansas{
@@ -780,6 +878,7 @@ h3{
 #finbonkIsmoketi h3{
     color: #323232;
     font-size: 17px;
+    cursor: pointer;
 }
 #finbonkOperacijos{
     width: 100%;
@@ -1276,6 +1375,7 @@ form{
 #ismoketiBtn h3{
     color: #323232;
     font-size: 17px;
+    cursor: pointer;
 }
 
 #uzklausaIssiusta{
@@ -1336,7 +1436,7 @@ form{
     }
     #loginSuccessful{
         position: absolute;
-        left: 45px;
+        left: 40px;
         top: 12px;
     }
     #loginAlert i{
@@ -1510,10 +1610,10 @@ form{
     #appsX:active{
         opacity: 0.2;
     }
-    #finbonkSaskaita:hover{
+    #finbonkPinigine:hover{
         opacity: 1;
     }
-    #finbonkSaskaita:active{
+    #finbonkPinigine:active{
         opacity: 0.2;
     }
     #apyvarta:hover{
@@ -1540,16 +1640,29 @@ form{
     #otherApps div:active{
         opacity: 0.2;
     }
+    #profilePicChangeBtn:hover{
+        opacity: 1;
+    }
+    #profilePicChangeBtn:active{
+        opacity: 0.2;
+    }
+    .icon:hover{
+        opacity: 1;
+    }
+    .icon:active{
+        transform: scale(0.9);
+        opacity: 0.2;
+    }
     #kontaktineInformacija h2:hover{
         opacity: 1;
     }
     #kontaktineInformacija h2:active{
         opacity: 0.2;
     }
-    #finbonkAccount h2:hover{
+    #finbonkWallet h2:hover{
         opacity: 1;
     }
-    #finbonkAccount h2:active{
+    #finbonkWallet h2:active{
         opacity: 0.2;
     }
     #finbonkIsmoketi:hover{
