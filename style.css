@@ -477,6 +477,11 @@ h3{
     height: 100%;
     background-color: crimson;
 }
+.emptyBar{
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+}
 
 #settings{
     width: 200px;
