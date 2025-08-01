@@ -72,13 +72,20 @@ receivedDot = receivedDot.replace(",", ".");
 let spentDot = document.getElementById('spent').innerHTML;
 spentDot = spentDot.replace(",", ".");
 
+let ismokMokest = Number(0.1+(currentBalanceDot*0.02));
+let ismokSum = currentBalanceDot - (0.1+(currentBalanceDot*0.02));
+let suapvStringMokest = ismokMokest.toFixed(2);
+let suapvStringSum = ismokSum.toFixed(2);
+let suapvIsmokMokest = Number(suapvStringMokest);
+let suapvIsmokSum = Number(suapvStringSum);
+
 document.getElementById('balanceInOverview').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
 document.getElementById('balanceInWallet').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
 
 document.getElementById('ismokosGrynojiSuma').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
-document.getElementById('ismokosMokestis').innerHTML = 0.1+(currentBalanceDot*0.02) +  ' €';
+document.getElementById('ismokosMokestis').innerHTML = suapvIsmokMokest +  ' €';
 document.getElementById('ismokosMokestis').innerHTML = document.getElementById('ismokosMokestis').innerHTML.replace(".", ",");
-document.getElementById('ismokosSuma').innerHTML = currentBalanceDot - (0.1+(currentBalanceDot*0.02)) +  ' €';
+document.getElementById('ismokosSuma').innerHTML = suapvIsmokSum +  ' €';
 document.getElementById('ismokosSuma').innerHTML = document.getElementById('ismokosSuma').innerHTML.replace(".", ",");
 
 document.getElementById('skolosSuma').innerHTML = document.getElementById('currentDebt').innerHTML + ' €';
@@ -134,6 +141,19 @@ function loadFunction(){
     setTimeout(() => {
         document.getElementById('loading').style.display = 'none';
     }, 1100);
+}
+
+function showFeeInfo(){
+    document.getElementById('feeInfoBg').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('feeInfoBg').style.opacity = '1';
+    }, 10);
+}
+function hideFeeInfo(){
+    document.getElementById('feeInfoBg').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('feeInfoBg').style.display = 'none';
+    }, 300);
 }
 
 
@@ -932,6 +952,78 @@ function openOperacija12(){
 }
 function closeOperacija12(){
     document.getElementById('operacija12').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function openOperacija13(){
+    document.getElementById('operacija13').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function closeOperacija13(){
+    document.getElementById('operacija13').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function openOperacija14(){
+    document.getElementById('operacija14').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function closeOperacija14(){
+    document.getElementById('operacija14').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function openOperacija15(){
+    document.getElementById('operacija15').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function closeOperacija15(){
+    document.getElementById('operacija15').style.right = '-100%';
     document.getElementById('settings').style.right = '-215px';
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
