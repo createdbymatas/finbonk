@@ -73,10 +73,10 @@ let spentDot = document.getElementById('spent').innerHTML;
 spentDot = spentDot.replace(",", ".");
 
 let ismokMokest = Number(0.1+(currentBalanceDot*0.02));
-let ismokSum = currentBalanceDot - (0.1+(currentBalanceDot*0.02));
 let suapvStringMokest = ismokMokest.toFixed(2);
-let suapvStringSum = ismokSum.toFixed(2);
 let suapvIsmokMokest = Number(suapvStringMokest);
+let ismokSum = currentBalanceDot - suapvIsmokMokest;
+let suapvStringSum = ismokSum.toFixed(2);
 let suapvIsmokSum = Number(suapvStringSum);
 
 document.getElementById('balanceInOverview').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
@@ -614,6 +614,15 @@ function logout(){
         document.getElementById('operacija9').style.right = '-100%';
         document.getElementById('operacija10').style.right = '-100%';
         document.getElementById('operacija11').style.right = '-100%';
+        document.getElementById('operacija12').style.right = '-100%';
+        document.getElementById('operacija13').style.right = '-100%';
+        document.getElementById('operacija14').style.right = '-100%';
+        document.getElementById('operacija15').style.right = '-100%';
+        document.getElementById('operacija16').style.right = '-100%';
+        document.getElementById('operacija17').style.right = '-100%';
+        document.getElementById('operacija18').style.right = '-100%';
+        document.getElementById('operacija19').style.right = '-100%';
+        document.getElementById('operacija20').style.right = '-100%';
         document.getElementById('ismoka').style.right = '-100%';
     }, 310);
     setTimeout(() => {
@@ -1024,6 +1033,126 @@ function openOperacija15(){
 }
 function closeOperacija15(){
     document.getElementById('operacija15').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function openOperacija16(){
+    document.getElementById('operacija16').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function closeOperacija16(){
+    document.getElementById('operacija16').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function openOperacija17(){
+    document.getElementById('operacija17').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function closeOperacija17(){
+    document.getElementById('operacija17').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function openOperacija18(){
+    document.getElementById('operacija18').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function closeOperacija18(){
+    document.getElementById('operacija18').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function openOperacija19(){
+    document.getElementById('operacija19').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function closeOperacija19(){
+    document.getElementById('operacija19').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function openOperacija20(){
+    document.getElementById('operacija20').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.right = '60px';
+    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.right = '20px';
+    document.getElementById('appsX').style.right = '-50px';
+}
+function closeOperacija20(){
+    document.getElementById('operacija20').style.right = '-100%';
     document.getElementById('settings').style.right = '-215px';
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
