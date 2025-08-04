@@ -528,7 +528,7 @@ h3{
     margin-top: 10px;
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
     padding-top: 10px;
