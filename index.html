@@ -20,6 +20,7 @@
         <!-- Skolos: -->
         <p id="currentDebt">0,00</p>
         <p id="returnUntil">2025-XX-XX</p>
+        <p id="interestRate">0,00</p>
         <!-- Apyvarta: -->
         <p id="fullOperations">54,00</p><!-- NEPAMIRŠTI PAKEISTI APYVARTOS IŠLAIDŲ KATEGORIJŲ !! -->
         <p id="received">27,00</p>
@@ -107,6 +108,7 @@
                 <p class="boldP" id="skolosSuma">XX,XX €</p>
             </div>
             <p id="grazinimoTerminas">grąžinti iki: <span id="grazintiIki">20XX-XX-XX</span></p>
+            <p id="priskaiciuotosPalukanos">priskaičiuotos palūkanos: <span id="palukanos">XX,XX €</span></p>
         </div>
     </div>
     <div ontouchstart id="apyvarta" onclick="openApyvarta()">
@@ -222,68 +224,84 @@
         </div>
         <div id="finbonkOperacijos">
             <h3>Operacijos</h3>
-            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija15()">
+            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija20()">
+                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP">XX,XX  €</p>
+            </div> -->
+            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija19()">
+                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP">XX,XX  €</p>
+            </div> -->
+            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija18()">
+                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP">XX,XX  €</p>
+            </div> -->
+            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija17()">
+                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP">XX,XX  €</p>
+            </div> -->
+            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija16()">
                 <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP">XX,XX  €</p>
             </div> -->
             <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija15()">
-                <p>2025-08-04 <b>Išmoka į sąskaitą LT037300010168803573, Swedbank AB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-08-04 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP islaidos">-27,00  €</p>
             </div>
             <div ontouchstart class="operacija"onclick="openOperacija14()">
-                <p>2025-08-04 <b>Įmoka iš Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-08-04 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP pajamos">+10,00  €</p>
             </div>
             <div ontouchstart class="operacija" onclick="openOperacija13()">
-                <p>2025-08-01 <b>Įmoka iš Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-08-01 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP pajamos">+17,00  €</p>
             </div>
             <div ontouchstart class="operacija" onclick="openOperacija12()">
-                <p>2025-07-18 <b>Išmoka į sąskaitą LT037300010168803573</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-07-18 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP islaidos">-3,80 €</p>
             </div>
             <div ontouchstart class="operacija" onclick="openOperacija11()">
-                <p>2025-07-18 <b>Įmoka iš Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-07-18 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP pajamos">+3,80 €</p>
             </div>
             <div ontouchstart class="operacija" onclick="openOperacija10()">
-                <p>2025-07-16 <b>Išmoka į sąskaitą LT037300010168803573</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-07-16 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP islaidos">-4,80 €</p>
             </div>
             <div ontouchstart class="operacija" onclick="openOperacija9()">
-                <p>2025-07-16 <b>Įmoka iš Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-07-16 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP pajamos">+4,80 €</p>
             </div>
             <div ontouchstart class="operacija" onclick="openOperacija8()">
-                <p>2025-07-13 <b>Įmoka iš sąskaitos LT037300010168803573</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-07-13 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP pajamos">+1,63 €</p>
             </div>
             <div ontouchstart class="operacija" onclick="openOperacija7()">
-                <p>2025-07-11 <b>2 x 30 min VVT bilietai</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-07-11 <b>JUDU (Vilniaus viešasis transportas)</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP islaidos">-0,60 €</p>
             </div>
             <div ontouchstart class="operacija" onclick="openOperacija6()">
-                <p>2025-07-08 <b>1 x 30 min VVT bilietai</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-07-08 <b>JUDU (Vilniaus viešasis transportas)</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP islaidos">-0,21 €</p>
             </div>
             <div ontouchstart class="operacija" onclick="openOperacija5()">
-                <p>2025-07-07 <b>4 x 30 min VVT bilietai</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-07-07 <b>JUDU (Vilniaus viešasis transportas)</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP islaidos">-0,82 €</p>
             </div>
             <div ontouchstart class="operacija" onclick="openOperacija4()">
-                <p>2025-07-01 <b>Įmoka iš sąskaitos LT037300010168803573</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-07-01 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP pajamos">+0,31 €</p>
             </div>
             <div ontouchstart class="operacija" onclick="openOperacija3()">
-                <p>2025-07-01 <b>Post'o pavadinimo išrinkimas</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-07-01 <b>Instagram pagalba</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP islaidos">-0,31 €</p>
             </div>
             <div ontouchstart class="operacija" onclick="openOperacija2()">
-                <p>2025-07-01 <b>Įmoka iš sąskaitos LT037300010168803573</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-07-01 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP pajamos">+1,22 €</p>
             </div>
             <div ontouchstart class="operacija" style="border-radius: 5px 5px 25px 25px;" onclick="openOperacija1()">
-                <p>2025-07-01 <b>Post'o pavadinimo išrinkimas</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p>2025-07-01 <b>Instagram pagalba</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP islaidos">-1,22 €</p>
             </div>
         </div>
@@ -339,6 +357,10 @@
             <p>2025-07-01, antradienis</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Instagram pagalba</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
             <p>Post'o pavadinimo išrinkimas</p>
         </div>
@@ -365,6 +387,10 @@
             <p>2025-07-01, antradienis</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
             <p>Įmoka iš sąskaitos LT037300010168803573</p>
         </div>
@@ -385,6 +411,10 @@
         <div class="operacijosDuomenys operacijosData">
             <h3>Data</h3>
             <p>2025-07-01, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Instagram pagalba</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
@@ -413,6 +443,10 @@
             <p>2025-07-01, antradienis</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
             <p>Įmoka iš sąskaitos LT037300010168803573</p>
         </div>
@@ -433,6 +467,10 @@
         <div class="operacijosDuomenys operacijosData">
             <h3>Data</h3>
             <p>2025-07-07, pirmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>JUDU (Vilniaus viešasis transportas)</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
@@ -461,6 +499,10 @@
             <p>2025-07-08, antradienis</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>JUDU (Vilniaus viešasis transportas)</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
             <p>1 x 30 min VVT bilietai</p>
         </div>
@@ -485,6 +527,10 @@
         <div class="operacijosDuomenys operacijosData">
             <h3>Data</h3>
             <p>2025-07-11, penktadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>JUDU (Vilniaus viešasis transportas)</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
@@ -513,6 +559,10 @@
             <p>2025-07-13, sekmadienis</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
             <p>Įmoka iš sąskaitos LT037300010168803573</p>
         </div>
@@ -535,8 +585,12 @@
             <p>2025-07-16, trečiadienis</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
-            <p>Įmoka iš Vinted UAB</p>
+            <p>Įmoka</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Suma</h3>
@@ -561,6 +615,10 @@
             <p>2025-07-16, trečiadienis</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
             <p>Išmoka į sąskaitą LT037300010168803573</p>
         </div>
@@ -583,8 +641,12 @@
             <p>2025-07-18, penktadienis</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
-            <p>Įmoka iš Vinted UAB</p>
+            <p>Įmoka</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Suma</h3>
@@ -609,6 +671,10 @@
             <p>2025-07-18, penktadienis</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
             <p>Išmoka į sąskaitą LT037300010168803573</p>
         </div>
@@ -631,8 +697,12 @@
             <p>2025-08-01, penktadienis</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
-            <p>Įmoka iš Vinted UAB</p>
+            <p>Įmoka</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Suma</h3>
@@ -653,8 +723,12 @@
             <p>2025-08-04, pirmadienis</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
-            <p>Įmoka iš Vinted UAB</p>
+            <p>Įmoka</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Suma</h3>
@@ -675,8 +749,12 @@
             <p>2025-08-04, pirmadienis</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
-            <p>Išmoka į sąskaitą LT037300010168803573, Swedbank AB</p>
+            <p>Išmoka į sąskaitą LT037300010168803573</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Suma</h3>
@@ -699,6 +777,10 @@
         <div class="operacijosDuomenys operacijosData">
             <h3>Data</h3>
             <p>20XX-XX-XX, XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas/Mokėtojas</h3>
+            <p>XXXXX</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
@@ -727,6 +809,10 @@
             <p>20XX-XX-XX, XXXXX</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Gavėjas/Mokėtojas</h3>
+            <p>XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
             <p>XXXXX</p>
         </div>
@@ -751,6 +837,10 @@
         <div class="operacijosDuomenys operacijosData">
             <h3>Data</h3>
             <p>20XX-XX-XX, XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas/Mokėtojas</h3>
+            <p>XXXXX</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
@@ -779,6 +869,10 @@
             <p>20XX-XX-XX, XXXXX</p>
         </div>
         <div class="operacijosDuomenys">
+            <h3>Gavėjas/Mokėtojas</h3>
+            <p>XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
             <p>XXXXX</p>
         </div>
@@ -803,6 +897,10 @@
         <div class="operacijosDuomenys operacijosData">
             <h3>Data</h3>
             <p>20XX-XX-XX, XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas/Mokėtojas</h3>
+            <p>XXXXX</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>

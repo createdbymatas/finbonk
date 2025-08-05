@@ -422,8 +422,11 @@ h3{
     justify-content: space-between;
     align-items: center;
 }
-#grazinimoTerminas{
-    display: none;
+#grazintiIki{
+    font-weight: 600;
+}
+#palukanos{
+    font-weight: 600;
 }
 #apyvarta{
     width: 100%;

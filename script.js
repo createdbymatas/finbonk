@@ -117,6 +117,7 @@ document.getElementById('ismokosSuma').innerHTML = document.getElementById('ismo
 
 document.getElementById('skolosSuma').innerHTML = document.getElementById('currentDebt').innerHTML + ' €';
 document.getElementById('grazintiIki').innerHTML = document.getElementById('returnUntil').innerHTML;
+document.getElementById('palukanos').innerHTML = document.getElementById('interestRate').innerHTML + ' €';
 
 document.getElementById('apyvartaThisMonth').innerHTML = document.getElementById('fullOperations').innerHTML + ' €';
 document.getElementById('apyvartaThisMonth2').innerHTML = document.getElementById('fullOperations').innerHTML + ' €';
@@ -149,13 +150,21 @@ setTimeout(() => {
     }
 }, 1);
 setTimeout(() => {
+    if (document.getElementById('palukanos').innerHTML === '0,00 €'){
+        document.getElementById('priskaiciuotosPalukanos').style.display = 'none';
+    }
+    else {
+        document.getElementById('priskaiciuotosPalukanos').style.display = 'block';
+    }
+}, 2);
+setTimeout(() => {
     if (document.getElementById('currentBalance').innerHTML === '0,00'){
         document.getElementById('finbonkIsmoketi').style.display = 'none';
     }
     else {
         document.getElementById('finbonkIsmoketi').style.display = 'flex';
     }
-}, 2);
+}, 3);
 setTimeout(() => {
     if (document.getElementById('gautaBar').style.width === '0%' && document.getElementById('isleistaBar').style.width === '0%'){
         document.getElementById('emptyBar').style.width = '100%';
@@ -165,7 +174,7 @@ setTimeout(() => {
         document.getElementById('emptyBar').style.width = '0%';
         document.getElementById('emptyBar2').style.width = '0%';
     }
-}, 2);
+}, 4);
 
 
 function loadFunction(){
