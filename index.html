@@ -34,12 +34,12 @@
     <div id="loading">
         <div id="loader"></div>
     </div>
-    <div id="loginAlert">
+    <div id="loginAlert" onclick="hideLoginPopup()">
         <i class="fa-regular fa-circle-check"></i>
         <p class="boldP" id="loginSuccessful">Prisijungta sėkmingai</p>
         <p id="likesLaikas">likęs prisijungimo laikas: <span id="loginTimeRemaining" class="boldP">60:00</span></p>
     </div>
-    <div id="logoutAlert">
+    <div id="logoutAlert" onclick="hideLogoutPopup()">
         <i class="fa-regular fa-circle-check"></i>
         <p class="boldP" id="logoutSuccessful">Atsijungta sėkmingai</p>
     </div>
@@ -117,7 +117,7 @@
             <p>Išleista: <b id="isleista1">XX,XX €</b></p>
         </div>
         <div id="apyvartosBar">
-            <!-- <div class="emptyBar"></div> -->
+            <div id="emptyBar"></div>
             <div id="gautaBar"></div>
             <div id="isleistaBar"></div>
         </div>
@@ -301,7 +301,7 @@
                 <p>Išleista: <b id="isleista2">XX,XX €</b></p>
             </div>
             <div id="apyvartosBar2">
-                <!-- <div class="emptyBar"></div> -->
+                <div id="emptyBar2"></div>
                 <div id="gautaBar2"></div>
                 <div id="isleistaBar2"></div>
             </div>

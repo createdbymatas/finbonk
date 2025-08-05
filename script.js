@@ -1,5 +1,5 @@
 // išjungti right-click
-// document.addEventListener('contextmenu', (e) => e.preventDefault());
+document.addEventListener('contextmenu', (e) => e.preventDefault());
 
 // išjungti f12, ctrl+shift+i, ctrl+shift+j, ctrl+u (inspect tool)
 function ctrlShiftKey(e, keyCode) {
@@ -41,6 +41,9 @@ document.onkeypress = function(evt) {
         }
         else if (document.getElementById('checkDigit').value === '0' && document.getElementById('key1').style.opacity === '1'){
             nulinis();
+        }
+        else if (document.getElementById('checkDigit').value === '' && document.getElementById('key1').style.opacity === '1'){
+            istrinti();
         }
         else {
             
@@ -127,6 +130,16 @@ setTimeout(() => {
     }
     else {
         document.getElementById('finbonkIsmoketi').style.display = 'flex';
+    }
+}, 2);
+setTimeout(() => {
+    if (document.getElementById('gautaBar').style.width === '0%' && document.getElementById('isleistaBar').style.width === '0%'){
+        document.getElementById('emptyBar').style.width = '100%';
+        document.getElementById('emptyBar2').style.width = '100%';
+    }
+    else {
+        document.getElementById('emptyBar').style.width = '0%';
+        document.getElementById('emptyBar2').style.width = '0%';
     }
 }, 2);
 
@@ -583,6 +596,12 @@ function closeContactInfo(){
     document.getElementById('apps').style.right = '20px';
     document.getElementById('appsX').style.right = '-50px';
 }
+function hideLoginPopup(){
+    document.getElementById('loginAlert').style.top = '-100px';
+    setTimeout(() => {
+        document.getElementById('loginTimeRemaining').innerHTML = '60:00';
+    }, 1000);
+}
 function logout(){
     document.cookie = "ieva=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
     document.getElementById('userScreen').style.display = 'flex';
@@ -628,6 +647,9 @@ function logout(){
     setTimeout(() => {
         document.getElementById('logoutAlert').style.top = '-100px';
     }, 3010);
+}
+function hideLogoutPopup(){
+    document.getElementById('logoutAlert').style.top = '-100px';
 }
 
 

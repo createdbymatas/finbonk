@@ -477,8 +477,7 @@ h3{
     height: 100%;
     background-color: crimson;
 }
-.emptyBar{
-    width: 100%;
+#emptyBar{
     height: 100%;
     background-color: grey;
 }
@@ -1075,6 +1074,10 @@ h3{
 #isleistaBar2{
     height: 100%;
     background-color: crimson;
+}
+#emptyBar2{
+    height: 100%;
+    background-color: grey;
 }
 #apyvartosKategorijos{
     width: 100%;
