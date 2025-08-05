@@ -15,25 +15,49 @@ document.onkeypress = function(evt) {
         if (document.getElementById('checkDigit').value === '1' && document.getElementById('key1').style.opacity === '1'){
             pirmas();
         }
+        else if (document.getElementById('checkDigit').value === 'ą' && document.getElementById('key1').style.opacity === '1'){
+            pirmas();
+        }
         else if (document.getElementById('checkDigit').value === '2' && document.getElementById('key1').style.opacity === '1'){
+            antras();
+        }
+        else if (document.getElementById('checkDigit').value === 'č' && document.getElementById('key1').style.opacity === '1'){
             antras();
         }
         else if (document.getElementById('checkDigit').value === '3' && document.getElementById('key1').style.opacity === '1'){
             trecias();
         }
+        else if (document.getElementById('checkDigit').value === 'ę' && document.getElementById('key1').style.opacity === '1'){
+            trecias();
+        }
         else if (document.getElementById('checkDigit').value === '4' && document.getElementById('key1').style.opacity === '1'){
+            ketvirtas();
+        }
+        else if (document.getElementById('checkDigit').value === 'ė' && document.getElementById('key1').style.opacity === '1'){
             ketvirtas();
         }
         else if (document.getElementById('checkDigit').value === '5' && document.getElementById('key1').style.opacity === '1'){
             penktas();
         }
+        else if (document.getElementById('checkDigit').value === 'į' && document.getElementById('key1').style.opacity === '1'){
+            penktas();
+        }
         else if (document.getElementById('checkDigit').value === '6' && document.getElementById('key1').style.opacity === '1'){
+            sestas();
+        }
+        else if (document.getElementById('checkDigit').value === 'š' && document.getElementById('key1').style.opacity === '1'){
             sestas();
         }
         else if (document.getElementById('checkDigit').value === '7' && document.getElementById('key1').style.opacity === '1'){
             septintas();
         }
+        else if (document.getElementById('checkDigit').value === 'ų' && document.getElementById('key1').style.opacity === '1'){
+            septintas();
+        }
         else if (document.getElementById('checkDigit').value === '8' && document.getElementById('key1').style.opacity === '1'){
+            astuntas();
+        }
+        else if (document.getElementById('checkDigit').value === 'ū' && document.getElementById('key1').style.opacity === '1'){
             astuntas();
         }
         else if (document.getElementById('checkDigit').value === '9' && document.getElementById('key1').style.opacity === '1'){
