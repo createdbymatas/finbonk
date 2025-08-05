@@ -208,11 +208,11 @@ function openSettings(){
     document.getElementById('account').style.display = 'none';
     document.getElementById('accountX').style.display = 'block';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeSettings(){
     document.getElementById('settings').style.right = '-215px';
@@ -222,36 +222,36 @@ function closeSettings(){
 
 function openNotifications(){
     document.getElementById('notifs').style.right = '50px';
-    document.getElementById('notifications').style.right = '-50px';
-    document.getElementById('notificationsX').style.right = '60.5px';
+    document.getElementById('notifications').style.transform = 'scale(0)';
+    document.getElementById('notificationsX').style.transform = 'scale(1)';
     document.getElementById('settings').style.right = '-215px';
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeNotifications(){
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
 }
 
 function openApps(){
     document.getElementById('otherApps').style.right = '10px';
-    document.getElementById('apps').style.right = '-50px';
-    document.getElementById('appsX').style.right = '21.5px';
+    document.getElementById('apps').style.transform = 'scale(0)';
+    document.getElementById('appsX').style.transform = 'scale(1)';
     document.getElementById('settings').style.right = '-215px';
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
 }
 function closeApps(){
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function atidarytiKonsultacijas(){
     window.open('https://createdbymatas.github.io/konsultacijos/')
@@ -267,11 +267,11 @@ function openProfileIcon(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeProfileIcon(){
     document.getElementById('profilioPaveikslelis').style.top = '100%';
@@ -279,11 +279,11 @@ function closeProfileIcon(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 
     document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
     document.getElementById('kiwi').style.color = '#202020';
@@ -611,11 +611,11 @@ function openContactInfo(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeContactInfo(){
     document.getElementById('kontaktineInformacija').style.top = '100%';
@@ -623,11 +623,11 @@ function closeContactInfo(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function hideLoginPopup(){
     document.getElementById('loginAlert').style.top = '-100px';
@@ -642,11 +642,11 @@ function logout(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
     setTimeout(() => {
         document.getElementById('userScreen').style.opacity = '1';
         document.getElementById('logoutAlert').style.top = '15px';
@@ -693,11 +693,11 @@ function openFinbonkWallet(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeFinbonkWallet(){
     document.getElementById('finbonkWallet').style.right = '-100%';
@@ -705,11 +705,11 @@ function closeFinbonkWallet(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openApyvarta(){
     document.getElementById('visaApyvarta').style.right = '0';
@@ -717,11 +717,11 @@ function openApyvarta(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeApyvarta(){
     document.getElementById('visaApyvarta').style.right = '-100%';
@@ -729,11 +729,11 @@ function closeApyvarta(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 
 
@@ -744,11 +744,11 @@ function openOperacija1(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija1(){
     document.getElementById('operacija1').style.right = '-100%';
@@ -756,11 +756,11 @@ function closeOperacija1(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija2(){
     document.getElementById('operacija2').style.right = '0';
@@ -768,11 +768,11 @@ function openOperacija2(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija2(){
     document.getElementById('operacija2').style.right = '-100%';
@@ -780,11 +780,11 @@ function closeOperacija2(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija3(){
     document.getElementById('operacija3').style.right = '0';
@@ -792,11 +792,11 @@ function openOperacija3(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija3(){
     document.getElementById('operacija3').style.right = '-100%';
@@ -804,11 +804,11 @@ function closeOperacija3(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija4(){
     document.getElementById('operacija4').style.right = '0';
@@ -816,11 +816,11 @@ function openOperacija4(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija4(){
     document.getElementById('operacija4').style.right = '-100%';
@@ -828,11 +828,11 @@ function closeOperacija4(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija5(){
     document.getElementById('operacija5').style.right = '0';
@@ -840,11 +840,11 @@ function openOperacija5(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija5(){
     document.getElementById('operacija5').style.right = '-100%';
@@ -852,11 +852,11 @@ function closeOperacija5(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija6(){
     document.getElementById('operacija6').style.right = '0';
@@ -864,11 +864,11 @@ function openOperacija6(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija6(){
     document.getElementById('operacija6').style.right = '-100%';
@@ -876,11 +876,11 @@ function closeOperacija6(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija7(){
     document.getElementById('operacija7').style.right = '0';
@@ -888,11 +888,11 @@ function openOperacija7(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija7(){
     document.getElementById('operacija7').style.right = '-100%';
@@ -900,11 +900,11 @@ function closeOperacija7(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija8(){
     document.getElementById('operacija8').style.right = '0';
@@ -912,11 +912,11 @@ function openOperacija8(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija8(){
     document.getElementById('operacija8').style.right = '-100%';
@@ -924,11 +924,11 @@ function closeOperacija8(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija9(){
     document.getElementById('operacija9').style.right = '0';
@@ -936,11 +936,11 @@ function openOperacija9(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija9(){
     document.getElementById('operacija9').style.right = '-100%';
@@ -948,11 +948,11 @@ function closeOperacija9(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija10(){
     document.getElementById('operacija10').style.right = '0';
@@ -960,11 +960,11 @@ function openOperacija10(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija10(){
     document.getElementById('operacija10').style.right = '-100%';
@@ -972,11 +972,11 @@ function closeOperacija10(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija11(){
     document.getElementById('operacija11').style.right = '0';
@@ -984,11 +984,11 @@ function openOperacija11(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija11(){
     document.getElementById('operacija11').style.right = '-100%';
@@ -996,11 +996,11 @@ function closeOperacija11(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija12(){
     document.getElementById('operacija12').style.right = '0';
@@ -1008,11 +1008,11 @@ function openOperacija12(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija12(){
     document.getElementById('operacija12').style.right = '-100%';
@@ -1020,11 +1020,11 @@ function closeOperacija12(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija13(){
     document.getElementById('operacija13').style.right = '0';
@@ -1032,11 +1032,11 @@ function openOperacija13(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija13(){
     document.getElementById('operacija13').style.right = '-100%';
@@ -1044,11 +1044,11 @@ function closeOperacija13(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija14(){
     document.getElementById('operacija14').style.right = '0';
@@ -1056,11 +1056,11 @@ function openOperacija14(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija14(){
     document.getElementById('operacija14').style.right = '-100%';
@@ -1068,11 +1068,11 @@ function closeOperacija14(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija15(){
     document.getElementById('operacija15').style.right = '0';
@@ -1080,11 +1080,11 @@ function openOperacija15(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija15(){
     document.getElementById('operacija15').style.right = '-100%';
@@ -1092,11 +1092,11 @@ function closeOperacija15(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija16(){
     document.getElementById('operacija16').style.right = '0';
@@ -1104,11 +1104,11 @@ function openOperacija16(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija16(){
     document.getElementById('operacija16').style.right = '-100%';
@@ -1116,11 +1116,11 @@ function closeOperacija16(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija17(){
     document.getElementById('operacija17').style.right = '0';
@@ -1128,11 +1128,11 @@ function openOperacija17(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija17(){
     document.getElementById('operacija17').style.right = '-100%';
@@ -1140,11 +1140,11 @@ function closeOperacija17(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija18(){
     document.getElementById('operacija18').style.right = '0';
@@ -1152,11 +1152,11 @@ function openOperacija18(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija18(){
     document.getElementById('operacija18').style.right = '-100%';
@@ -1164,11 +1164,11 @@ function closeOperacija18(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija19(){
     document.getElementById('operacija19').style.right = '0';
@@ -1176,11 +1176,11 @@ function openOperacija19(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija19(){
     document.getElementById('operacija19').style.right = '-100%';
@@ -1188,11 +1188,11 @@ function closeOperacija19(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function openOperacija20(){
     document.getElementById('operacija20').style.right = '0';
@@ -1200,11 +1200,11 @@ function openOperacija20(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeOperacija20(){
     document.getElementById('operacija20').style.right = '-100%';
@@ -1212,11 +1212,11 @@ function closeOperacija20(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 
 function openIsmoka(){
@@ -1225,11 +1225,11 @@ function openIsmoka(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function closeIsmoka(){
     document.getElementById('ismoka').style.right = '-100%';
@@ -1237,11 +1237,11 @@ function closeIsmoka(){
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
     document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.right = '60px';
-    document.getElementById('notificationsX').style.right = '-50px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
     document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.right = '20px';
-    document.getElementById('appsX').style.right = '-50px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
 }
 function ismoketiSuma(){
     document.getElementById('emailRequestInput').value = 'FINBONK | Išmoka'

@@ -297,10 +297,11 @@ nav{
     color: #F5F5DC;
     font-size: 25px;
     position: absolute;
-    right: -50px;
+    right: 60.5px;
     top: 15.5px;
     cursor: pointer;
     transition: 0.3s;
+    transform: scale(0);
 }
 #notificationsX:hover{
     opacity: 0.7;
@@ -329,10 +330,11 @@ nav{
     color: #F5F5DC;
     font-size: 25px;
     position: absolute;
-    right: -50px;
+    right: 21.5px;
     top: 15.5px;
     cursor: pointer;
     transition: 0.3s;
+    transform: scale(0);
 }
 #appsX:hover{
     opacity: 0.7;
