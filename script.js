@@ -1,5 +1,5 @@
 // išjungti right-click
-// document.addEventListener('contextmenu', (e) => e.preventDefault());
+document.addEventListener('contextmenu', (e) => e.preventDefault());
 
 // išjungti f12, ctrl+shift+i, ctrl+shift+j, ctrl+u (inspect tool)
 function ctrlShiftKey(e, keyCode) {
@@ -87,6 +87,15 @@ if (
     return false; 
 }
 };
+
+const $input = document.querySelector("#sumaMokesciui");
+const leidziamiSimboliai = /[0-9.]+/;
+$input.addEventListener("keypress", e => {
+    console.log(e);
+    if (!leidziamiSimboliai.test(e.key)) {
+        e.preventDefault();
+    }
+});
 
 
 
@@ -199,6 +208,30 @@ function hideFeeInfo(){
     document.getElementById('feeInfoBg').style.opacity = '0';
     setTimeout(() => {
         document.getElementById('feeInfoBg').style.display = 'none';
+    }, 300);
+}
+function showReturnUntilInfo(){
+    document.getElementById('returnUntilInfoBg').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('returnUntilInfoBg').style.opacity = '1';
+    }, 10);
+}
+function hideReturnUntilInfo(){
+    document.getElementById('returnUntilInfoBg').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('returnUntilInfoBg').style.display = 'none';
+    }, 300);
+}
+function showInterestRateInfo(){
+    document.getElementById('interestRateInfoBg').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('interestRateInfoBg').style.opacity = '1';
+    }, 10);
+}
+function hideInterestRateInfo(){
+    document.getElementById('interestRateInfoBg').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('interestRateInfoBg').style.display = 'none';
     }, 300);
 }
 
