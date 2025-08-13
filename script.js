@@ -198,6 +198,7 @@ function loadFunction(){
         document.getElementById('jusuFinbonk').style.opacity = '0';
     }, 1000);
     setTimeout(() => {
+        document.title = '© FINBONK';
         document.getElementById('loader').style.marginTop = '0';
         document.getElementById('loader').style.opacity = '1';
         document.getElementById('ikeliama').style.marginTop = '120px';
