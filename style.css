@@ -1118,6 +1118,7 @@ h4{
     transition: 0.3s;
     overflow: hidden;
     overflow-y: scroll;
+    display: none;
 }
 #mokescioSkaiciuokle h2{
     cursor: pointer;
