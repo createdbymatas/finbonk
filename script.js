@@ -1,1693 +1,1569 @@
-// Disable right-click
-// document.addEventListener('contextmenu', (e) => e.preventDefault());
+// išjungti right-click
+document.addEventListener('contextmenu', (e) => e.preventDefault());
 
+// išjungti f12, ctrl+shift+i, ctrl+shift+j, ctrl+u (inspect tool)
 function ctrlShiftKey(e, keyCode) {
     return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
 }
 
+document.onkeypress = function(evt) {
+    evt = evt || window.event;
+    var charCode = evt.keyCode || evt.which;
+    var charStr = String.fromCharCode(charCode);
+    document.getElementById('checkDigit').value = charStr;
+    setTimeout(() => {
+        if (document.getElementById('checkDigit').value === '1' && document.getElementById('key1').style.opacity === '1'){
+            pirmas();
+        }
+        else if (document.getElementById('checkDigit').value === 'ą' && document.getElementById('key1').style.opacity === '1'){
+            pirmas();
+        }
+        else if (document.getElementById('checkDigit').value === '2' && document.getElementById('key1').style.opacity === '1'){
+            antras();
+        }
+        else if (document.getElementById('checkDigit').value === 'č' && document.getElementById('key1').style.opacity === '1'){
+            antras();
+        }
+        else if (document.getElementById('checkDigit').value === '3' && document.getElementById('key1').style.opacity === '1'){
+            trecias();
+        }
+        else if (document.getElementById('checkDigit').value === 'ę' && document.getElementById('key1').style.opacity === '1'){
+            trecias();
+        }
+        else if (document.getElementById('checkDigit').value === '4' && document.getElementById('key1').style.opacity === '1'){
+            ketvirtas();
+        }
+        else if (document.getElementById('checkDigit').value === 'ė' && document.getElementById('key1').style.opacity === '1'){
+            ketvirtas();
+        }
+        else if (document.getElementById('checkDigit').value === '5' && document.getElementById('key1').style.opacity === '1'){
+            penktas();
+        }
+        else if (document.getElementById('checkDigit').value === 'į' && document.getElementById('key1').style.opacity === '1'){
+            penktas();
+        }
+        else if (document.getElementById('checkDigit').value === '6' && document.getElementById('key1').style.opacity === '1'){
+            sestas();
+        }
+        else if (document.getElementById('checkDigit').value === 'š' && document.getElementById('key1').style.opacity === '1'){
+            sestas();
+        }
+        else if (document.getElementById('checkDigit').value === '7' && document.getElementById('key1').style.opacity === '1'){
+            septintas();
+        }
+        else if (document.getElementById('checkDigit').value === 'ų' && document.getElementById('key1').style.opacity === '1'){
+            septintas();
+        }
+        else if (document.getElementById('checkDigit').value === '8' && document.getElementById('key1').style.opacity === '1'){
+            astuntas();
+        }
+        else if (document.getElementById('checkDigit').value === 'ū' && document.getElementById('key1').style.opacity === '1'){
+            astuntas();
+        }
+        else if (document.getElementById('checkDigit').value === '9' && document.getElementById('key1').style.opacity === '1'){
+            devintas();
+        }
+        else if (document.getElementById('checkDigit').value === '0' && document.getElementById('key1').style.opacity === '1'){
+            nulinis();
+        }
+        else if (document.getElementById('checkDigit').value === '' && document.getElementById('key1').style.opacity === '1'){
+            istrinti();
+        }
+        else {
+            
+        }
+    }, 1);
+};
+
 document.onkeydown = (e) => {
-// Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
 if (
     event.keyCode === 123 ||
     ctrlShiftKey(e, 'I') ||
     ctrlShiftKey(e, 'J') ||
     ctrlShiftKey(e, 'C') ||
     (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
-)
-    return false;
+){
+    deny();
+    return false; 
+}
 };
-function loadFunction() {
-    setTimeout(() => {  
-        document.getElementById("background").style.opacity = "0";
+
+const $input = document.querySelector("#sumaMokesciui");
+const leidziamiSimboliai = /[0-9.]+/;
+$input.addEventListener("keypress", e => {
+    console.log(e);
+    if (!leidziamiSimboliai.test(e.key)) {
+        e.preventDefault();
+    }
+});
+
+
+
+let currentBalanceDot = document.getElementById('currentBalance').innerHTML;
+currentBalanceDot = currentBalanceDot.replace(",", ".");
+let fullOperationsDot = document.getElementById('fullOperations').innerHTML;
+fullOperationsDot = fullOperationsDot.replace(",", ".");
+let receivedDot = document.getElementById('received').innerHTML;
+receivedDot = receivedDot.replace(",", ".");
+let spentDot = document.getElementById('spent').innerHTML;
+spentDot = spentDot.replace(",", ".");
+
+let ismokMokest = Number(0.1+(currentBalanceDot*0.02));
+let suapvStringMokest = ismokMokest.toFixed(2);
+let suapvIsmokMokest = Number(suapvStringMokest);
+let ismokSum = currentBalanceDot - suapvIsmokMokest;
+let suapvStringSum = ismokSum.toFixed(2);
+let suapvIsmokSum = Number(suapvStringSum);
+
+document.getElementById('balanceInOverview').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
+document.getElementById('balanceInWallet').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
+
+document.getElementById('ismokosGrynojiSuma').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
+document.getElementById('ismokosMokestis').innerHTML = suapvIsmokMokest +  ' €';
+document.getElementById('ismokosMokestis').innerHTML = document.getElementById('ismokosMokestis').innerHTML.replace(".", ",");
+document.getElementById('ismokosSuma').innerHTML = suapvIsmokSum +  ' €';
+document.getElementById('ismokosSuma').innerHTML = document.getElementById('ismokosSuma').innerHTML.replace(".", ",");
+
+document.getElementById('skolosSuma').innerHTML = document.getElementById('currentDebt').innerHTML + ' €';
+document.getElementById('grazintiIki').innerHTML = document.getElementById('returnUntil').innerHTML;
+document.getElementById('palukanos').innerHTML = document.getElementById('interestRate').innerHTML + ' €';
+
+document.getElementById('apyvartaThisMonth').innerHTML = document.getElementById('fullOperations').innerHTML + ' €';
+document.getElementById('apyvartaThisMonth2').innerHTML = document.getElementById('fullOperations').innerHTML + ' €';
+document.getElementById('gauta1').innerHTML = document.getElementById('received').innerHTML + ' €';
+document.getElementById('isleista1').innerHTML = document.getElementById('spent').innerHTML + ' €';
+document.getElementById('gauta2').innerHTML = document.getElementById('received').innerHTML + ' €';
+document.getElementById('isleista2').innerHTML = document.getElementById('spent').innerHTML + ' €';
+
+document.getElementById('receivedBar').innerHTML = receivedDot * 100 / fullOperationsDot + '%';
+document.getElementById('gautaBar').style.width = document.getElementById('receivedBar').innerHTML;
+document.getElementById('gautaBar2').style.width = document.getElementById('receivedBar').innerHTML;
+document.getElementById('spentBar').innerHTML = spentDot * 100 / fullOperationsDot + '%';
+document.getElementById('isleistaBar').style.width = document.getElementById('spentBar').innerHTML;
+document.getElementById('isleistaBar2').style.width = document.getElementById('spentBar').innerHTML;
+
+document.getElementById('thisMonth').innerHTML = document.getElementById('currentMonth').innerHTML;
+document.getElementById('thisMonth2').innerHTML = document.getElementById('currentMonth').innerHTML;
+
+
+
+
+setTimeout(() => {
+    if (document.getElementById('skolosSuma').innerHTML === '0,00 €'){
+        document.getElementById('skolosSuma').style.color = 'forestgreen';
+        document.getElementById('grazinimoTerminas').style.display = 'none';
+    }
+    else {
+        document.getElementById('skolosSuma').style.color = 'crimson';
+        document.getElementById('grazinimoTerminas').style.display = 'block';
+    }
+}, 1);
+setTimeout(() => {
+    if (document.getElementById('palukanos').innerHTML === '0,00 €'){
+        document.getElementById('priskaiciuotosPalukanos').style.display = 'none';
+    }
+    else {
+        document.getElementById('priskaiciuotosPalukanos').style.display = 'block';
+    }
+}, 2);
+setTimeout(() => {
+    if (document.getElementById('currentBalance').innerHTML === '0,00'){
+        document.getElementById('finbonkIsmoketi').style.display = 'none';
+    }
+    else {
+        document.getElementById('finbonkIsmoketi').style.display = 'flex';
+    }
+}, 3);
+setTimeout(() => {
+    if (document.getElementById('gautaBar').style.width === '0%' && document.getElementById('isleistaBar').style.width === '0%'){
+        document.getElementById('emptyBar').style.width = '100%';
+        document.getElementById('emptyBar2').style.width = '100%';
+    }
+    else {
+        document.getElementById('emptyBar').style.width = '0%';
+        document.getElementById('emptyBar2').style.width = '0%';
+    }
+}, 4);
+
+
+function loadFunction(){
+    setTimeout(() => {
+        document.getElementById('jusuFinbonk').style.transition = '1s';
+        document.getElementById('loader').style.transition = '1s';
+        document.getElementById('ikeliama').style.transition = '1s';
+        document.getElementById('createdByMatas').style.transition = '1s';
+    }, 990);
+    setTimeout(() => {
+        document.getElementById('jusuFinbonk').style.marginTop = '-400px';
+        document.getElementById('jusuFinbonk').style.opacity = '0';
     }, 1000);
-    setTimeout(() => {  
-        document.getElementById("background").style.display = "none";
-        document.getElementById("busyBottom").style.bottom = "-30px";
-    }, 1300);
-}
-function run() {
-    document.getElementById("logo").style.pointerEvents = "none";
-    document.getElementById("logo").style.animation = "none";
-    setTimeout(() => {  
-        document.getElementById("check").style.color = "green";
-        document.getElementById("check").style.borderColor = "green";
-        document.getElementById("0").style.color = "white";
-        document.getElementById("0").style.borderColor = "white";
-        document.getElementById("x").style.color = "red";
-        document.getElementById("x").style.borderColor = "red";
-    }, 300);
-    setTimeout(() => {  
-        document.getElementById("7").style.color = "white";
-        document.getElementById("7").style.borderColor = "white";
-        document.getElementById("8").style.color = "white";
-        document.getElementById("8").style.borderColor = "white";
-        document.getElementById("9").style.color = "white";
-        document.getElementById("9").style.borderColor = "white";
-    }, 600);
-    setTimeout(() => {  
-        document.getElementById("4").style.color = "white";
-        document.getElementById("4").style.borderColor = "white";
-        document.getElementById("5").style.color = "white";
-        document.getElementById("5").style.borderColor = "white";
-        document.getElementById("6").style.color = "white";
-        document.getElementById("6").style.borderColor = "white";
-    }, 900);
-    setTimeout(() => {  
-        document.getElementById("1").style.color = "white";
-        document.getElementById("1").style.borderColor = "white";
-        document.getElementById("2").style.color = "white";
-        document.getElementById("2").style.borderColor = "white";
-        document.getElementById("3").style.color = "white";
-        document.getElementById("3").style.borderColor = "white";
-    }, 1200);
-    setTimeout(() => {  
-        document.getElementById("screen").style.backgroundColor = "white";
+    setTimeout(() => {
+        document.getElementById('loader').style.marginTop = '0';
+        document.getElementById('loader').style.opacity = '1';
+        document.getElementById('ikeliama').style.marginTop = '120px';
+        document.getElementById('ikeliama').style.opacity = '1';
+        document.getElementById('createdByMatas').style.opacity = '1';
     }, 1500);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
-    }, 1800);
-    setTimeout(() => {  
-        document.getElementById("logo").style.color = "white";
-    }, 1900);
-    setTimeout(() => {  
-        document.getElementById("created").style.opacity = "1";
-    }, 2100);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
-    }, 2300);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
-    }, 2800);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
-    }, 3300);
     setTimeout(() => {
-        document.getElementById("raide14").style.opacity = "0";
-    }, 3700);
+        document.getElementById('loading').style.transition = '0.1s';
+    }, 2990);
     setTimeout(() => {
-        document.getElementById("raide13").style.opacity = "0";
-        document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
-    }, 3800);
-    setTimeout(() => {
-        document.getElementById("raide12").style.opacity = "0";
-    }, 3900);
-    setTimeout(() => {
-        document.getElementById("raide11").style.opacity = "0";
-    }, 4000);
-    setTimeout(() => {
-        document.getElementById("raide10").style.opacity = "0";
-    }, 4100);
-    setTimeout(() => {
-        document.getElementById("raide9").style.opacity = "0";
-    }, 4200);
-    setTimeout(() => {
-        document.getElementById("raide8").style.opacity = "0";
-        document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
-    }, 4300);
-    setTimeout(() => {
-        document.getElementById("raide7").style.opacity = "0";
-    }, 4400);
-    setTimeout(() => {
-        document.getElementById("raide6").style.opacity = "0";
-    }, 4500);
-    setTimeout(() => {
-        document.getElementById("raide5").style.opacity = "0";
-    }, 4600);
-    setTimeout(() => {
-        document.getElementById("raide4").style.opacity = "0";
-    }, 4700);
-    setTimeout(() => {
-        document.getElementById("raide3").style.opacity = "0";
-        document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
-    }, 4800);
-    setTimeout(() => {
-        document.getElementById("raide2").style.opacity = "0";
-    }, 4900);
-    setTimeout(() => {
-        document.getElementById("raide1").style.opacity = "0";
-    }, 5000);
-    setTimeout(() => {  
-        document.getElementById("loading").style.opacity = "1";
-        document.getElementById("busyEN").style.opacity = "1";
-        document.getElementById("created").style.opacity = "0";
-        document.getElementById("1").style.color = "darkslategrey";
-        document.getElementById("1").style.borderColor = "darkslategrey";
-        document.getElementById("2").style.color = "darkslategrey";
-        document.getElementById("2").style.borderColor = "darkslategrey";
-        document.getElementById("3").style.color = "darkslategrey";
-        document.getElementById("3").style.borderColor = "darkslategrey";
-        document.getElementById("4").style.color = "darkslategrey";
-        document.getElementById("4").style.borderColor = "darkslategrey";
-        document.getElementById("5").style.color = "darkslategrey";
-        document.getElementById("5").style.borderColor = "darkslategrey";
-        document.getElementById("6").style.color = "darkslategrey";
-        document.getElementById("6").style.borderColor = "darkslategrey";
-        document.getElementById("7").style.color = "darkslategrey";
-        document.getElementById("7").style.borderColor = "darkslategrey";
-        document.getElementById("8").style.color = "darkslategrey";
-        document.getElementById("8").style.borderColor = "darkslategrey";
-        document.getElementById("9").style.color = "darkslategrey";
-        document.getElementById("9").style.borderColor = "darkslategrey";
-        document.getElementById("x").style.color = "darkslategrey";
-        document.getElementById("x").style.borderColor = "darkslategrey";
-        document.getElementById("0").style.color = "darkslategrey";
-        document.getElementById("0").style.borderColor = "darkslategrey";
-        document.getElementById("check").style.color = "darkslategrey";
-        document.getElementById("check").style.borderColor = "darkslategrey";
-        document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
-    }, 5300);
-    setTimeout(() => {  
-        document.getElementById("signal").style.opacity = "1";
-    }, 7000);
-    setTimeout(() => {  
-        document.getElementById("signal").style.opacity = "0";
-    }, 7500);
-    setTimeout(() => {  
-        document.getElementById("signal").style.opacity = "1";
-    }, 8000);
-    setTimeout(() => {  
-        document.getElementById("signal").style.opacity = "0";
-    }, 8500);
-    setTimeout(() => {  
-        document.getElementById("signal").style.opacity = "1";
-        document.getElementById("signal").style.color = "green";
-        document.getElementById("bank").style.opacity = "1";
-    }, 9000);
-    setTimeout(() => {  
-        document.getElementById("bank").style.opacity = "0";
-    }, 9500);
-    setTimeout(() => {  
-        document.getElementById("bank").style.opacity = "1";
-    }, 10000);
-    setTimeout(() => {  
-        document.getElementById("bank").style.opacity = "0";
-    }, 10500);
-    setTimeout(() => {  
-        document.getElementById("busyEN").style.opacity = "0";
-    }, 10925);
-    setTimeout(() => {  
-        document.getElementById("bank").style.opacity = "1";
-        document.getElementById("connectedBank").style.opacity = "1";
-        document.getElementById("bank").style.color = "green";
-        document.getElementById("cloud").style.opacity = "1";
-    }, 11000);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "1";
-    }, 11075);
-    setTimeout(() => {  
-        document.getElementById("cloud").style.opacity = "0";
-    }, 12000);
-    setTimeout(() => {  
-        document.getElementById("cloud").style.opacity = "1";
-    }, 13000);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "0";
-        document.getElementById("loading").style.opacity = "0";
-    }, 13850);
-    setTimeout(() => {
-        document.getElementById("ready").style.opacity = "1";
-        document.getElementById("cloud").style.opacity = "0";
-        document.getElementById("contactless").style.opacity = "1";
-    }, 14000);
-    setTimeout(() => {
-        document.getElementById("startAdvice").style.opacity = "1";
-        document.getElementById("check").style.pointerEvents = "all";
-        document.getElementById("check").style.color = "green";
-        document.getElementById("check").style.borderColor = "green";
-    }, 15000);
-    setTimeout(() => {
-        setInterval(function() {
-            document.getElementById("cloud").style.opacity = "1";
-            setTimeout(() => {  
-                document.getElementById("cloud").style.opacity = "0";
-            }, 1000);
-            setTimeout(() => {  
-                document.getElementById("cloud").style.opacity = "1";
-            }, 2000);
-            setTimeout(() => {
-                document.getElementById("cloud").style.opacity = "0";
-            }, 3000);
-        }, 20 * 1000);
-    }, 16000);
-}
-
-
-
-function startTransaction() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("check").style.borderColor = "darkslategrey";
-    document.getElementById("check").style.transition = "none";
-    document.getElementById("check").style.pointerEvents = "none";
-    setTimeout(() => {  
-        document.getElementById("check").style.borderColor = "green";
-        document.getElementById("check").style.transition = "0.3s";
-        document.getElementById("startAdvice").style.opacity = "0";
-        document.getElementById("ready").style.opacity = "0";
-    }, 100);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "1";
-        document.getElementById("loading").style.opacity = "1";
-        document.getElementById("check").style.borderColor = "darkslategrey";
-        document.getElementById("check").style.color = "darkslategrey";
-    }, 250);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "0";
-        document.getElementById("loading").style.opacity = "0";
-    }, 3250);
-    setTimeout(() => {  
-        document.getElementById("amount").style.opacity = "1";
-        document.getElementById("amountInput").style.opacity = "1";
-    }, 3400);
-    setTimeout(() => {  
-        document.getElementById("1").style.color = "white";
-        document.getElementById("1").style.borderColor = "white";
-        document.getElementById("2").style.color = "white";
-        document.getElementById("2").style.borderColor = "white";
-        document.getElementById("3").style.color = "white";
-        document.getElementById("3").style.borderColor = "white";
-        document.getElementById("4").style.color = "white";
-        document.getElementById("4").style.borderColor = "white";
-        document.getElementById("5").style.color = "white";
-        document.getElementById("5").style.borderColor = "white";
-        document.getElementById("6").style.color = "white";
-        document.getElementById("6").style.borderColor = "white";
-        document.getElementById("7").style.color = "white";
-        document.getElementById("7").style.borderColor = "white";
-        document.getElementById("8").style.color = "white";
-        document.getElementById("8").style.borderColor = "white";
-        document.getElementById("9").style.color = "white";
-        document.getElementById("9").style.borderColor = "white";
-        document.getElementById("x").style.color = "red";
-        document.getElementById("x").style.borderColor = "red";
-        document.getElementById("0").style.color = "white";
-        document.getElementById("0").style.borderColor = "white";
-    }, 4400);
-    setTimeout(() => {  
-        document.getElementById("amountCurrency").style.opacity = "1";
-        document.getElementById("1").style.pointerEvents = "all";
-        document.getElementById("2").style.pointerEvents = "all";
-        document.getElementById("3").style.pointerEvents = "all";
-        document.getElementById("4").style.pointerEvents = "all";
-        document.getElementById("5").style.pointerEvents = "all";
-        document.getElementById("6").style.pointerEvents = "all";
-        document.getElementById("7").style.pointerEvents = "all";
-        document.getElementById("8").style.pointerEvents = "all";
-        document.getElementById("9").style.pointerEvents = "all";
-        document.getElementById("0").style.pointerEvents = "all";
-        document.getElementById("x").style.display = "none";
-        document.getElementById("x2").style.display = "flex";
-        document.getElementById("x2").style.borderColor = "red";
-        document.getElementById("x2").style.color = "red";
-        document.getElementById("check").style.pointerEvents = "all";
-        document.getElementById("check").style.display = "none";
-        document.getElementById("check2").style.display = "flex";
-        document.getElementById("check2").style.pointerEvents = "none";
-    }, 4700);
-}
-function openTransaction() {
-            document.getElementById('repeat').muted = false;
-            document.getElementById("repeat").play();
-
-            document.getElementById('click').muted = false;
-            document.getElementById("click").play();
-            document.getElementById('click').currentTime = 0;
-            document.getElementById("check2").style.borderColor = "darkslategrey";
-            document.getElementById("check2").style.transition = "none";
-            document.getElementById("check2").style.pointerEvents = "none";
-            document.getElementById("1").style.pointerEvents = "none";
-            document.getElementById("2").style.pointerEvents = "none";
-            document.getElementById("3").style.pointerEvents = "none";
-            document.getElementById("4").style.pointerEvents = "none";
-            document.getElementById("5").style.pointerEvents = "none";
-            document.getElementById("6").style.pointerEvents = "none";
-            document.getElementById("7").style.pointerEvents = "none";
-            document.getElementById("8").style.pointerEvents = "none";
-            document.getElementById("9").style.pointerEvents = "none";
-            document.getElementById("0").style.pointerEvents = "none";
-            document.getElementById("x").style.display = "flex";
-            document.getElementById("x").style.pointerEvents = "none";
-            document.getElementById("x2").style.display = "none";
-            setTimeout(() => {  
-                document.getElementById("repeat").pause();
-            }, 2);
-            setTimeout(() => {  
-                document.getElementById("check2").style.borderColor = "green";
-                document.getElementById("check2").style.transition = "0.3s";
-                document.getElementById("amountCurrency").style.opacity = "0";
-                document.getElementById("amount").style.opacity = "0";
-                document.getElementById("amountInput").style.opacity = "0";
-            }, 100);
-            setTimeout(() => {  
-                document.getElementById("dirba").style.opacity = "1";
-                document.getElementById("loading").style.opacity = "1";
-                document.getElementById("1").style.color = "darkslategrey";
-                document.getElementById("1").style.borderColor = "darkslategrey";
-                document.getElementById("2").style.color = "darkslategrey";
-                document.getElementById("2").style.borderColor = "darkslategrey";
-                document.getElementById("3").style.color = "darkslategrey";
-                document.getElementById("3").style.borderColor = "darkslategrey";
-                document.getElementById("4").style.color = "darkslategrey";
-                document.getElementById("4").style.borderColor = "darkslategrey";
-                document.getElementById("5").style.color = "darkslategrey";
-                document.getElementById("5").style.borderColor = "darkslategrey";
-                document.getElementById("6").style.color = "darkslategrey";
-                document.getElementById("6").style.borderColor = "darkslategrey";
-                document.getElementById("7").style.color = "darkslategrey";
-                document.getElementById("7").style.borderColor = "darkslategrey";
-                document.getElementById("8").style.color = "darkslategrey";
-                document.getElementById("8").style.borderColor = "darkslategrey";
-                document.getElementById("9").style.color = "darkslategrey";
-                document.getElementById("9").style.borderColor = "darkslategrey";
-                document.getElementById("x").style.color = "darkslategrey";
-                document.getElementById("x").style.borderColor = "darkslategrey";
-                document.getElementById("x2").style.color = "darkslategrey";
-                document.getElementById("x2").style.borderColor = "darkslategrey";
-                document.getElementById("0").style.color = "darkslategrey";
-                document.getElementById("0").style.borderColor = "darkslategrey";
-                document.getElementById("check2").style.color = "darkslategrey";
-                document.getElementById("check2").style.borderColor = "darkslategrey";
-            }, 250);
-            setTimeout(() => {  
-                document.getElementById("dirba").style.opacity = "0";
-                document.getElementById("loading").style.opacity = "0";
-            }, 5250);
-            setTimeout(() => {  
-                document.getElementById("insertCard").style.opacity = "1";
-                document.getElementById("amountInput").style.opacity = "1";
-                document.getElementById("amountInput").value = document.getElementById("amountInput").value + document.getElementById("spanCurrency").innerHTML;
-            }, 5400);
-            setTimeout(() => {  
-                document.getElementById("x3").style.display = "flex";
-                document.getElementById("x").style.display = "none";
-            }, 6350);
-            setTimeout(() => {  
-                document.getElementById("contactlessAvailable").style.opacity = "1";
-                document.getElementById("applepay").style.opacity = "1";
-                document.getElementById("googlepay").style.opacity = "1";
-                document.getElementById("insertCardComplete").style.display = "block";
-                document.getElementById("screen").style.pointerEvents = "all";
-                document.getElementById('repeat').currentTime = 0;
-                document.getElementById("repeat").play();
-                document.getElementById("x3").style.color = "red";
-                document.getElementById("x3").style.borderColor = "red";
-            }, 6400);
-        }
-let audio = document.getElementById("repeat");
-audio.onended = function() {
-    setTimeout(() => {  
-        document.getElementById('repeat').muted = false;
-        document.getElementById("repeat").play();
-        document.getElementById('repeat').currentTime = 0;
-    }, 600);
-};
-function atsauktiInsert() {
-    document.getElementById("insertCardComplete").style.display = "none";
-    document.getElementById("screen").style.pointerEvents = "none";
-    document.getElementById("repeat").pause();
-    document.getElementById('repeat').currentTime = 0;
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("check").style.display = "flex";
-    document.getElementById("check").style.pointerEvents = "none";
-    document.getElementById("check").style.borderColor = "darkslategrey";
-    document.getElementById("check").style.color = "darkslategrey";
-    document.getElementById("check2").style.display = "none";
-    document.getElementById("check2").style.pointerEvents = "none";
-    document.getElementById("x3").style.borderColor = "darkslategrey";
-    document.getElementById("x3").style.transition = "none";
-    document.getElementById("x3").style.pointerEvents = "none";
-    document.getElementById("x").style.pointerEvents = "none";
-    setTimeout(() => {  
-        document.getElementById("x3").style.borderColor = "red";
-        document.getElementById("x3").style.transition = "0.3s";
-        document.getElementById("contactlessAvailable").style.opacity = "0";
-        document.getElementById("applepay").style.opacity = "0";
-        document.getElementById("googlepay").style.opacity = "0";
-        document.getElementById("insertCard").style.opacity = "0";
-        document.getElementById("amountInput").style.opacity = "0";
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 100);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 200);
-    setTimeout(() => {  
-        document.getElementById("x3").style.borderColor = "darkslategrey";
-        document.getElementById("x3").style.color = "darkslategrey";
-        document.getElementById("dirba").style.opacity = "1";
-        document.getElementById("loading").style.opacity = "1";
-    }, 250);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 300);
-    setTimeout(() => {  
-        document.getElementById("amountInput").value = '';
-        document.getElementById("x").style.display = "flex";
-        document.getElementById("x3").style.display = "none";
-        document.getElementById("x3").style.pointerEvents = "all";
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 400);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 500);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 600);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "0";
-        document.getElementById("loading").style.opacity = "0";
-    }, 3250);
-    setTimeout(() => {  
-        document.getElementById("ready").style.opacity = "1";
-    }, 3400);
-    setTimeout(() => {
-        document.getElementById("startAdvice").style.opacity = "1";
-        document.getElementById("check").style.pointerEvents = "all";
-        document.getElementById("check").style.borderColor = "green";
-        document.getElementById("check").style.color = "green";
-    }, 4400);
-}
-function cardInserted() {
-    document.getElementById("insertCardComplete").style.display = "none";
-    document.getElementById("screen").style.pointerEvents = "none";
-    document.getElementById("repeat").pause();
-    document.getElementById('repeat').currentTime = 0;
-    document.getElementById("x3").style.borderColor = "darkslategrey";
-    document.getElementById("x3").style.color = "darkslategrey";
-    document.getElementById("x3").style.pointerEvents = "none";
-    setTimeout(() => {  
-        document.getElementById("insertCard").style.opacity = "0";
-        document.getElementById("contactlessAvailable").style.opacity = "0";
-        document.getElementById("applepay").style.opacity = "0";
-        document.getElementById("googlepay").style.opacity = "0";
-        document.getElementById("contactless").style.opacity = "0";
-        document.getElementById("amountInput").style.opacity = "0";
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 100);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 200);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "1";
-        document.getElementById("loading").style.opacity = "1";
-    }, 250);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-        document.getElementById("x3").style.display = "none";
-        document.getElementById("x3").style.pointerEvents = "all";
-        document.getElementById("x4").style.display = "flex";
-        document.getElementById("check2").style.display = "none";
-        document.getElementById("check3").style.display = "flex";
-        document.getElementById("1").style.display = "none";
-        document.getElementById("1a").style.display = "flex";
-        document.getElementById("2").style.display = "none";
-        document.getElementById("2a").style.display = "flex";
-        document.getElementById("3").style.display = "none";
-        document.getElementById("3a").style.display = "flex";
-        document.getElementById("4").style.display = "none";
-        document.getElementById("4a").style.display = "flex";
-        document.getElementById("5").style.display = "none";
-        document.getElementById("5a").style.display = "flex";
-        document.getElementById("6").style.display = "none";
-        document.getElementById("6a").style.display = "flex";
-        document.getElementById("7").style.display = "none";
-        document.getElementById("7a").style.display = "flex";
-        document.getElementById("8").style.display = "none";
-        document.getElementById("8a").style.display = "flex";
-        document.getElementById("9").style.display = "none";
-        document.getElementById("9a").style.display = "flex";
-        document.getElementById("0").style.display = "none";
-        document.getElementById("0a").style.display = "flex";
-    }, 300);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-        document.getElementById("amountInput").value = '';
-    }, 400);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 500);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 600);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "0";
-        document.getElementById("loading").style.opacity = "0";
-    }, 5250);
-    setTimeout(() => {  
-        document.getElementById("enterPin").style.opacity = "1";
-        document.getElementById("pinInput").style.opacity = "1";
-    }, 5400);
-    setTimeout(() => {  
-        document.getElementById("attemptsRemaining").style.opacity = "1";
-        document.getElementById("x4").style.borderColor = "red";
-        document.getElementById("x4").style.color = "red";
-        document.getElementById("1a").style.borderColor = "white";
-        document.getElementById("1a").style.color = "white";
-        document.getElementById("1a").style.pointerEvents = "all";
-        document.getElementById("2a").style.borderColor = "white";
-        document.getElementById("2a").style.color = "white";
-        document.getElementById("2a").style.pointerEvents = "all";
-        document.getElementById("3a").style.borderColor = "white";
-        document.getElementById("3a").style.color = "white";
-        document.getElementById("3a").style.pointerEvents = "all";
-        document.getElementById("4a").style.borderColor = "white";
-        document.getElementById("4a").style.color = "white";
-        document.getElementById("4a").style.pointerEvents = "all";
-        document.getElementById("5a").style.borderColor = "white";
-        document.getElementById("5a").style.color = "white";
-        document.getElementById("5a").style.pointerEvents = "all";
-        document.getElementById("6a").style.borderColor = "white";
-        document.getElementById("6a").style.color = "white";
-        document.getElementById("6a").style.pointerEvents = "all";
-        document.getElementById("7a").style.borderColor = "white";
-        document.getElementById("7a").style.color = "white";
-        document.getElementById("7a").style.pointerEvents = "all";
-        document.getElementById("8a").style.borderColor = "white";
-        document.getElementById("8a").style.color = "white";
-        document.getElementById("8a").style.pointerEvents = "all";
-        document.getElementById("9a").style.borderColor = "white";
-        document.getElementById("9a").style.color = "white";
-        document.getElementById("9a").style.pointerEvents = "all";
-        document.getElementById("0a").style.borderColor = "white";
-        document.getElementById("0a").style.color = "white";
-        document.getElementById("0a").style.pointerEvents = "all";
-    }, 6400);
-}
-function vienas() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x").style.display = "flex";
-    document.getElementById("x").style.pointerEvents = "all";
-    document.getElementById("check2").style.pointerEvents = "all";
-    document.getElementById("check2").style.color = "green";
-    document.getElementById("check2").style.borderColor = "green";
-    document.getElementById("x2").style.display = "none";
-    document.getElementById("1").style.borderColor = "darkslategrey";
-    document.getElementById("1").style.transition = "none";
-    document.getElementById("amountInput").value = document.getElementById("amountInput").value + '1';
-    maxAmount();
-    setTimeout(() => {  
-        document.getElementById("1").style.borderColor = "white";
-        document.getElementById("1").style.transition = "0.3s";
-    }, 100);
-}
-function du() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x").style.display = "flex";
-    document.getElementById("x").style.pointerEvents = "all";
-    document.getElementById("check2").style.pointerEvents = "all";
-    document.getElementById("check2").style.color = "green";
-    document.getElementById("check2").style.borderColor = "green";
-    document.getElementById("x2").style.display = "none";
-    document.getElementById("2").style.borderColor = "darkslategrey";
-    document.getElementById("2").style.transition = "none";
-    document.getElementById("amountInput").value = document.getElementById("amountInput").value + '2';
-    maxAmount();
-    setTimeout(() => {  
-        document.getElementById("2").style.borderColor = "white";
-        document.getElementById("2").style.transition = "0.3s";
-    }, 100);
-}
-function trys() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x").style.display = "flex";
-    document.getElementById("x").style.pointerEvents = "all";
-    document.getElementById("check2").style.pointerEvents = "all";
-    document.getElementById("check2").style.color = "green";
-    document.getElementById("check2").style.borderColor = "green";
-    document.getElementById("x2").style.display = "none";
-    document.getElementById("3").style.borderColor = "darkslategrey";
-    document.getElementById("3").style.transition = "none";
-    document.getElementById("amountInput").value = document.getElementById("amountInput").value + '3';
-    maxAmount();
-    setTimeout(() => {  
-        document.getElementById("3").style.borderColor = "white";
-        document.getElementById("3").style.transition = "0.3s";
-    }, 100);
-}
-function keturi() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x").style.display = "flex";
-    document.getElementById("x").style.pointerEvents = "all";
-    document.getElementById("check2").style.pointerEvents = "all";
-    document.getElementById("check2").style.color = "green";
-    document.getElementById("check2").style.borderColor = "green";
-    document.getElementById("x2").style.display = "none";
-    document.getElementById("4").style.borderColor = "darkslategrey";
-    document.getElementById("4").style.transition = "none";
-    document.getElementById("amountInput").value = document.getElementById("amountInput").value + '4';
-    maxAmount();
-    setTimeout(() => {  
-        document.getElementById("4").style.borderColor = "white";
-        document.getElementById("4").style.transition = "0.3s";
-    }, 100);
-}
-function penki() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x").style.display = "flex";
-    document.getElementById("x").style.pointerEvents = "all";
-    document.getElementById("check2").style.pointerEvents = "all";
-    document.getElementById("check2").style.color = "green";
-    document.getElementById("check2").style.borderColor = "green";
-    document.getElementById("x2").style.display = "none";
-    document.getElementById("5").style.borderColor = "darkslategrey";
-    document.getElementById("5").style.transition = "none";
-    document.getElementById("amountInput").value = document.getElementById("amountInput").value + '5';
-    maxAmount();
-    setTimeout(() => {  
-        document.getElementById("5").style.borderColor = "white";
-        document.getElementById("5").style.transition = "0.3s";
-    }, 100);
-}
-function sesi() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x").style.display = "flex";
-    document.getElementById("x").style.pointerEvents = "all";
-    document.getElementById("check2").style.pointerEvents = "all";
-    document.getElementById("check2").style.color = "green";
-    document.getElementById("check2").style.borderColor = "green";
-    document.getElementById("x2").style.display = "none";
-    document.getElementById("6").style.borderColor = "darkslategrey";
-    document.getElementById("6").style.transition = "none";
-    document.getElementById("amountInput").value = document.getElementById("amountInput").value + '6';
-    maxAmount();
-    setTimeout(() => {  
-        document.getElementById("6").style.borderColor = "white";
-        document.getElementById("6").style.transition = "0.3s";
-    }, 100);
-}
-function septyni() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x").style.display = "flex";
-    document.getElementById("x").style.pointerEvents = "all";
-    document.getElementById("check2").style.pointerEvents = "all";
-    document.getElementById("check2").style.color = "green";
-    document.getElementById("check2").style.borderColor = "green";
-    document.getElementById("x2").style.display = "none";
-    document.getElementById("7").style.borderColor = "darkslategrey";
-    document.getElementById("7").style.transition = "none";
-    document.getElementById("amountInput").value = document.getElementById("amountInput").value + '7';
-    maxAmount();
-    setTimeout(() => {  
-        document.getElementById("7").style.borderColor = "white";
-        document.getElementById("7").style.transition = "0.3s";
-    }, 100);
-}
-function astuoni() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x").style.display = "flex";
-    document.getElementById("x").style.pointerEvents = "all";
-    document.getElementById("check2").style.pointerEvents = "all";
-    document.getElementById("check2").style.color = "green";
-    document.getElementById("check2").style.borderColor = "green";
-    document.getElementById("x2").style.display = "none";
-    document.getElementById("8").style.borderColor = "darkslategrey";
-    document.getElementById("8").style.transition = "none";
-    document.getElementById("amountInput").value = document.getElementById("amountInput").value + '8';
-    maxAmount();
-    setTimeout(() => {  
-        document.getElementById("8").style.borderColor = "white";
-        document.getElementById("8").style.transition = "0.3s";
-    }, 100);
-}
-function devyni() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x").style.display = "flex";
-    document.getElementById("x").style.pointerEvents = "all";
-    document.getElementById("check2").style.pointerEvents = "all";
-    document.getElementById("check2").style.color = "green";
-    document.getElementById("check2").style.borderColor = "green";
-    document.getElementById("x2").style.display = "none";
-    document.getElementById("9").style.borderColor = "darkslategrey";
-    document.getElementById("9").style.transition = "none";
-    document.getElementById("amountInput").value = document.getElementById("amountInput").value + '9';
-    maxAmount();
-    setTimeout(() => {  
-        document.getElementById("9").style.borderColor = "white";
-        document.getElementById("9").style.transition = "0.3s";
-    }, 100);
-}
-
-function nulis() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x").style.display = "flex";
-    document.getElementById("x").style.pointerEvents = "all";
-    document.getElementById("check2").style.pointerEvents = "all";
-    document.getElementById("check2").style.color = "green";
-    document.getElementById("check2").style.borderColor = "green";
-    document.getElementById("x2").style.display = "none";
-    document.getElementById("0").style.borderColor = "darkslategrey";
-    document.getElementById("0").style.transition = "none";
-    document.getElementById("amountInput").value = document.getElementById("amountInput").value + '0';
-    maxAmount();
-    setTimeout(() => {  
-        document.getElementById("0").style.borderColor = "white";
-        document.getElementById("0").style.transition = "0.3s";
-    }, 100);
-}
-function trinti() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x").style.transition = "none";
-    document.getElementById("x").style.borderColor = "darkslategrey";
-    document.getElementById("x").style.pointerEvents = "none";
-    document.getElementById("check2").style.pointerEvents = "none";
-    document.getElementById("check2").style.color = "darkslategrey";
-    document.getElementById("check2").style.borderColor = "darkslategrey";
-    document.getElementById("amountInput").value = '';
-    maxAmount();
-    setTimeout(() => {  
-        document.getElementById("x").style.borderColor = "red";
-        document.getElementById("x").style.transition = "0.3s";
-    }, 100);
-    setTimeout(() => {  
-        document.getElementById("x").style.display = "none";
-        document.getElementById("x2").style.display = "flex";
-    }, 400);
-}
-function maxAmount() {
-    if(document.getElementById("amountInput").value.length === "10")
-    {
-        document.getElementById("1").style.pointerEvents = "none";
-        document.getElementById("2").style.pointerEvents = "none";
-        document.getElementById("3").style.pointerEvents = "none";
-        document.getElementById("4").style.pointerEvents = "none";
-        document.getElementById("5").style.pointerEvents = "none";
-        document.getElementById("6").style.pointerEvents = "none";
-        document.getElementById("7").style.pointerEvents = "none";
-        document.getElementById("8").style.pointerEvents = "none";
-        document.getElementById("9").style.pointerEvents = "none";
-        document.getElementById("0").style.pointerEvents = "none";
-        setTimeout(() => {  
-            document.getElementById("1").style.borderColor = "darkslategrey";
-            document.getElementById("1").style.color = "darkslategrey";
-            document.getElementById("2").style.borderColor = "darkslategrey";
-            document.getElementById("2").style.color = "darkslategrey";
-            document.getElementById("3").style.borderColor = "darkslategrey";
-            document.getElementById("3").style.color = "darkslategrey";
-            document.getElementById("4").style.borderColor = "darkslategrey";
-            document.getElementById("4").style.color = "darkslategrey";
-            document.getElementById("5").style.borderColor = "darkslategrey";
-            document.getElementById("5").style.color = "darkslategrey";
-            document.getElementById("6").style.borderColor = "darkslategrey";
-            document.getElementById("6").style.color = "darkslategrey";
-            document.getElementById("7").style.borderColor = "darkslategrey";
-            document.getElementById("7").style.color = "darkslategrey";
-            document.getElementById("8").style.borderColor = "darkslategrey";
-            document.getElementById("8").style.color = "darkslategrey";
-            document.getElementById("9").style.borderColor = "darkslategrey";
-            document.getElementById("9").style.color = "darkslategrey";
-            document.getElementById("0").style.borderColor = "darkslategrey";
-            document.getElementById("0").style.color = "darkslategrey";
-        }, 101);
-    }
-    else{
-        document.getElementById("1").style.pointerEvents = "all";
-        document.getElementById("2").style.pointerEvents = "all";
-        document.getElementById("3").style.pointerEvents = "all";
-        document.getElementById("4").style.pointerEvents = "all";
-        document.getElementById("5").style.pointerEvents = "all";
-        document.getElementById("6").style.pointerEvents = "all";
-        document.getElementById("7").style.pointerEvents = "all";
-        document.getElementById("8").style.pointerEvents = "all";
-        document.getElementById("9").style.pointerEvents = "all";
-        document.getElementById("0").style.pointerEvents = "all";
-        setTimeout(() => {  
-            document.getElementById("1").style.borderColor = "white";
-            document.getElementById("1").style.color = "white";
-            document.getElementById("2").style.borderColor = "white";
-            document.getElementById("2").style.color = "white";
-            document.getElementById("3").style.borderColor = "white";
-            document.getElementById("3").style.color = "white";
-            document.getElementById("4").style.borderColor = "white";
-            document.getElementById("4").style.color = "white";
-            document.getElementById("5").style.borderColor = "white";
-            document.getElementById("5").style.color = "white";
-            document.getElementById("6").style.borderColor = "white";
-            document.getElementById("6").style.color = "white";
-            document.getElementById("7").style.borderColor = "white";
-            document.getElementById("7").style.color = "white";
-            document.getElementById("8").style.borderColor = "white";
-            document.getElementById("8").style.color = "white";
-            document.getElementById("9").style.borderColor = "white";
-            document.getElementById("9").style.color = "white";
-            document.getElementById("0").style.borderColor = "white";
-            document.getElementById("0").style.color = "white";
-        }, 101);
-    }
-}
-function atsaukti() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x2").style.transition = "none";
-    document.getElementById("x2").style.borderColor = "darkslategrey";
-    document.getElementById("amountInput").value = '';
-    document.getElementById("check").style.display = "flex";
-    document.getElementById("check").style.pointerEvents = "none";
-    document.getElementById("check2").style.display = "none";
-    document.getElementById("check2").style.pointerEvents = "none";
-    document.getElementById("1").style.pointerEvents = "none";
-    document.getElementById("2").style.pointerEvents = "none";
-    document.getElementById("3").style.pointerEvents = "none";
-    document.getElementById("4").style.pointerEvents = "none";
-    document.getElementById("5").style.pointerEvents = "none";
-    document.getElementById("6").style.pointerEvents = "none";
-    document.getElementById("7").style.pointerEvents = "none";
-    document.getElementById("8").style.pointerEvents = "none";
-    document.getElementById("9").style.pointerEvents = "none";
-    document.getElementById("0").style.pointerEvents = "none";
-    document.getElementById("x").style.pointerEvents = "none";
-    document.getElementById("x2").style.pointerEvents = "none";
-    setTimeout(() => {  
-        document.getElementById("x2").style.borderColor = "red";
-        document.getElementById("x2").style.transition = "0.3s";
-        document.getElementById("amount").style.opacity = "0";
-        document.getElementById("amountInput").style.opacity = "0";
-        document.getElementById("amountCurrency").style.opacity = "0";
-    }, 100);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "1";
-        document.getElementById("loading").style.opacity = "1";
-        document.getElementById("1").style.color = "darkslategrey";
-        document.getElementById("1").style.borderColor = "darkslategrey";
-        document.getElementById("2").style.color = "darkslategrey";
-        document.getElementById("2").style.borderColor = "darkslategrey";
-        document.getElementById("3").style.color = "darkslategrey";
-        document.getElementById("3").style.borderColor = "darkslategrey";
-        document.getElementById("4").style.color = "darkslategrey";
-        document.getElementById("4").style.borderColor = "darkslategrey";
-        document.getElementById("5").style.color = "darkslategrey";
-        document.getElementById("5").style.borderColor = "darkslategrey";
-        document.getElementById("6").style.color = "darkslategrey";
-        document.getElementById("6").style.borderColor = "darkslategrey";
-        document.getElementById("7").style.color = "darkslategrey";
-        document.getElementById("7").style.borderColor = "darkslategrey";
-        document.getElementById("8").style.color = "darkslategrey";
-        document.getElementById("8").style.borderColor = "darkslategrey";
-        document.getElementById("9").style.color = "darkslategrey";
-        document.getElementById("9").style.borderColor = "darkslategrey";
-        document.getElementById("x").style.color = "darkslategrey";
-        document.getElementById("x").style.borderColor = "darkslategrey";
-        document.getElementById("x2").style.color = "darkslategrey";
-        document.getElementById("x2").style.borderColor = "darkslategrey";
-        document.getElementById("0").style.color = "darkslategrey";
-        document.getElementById("0").style.borderColor = "darkslategrey";
-        document.getElementById("check").style.color = "darkslategrey";
-        document.getElementById("check").style.borderColor = "darkslategrey";
-    }, 250);
-    setTimeout(() => {  
-        document.getElementById("x").style.display = "flex";
-        document.getElementById("x2").style.display = "none";
-        document.getElementById("x2").style.pointerEvents = "all";
-        document.getElementById("x2").style.color = "white";
-        document.getElementById("x2").style.borderColor = "white";
-    }, 400);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "0";
-        document.getElementById("loading").style.opacity = "0";
-    }, 3250);
-    setTimeout(() => {  
-        document.getElementById("ready").style.opacity = "1";
-    }, 3400);
-    setTimeout(() => {
-        document.getElementById("startAdvice").style.opacity = "1";
-        document.getElementById("check").style.pointerEvents = "all";
-        document.getElementById("check").style.color = "green";
-        document.getElementById("check").style.borderColor = "green";
-    }, 4400);
-}
-function atsauktiMokejima() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("check").style.display = "flex";
-    document.getElementById("check").style.pointerEvents = "none";
-    document.getElementById("check").style.borderColor = "darkslategrey";
-    document.getElementById("check").style.color = "darkslategrey";
-    document.getElementById("check3").style.display = "none";
-    document.getElementById("check3").style.pointerEvents = "none";
-    document.getElementById("x4").style.borderColor = "darkslategrey";
-    document.getElementById("x4").style.transition = "none";
-    document.getElementById("x4").style.pointerEvents = "none";
-    document.getElementById("x").style.pointerEvents = "none";
-    setTimeout(() => {  
-        document.getElementById("x4").style.borderColor = "red";
-        document.getElementById("x4").style.transition = "0.3s";
-        document.getElementById("attemptsRemaining").style.opacity = "0";
-        document.getElementById("enterPin").style.opacity = "0";
-        document.getElementById("pinInput").style.opacity = "0";
-    }, 100);
-    setTimeout(() => {  
-        document.getElementById("x4").style.borderColor = "darkslategrey";
-        document.getElementById("x4").style.color = "darkslategrey";
-        document.getElementById("1a").style.borderColor = "darkslategrey";
-        document.getElementById("1a").style.color = "darkslategrey";
-        document.getElementById("1a").style.pointerEvents = "none";
-        document.getElementById("2a").style.borderColor = "darkslategrey";
-        document.getElementById("2a").style.color = "darkslategrey";
-        document.getElementById("2a").style.pointerEvents = "none";
-        document.getElementById("3a").style.borderColor = "darkslategrey";
-        document.getElementById("3a").style.color = "darkslategrey";
-        document.getElementById("3a").style.pointerEvents = "none";
-        document.getElementById("4a").style.borderColor = "darkslategrey";
-        document.getElementById("4a").style.color = "darkslategrey";
-        document.getElementById("4a").style.pointerEvents = "none";
-        document.getElementById("5a").style.borderColor = "darkslategrey";
-        document.getElementById("5a").style.color = "darkslategrey";
-        document.getElementById("5a").style.pointerEvents = "none";
-        document.getElementById("6a").style.borderColor = "darkslategrey";
-        document.getElementById("6a").style.color = "darkslategrey";
-        document.getElementById("6a").style.pointerEvents = "none";
-        document.getElementById("7a").style.borderColor = "darkslategrey";
-        document.getElementById("7a").style.color = "darkslategrey";
-        document.getElementById("7a").style.pointerEvents = "none";
-        document.getElementById("8a").style.borderColor = "darkslategrey";
-        document.getElementById("8a").style.color = "darkslategrey";
-        document.getElementById("8a").style.pointerEvents = "none";
-        document.getElementById("9a").style.borderColor = "darkslategrey";
-        document.getElementById("9a").style.color = "darkslategrey";
-        document.getElementById("9a").style.pointerEvents = "none";
-        document.getElementById("0a").style.borderColor = "darkslategrey";
-        document.getElementById("0a").style.color = "darkslategrey";
-        document.getElementById("0a").style.pointerEvents = "none";
-        document.getElementById("dirba").style.opacity = "1";
-        document.getElementById("loading").style.opacity = "1";
-    }, 250);
-    setTimeout(() => {  
-        document.getElementById("pinInput").value = '';
-        document.getElementById("x").style.display = "flex";
-        document.getElementById("x4").style.display = "none";
-        document.getElementById("x4").style.pointerEvents = "all";
-        document.getElementById("1a").style.display = "none";
-        document.getElementById("1").style.display = "flex";
-        document.getElementById("2a").style.display = "none";
-        document.getElementById("2").style.display = "flex";
-        document.getElementById("3a").style.display = "none";
-        document.getElementById("3").style.display = "flex";
-        document.getElementById("4a").style.display = "none";
-        document.getElementById("4").style.display = "flex";
-        document.getElementById("5a").style.display = "none";
-        document.getElementById("5").style.display = "flex";
-        document.getElementById("6a").style.display = "none";
-        document.getElementById("6").style.display = "flex";
-        document.getElementById("7a").style.display = "none";
-        document.getElementById("7").style.display = "flex";
-        document.getElementById("8a").style.display = "none";
-        document.getElementById("8").style.display = "flex";
-        document.getElementById("9a").style.display = "none";
-        document.getElementById("9").style.display = "flex";
-        document.getElementById("0a").style.display = "none";
-        document.getElementById("0").style.display = "flex";
-    }, 400);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "0";
-        document.getElementById("loading").style.opacity = "0";
-    }, 3250);
-    setTimeout(() => {  
-        document.getElementById("ready").style.opacity = "1";
-    }, 3400);
-    setTimeout(() => {
-        document.getElementById("startAdvice").style.opacity = "1";
-        document.getElementById("check").style.pointerEvents = "all";
-        document.getElementById("check").style.borderColor = "green";
-        document.getElementById("check").style.color = "green";
-    }, 4400);
-}
-function vienasA() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x5").style.display = "flex";
-    document.getElementById("x5").style.pointerEvents = "all";
-    document.getElementById("x4").style.display = "none";
-    document.getElementById("1a").style.borderColor = "darkslategrey";
-    document.getElementById("1a").style.transition = "none";
-    document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
-    hideKeyboardPin();
-    confirmCheckShow();
-    setTimeout(() => {  
-        document.getElementById("1a").style.borderColor = "white";
-        document.getElementById("1a").style.transition = "0.3s";
-    }, 100);
-}
-function duA() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x5").style.display = "flex";
-    document.getElementById("x5").style.pointerEvents = "all";
-    document.getElementById("x4").style.display = "none";
-    document.getElementById("2a").style.borderColor = "darkslategrey";
-    document.getElementById("2a").style.transition = "none";
-    document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
-    hideKeyboardPin();
-    confirmCheckShow();
-    setTimeout(() => {  
-        document.getElementById("2a").style.borderColor = "white";
-        document.getElementById("2a").style.transition = "0.3s";
-    }, 100);
-}
-function trysA() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x5").style.display = "flex";
-    document.getElementById("x5").style.pointerEvents = "all";
-    document.getElementById("x4").style.display = "none";
-    document.getElementById("3a").style.borderColor = "darkslategrey";
-    document.getElementById("3a").style.transition = "none";
-    document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
-    hideKeyboardPin();
-    confirmCheckShow();
-    setTimeout(() => {  
-        document.getElementById("3a").style.borderColor = "white";
-        document.getElementById("3a").style.transition = "0.3s";
-    }, 100);
-}
-function keturiA() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x5").style.display = "flex";
-    document.getElementById("x5").style.pointerEvents = "all";
-    document.getElementById("x4").style.display = "none";
-    document.getElementById("4a").style.borderColor = "darkslategrey";
-    document.getElementById("4a").style.transition = "none";
-    document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
-    hideKeyboardPin();
-    confirmCheckShow();
-    setTimeout(() => {  
-        document.getElementById("4a").style.borderColor = "white";
-        document.getElementById("4a").style.transition = "0.3s";
-    }, 100);
-}
-function penkiA() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x5").style.display = "flex";
-    document.getElementById("x5").style.pointerEvents = "all";
-    document.getElementById("x4").style.display = "none";
-    document.getElementById("5a").style.borderColor = "darkslategrey";
-    document.getElementById("5a").style.transition = "none";
-    document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
-    hideKeyboardPin();
-    confirmCheckShow();
-    setTimeout(() => {  
-        document.getElementById("5a").style.borderColor = "white";
-        document.getElementById("5a").style.transition = "0.3s";
-    }, 100);
-}
-function sesiA() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x5").style.display = "flex";
-    document.getElementById("x5").style.pointerEvents = "all";
-    document.getElementById("x4").style.display = "none";
-    document.getElementById("6a").style.borderColor = "darkslategrey";
-    document.getElementById("6a").style.transition = "none";
-    document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
-    hideKeyboardPin();
-    confirmCheckShow();
-    setTimeout(() => {  
-        document.getElementById("6a").style.borderColor = "white";
-        document.getElementById("6a").style.transition = "0.3s";
-    }, 100);
-}
-function septyniA() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x5").style.display = "flex";
-    document.getElementById("x5").style.pointerEvents = "all";
-    document.getElementById("x4").style.display = "none";
-    document.getElementById("7a").style.borderColor = "darkslategrey";
-    document.getElementById("7a").style.transition = "none";
-    document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
-    hideKeyboardPin();
-    confirmCheckShow();
-    setTimeout(() => {  
-        document.getElementById("7a").style.borderColor = "white";
-        document.getElementById("7a").style.transition = "0.3s";
-    }, 100);
-}
-function astuoniA() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x5").style.display = "flex";
-    document.getElementById("x5").style.pointerEvents = "all";
-    document.getElementById("x4").style.display = "none";
-    document.getElementById("8a").style.borderColor = "darkslategrey";
-    document.getElementById("8a").style.transition = "none";
-    document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
-    hideKeyboardPin();
-    confirmCheckShow();
-    setTimeout(() => {  
-        document.getElementById("8a").style.borderColor = "white";
-        document.getElementById("8a").style.transition = "0.3s";
-    }, 100);
-}
-function devyniA() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x5").style.display = "flex";
-    document.getElementById("x5").style.pointerEvents = "all";
-    document.getElementById("x4").style.display = "none";
-    document.getElementById("9a").style.borderColor = "darkslategrey";
-    document.getElementById("9a").style.transition = "none";
-    document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
-    hideKeyboardPin();
-    confirmCheckShow();
-    setTimeout(() => {  
-        document.getElementById("9a").style.borderColor = "white";
-        document.getElementById("9a").style.transition = "0.3s";
-    }, 100);
-}
-
-function nulisA() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x5").style.display = "flex";
-    document.getElementById("x5").style.pointerEvents = "all";
-    document.getElementById("x4").style.display = "none";
-    document.getElementById("0a").style.borderColor = "darkslategrey";
-    document.getElementById("0a").style.transition = "none";
-    document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
-    hideKeyboardPin();
-    confirmCheckShow();
-    setTimeout(() => {  
-        document.getElementById("0a").style.borderColor = "white";
-        document.getElementById("0a").style.transition = "0.3s";
-    }, 100);
-}
-function trintiPin() {
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("x5").style.transition = "none";
-    document.getElementById("x5").style.borderColor = "darkslategrey";
-    document.getElementById("x5").style.pointerEvents = "none";
-    document.getElementById("pinInput").value = '';
-    hideKeyboardPin();
-    confirmCheckShow();
-    setTimeout(() => {  
-        document.getElementById("x5").style.borderColor = "red";
-        document.getElementById("x5").style.transition = "0.3s";
-    }, 100);
-    setTimeout(() => {  
-        document.getElementById("x5").style.display = "none";
-        document.getElementById("x4").style.display = "flex";
-    }, 400);
-}
-function hideKeyboardPin() {
-    if (document.getElementById("pinInput").value === "******") {
-        document.getElementById("1a").style.pointerEvents = "none";
-        document.getElementById("2a").style.pointerEvents = "none";
-        document.getElementById("3a").style.pointerEvents = "none";
-        document.getElementById("4a").style.pointerEvents = "none";
-        document.getElementById("5a").style.pointerEvents = "none";
-        document.getElementById("6a").style.pointerEvents = "none";
-        document.getElementById("7a").style.pointerEvents = "none";
-        document.getElementById("8a").style.pointerEvents = "none";
-        document.getElementById("9a").style.pointerEvents = "none";
-        document.getElementById("0a").style.pointerEvents = "none";
-        setTimeout(() => {  
-            document.getElementById("1a").style.borderColor = "darkslategrey";
-            document.getElementById("1a").style.color = "darkslategrey";
-            document.getElementById("2a").style.borderColor = "darkslategrey";
-            document.getElementById("2a").style.color = "darkslategrey";
-            document.getElementById("3a").style.borderColor = "darkslategrey";
-            document.getElementById("3a").style.color = "darkslategrey";
-            document.getElementById("4a").style.borderColor = "darkslategrey";
-            document.getElementById("4a").style.color = "darkslategrey";
-            document.getElementById("5a").style.borderColor = "darkslategrey";
-            document.getElementById("5a").style.color = "darkslategrey";
-            document.getElementById("6a").style.borderColor = "darkslategrey";
-            document.getElementById("6a").style.color = "darkslategrey";
-            document.getElementById("7a").style.borderColor = "darkslategrey";
-            document.getElementById("7a").style.color = "darkslategrey";
-            document.getElementById("8a").style.borderColor = "darkslategrey";
-            document.getElementById("8a").style.color = "darkslategrey";
-            document.getElementById("9a").style.borderColor = "darkslategrey";
-            document.getElementById("9a").style.color = "darkslategrey";
-            document.getElementById("0a").style.borderColor = "darkslategrey";
-            document.getElementById("0a").style.color = "darkslategrey";
-        }, 101);
-    }
-    else{
-        document.getElementById("1a").style.pointerEvents = "all";
-        document.getElementById("2a").style.pointerEvents = "all";
-        document.getElementById("3a").style.pointerEvents = "all";
-        document.getElementById("4a").style.pointerEvents = "all";
-        document.getElementById("5a").style.pointerEvents = "all";
-        document.getElementById("6a").style.pointerEvents = "all";
-        document.getElementById("7a").style.pointerEvents = "all";
-        document.getElementById("8a").style.pointerEvents = "all";
-        document.getElementById("9a").style.pointerEvents = "all";
-        document.getElementById("0a").style.pointerEvents = "all";
-        setTimeout(() => {  
-            document.getElementById("1a").style.borderColor = "white";
-            document.getElementById("1a").style.color = "white";
-            document.getElementById("2a").style.borderColor = "white";
-            document.getElementById("2a").style.color = "white";
-            document.getElementById("3a").style.borderColor = "white";
-            document.getElementById("3a").style.color = "white";
-            document.getElementById("4a").style.borderColor = "white";
-            document.getElementById("4a").style.color = "white";
-            document.getElementById("5a").style.borderColor = "white";
-            document.getElementById("5a").style.color = "white";
-            document.getElementById("6a").style.borderColor = "white";
-            document.getElementById("6a").style.color = "white";
-            document.getElementById("7a").style.borderColor = "white";
-            document.getElementById("7a").style.color = "white";
-            document.getElementById("8a").style.borderColor = "white";
-            document.getElementById("8a").style.color = "white";
-            document.getElementById("9a").style.borderColor = "white";
-            document.getElementById("9a").style.color = "white";
-            document.getElementById("0a").style.borderColor = "white";
-            document.getElementById("0a").style.color = "white";
-        }, 101);
-    }
-}
-function confirmCheckShow() {
-    if (document.getElementById("pinInput").value === "****" || document.getElementById("pinInput").value === "*****" || document.getElementById("pinInput").value === "******") {
-        document.getElementById("check3").style.pointerEvents = "all";
-        document.getElementById("check3").style.color = "green";
-        document.getElementById("check3").style.borderColor = "green";
-    }
-    else{
-        document.getElementById("check3").style.pointerEvents = "none";
-        document.getElementById("check3").style.color = "darkslategrey";
-        document.getElementById("check3").style.borderColor = "darkslategrey";
-    }
-}
-function baigtiMokejima() {
-    document.getElementById('repeat').muted = false;
-    document.getElementById("repeat").play();
-    document.getElementById('confirmed').muted = false;
-    document.getElementById("confirmed").play();
-
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("check3").style.borderColor = "darkslategrey";
-    document.getElementById("check3").style.transition = "none";
-    document.getElementById("check3").style.pointerEvents = "none";
-    document.getElementById("x5").style.pointerEvents = "none";
-    setTimeout(() => {
-        document.getElementById("repeat").pause();
-        document.getElementById("confirmed").pause();
-    }, 2);
-    setTimeout(() => {  
-        document.getElementById("check3").style.borderColor = "green";
-        document.getElementById("check3").style.transition = "0.3s";
-        document.getElementById("attemptsRemaining").style.opacity = "0";
-        document.getElementById("enterPin").style.opacity = "0";
-        document.getElementById("pinInput").style.opacity = "0";
-    }, 100);
-    setTimeout(() => {  
-        document.getElementById("x5").style.borderColor = "darkslategrey";
-        document.getElementById("x5").style.color = "darkslategrey";
-        document.getElementById("check3").style.borderColor = "darkslategrey";
-        document.getElementById("check3").style.color = "darkslategrey";
-        document.getElementById("1a").style.borderColor = "darkslategrey";
-        document.getElementById("1a").style.color = "darkslategrey";
-        document.getElementById("1a").style.pointerEvents = "none";
-        document.getElementById("2a").style.borderColor = "darkslategrey";
-        document.getElementById("2a").style.color = "darkslategrey";
-        document.getElementById("2a").style.pointerEvents = "none";
-        document.getElementById("3a").style.borderColor = "darkslategrey";
-        document.getElementById("3a").style.color = "darkslategrey";
-        document.getElementById("3a").style.pointerEvents = "none";
-        document.getElementById("4a").style.borderColor = "darkslategrey";
-        document.getElementById("4a").style.color = "darkslategrey";
-        document.getElementById("4a").style.pointerEvents = "none";
-        document.getElementById("5a").style.borderColor = "darkslategrey";
-        document.getElementById("5a").style.color = "darkslategrey";
-        document.getElementById("5a").style.pointerEvents = "none";
-        document.getElementById("6a").style.borderColor = "darkslategrey";
-        document.getElementById("6a").style.color = "darkslategrey";
-        document.getElementById("6a").style.pointerEvents = "none";
-        document.getElementById("7a").style.borderColor = "darkslategrey";
-        document.getElementById("7a").style.color = "darkslategrey";
-        document.getElementById("7a").style.pointerEvents = "none";
-        document.getElementById("8a").style.borderColor = "darkslategrey";
-        document.getElementById("8a").style.color = "darkslategrey";
-        document.getElementById("8a").style.pointerEvents = "none";
-        document.getElementById("9a").style.borderColor = "darkslategrey";
-        document.getElementById("9a").style.color = "darkslategrey";
-        document.getElementById("9a").style.pointerEvents = "none";
-        document.getElementById("0a").style.borderColor = "darkslategrey";
-        document.getElementById("0a").style.color = "darkslategrey";
-        document.getElementById("0a").style.pointerEvents = "none";
-        document.getElementById("dirba").style.opacity = "1";
-        document.getElementById("loading").style.opacity = "1";
-    }, 250);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "0";
-        document.getElementById("loading").style.opacity = "0";
-    }, 10250);
-    setTimeout(() => {  
-        document.getElementById("approved").style.opacity = "1";
-        document.getElementById('confirmed').currentTime = 0;
-        document.getElementById("confirmed").play();
-    }, 10400);
-    setTimeout(() => {
-        document.getElementById("check3").style.display = "none";
-        document.getElementById("check").style.display = "flex";
-        document.getElementById("x5").style.display = "none";
-        document.getElementById("x5").style.color = "red";
-        document.getElementById("x5").style.borderColor = "red";
-        document.getElementById("x4").style.color = "darkslategrey";
-        document.getElementById("x4").style.borderColor = "darkslategrey";
-        document.getElementById("x").style.display = "flex";
-        document.getElementById("1a").style.display = "none";
-        document.getElementById("2a").style.display = "none";
-        document.getElementById("3a").style.display = "none";
-        document.getElementById("4a").style.display = "none";
-        document.getElementById("5a").style.display = "none";
-        document.getElementById("6a").style.display = "none";
-        document.getElementById("7a").style.display = "none";
-        document.getElementById("8a").style.display = "none";
-        document.getElementById("9a").style.display = "none";
-        document.getElementById("0a").style.display = "none";
-        document.getElementById("1").style.display = "flex";
-        document.getElementById("2").style.display = "flex";
-        document.getElementById("3").style.display = "flex";
-        document.getElementById("4").style.display = "flex";
-        document.getElementById("5").style.display = "flex";
-        document.getElementById("6").style.display = "flex";
-        document.getElementById("7").style.display = "flex";
-        document.getElementById("8").style.display = "flex";
-        document.getElementById("9").style.display = "flex";
-        document.getElementById("0").style.display = "flex";
-        document.getElementById("pinInput").value = '';
-    }, 11000);
-    setTimeout(() => {
-        document.getElementById("approved").style.opacity = "0";
-    }, 14250);
-    setTimeout(() => {
-        document.getElementById("removeCard").style.opacity = "1";
-        document.getElementById('repeat').currentTime = 0;
-        document.getElementById("repeat").play();
-        document.getElementById("removeCardComplete").style.display = "block";
-    }, 14400);
-}
-function cardRemoved() {
-    document.getElementById("removeCardComplete").style.display = "none";
-    document.getElementById("repeat").pause();
-    document.getElementById('repeat').currentTime = 0;
-    setTimeout(() => {  
-        document.getElementById("removeCard").style.opacity = "0";
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 100);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 200);
-    setTimeout(() => {  
-        document.getElementById("ready").style.opacity = "1";
-        document.getElementById("fundsPending").style.opacity = "1";
-        document.getElementById("fundsPending").style.color = "orange";
-        document.getElementById("contactless").style.opacity = "1";
-    }, 250);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 300);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 400);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 500);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 600);
-    setTimeout(() => {  
-        document.getElementById("startAdvice").style.opacity = "1";
-        document.getElementById("check").style.color = "green";
-        document.getElementById("check").style.borderColor = "green";
-        document.getElementById("check").style.pointerEvents = "all";
-    }, 1250);
-    setTimeout(() => {  
-        document.getElementById("fundsPending").style.color = "green";
-    }, 10250);
-    setTimeout(() => {  
-        document.getElementById("fundsPending").style.opacity = "0";
-    }, 13250);
-    setTimeout(() => {  
-        document.getElementById("fundsPending").style.color = "black";
-    }, 13400);
-}
-function contactless() {
-    document.getElementById('confirmed').muted = false;
-    document.getElementById("confirmed").play();
-
-    document.getElementById("insertCardComplete").style.display = "none";
-    document.getElementById("screen").style.pointerEvents = "none";
-    document.getElementById('beep').muted = false;
-    document.getElementById("beep").play();
-    document.getElementById('beep').currentTime = 0;
-    document.getElementById("repeat").pause();
-    document.getElementById('repeat').currentTime = 0;
-    document.getElementById("x3").style.borderColor = "darkslategrey";
-    document.getElementById("x3").style.color = "darkslategrey";
-    document.getElementById("x3").style.pointerEvents = "none";
-    document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
-    document.getElementById("insertCard").style.opacity = "0";
-    document.getElementById("contactlessAvailable").style.opacity = "0";
-    document.getElementById("amountInput").style.opacity = "0";
-    setTimeout(() => {  
-        document.getElementById("confirmed").pause();
-    }, 100);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 100);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "1";
-        document.getElementById("loading").style.opacity = "1";
-        document.getElementById("contactless").style.opacity = "0";
-    }, 150);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 200);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-        document.getElementById("x3").style.display = "none";
-        document.getElementById("x3").style.pointerEvents = "all";
-        document.getElementById("x").style.display = "flex";
-        document.getElementById("x").style.pointerEvents = "none";
-        document.getElementById("check2").style.display = "none";
-        document.getElementById("check").style.display = "flex";
-        document.getElementById("check").style.pointerEvents = "none";
-        document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
-        document.getElementById("check2").style.pointerEvents = "none";
-    }, 300);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-        document.getElementById("amountInput").value = '';
-    }, 400);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-    }, 500);
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-        document.getElementById('repeat').currentTime = 0;
-        document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
-    }, 600);
-    setTimeout(() => {  
-        document.getElementById("contactless").style.opacity = "1";
-    }, 650);
-    setTimeout(() => {  
-        document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
-    }, 900);
-    setTimeout(() => {  
-        document.getElementById("contactless").style.opacity = "0";
-    }, 1150);
-    setTimeout(() => {  
-        document.getElementById("contactless").style.opacity = "1";
-    }, 1650);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
-    }, 2000);
-    setTimeout(() => {  
-        document.getElementById("contactless").style.opacity = "0";
-    }, 2150);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
-    }, 2500);
-    setTimeout(() => {  
-        document.getElementById("contactless").style.opacity = "1";
-    }, 2650);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
+        document.getElementById('loading').style.opacity = '0';
     }, 3000);
-    setTimeout(() => {  
-        document.getElementById("contactless").style.opacity = "0";
-    }, 3150);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
-    }, 3500);
-    setTimeout(() => {  
-        document.getElementById("contactless").style.opacity = "1";
-    }, 3650);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
-    }, 4000);
-    setTimeout(() => {  
-        document.getElementById("contactless").style.opacity = "0";
-    }, 4150);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
-    }, 4500);
-    setTimeout(() => {  
-        document.getElementById("contactless").style.opacity = "1";
-    }, 4650);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
-    }, 5000);
-    setTimeout(() => {  
-        document.getElementById("contactless").style.opacity = "0";
-    }, 5150);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
-        document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
-    }, 5500);
-    setTimeout(() => {  
-        document.getElementById("contactless").style.opacity = "1";
-    }, 5650);
-    setTimeout(() => {  
-        document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
-        document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
-        document.getElementById("dirba").style.opacity = "0";
-        document.getElementById("loading").style.opacity = "0";
-    }, 6000);
-    setTimeout(() => {  
-        document.getElementById("contactlessSuccess").style.opacity = "1";
-        document.getElementById("applepay").style.opacity = "0";
-        document.getElementById("googlepay").style.opacity = "0";
-        document.getElementById('confirmed').currentTime = 0;
-        document.getElementById("confirmed").play();
-    }, 6150);
-    setTimeout(() => {  
-        document.getElementById("contactlessSuccess").style.opacity = "0";
-    }, 9150);
-    setTimeout(() => {  
-        document.getElementById("ready").style.opacity = "1";
-        document.getElementById("fundsPending").style.opacity = "1";
-        document.getElementById("fundsPending").style.color = "orange";
-    }, 9300);
-    setTimeout(() => {  
-        document.getElementById("startAdvice").style.opacity = "1";
-        document.getElementById("check").style.color = "green";
-        document.getElementById("check").style.borderColor = "green";
-        document.getElementById("check").style.pointerEvents = "all";
-    }, 10300);
-    setTimeout(() => {  
-        document.getElementById("fundsPending").style.color = "green";
-    }, 18300);
-    setTimeout(() => {  
-        document.getElementById("fundsPending").style.opacity = "0";
-    }, 21300);
-    setTimeout(() => {  
-        document.getElementById("fundsPending").style.color = "black";
-    }, 21750);
+    setTimeout(() => {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('createdByMatas').style.opacity = '0';
+    }, 3100);
+}
+
+function showFeeInfo(){
+    document.getElementById('feeInfoBg').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('feeInfoBg').style.opacity = '1';
+    }, 10);
+}
+function hideFeeInfo(){
+    document.getElementById('feeInfoBg').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('feeInfoBg').style.display = 'none';
+    }, 300);
+}
+function showReturnUntilInfo(){
+    document.getElementById('returnUntilInfoBg').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('returnUntilInfoBg').style.opacity = '1';
+    }, 10);
+}
+function hideReturnUntilInfo(){
+    document.getElementById('returnUntilInfoBg').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('returnUntilInfoBg').style.display = 'none';
+    }, 300);
+}
+function showInterestRateInfo(){
+    document.getElementById('interestRateInfoBg').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('interestRateInfoBg').style.opacity = '1';
+    }, 10);
+}
+function hideInterestRateInfo(){
+    document.getElementById('interestRateInfoBg').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('interestRateInfoBg').style.display = 'none';
+    }, 300);
+}
+
+
+function openSettings(){
+    document.getElementById('settings').style.right = '95px';
+    document.getElementById('account').style.display = 'none';
+    document.getElementById('accountX').style.display = 'block';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeSettings(){
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+}
+
+function openNotifications(){
+    document.getElementById('notifs').style.right = '50px';
+    document.getElementById('notifications').style.transform = 'scale(0)';
+    document.getElementById('notificationsX').style.transform = 'scale(1)';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeNotifications(){
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+}
+
+function openApps(){
+    document.getElementById('otherApps').style.right = '10px';
+    document.getElementById('apps').style.transform = 'scale(0)';
+    document.getElementById('appsX').style.transform = 'scale(1)';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+}
+function closeApps(){
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function atidarytiKonsultacijas(){
+    window.open('https://createdbymatas.github.io/konsultacijos/')
+}
+function atidarytiKorteliuSkaitytuva(){
+    window.open('https://createdbymatas.github.io/mokejimas/')
+}
+
+function openProfileIcon(){
+    document.getElementById('kontaktineInformacija').style.top = '100%';
+    document.getElementById('profilioPaveikslelis').style.top = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeProfileIcon(){
+    document.getElementById('profilioPaveikslelis').style.top = '100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+    
+    document.getElementById('profilePicChangeBtn').style.opacity = '0.2';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'none';
+    document.getElementById('emailRequestInput').value = 'FINBONK | XXXXX'
+    document.getElementById('prasymasInput').value = '';
+    document.getElementById('informacijaInput').value = '';
+}
+function kiwiIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#404040';
+    document.getElementById('kiwi').style.color = '#F5F5DC';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+    
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-kiwi-bird';
+}
+function crowIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#404040';
+    document.getElementById('crow').style.color = '#F5F5DC';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-crow';
+}
+function cowIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#404040';
+    document.getElementById('cow').style.color = '#F5F5DC';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+    
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-cow';
+}
+function hippoIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#404040';
+    document.getElementById('hippo').style.color = '#F5F5DC';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-hippo';
+}
+function dogIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#404040';
+    document.getElementById('dog').style.color = '#F5F5DC';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+    
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-dog';
+}
+function catIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '##202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#404040';
+    document.getElementById('cat').style.color = '#F5F5DC';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-cat';
+}
+function horseIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#404040';
+    document.getElementById('horse').style.color = '#F5F5DC';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-horse';
+}
+function otterIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#404040';
+    document.getElementById('otter').style.color = '#F5F5DC';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-otter';
+}
+function fishIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#404040';
+    document.getElementById('fish').style.color = '#F5F5DC';
+    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.color = '#202020';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-fish';
+}
+function frogIcon(){
+    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.color = '#202020';
+    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.color = '#202020';
+    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.color = '#202020';
+    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.color = '#202020';
+    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.color = '#202020';
+    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.color = '#202020';
+    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.color = '#202020';
+    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.color = '#202020';
+    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.color = '#202020';
+    document.getElementById('frog').style.backgroundColor = '#404040';
+    document.getElementById('frog').style.color = '#F5F5DC';
+
+    document.getElementById('profilePicChangeBtn').style.opacity = '1';
+    document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
+    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
+    document.getElementById('informacijaInput').value = 'fa-frog';
+}
+function keistiPaveiksleli(){
+    document.getElementById('loading').style.display = 'flex';
+    document.getElementById('loader').style.animation = 'none';
+    setTimeout(() => {
+        document.getElementById('loading').style.opacity = '1';
+        document.getElementById('loader').style.animation = 'spin 0.8s linear infinite';
+    }, 10);
+    setTimeout(() => {
+        document.getElementById('submitFormBtn').click();
+    }, 1000);
+}
+
+function openContactInfo(){
+    document.getElementById('profilioPaveikslelis').style.top = '100%';
+    document.getElementById('kontaktineInformacija').style.top = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeContactInfo(){
+    document.getElementById('kontaktineInformacija').style.top = '100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function hideLoginPopup(){
+    document.getElementById('loginAlert').style.top = '-100px';
+    setTimeout(() => {
+        document.getElementById('loginTimeRemaining').innerHTML = '60:00';
+    }, 1000);
+}
+function logout(){
+    document.cookie = "ieva=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+    document.getElementById('userScreen').style.display = 'flex';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+    setTimeout(() => {
+        document.getElementById('userScreen').style.opacity = '1';
+        document.getElementById('logoutAlert').style.top = '15px';
+    }, 10);
+    setTimeout(() => {
+        document.getElementById('kontaktineInformacija').style.top = '100%';
+        document.getElementById('finbonkWallet').style.right = '-100%';
+        document.getElementById('visaApyvarta').style.right = '-100%';
+        document.getElementById('operacija1').style.right = '-100%';
+        document.getElementById('operacija2').style.right = '-100%';
+        document.getElementById('operacija3').style.right = '-100%';
+        document.getElementById('operacija4').style.right = '-100%';
+        document.getElementById('operacija5').style.right = '-100%';
+        document.getElementById('operacija6').style.right = '-100%';
+        document.getElementById('operacija7').style.right = '-100%';
+        document.getElementById('operacija8').style.right = '-100%';
+        document.getElementById('operacija9').style.right = '-100%';
+        document.getElementById('operacija10').style.right = '-100%';
+        document.getElementById('operacija11').style.right = '-100%';
+        document.getElementById('operacija12').style.right = '-100%';
+        document.getElementById('operacija13').style.right = '-100%';
+        document.getElementById('operacija14').style.right = '-100%';
+        document.getElementById('operacija15').style.right = '-100%';
+        document.getElementById('operacija16').style.right = '-100%';
+        document.getElementById('operacija17').style.right = '-100%';
+        document.getElementById('operacija18').style.right = '-100%';
+        document.getElementById('operacija19').style.right = '-100%';
+        document.getElementById('operacija20').style.right = '-100%';
+        document.getElementById('ismoka').style.right = '-100%';
+    }, 310);
+    setTimeout(() => {
+        document.getElementById('logoutAlert').style.top = '-100px';
+    }, 3010);
+}
+function hideLogoutPopup(){
+    document.getElementById('logoutAlert').style.top = '-100px';
+}
+
+
+
+function openFinbonkWallet(){
+    document.getElementById('finbonkWallet').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeFinbonkWallet(){
+    document.getElementById('finbonkWallet').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openApyvarta(){
+    document.getElementById('visaApyvarta').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeApyvarta(){
+    document.getElementById('visaApyvarta').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+
+
+
+function openOperacija1(){
+    document.getElementById('operacija1').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija1(){
+    document.getElementById('operacija1').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija2(){
+    document.getElementById('operacija2').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija2(){
+    document.getElementById('operacija2').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija3(){
+    document.getElementById('operacija3').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija3(){
+    document.getElementById('operacija3').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija4(){
+    document.getElementById('operacija4').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija4(){
+    document.getElementById('operacija4').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija5(){
+    document.getElementById('operacija5').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija5(){
+    document.getElementById('operacija5').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija6(){
+    document.getElementById('operacija6').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija6(){
+    document.getElementById('operacija6').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija7(){
+    document.getElementById('operacija7').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija7(){
+    document.getElementById('operacija7').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija8(){
+    document.getElementById('operacija8').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija8(){
+    document.getElementById('operacija8').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija9(){
+    document.getElementById('operacija9').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija9(){
+    document.getElementById('operacija9').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija10(){
+    document.getElementById('operacija10').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija10(){
+    document.getElementById('operacija10').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija11(){
+    document.getElementById('operacija11').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija11(){
+    document.getElementById('operacija11').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija12(){
+    document.getElementById('operacija12').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija12(){
+    document.getElementById('operacija12').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija13(){
+    document.getElementById('operacija13').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija13(){
+    document.getElementById('operacija13').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija14(){
+    document.getElementById('operacija14').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija14(){
+    document.getElementById('operacija14').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija15(){
+    document.getElementById('operacija15').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija15(){
+    document.getElementById('operacija15').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija16(){
+    document.getElementById('operacija16').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija16(){
+    document.getElementById('operacija16').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija17(){
+    document.getElementById('operacija17').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija17(){
+    document.getElementById('operacija17').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija18(){
+    document.getElementById('operacija18').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija18(){
+    document.getElementById('operacija18').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija19(){
+    document.getElementById('operacija19').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija19(){
+    document.getElementById('operacija19').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function openOperacija20(){
+    document.getElementById('operacija20').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeOperacija20(){
+    document.getElementById('operacija20').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+
+function openIsmoka(){
+    document.getElementById('ismoka').style.right = '0';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function closeIsmoka(){
+    document.getElementById('ismoka').style.right = '-100%';
+    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('account').style.display = 'block';
+    document.getElementById('accountX').style.display = 'none';
+    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifications').style.transform = 'scale(1)';
+    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('apps').style.transform = 'scale(1)';
+    document.getElementById('appsX').style.transform = 'scale(0)';
+}
+function ismoketiSuma(){
+    document.getElementById('emailRequestInput').value = 'FINBONK | Išmoka'
+    document.getElementById('prasymasInput').value = 'išmokėti sumą';
+    document.getElementById('informacijaInput').value = document.getElementById('ismokosSuma').innerHTML;
+    document.getElementById('loading').style.display = 'flex';
+    document.getElementById('loader').style.animation = 'none';
+    setTimeout(() => {
+        document.getElementById('loading').style.opacity = '1';
+        document.getElementById('loader').style.animation = 'spin 0.8s linear infinite';
+    }, 10);
+    setTimeout(() => {
+        document.getElementById('submitFormBtn').click();
+    }, 1000);
+}
+function backToPortal(){
+    document.getElementById('loading').style.display = 'flex';
+    document.getElementById('loader').style.animation = 'none';
+    setTimeout(() => {
+        document.getElementById('loading').style.opacity = '1';
+        document.getElementById('loader').style.animation = 'spin 0.8s linear infinite';
+    }, 10);
+    setTimeout(() => {
+        location.replace('https://createdbymatas.github.io/finbonk/');
+    }, 1000);
+}
+
+
+
+
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+// document.cookie = "ieva=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+
+let ieva = getCookie("ieva");
+setTimeout(() => {
+    if (ieva != "") {
+        document.getElementById('userScreen').style.display = 'none';
+        document.getElementById('userScreen').style.opacity = '0';
+    }
+    else {
+        document.getElementById('userScreen').style.display = 'flex';
+        document.getElementById('userScreen').style.opacity = '1';
+        if (ieva != "" && ieva != null) {
+            document.getElementById('userScreen').style.display = 'flex';
+            document.getElementById('userScreen').style.opacity = '1';
+        }
+    }
+}, 5);
+
+
+let inputas = '';
+function check(form)
+{
+    if(form.pin.value === '159075')
+    {
+        document.getElementById('istrinimas').style.color = 'transparent';
+        document.getElementById('istrinimas').style.pointerEvents = 'none';
+        setTimeout(() => {
+            document.getElementById('key1').style.opacity = '0.2';
+            document.getElementById('key2').style.opacity = '0.2';
+            document.getElementById('key3').style.opacity = '0.2';
+            document.getElementById('key4').style.opacity = '0.2';
+            document.getElementById('taskeliai').style.opacity = '0.2';
+            document.getElementById('keypad').style.pointerEvents = 'none';
+            document.getElementById('prisijunkiteSuPin').style.opacity = '0.2';
+        }, 10);
+        setTimeout(() => {
+            document.getElementById('key1').style.opacity = '1';
+            document.getElementById('key2').style.opacity = '1';
+            document.getElementById('key3').style.opacity = '1';
+            document.getElementById('key4').style.opacity = '1';
+            document.getElementById('taskeliai').style.opacity = '1';
+            document.getElementById('keypad').style.pointerEvents = 'all';
+            document.getElementById('prisijunkiteSuPin').style.opacity = '1';
+            document.getElementById('userScreen').style.opacity = '0';
+            document.getElementById('loginAlert').style.top = '15px';
+
+            var now = new Date();
+            now.setTime(now.getTime() + 1 * 3600 * 1000);
+            document.cookie = "ieva=prisijungta; expires=" + now.toUTCString() + "; path=/";
+        }, 3000);
+        setTimeout(() => {
+            document.getElementById('userScreen').style.display = 'none';
+            inputas = '';
+            document.getElementById('kodas').value = '';
+            document.getElementById('taskelis1').style.backgroundColor = '#202020';
+            document.getElementById('taskelis2').style.backgroundColor = '#202020';
+            document.getElementById('taskelis3').style.backgroundColor = '#202020';
+            document.getElementById('taskelis4').style.backgroundColor = '#202020';
+            document.getElementById('taskelis5').style.backgroundColor = '#202020';
+            document.getElementById('taskelis6').style.backgroundColor = '#202020';
+        }, 3300);
+        setTimeout(() => {
+            document.getElementById('loginTimeRemaining').innerHTML = '59:59';
+        }, 4000);
+        setTimeout(() => {
+            document.getElementById('loginTimeRemaining').innerHTML = '59:58';
+        }, 5000);
+        setTimeout(() => {
+            document.getElementById('loginAlert').style.top = '-100px';
+            document.getElementById('loginTimeRemaining').innerHTML = '59:57';
+        }, 6000);
+        setTimeout(() => {
+            document.getElementById('loginTimeRemaining').innerHTML = '60:00';
+        }, 7000);
+    }
+    else{
+        document.getElementById('istrinimas').style.color = 'transparent';
+        document.getElementById('istrinimas').style.pointerEvents = 'none';
+        setTimeout(() => {
+            document.getElementById('key1').style.opacity = '0.2';
+            document.getElementById('key2').style.opacity = '0.2';
+            document.getElementById('key3').style.opacity = '0.2';
+            document.getElementById('key4').style.opacity = '0.2';
+            document.getElementById('taskeliai').style.opacity = '0.2';
+            document.getElementById('keypad').style.pointerEvents = 'none';
+            document.getElementById('prisijunkiteSuPin').style.opacity = '0.2';
+        }, 10);
+        setTimeout(() => {
+            document.getElementById('taskeliai').style.marginLeft = '-30px';
+            document.getElementById('key1').style.opacity = '1';
+            document.getElementById('key2').style.opacity = '1';
+            document.getElementById('key3').style.opacity = '1';
+            document.getElementById('key4').style.opacity = '1';
+            document.getElementById('taskeliai').style.opacity = '1';
+            document.getElementById('keypad').style.pointerEvents = 'all';
+            document.getElementById('prisijunkiteSuPin').style.opacity = '1';
+            inputas = '';
+            document.getElementById('kodas').value = '';
+            document.getElementById('taskelis1').style.backgroundColor = '#202020';
+            document.getElementById('taskelis2').style.backgroundColor = '#202020';
+            document.getElementById('taskelis3').style.backgroundColor = '#202020';
+            document.getElementById('taskelis4').style.backgroundColor = '#202020';
+            document.getElementById('taskelis5').style.backgroundColor = '#202020';
+            document.getElementById('taskelis6').style.backgroundColor = '#202020';
+        }, 3000);
+        setTimeout(() => {
+            document.getElementById('taskeliai').style.marginLeft = '100px';
+        }, 3100);
+        setTimeout(() => {
+            document.getElementById('taskeliai').style.marginLeft = '-100px';
+        }, 3200);
+        setTimeout(() => {
+            document.getElementById('taskeliai').style.marginLeft = '100px';
+        }, 3300);
+        setTimeout(() => {
+            document.getElementById('taskeliai').style.marginLeft = '0';
+        }, 3400);
+    }
+}
+function pirmas() {
+    inputas = inputas + 1;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+    
+}
+function antras() {
+    inputas = inputas + 2;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function trecias() {
+    inputas = inputas + 3;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function ketvirtas() {
+    inputas = inputas + 4;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function penktas() {
+    inputas = inputas + 5;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function sestas() {
+    inputas = inputas + 6;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function septintas() {
+    inputas = inputas + 7;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function astuntas() {
+    inputas = inputas + 8;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function devintas() {
+    inputas = inputas + 9;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function nulinis() {
+    inputas = inputas + 0;
+    document.getElementById('kodas').value = inputas;
+    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.pointerEvents = 'all';
+    taskeliai();
+}
+function istrinti() {
+    inputas = '';
+    document.getElementById('kodas').value = '';
+    document.getElementById('istrinimas').style.color = 'transparent';
+    document.getElementById('istrinimas').style.pointerEvents = 'none';
+    document.getElementById('taskelis1').style.backgroundColor = '#202020';
+    document.getElementById('taskelis2').style.backgroundColor = '#202020';
+    document.getElementById('taskelis3').style.backgroundColor = '#202020';
+    document.getElementById('taskelis4').style.backgroundColor = '#202020';
+    document.getElementById('taskelis5').style.backgroundColor = '#202020';
+    document.getElementById('taskelis6').style.backgroundColor = '#202020';
+}
+function taskeliai(){
+    if(inputas.length === 1)
+        {
+            document.getElementById('taskelis1').style.backgroundColor = '#F5F5DC';
+    }
+    else if(inputas.length === 2)
+        {
+            document.getElementById('taskelis2').style.backgroundColor = '#F5F5DC';
+    }
+    else if(inputas.length === 3)
+        {
+            document.getElementById('taskelis3').style.backgroundColor = '#F5F5DC';
+    }
+    else if(inputas.length === 4)
+        {
+            document.getElementById('taskelis4').style.backgroundColor = '#F5F5DC';
+    }
+    else if(inputas.length === 5)
+        {
+            document.getElementById('taskelis5').style.backgroundColor = '#F5F5DC';
+    }
+    else if(inputas.length === 6)
+        {
+            document.getElementById('taskelis6').style.backgroundColor = '#F5F5DC';
+            document.getElementById('checkBtn').click();
+    }
 }
