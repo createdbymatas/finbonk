@@ -776,15 +776,18 @@ h4{
     width: 200px;
     height: auto;
     position: fixed;
-    top: 50px;
-    right: -215px;
+    top: 36px;
+    right: 81px;
     background-color: #454545;
     border-radius: 25px;
     border: 1px solid #F5F5DC;
     padding: 15px;
     box-shadow: 0 0 15px #202020;
-    transition: 0.3s;
+    transition: 0.2s;
     z-index: 13;
+    transform: scale(0.8);
+    opacity: 0;
+    pointer-events: none;
 }
 #settings p{
     font-size: 20px;
@@ -817,15 +820,18 @@ h4{
     width: 200px;
     height: auto;
     position: fixed;
-    top: 50px;
-    right: -215px;
+    top: 36px;
+    right: 36px;
     background-color: #454545;
     border-radius: 25px;
     border: 1px solid #F5F5DC;
     padding: 15px;
     box-shadow: 0 0 15px #202020;
-    transition: 0.3s;
+    transition: 0.2s;
     z-index: 12;
+    transform: scale(0.8);
+    opacity: 0;
+    pointer-events: none;
 }
 #notifs p{
     font-size: 20px;
@@ -858,15 +864,18 @@ h4{
     width: 200px;
     height: auto;
     position: fixed;
-    top: 50px;
-    right: -215px;
+    top: 36px;
+    right: -4px;
     background-color: #454545;
     border-radius: 25px;
     border: 1px solid #F5F5DC;
     padding: 15px;
     box-shadow: 0 0 15px #202020;
-    transition: 0.3s;
+    transition: 0.2s;
     z-index: 11;
+    transform: scale(0.8);
+    opacity: 0;
+    pointer-events: none;
 }
 #otherApps p{
     font-size: 20px;
@@ -1750,6 +1759,146 @@ input::-webkit-inner-spin-button {
     overflow-y: scroll;
 }
 #operacija20{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija21{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija22{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija23{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija24{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija25{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija26{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija27{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija28{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija29{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#operacija30{
     width: 100%;
     height: 100%;
     background-color: #202020;

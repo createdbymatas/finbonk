@@ -255,52 +255,64 @@ function hideInterestRateInfo(){
 
 
 function openSettings(){
+    document.getElementById('settings').style.transform = 'scale(1)';
+    document.getElementById('settings').style.opacity = '1';
+    document.getElementById('settings').style.top = '50px';
     document.getElementById('settings').style.right = '95px';
+    document.getElementById('settings').style.pointerEvents = 'all';
     document.getElementById('account').style.display = 'none';
     document.getElementById('accountX').style.display = 'block';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeNotifications();
+    closeApps();
 }
 function closeSettings(){
-    document.getElementById('settings').style.right = '-215px';
+    document.getElementById('settings').style.transform = 'scale(0.8)';
+    document.getElementById('settings').style.opacity = '0';
+    document.getElementById('settings').style.top = '36px';
+    document.getElementById('settings').style.right = '81px';
+    document.getElementById('settings').style.pointerEvents = 'none';
     document.getElementById('account').style.display = 'block';
     document.getElementById('accountX').style.display = 'none';
 }
 
 function openNotifications(){
+    document.getElementById('notifs').style.transform = 'scale(1)';
+    document.getElementById('notifs').style.opacity = '1';
+    document.getElementById('notifs').style.top = '50px';
     document.getElementById('notifs').style.right = '50px';
+    document.getElementById('notifs').style.pointerEvents = 'all';
     document.getElementById('notifications').style.transform = 'scale(0)';
     document.getElementById('notificationsX').style.transform = 'scale(1)';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeApps();
 }
 function closeNotifications(){
-    document.getElementById('notifs').style.right = '-215px';
+    document.getElementById('notifs').style.transform = 'scale(0.8)';
+    document.getElementById('notifs').style.opacity = '0';
+    document.getElementById('notifs').style.top = '36px';
+    document.getElementById('notifs').style.right = '36px';
+    document.getElementById('notifs').style.pointerEvents = 'none';
     document.getElementById('notifications').style.transform = 'scale(1)';
     document.getElementById('notificationsX').style.transform = 'scale(0)';
 }
 
 function openApps(){
+    document.getElementById('otherApps').style.transform = 'scale(1)';
+    document.getElementById('otherApps').style.opacity = '1';
+    document.getElementById('otherApps').style.top = '50px';
     document.getElementById('otherApps').style.right = '10px';
+    document.getElementById('otherApps').style.pointerEvents = 'all';
     document.getElementById('apps').style.transform = 'scale(0)';
     document.getElementById('appsX').style.transform = 'scale(1)';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
 }
 function closeApps(){
-    document.getElementById('otherApps').style.right = '-215px';
+    document.getElementById('otherApps').style.transform = 'scale(0.8)';
+    document.getElementById('otherApps').style.opacity = '0';
+    document.getElementById('otherApps').style.top = '36px';
+    document.getElementById('otherApps').style.right = '-4px';
+    document.getElementById('otherApps').style.pointerEvents = 'none';
     document.getElementById('apps').style.transform = 'scale(1)';
     document.getElementById('appsX').style.transform = 'scale(0)';
 }
@@ -314,27 +326,15 @@ function atidarytiKorteliuSkaitytuva(){
 function openProfileIcon(){
     document.getElementById('kontaktineInformacija').style.top = '100%';
     document.getElementById('profilioPaveikslelis').style.top = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeProfileIcon(){
     document.getElementById('profilioPaveikslelis').style.top = '100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 
     document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
     document.getElementById('kiwi').style.color = '#202020';
@@ -658,27 +658,15 @@ function keistiPaveiksleli(){
 function openContactInfo(){
     document.getElementById('profilioPaveikslelis').style.top = '100%';
     document.getElementById('kontaktineInformacija').style.top = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeContactInfo(){
     document.getElementById('kontaktineInformacija').style.top = '100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function hideLoginPopup(){
     document.getElementById('loginAlert').style.top = '-100px';
@@ -689,15 +677,9 @@ function hideLoginPopup(){
 function logout(){
     document.cookie = "ieva=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
     document.getElementById('userScreen').style.display = 'flex';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
     setTimeout(() => {
         document.getElementById('userScreen').style.opacity = '1';
         document.getElementById('logoutAlert').style.top = '15px';
@@ -726,6 +708,16 @@ function logout(){
         document.getElementById('operacija18').style.right = '-100%';
         document.getElementById('operacija19').style.right = '-100%';
         document.getElementById('operacija20').style.right = '-100%';
+        document.getElementById('operacija21').style.right = '-100%';
+        document.getElementById('operacija22').style.right = '-100%';
+        document.getElementById('operacija23').style.right = '-100%';
+        document.getElementById('operacija24').style.right = '-100%';
+        document.getElementById('operacija25').style.right = '-100%';
+        document.getElementById('operacija26').style.right = '-100%';
+        document.getElementById('operacija27').style.right = '-100%';
+        document.getElementById('operacija28').style.right = '-100%';
+        document.getElementById('operacija29').style.right = '-100%';
+        document.getElementById('operacija30').style.right = '-100%';
         document.getElementById('ismoka').style.right = '-100%';
     }, 310);
     setTimeout(() => {
@@ -740,559 +732,403 @@ function hideLogoutPopup(){
 
 function openFinbonkWallet(){
     document.getElementById('finbonkWallet').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeFinbonkWallet(){
     document.getElementById('finbonkWallet').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openApyvarta(){
     document.getElementById('visaApyvarta').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeApyvarta(){
     document.getElementById('visaApyvarta').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 
 
 
 function openOperacija1(){
     document.getElementById('operacija1').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija1(){
     document.getElementById('operacija1').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija2(){
     document.getElementById('operacija2').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija2(){
     document.getElementById('operacija2').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija3(){
     document.getElementById('operacija3').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija3(){
     document.getElementById('operacija3').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija4(){
     document.getElementById('operacija4').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija4(){
     document.getElementById('operacija4').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija5(){
     document.getElementById('operacija5').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija5(){
     document.getElementById('operacija5').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija6(){
     document.getElementById('operacija6').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija6(){
     document.getElementById('operacija6').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija7(){
     document.getElementById('operacija7').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija7(){
     document.getElementById('operacija7').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija8(){
     document.getElementById('operacija8').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija8(){
     document.getElementById('operacija8').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija9(){
     document.getElementById('operacija9').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija9(){
     document.getElementById('operacija9').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija10(){
     document.getElementById('operacija10').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija10(){
     document.getElementById('operacija10').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija11(){
     document.getElementById('operacija11').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija11(){
     document.getElementById('operacija11').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija12(){
     document.getElementById('operacija12').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija12(){
     document.getElementById('operacija12').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija13(){
     document.getElementById('operacija13').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija13(){
     document.getElementById('operacija13').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija14(){
     document.getElementById('operacija14').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija14(){
     document.getElementById('operacija14').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija15(){
     document.getElementById('operacija15').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija15(){
     document.getElementById('operacija15').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija16(){
     document.getElementById('operacija16').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija16(){
     document.getElementById('operacija16').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija17(){
     document.getElementById('operacija17').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija17(){
     document.getElementById('operacija17').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija18(){
     document.getElementById('operacija18').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija18(){
     document.getElementById('operacija18').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija19(){
     document.getElementById('operacija19').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija19(){
     document.getElementById('operacija19').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function openOperacija20(){
     document.getElementById('operacija20').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeOperacija20(){
     document.getElementById('operacija20').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija21(){
+    document.getElementById('operacija21').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija21(){
+    document.getElementById('operacija21').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija22(){
+    document.getElementById('operacija22').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija22(){
+    document.getElementById('operacija22').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija23(){
+    document.getElementById('operacija23').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija23(){
+    document.getElementById('operacija23').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija24(){
+    document.getElementById('operacija24').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija24(){
+    document.getElementById('operacija24').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija25(){
+    document.getElementById('operacija25').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija25(){
+    document.getElementById('operacija25').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija26(){
+    document.getElementById('operacija26').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija26(){
+    document.getElementById('operacija26').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija27(){
+    document.getElementById('operacija27').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija27(){
+    document.getElementById('operacija27').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija28(){
+    document.getElementById('operacija28').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija28(){
+    document.getElementById('operacija28').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija29(){
+    document.getElementById('operacija29').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija29(){
+    document.getElementById('operacija29').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija30(){
+    document.getElementById('operacija30').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija30(){
+    document.getElementById('operacija30').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 
 function openIsmoka(){
     document.getElementById('ismoka').style.right = '0';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function closeIsmoka(){
     document.getElementById('ismoka').style.right = '-100%';
-    document.getElementById('settings').style.right = '-215px';
-    document.getElementById('account').style.display = 'block';
-    document.getElementById('accountX').style.display = 'none';
-    document.getElementById('notifs').style.right = '-215px';
-    document.getElementById('notifications').style.transform = 'scale(1)';
-    document.getElementById('notificationsX').style.transform = 'scale(0)';
-    document.getElementById('otherApps').style.right = '-215px';
-    document.getElementById('apps').style.transform = 'scale(1)';
-    document.getElementById('appsX').style.transform = 'scale(0)';
+    closeSettings();
+    closeNotifications();
+    closeApps();
 }
 function ismoketiSuma(){
     document.getElementById('emailRequestInput').value = 'FINBONK | Išmoka'
