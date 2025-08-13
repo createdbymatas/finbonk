@@ -188,14 +188,32 @@ setTimeout(() => {
 
 function loadFunction(){
     setTimeout(() => {
-        document.getElementById('loading').style.transition = '0.1s';
+        document.getElementById('jusuFinbonk').style.transition = '1s';
+        document.getElementById('loader').style.transition = '1s';
+        document.getElementById('ikeliama').style.transition = '1s';
+        document.getElementById('createdByMatas').style.transition = '1s';
     }, 990);
     setTimeout(() => {
-        document.getElementById('loading').style.opacity = '0';
+        document.getElementById('jusuFinbonk').style.marginTop = '-400px';
+        document.getElementById('jusuFinbonk').style.opacity = '0';
     }, 1000);
     setTimeout(() => {
+        document.getElementById('loader').style.marginTop = '0';
+        document.getElementById('loader').style.opacity = '1';
+        document.getElementById('ikeliama').style.marginTop = '120px';
+        document.getElementById('ikeliama').style.opacity = '1';
+        document.getElementById('createdByMatas').style.opacity = '1';
+    }, 1500);
+    setTimeout(() => {
+        document.getElementById('loading').style.transition = '0.1s';
+    }, 2990);
+    setTimeout(() => {
+        document.getElementById('loading').style.opacity = '0';
+    }, 3000);
+    setTimeout(() => {
         document.getElementById('loading').style.display = 'none';
-    }, 1100);
+        document.getElementById('createdByMatas').style.opacity = '0';
+    }, 3100);
 }
 
 function showFeeInfo(){
