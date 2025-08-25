@@ -167,7 +167,7 @@ setTimeout(() => {
     }
 }, 2);
 setTimeout(() => {
-    if (document.getElementById('currentBalance').innerHTML === '0,00'){
+    if (currentBalanceDot <= '0.00'){
         document.getElementById('finbonkIsmoketi').style.display = 'none';
     }
     else {

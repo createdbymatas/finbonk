@@ -23,15 +23,15 @@
     <!-- VALIUTA: € -->
     <div id="hidden">
         <!-- Balansas: -->
-        <p id="currentBalance">0,00</p>
+        <p id="currentBalance">-0,95</p>
         <!-- Skolos: -->
-        <p id="currentDebt">0,92</p>
+        <p id="currentDebt">0,95</p>
         <p id="returnUntil">2025-08-24 23:59</p>
-        <p id="interestRate">0,00</p>
+        <p id="interestRate">0,03</p>
         <!-- Apyvarta: -->
-        <p id="fullOperations">108,52</p><!-- NEPAMIRŠTI PAKEISTI APYVARTOS IŠLAIDŲ KATEGORIJŲ !! -->
+        <p id="fullOperations">108,55</p><!-- NEPAMIRŠTI PAKEISTI APYVARTOS IŠLAIDŲ KATEGORIJŲ !! -->
         <p id="received">53,80</p>
-        <p id="spent">54,72</p>
+        <p id="spent">54,75</p>
         <p id="currentMonth">2025 rugpjūtis</p>
         <p id="receivedBar"></p>
         <p id="spentBar"></p>
@@ -299,11 +299,11 @@
                 <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP">XX,XX  €</p>
             </div> -->
-            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija22()">
-                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
-                <p class="boldP">XX,XX  €</p>
-            </div> -->
-            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija21()">
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija22()">
+                <p>2025-08-25 <b>FINBONK</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,03  €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija21()">
                 <p>2025-08-19 <b>JUDU (Vilniaus viešasis transportas)</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP islaidos">-0,92  €</p>
             </div>
@@ -419,12 +419,12 @@
                 <p class="boldP">52,42 €</p>
             </div>
             <div class="kategorija">
-                <p><i class="fa-solid fa-piggy-bank"></i> Mokesčiai</p>
-                <p class="boldP">1,38 €</p>
-            </div>
-            <div class="kategorija" style="border-radius: 5px 5px 25px 25px;">
                 <p><i class="fa-solid fa-train-subway"></i> Viešasis transportas</p>
                 <p class="boldP">0,92 €</p>
+            </div>
+            <div class="kategorija" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Mokesčiai</p>
+                <p class="boldP">1,41 €</p>
             </div>
             <!-- <div class="kategorija" style="border-radius: 5px 5px 25px 25px;">
                 <p><i class="fa-solid fa-hashtag"></i> Socialiniai tinklai</p>
@@ -1033,29 +1033,25 @@
         <h2 ontouchstart onclick="closeOperacija22()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
         <div class="operacijosDuomenys operacijosData">
             <h3>Data</h3>
-            <p>20XX-XX-XX, XXXXX</p>
+            <p>2025-08-25, pirmadienis</p>
         </div>
         <div class="operacijosDuomenys">
-            <h3>Gavėjas/Mokėtojas</h3>
-            <p>XXXXX</p>
+            <h3>Gavėjas</h3>
+            <p>FINBONK</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
-            <p>XXXXX</p>
+            <p>Palūkanos už negrąžintą 2025-08-19 skolą „JUDU (Vilniaus viešasis transportas)“</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Suma</h3>
-            <p class="boldP">XX,XX €</p>
+            <p class="boldP islaidos">-0,03 €</p>
         </div>
         <div class="isklotine">
             <h3>Išklotinė</h3>
-            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+            <div class="isklotinesDalis" style="border-radius: 25px;">
                 <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
-                <p class="boldP">XX,XX €</p>
-            </div>
-            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
-                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
-                <p class="boldP">XX,XX €</p>
+                <p class="boldP">0,03 €</p>
             </div>
         </div>
     </div>
