@@ -1460,6 +1460,7 @@ input::-webkit-inner-spin-button {
 .operacijosDuomenys p{
     font-size: 20px;
     text-align: right;
+    cursor: default;
 }
 .operacijosData{
     margin-top: 10px;
