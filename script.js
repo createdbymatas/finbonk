@@ -1,5 +1,5 @@
 // išjungti right-click
-// document.addEventListener('contextmenu', (e) => e.preventDefault());
+document.addEventListener('contextmenu', (e) => e.preventDefault());
 
 // išjungti f12, ctrl+shift+i, ctrl+shift+j, ctrl+u (inspect tool)
 function ctrlShiftKey(e, keyCode) {
