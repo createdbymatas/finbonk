@@ -1,0 +1,3249 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    <title>ETO+</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body id="body" onload="loadFunction()">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rubik', sans-serif;
+            transition: 0.3s;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body{
+            background-color: rgba(251,251,253,255);
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 67px;
+            height: 40px;
+        }
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: lightgrey;
+            -webkit-transition: 0.3s;
+            transition: 0.3s;
+        }
+        .slider:hover{
+            box-shadow: 0 0 5px darkgrey;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 32px;
+            width: 32px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: 0.3s;
+            transition: 0.3s;
+        }
+        input:checked + .slider {
+            background-color: #9EBDFF;
+        }
+        input:focus + .slider {
+            box-shadow: 0 0 1px #9EBDFF;
+        }
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        #armScreen{
+            width: 100%;
+            height: 220px;
+            box-shadow: 0 0 2px #9EBDFF;
+            position: relative;
+            border: 1px solid white;
+            background-color: white;
+            border-radius: 0 0 25px 25px;
+            overflow: hidden;
+        }
+        #statusBar{
+            width: 0;
+            height: 4px;
+            background-color: white;
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            margin-top: 15px;
+            margin-left: 0;
+            opacity: 0;
+            border-radius: 25px;
+        }
+        #devices{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 20px;
+            background-color: white;
+        }
+        #status{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #plans{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #black{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0;
+            display: none;
+            z-index: 2;
+        }
+        #sirenMenu{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -500px;
+            background-color: white;
+            border-radius: 25px 25px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 15px;
+            z-index: 5;
+        }
+        #enableSirenBtn{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-top: 15px;
+            background-color: white;
+        }
+        #enableSirenAndHelpBtn{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #cancelSirenBtn{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-top: 10px;
+            background-color: white;
+        }
+        @keyframes blink {
+            0%{
+                opacity: 1;
+            }
+            50%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        @keyframes move {
+            0%{
+                width: 0;
+                margin-left: 0;
+            }
+            50%{
+                width: 100%;
+                margin-left: 0;
+            }
+            100%{
+                width: 0;
+                margin-left: 100%;
+            }
+        }
+        #black2{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0;
+            display: none;
+            z-index: 2;
+        }
+        #menu{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -500px;
+            background-color: white;
+            border-radius: 25px 25px 0 0;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            z-index: 5;
+        }
+        #dashboard{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 15px;
+            background-color: #9EBDFF;
+        }
+        #add{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #test{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #settings{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #helpSupport{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #devicesList{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 105%;
+            bottom: 0;
+            background-color: white;
+            z-index: 4;
+            box-shadow: 0 0 5px darkgrey;
+        }
+        #searchAdd{
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-content: left;
+            align-items: flex-end;
+            font-size: 17px;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            padding-left: 10px;
+        }
+        @keyframes dot1Add{
+            0%{
+                width: 15px;
+                height: 15px;
+            }
+            50%{
+                width: 10px;
+                height: 10px;
+            }
+            100%{
+                width: 15px;
+                height: 15px;
+            }
+        }
+        @keyframes dot2Add{
+            0%{
+                width: 22px;
+                height: 22px;
+            }
+            50%{
+                width: 28px;
+                height: 28px;
+            }
+            100%{
+                width: 22px;
+                height: 22px;
+            }
+        }
+        @keyframes dotsOther{
+            0%{
+                width: 30px;
+                height: 30px;
+                opacity: 1;
+            }
+            50%{
+                width: 150px;
+                height: 150px;
+                opacity: 0;
+            }
+            100%{
+                width: 150px;
+                height: 150px;
+                opacity: 0;
+            }
+        }
+        #black3{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0;
+            display: none;
+            z-index: 6;
+        }
+        #helpMenu{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -300px;
+            background-color: white;
+            border-radius: 25px 25px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 10px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            z-index: 7;
+        }
+        #black4{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0;
+            display: none;
+            z-index: 4;
+        }
+        #testMode{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -400px;
+            background-color: white;
+            border-radius: 25px 25px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 10px;
+            padding-top: 20px;
+            padding-bottom: 15px;
+            z-index: 5;
+        }
+        #black5{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0;
+            display: none;
+            z-index: 4;
+        }
+        #settingsDiv{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -300px;
+            background-color: white;
+            border-radius: 25px 25px 0 0;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            z-index: 5;
+        }
+        #address{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #pin{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #black6{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0;
+            display: none;
+            z-index: 4;
+        }
+        #pinDiv{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -300px;
+            background-color: white;
+            border-radius: 25px 25px 0 0;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            z-index: 5;
+        }
+        #black7{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0;
+            display: none;
+            z-index: 4;
+        }
+        #addressDiv{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -300px;
+            background-color: white;
+            border-radius: 25px 25px 0 0;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            z-index: 5;
+        }
+        #black8{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0;
+            display: none;
+            z-index: 4;
+        }
+        #helpSupportDiv{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -300px;
+            background-color: white;
+            border-radius: 25px 25px 0 0;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            z-index: 5;
+        }
+        #black9{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0;
+            display: none;
+            z-index: 4;
+        }
+        #devicesAll{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -400px;
+            background-color: white;
+            border-radius: 25px 25px 0 0;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            z-index: 5;
+        }
+        #device1{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #device2{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #device3{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 5%;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #black10{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0;
+            display: none;
+            z-index: 4;
+        }
+        #statusMenu{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -300px;
+            background-color: white;
+            border-radius: 25px 25px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 15px;
+            z-index: 5;
+        }
+        #refreshStatusBtn{
+            width: 90%;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid #9EBDFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-top: 15px;
+            background-color: white;
+        }
+        #black11{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0;
+            display: none;
+            z-index: 4;
+        }
+        #plansMenu{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -300px;
+            background-color: white;
+            border-radius: 25px 25px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 15px;
+            z-index: 5;
+        }
+    </style>
+    <audio src="siren.mp3" id="siren"></audio>
+    <audio src="panicSound.mp3" id="panicSound"></audio>
+    <audio src="iseiti.mp3" id="iseiti"></audio>
+    <audio src="countdown.mp3" id="countdown"></audio>
+    <audio src="apsaugaOn.mp3" id="apsaugaOn"></audio>
+    <audio src="ieiti.mp3" id="ieiti"></audio>
+    <audio src="apsaugaOff.mp3" id="apsaugaOff"></audio>
+    <audio src="ding.mp3" id="ding"></audio>
+    <audio src="smoke.mp3" id="smoke"></audio>
+    <audio src="mazeja.mp3" id="mazeja"></audio>
+    <audio src="call.mp3" id="call"></audio>
+
+
+
+    <div id="armScreen">
+        <i class="fa-solid fa-bars" style="position: absolute; top: 15px; left: 15px; color: #9EBDFF; font-size: 30px; z-index: 1;" onclick="menuOpen()" id="menuBtn"></i>
+        <p style="width: 100%; height: 20px; position: absolute; left: 0; top: 19px; right: 0; text-align: center; font-size: 17px;" id="vilniusPilaite">Vilnius, Pilaite</p>
+        <i class="fa-solid fa-video-slash" style="width: 100%; height: 20px; position: absolute; left: 0; top: 19px; right: 0; text-align: center; font-size: 17px; color: red; margin-left: 70px; padding-top: 2.2px; opacity: 0;" id="testOn"></i>
+        <i class="fa-solid fa-circle-exclamation" style="position: absolute; top: 15px; right: 15px; color: red; font-size: 30px; z-index: 1;" onclick="sirenMenu()" id="sirenBtn"></i>
+        <i class="fa-solid fa-house-circle-exclamation" style="position: absolute; top: 15px; right: 15px; color: red; font-size: 30px; z-index: -1; transform: scale(0);" id="homeSirenBtn"></i>
+
+        <div style="width: 100%; height: 135px; display: flex; justify-content: center; align-items: center; margin-top: 65px;">
+            <div style="width: 135px; height: 135px; border: 2px solid #9EBDFF; display: flex; justify-content: center; align-items: center; flex-direction: column; border-radius: 25px; background-color: white; overflow: hidden; margin-right: 5%;" id="disarmedButton">
+                <i class="fa-solid fa-unlock" style="width: 75px; height: 75px; color: white; display: flex; justify-content: center; align-items: center; border-radius: 100%; font-size: 40px; background-color: #9EBDFF; border: 2px solid #9EBDFF;" id="disarmedI"></i>
+                <p style="color: #9EBDFF; margin-top: 10px;" id="disarmedP">Disarmed | <b style="font-weight: 500; transition: 0.001s;">Stay</b></p>
+            </div>
+            <div style="width: 135px; height: 135px; border: 2px solid darkgrey; display: flex; justify-content: center; align-items: center; flex-direction: column; border-radius: 25px; background-color: white; overflow: hidden; margin-left: 5%;" onclick="armSystem()" id="armedButton">
+                <i class="fa-solid fa-shield-halved" style="width: 75px; height: 75px; color: darkgrey; border: 2px solid darkgrey; display: flex; justify-content: center; align-items: center; border-radius: 100%; font-size: 40px; background-color: white;" id="armedI"></i>
+                <p style="color: darkgrey; margin-top: 10px;" id="armedP">Armed | <b style="font-weight: 400; transition: 0.001s;" id="awayB">Away</b></p>
+            </div>
+        </div>
+        <p style="position: absolute; right: 6%; bottom: 72px; opacity: 0; z-index: -1;" id="timeRemaining"><span id="30s">30 seconds</span><span id="29s" style="display: none;">29 seconds</span><span id="28s" style="display: none;">28 seconds</span><span id="27s" style="display: none;">27 seconds</span><span id="26s" style="display: none;">26 seconds</span><span id="25s" style="display: none;">25 seconds</span><span id="24s" style="display: none;">24 seconds</span><span id="23s" style="display: none;">23 seconds</span><span id="22s" style="display: none;">22 seconds</span><span id="21s" style="display: none;">21 seconds</span><span id="20s" style="display: none;">20 seconds</span><span id="19s" style="display: none;">19 seconds</span><span id="18s" style="display: none;">18 seconds</span><span id="17s" style="display: none;">17 seconds</span><span id="16s" style="display: none;">16 seconds</span><span id="15s" style="display: none;">15 seconds</span><span id="14s" style="display: none;">14 seconds</span><span id="13s" style="display: none;">13 seconds</span><span id="12s" style="display: none;">12 seconds</span><span id="11s" style="display: none;">11 seconds</span><span id="10s" style="display: none;">10 seconds</span><span id="9s" style="display: none;">9 seconds</span><span id="8s" style="display: none;">8 seconds</span><span id="7s" style="display: none;">7 seconds</span><span id="6s" style="display: none;">6 seconds</span><span id="5s" style="display: none;">5 seconds</span><span id="4s" style="display: none;">4 seconds</span><span id="3s" style="display: none;">3 seconds</span><span id="2s" style="display: none;">2 seconds</span><span id="1s" style="display: none;">1 seconds</span> remaining</p>
+        <div id="statusBar"></div>
+    </div>
+    <div id="devices" onclick="devicesWindowOpen()">
+        <i class="fa-solid fa-hard-drive" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+        <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Devices</p>
+        <p style="width: 50%; height: 100%; color: green; display: flex; justify-content: right; align-items: center; position: absolute; top: 0; bottom: 0; right: 40px;" id="devicesOk">OK</p>
+        <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: darkgrey;" id="chevronDevices"></i>
+    </div>
+    <div id="status" onclick="statusOpen()">
+        <i class="fa-solid fa-satellite-dish" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+        <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Status</p>
+        <p style="width: 50%; height: 100%; color: green; display: flex; justify-content: right; align-items: center; position: absolute; top: 0; bottom: 0; right: 40px;" id="statusConnected">Connected</p>
+        <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: darkgrey;" id="chevronStatus"></i>
+    </div>
+    <div id="plans" onclick="plansOpen()">
+        <i class="fa-solid fa-receipt" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+        <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Plans</p>
+        <p style="width: 50%; height: 100%; color: green; display: flex; justify-content: right; align-items: center; position: absolute; top: 0; bottom: 0; right: 40px;" id="plansActive">Active</p>
+        <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: darkgrey;" id="chevronPlans"></i>
+    </div>
+
+    <div id="black" onclick="closeSiren()"></div>
+    <div id="sirenMenu">
+        <i class="fa-solid fa-circle-exclamation" style="color: red; font-size: 70px;"></i>
+        <p style="font-size: 22px; margin-top: 15px;">Siren</p>
+        <p style="color: darkgrey; font-size: 17px; margin-top: 15px; margin-left: 10px; margin-right: 10px;">The Siren will sound for 30 seconds, and it can't be stopped while playing.</p>
+        <div id="enableSirenBtn" onclick="enableSiren()">
+            <i class="fa-solid fa-land-mine-on" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Enable</p>
+            <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: darkgrey;" id="chevronPlans"></i>
+        </div>
+        <div id="enableSirenAndHelpBtn" onclick="enableSirenAndHelp()">
+            <i class="fa-solid fa-tower-cell" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Enable & Notify</p>
+            <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: darkgrey;" id="chevronPlans"></i>
+        </div>
+    </div>
+    <div style="width: 100%; height: 55px; padding-top: 5px; background-color: white; border-radius: 0 0 25px 25px; box-shadow: 0 0 5px #9EBDFF; display: flex; justify-content: left; align-items: center; position: fixed; top: -60px; left: 0; right: 0; z-index: 2;" id="notifying">
+        <i class="fa-solid fa-satellite-dish" style="width: 37px; height: 37px; border-radius: 100%; color: #9EBDFF; background-color: white; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 11.5px; left: 7px; bottom: 5px;"></i>
+        <p style="margin-left: 50px;">Notifying Emergency services...</p>
+    </div>
+    <div style="width: 100%; height: 55px; padding-top: 5px; background-color: white; border-radius: 0 0 25px 25px; box-shadow: 0 0 5px #9EBDFF; display: flex; justify-content: left; align-items: center; position: fixed; top: -60px; left: 0; right: 0; z-index: 2;" id="notified">
+        <i class="fa-solid fa-check" style="width: 37px; height: 37px; border-radius: 100%; color: #9EBDFF; background-color: white; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 11.5px; left: 7px; bottom: 5px;"></i>
+        <p style="margin-left: 50px;">Notified Emergency services</p>
+    </div>
+    <div style="width: 100%; height: 55px; padding-top: 5px; background-color: white; border-radius: 0 0 25px 25px; box-shadow: 0 0 5px #9EBDFF; display: flex; justify-content: left; align-items: center; position: fixed; top: -60px; left: 0; right: 0; z-index: 2;" id="systemInArmed">
+        <i class="fa-solid fa-shield-halved" style="width: 37px; height: 37px; border-radius: 100%; color: #9EBDFF; background-color: white; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 11.5px; left: 7px; bottom: 5px;"></i>
+        <p style="margin-left: 50px;">System in Armed | <b style="font-weight: 500;">Away</b></p>
+    </div>
+
+    <div id="black2" onclick="closeMenu()"></div>
+    <div id="menu">
+        <h1 style="font-weight: 400; text-align: left; margin-left: 20px;">Menu</h1>
+        <div id="dashboard" onclick="dashboard()">
+            <i class="fa-solid fa-house-signal" style="width: 37px; height: 37px; border-radius: 100%; color: #9EBDFF; background-color: white; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px; color: white;">Dashboard</p>
+            <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: white;"></i>
+        </div>
+        <div id="add" onclick="addDevice()">
+            <i class="fa-solid fa-plus" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Add a device</p>
+            <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: darkgrey;"></i>
+        </div>
+        <div id="test" onclick="testOpen()">
+            <i class="fa-solid fa-shield" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Test mode</p>
+            <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: darkgrey;"></i>
+        </div>
+        <div id="settings" onclick="settingsOpen()">
+            <i class="fa-solid fa-gear" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Settings</p>
+            <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: darkgrey;"></i>
+        </div>
+        <div id="helpSupport" onclick="openHelpSupport()">
+            <i class="fa-solid fa-question" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Help</p>
+            <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: darkgrey;"></i>
+        </div>
+    </div>
+
+    <div id="devicesList">
+        <div style="width: 100%; height: 70px; font-size: 20px; display: flex; justify-content: space-between; align-items: center;">
+            <i class="fa-solid fa-chevron-left" style="font-size: 25px; margin-left: 15px;" id="closeAdd" onclick="addClose()"></i>
+            <p>Add a device</p>
+            <p style="opacity: 0; margin-left: 15px;">?</p>
+        </div>
+        <div id="searchAdd"><div style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; position: absolute; top: 0;"><div style="position: absolute; width: 15px; height: 15px; background-color: #9EBDFF; border-radius: 100%; animation: dot1Add 1.4s ease-in-out infinite;"></div><div style="position: absolute; box-shadow: 0 0 5px #9EBDFF; width: 15px; height: 15px; background-color: #9EBDFF; border-radius: 100%; opacity: 0.15; animation: dot2Add 1.4s ease-in-out infinite;"></div></div><p style="height: 100%; display: flex; justify-content: left; align-items: center; margin-left: 45px;">Discovering nearby devices...</p></div>
+        <div style="width: 100px; height: 200px; border-radius: 20px; border: 5px solid black; margin: 0 auto; margin-top: 130px; background-color: white; display: flex; justify-content: center; align-items: center;"><div style="width: 3px; height: 30px; background-color: slategrey; border-radius: 0 25px 25px 0; position: absolute; margin-left: 102px; margin-top: -100px;"></div><div style="width: 3px; height: 15px; background-color: slategrey; border-radius: 0 25px 25px 0; position: absolute; margin-left: 102px; margin-top: -35px;"></div><div style="position: absolute; width: 30px; height: 30px; background-color: #9EBDFF; border-radius: 100%; animation: dotsOther 2s ease-out infinite; opacity: 0; margin-top: -160px; z-index: -1;"></div><div style="position: absolute; width: 30px; height: 30px; background-color: #9EBDFF; border-radius: 100%; animation: dotsOther 2s ease-out infinite; animation-delay: 0.2s; opacity: 0; margin-top: -160px; z-index: -1;"></div><div style="position: absolute; width: 30px; height: 30px; background-color: #9EBDFF; border-radius: 100%; animation: dotsOther 2s ease-out infinite; animation-delay: 0.4s; opacity: 0; margin-top: -160px; z-index: -1;"></div><div style="position: absolute; width: 30px; height: 30px; background-color: #9EBDFF; border-radius: 100%; animation: dotsOther 2s ease-out infinite; animation-delay: 0.6s; opacity: 0; margin-top: -160px; z-index: -1;"></div></div>
+        <p style="text-align: center; font-size: 14px; margin-top: 25px;">Hold phone close to device to discover it</p>
+        <p style="text-align: center; font-size: 14px; margin-top: 30px; text-decoration: underline;" id="cantFind" onclick="cantFindDevice()">Can't find device?</p>
+    </div>
+    <div id="black3" onclick="closeHelp()"></div>
+    <div id="helpMenu">
+        <i class="fa-regular fa-question-circle" style="color: #9EBDFF; font-size: 70px;"></i>
+        <p style="font-size: 22px; margin-top: 15px;">Device help</p>
+        <p style="color: darkgrey; font-size: 17px; margin-top: 15px;">Check if the device is powered on and reset. If the problem continues, contact support.</p>
+    </div>
+
+    <div id="black4" onclick="closeTestMode()"></div>
+    <div id="testMode">
+        <i class="fa-solid fa-shield" style="color: #9EBDFF; font-size: 70px;"></i>
+        <p style="font-size: 22px; margin-top: 15px;">Test mode</p>
+        <div style="width: 100%; height: 50px; display: flex; justify-content: right; align-items: center; padding-right: 15px; margin-top: 15px;"><p style="margin-right: 15px;" id="disabledTest">Disabled</p><p style="margin-right: 15px; display: none;" id="enabledTest">Enabled</p><label class="switch"><input type="checkbox" id="myCheck" onclick="myFunction()" required><span class="slider round"></span></label></div>
+        <p style="color: darkgrey; font-size: 17px; margin-top: 15px;">If turned on, system won't send you notifications in case of alarm event. Test mode only gets enabled until first disarming.</p>
+    </div>
+
+    <div id="black5" onclick="closeSettings()"></div>
+    <div id="settingsDiv">
+        <h1 style="font-weight: 400; text-align: left; margin-left: 20px;">Settings</h1>
+        <div id="address" onclick="openAddress()">
+            <i class="fa-solid fa-location-dot" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Change address</p>
+            <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: darkgrey;"></i>
+        </div>
+        <div id="pin" onclick="viewPin()">
+            <i class="fa-solid fa-keyboard" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">View PIN</p>
+            <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: darkgrey;"></i>
+        </div>
+    </div>
+
+    <div id="black6" onclick="closePin()"></div>
+    <div id="pinDiv">
+        <i class="fa-solid fa-keyboard" style="color: #9EBDFF; font-size: 70px;"></i>
+        <p style="font-size: 22px; margin-top: 15px;">PIN</p>
+        <p style="color: darkgrey; font-size: 17px; margin-top: 15px;">Your PIN is 9384.</p>
+    </div>
+    <div id="black7" onclick="closeAddress()"></div>
+    <div id="addressDiv">
+        <i class="fa-solid fa-location-dot" style="color: #9EBDFF; font-size: 70px;"></i>
+        <p style="font-size: 22px; margin-top: 15px;">Change address</p>
+        <p style="color: darkgrey; font-size: 17px; margin-top: 15px;">To change adress, contact support.</p>
+    </div>
+
+    <div id="black8" onclick="closeHelpSupport()"></div>
+    <div id="helpSupportDiv">
+        <i class="fa-regular fa-question-circle" style="color: #9EBDFF; font-size: 70px;"></i>
+        <p style="font-size: 22px; margin-top: 15px;">Help</p>
+        <p style="color: darkgrey; font-size: 17px; margin-top: 15px;">For help, contact support.</p>
+    </div>
+
+    <div id="black9" onclick="closeDevicesAll()"></div>
+    <div id="devicesAll">
+        <h1 style="font-weight: 400; text-align: left; margin-left: 20px;">Devices | <span style="color: green; font-weight: 500;">OK</span></h1>
+        <div id="device1">
+            <i class="fa-solid fa-door-open" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Durys</p>
+            <p style="width: 50%; height: 100%; color: green; display: flex; justify-content: right; align-items: center; position: absolute; top: 0; bottom: 0; right: 20px;"><i class="fa-solid fa-wifi" style="margin-right: 5px;"></i>Online</p>
+        </div>
+        <div id="device2">
+            <i class="fa-solid fa-house-chimney-window" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Kambarys</p>
+            <p style="width: 50%; height: 100%; color: green; display: flex; justify-content: right; align-items: center; position: absolute; top: 0; bottom: 0; right: 20px;"><i class="fa-solid fa-wifi" style="margin-right: 5px;"></i>Online</p>
+        </div>
+        <div id="device3">
+            <i class="fa-solid fa-warehouse" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;">Namai</p>
+            <p style="width: 50%; height: 100%; color: green; display: flex; justify-content: right; align-items: center; position: absolute; top: 0; bottom: 0; right: 20px;"><i class="fa-solid fa-wifi" style="margin-right: 5px;"></i>Online</p>
+        </div>
+    </div>
+
+    <div id="black10" onclick="closeStatus()"></div>
+    <div id="statusMenu">
+        <i class="fa-solid fa-satellite-dish" style="color: #9EBDFF; font-size: 70px;" id="satellite"></i>
+        <p style="font-size: 22px; margin-top: 15px;">Status | <span style="color: green; font-weight: 500;" id="connectedSpan">Connected</span><span style="display: none; opacity: 0;" id="refreshingSpan">Refreshing</span></p>
+        <div id="refreshStatusBtn" onclick="refreshStatus()">
+            <i class="fa-solid fa-arrow-rotate-right" style="width: 37px; height: 37px; border-radius: 100%; color: white; background-color: #9EBDFF; display: flex; justify-content: center; align-items: center; font-size: 20px; position: absolute; top: 4.5px; left: 5px; bottom: 5px;"></i>
+            <p style="width: 50%; height: 100%; display: flex; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;" id="refreshP">Refresh</p>
+            <p style="width: 50%; height: 100%; display: none; justify-content: left; align-items: center; position: absolute; top: 0; bottom: 0; left: 52px;" id="refreshingP">Refreshing...</p>
+            <i class="fa-solid fa-chevron-right" style="position: absolute; width: 50px; height: 100%; border-radius: 100%; display: flex; justify-content: right; align-items: center; top: 0; right: 20px; bottom: 0; font-size: 15px; color: darkgrey;" id="chevronPlans"></i>
+        </div>
+    </div>
+
+    <div id="black11" onclick="closePlans()"></div>
+    <div id="plansMenu">
+        <i class="fa-solid fa-receipt" style="color: #9EBDFF; font-size: 70px;"></i>
+        <p style="font-size: 22px; margin-top: 15px;">Plans | <span style="color: #9EBDFF;">ETO+</span> <span style="color: green; font-weight: 500;">Active</span></p>
+        <p style="color: darkgrey; font-size: 17px; margin-top: 15px;">Next payment in 3 days.</p>
+    </div>
+
+
+
+    <div style="width: 100%; height: 30px; position: fixed; left: 0; right: 0; bottom: 30px; display: flex; justify-content: center; align-items: center;">
+        <i class="fa-solid fa-power-off" style="width: 30px; height: 30px; background-color: white; border-radius: 100%; display: flex; justify-content: center; align-items: center; font-size: 15px; position: absolute; right: 30px; opacity: 0; pointer-events: none;" id="power"></i>
+    </div>
+    <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
+    <script>
+         function armSystem() {
+            document.getElementById("armedButton").style.transform = "scale(0.9)";
+            document.getElementById("armedButton").style.pointerEvents = "none";
+            document.getElementById("disarmedButton").style.pointerEvents = "none";
+            document.getElementById("menuBtn").style.pointerEvents = "none";
+            document.getElementById("sirenBtn").style.pointerEvents = "none";
+            document.getElementById("devices").style.pointerEvents = "none";
+            document.getElementById("status").style.pointerEvents = "none";
+            document.getElementById("plans").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("armedButton").style.transform = "scale(1)";
+                document.getElementById("disarmedButton").style.opacity = "0";
+                document.getElementById("menuBtn").style.transform = "scale(0)";
+                document.getElementById("sirenBtn").style.transform = "scale(0)";
+                document.getElementById("chevronDevices").style.opacity = "0";
+                document.getElementById("devicesOk").style.right = "20px";
+                document.getElementById("chevronStatus").style.opacity = "0";
+                document.getElementById("statusConnected").style.right = "20px";
+                document.getElementById("chevronPlans").style.opacity = "0";
+                document.getElementById("plansActive").style.right = "20px";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("disarmedButton").style.width = "0";
+                document.getElementById("disarmedButton").style.border = "none";
+                document.getElementById("disarmedButton").style.opacity = "0";
+                document.getElementById("disarmedButton").style.marginRight = "0";
+                document.getElementById("armedButton").style.marginLeft = "-50%";
+                document.getElementById("timeRemaining").style.zIndex = "0";
+            }, 300); 
+            setTimeout(() => {
+                document.getElementById("iseiti").play();
+            }, 500);   
+        }
+        var audioIseiti = document.getElementById("iseiti");
+        audioIseiti.onended = function() {
+            document.getElementById("statusBar").style.opacity = "1";
+            document.getElementById("statusBar").style.backgroundColor = "red";
+            document.getElementById("armedButton").style.borderColor = "red";
+            document.getElementById("armedButton").style.animation = "blink 2s ease-in-out infinite";
+            document.getElementById("armedI").style.borderColor = "red";
+            document.getElementById("armedI").style.color = "red";
+            document.getElementById("armedP").style.color = "red";
+            setTimeout(() => {
+                document.getElementById("countdown").play();
+                document.getElementById("statusBar").style.width = "3.333%";
+                document.getElementById("timeRemaining").style.opacity = "1";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "6.666%";
+                document.getElementById("30s").style.display = "none";
+                document.getElementById("29s").style.display = "inline";
+            }, 1500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "10%";
+                document.getElementById("29s").style.display = "none";
+                document.getElementById("28s").style.display = "inline";
+            }, 2500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "13.333%";
+                document.getElementById("28s").style.display = "none";
+                document.getElementById("27s").style.display = "inline";
+            }, 3500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "16.666%";
+                document.getElementById("27s").style.display = "none";
+                document.getElementById("26s").style.display = "inline";
+            }, 4500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "20%";
+                document.getElementById("26s").style.display = "none";
+                document.getElementById("25s").style.display = "inline";
+            }, 5500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "23.333%";
+                document.getElementById("25s").style.display = "none";
+                document.getElementById("24s").style.display = "inline";
+            }, 6500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "26.666%";
+                document.getElementById("24s").style.display = "none";
+                document.getElementById("23s").style.display = "inline";
+            }, 7500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "30%";
+                document.getElementById("23s").style.display = "none";
+                document.getElementById("22s").style.display = "inline";
+            }, 8500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "33.333%";
+                document.getElementById("22s").style.display = "none";
+                document.getElementById("21s").style.display = "inline";
+            }, 9500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "36.666%";
+                document.getElementById("21s").style.display = "none";
+                document.getElementById("20s").style.display = "inline";
+            }, 10500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "40%";
+                document.getElementById("20s").style.display = "none";
+                document.getElementById("19s").style.display = "inline";
+            }, 11500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "43.333%";
+                document.getElementById("19s").style.display = "none";
+                document.getElementById("18s").style.display = "inline";
+            }, 12500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "46.666%";
+                document.getElementById("18s").style.display = "none";
+                document.getElementById("17s").style.display = "inline";
+            }, 13500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "50%";
+                document.getElementById("17s").style.display = "none";
+                document.getElementById("16s").style.display = "inline";
+            }, 14500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "53.333%";
+                document.getElementById("16s").style.display = "none";
+                document.getElementById("15s").style.display = "inline";
+            }, 15500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "56.666%";
+                document.getElementById("15s").style.display = "none";
+                document.getElementById("14s").style.display = "inline";
+            }, 16500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "60%";
+                document.getElementById("14s").style.display = "none";
+                document.getElementById("13s").style.display = "inline";
+            }, 17500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "63.333%";
+                document.getElementById("13s").style.display = "none";
+                document.getElementById("12s").style.display = "inline";
+            }, 18500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "66.666%";
+                document.getElementById("12s").style.display = "none";
+                document.getElementById("11s").style.display = "inline";
+            }, 19500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "70%";
+                document.getElementById("11s").style.display = "none";
+                document.getElementById("10s").style.display = "inline";
+            }, 20500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "73.333%";
+                document.getElementById("10s").style.display = "none";
+                document.getElementById("9s").style.display = "inline";
+            }, 21500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "76.666%";
+                document.getElementById("9s").style.display = "none";
+                document.getElementById("8s").style.display = "inline";
+            }, 22500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "80%";
+                document.getElementById("8s").style.display = "none";
+                document.getElementById("7s").style.display = "inline";
+            }, 23500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "83.333%";
+                document.getElementById("7s").style.display = "none";
+                document.getElementById("6s").style.display = "inline";
+            }, 24500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "86.666%";
+                document.getElementById("6s").style.display = "none";
+                document.getElementById("5s").style.display = "inline";
+            }, 25500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "90%";
+                document.getElementById("5s").style.display = "none";
+                document.getElementById("4s").style.display = "inline";
+            }, 26500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "93.333%";
+                document.getElementById("4s").style.display = "none";
+                document.getElementById("3s").style.display = "inline";
+            }, 27500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "96.666%";
+                document.getElementById("3s").style.display = "none";
+                document.getElementById("2s").style.display = "inline";
+            }, 28500);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.width = "100%";
+                document.getElementById("2s").style.display = "none";
+                document.getElementById("1s").style.display = "inline";
+            }, 29500);
+            setTimeout(() => {
+                document.getElementById("timeRemaining").style.opacity = "0";
+                document.getElementById("armedButton").style.animation = "none";
+            }, 30000);
+        };
+        var audioCountdown = document.getElementById("countdown");
+        audioCountdown.onended = function() {
+            document.getElementById("statusBar").style.opacity = "0";
+            document.getElementById("statusBar").style.backgroundColor = "white";
+            document.getElementById("armedButton").style.borderColor = "#9EBDFF";
+            document.getElementById("armedI").style.borderColor = "#9EBDFF";
+            document.getElementById("armedI").style.backgroundColor = "#9EBDFF";
+            document.getElementById("armedI").style.color = "white";
+            document.getElementById("armedP").style.color = "#9EBDFF";
+            document.getElementById("apsaugaOn").play();
+            document.getElementById("armedButton").style.marginLeft = "0";
+            document.getElementById("systemInArmed").style.top = "-1px";
+            document.getElementById("awayB").style.fontWeight = "500";
+            setTimeout(() => {
+                document.getElementById("power").style.opacity = "1";
+                document.getElementById("power").style.pointerEvents = "all";
+            }, 5000);
+            setTimeout(() => {
+                document.getElementById("systemInArmed").style.top = "-60px";
+            }, 4000);
+        };
+        function myFunction() {
+    // Get the checkbox
+    var checkBox = document.getElementById("myCheck");
+  
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true){
+        document.getElementById("testOn").style.opacity = "1";
+        setTimeout(() => {
+            document.getElementById("enabledTest").style.display = "block";
+            document.getElementById("disabledTest").style.display = "none";
+        }, 100);
+    } else {
+        document.getElementById("testOn").style.opacity = "0";
+        setTimeout(() => {
+            document.getElementById("enabledTest").style.display = "none";
+            document.getElementById("disabledTest").style.display = "block";
+        }, 100);
+    }
+  }
+        function sirenMenu() {
+            setTimeout(() => {
+                document.getElementById("armScreen").style.height = "220px";
+                document.getElementById("armScreen").style.paddingTop = "0";
+                document.getElementById("menuBtn").style.marginTop = "0";
+                document.getElementById("vilniusPilaite").style.marginTop = "0";
+                document.getElementById("testOn").style.marginTop = "0";
+                document.getElementById("sirenBtn").style.marginTop = "0";
+                document.getElementById("homeSirenBtn").style.marginTop = "0";
+            }, 150);
+
+            document.getElementById("sirenBtn").style.transform = "scale(0.8)";
+            document.getElementById("black").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("sirenBtn").style.transform = "scale(1)";
+                document.getElementById("sirenMenu").style.bottom = "-1px";
+                document.getElementById("black").style.opacity = "0.1";
+            }, 150);
+        }
+        function closeSiren() {
+            document.getElementById("sirenMenu").style.bottom = "-500px";
+            document.getElementById("black").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("black").style.display = "none";
+            }, 300);
+        }
+        function enableSiren() {
+            document.getElementById("enableSirenBtn").style.transform = "scale(0.9)";
+            document.getElementById("enableSirenBtn").style.pointerEvents = "none";
+            document.getElementById("menuBtn").style.pointerEvents = "none";
+            document.getElementById("devices").style.pointerEvents = "none";
+            document.getElementById("status").style.pointerEvents = "none";
+            document.getElementById("plans").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("enableSirenBtn").style.transform = "scale(1)";
+                document.getElementById("sirenMenu").style.bottom = "-500px";
+                document.getElementById("black").style.opacity = "0";
+                document.getElementById("sirenBtn").style.transform = "scale(0)";
+                document.getElementById("homeSirenBtn").style.transform = "scale(1)";
+                document.getElementById("homeSirenBtn").style.zIndex = "1";
+                document.getElementById("menuBtn").style.transform = "scale(0)";
+                document.getElementById("chevronDevices").style.opacity = "0";
+                document.getElementById("devicesOk").style.right = "20px";
+                document.getElementById("chevronStatus").style.opacity = "0";
+                document.getElementById("statusConnected").style.right = "20px";
+                document.getElementById("chevronPlans").style.opacity = "0";
+                document.getElementById("plansActive").style.right = "20px";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("black").style.display = "none";
+                document.getElementById("sirenBtn").style.zIndex = "-1";
+            }, 450);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.opacity = "1";
+                document.getElementById("statusBar").style.backgroundColor = "red";
+            }, 700);
+            setTimeout(() => {
+                document.getElementById("siren").play();
+                document.getElementById("homeSirenBtn").style.animation = "blink 0.5s linear infinite";
+                document.getElementById("statusBar").style.animation = "move 1s linear infinite";
+            }, 1000);
+            setTimeout(() => {
+                document.getElementById("siren").pause();
+                document.getElementById('siren').currentTime = 0;
+                document.getElementById("homeSirenBtn").style.transform = "scale(0)";
+                document.getElementById("sirenBtn").style.transform = "scale(1)";
+                document.getElementById("sirenBtn").style.zIndex = "1";
+                document.getElementById("homeSirenBtn").style.animation = "none";
+                document.getElementById("statusBar").style.animation = "none";
+                document.getElementById("enableSirenBtn").style.pointerEvents = "all";
+                document.getElementById("menuBtn").style.pointerEvents = "all";
+                document.getElementById("menuBtn").style.transform = "scale(1)";
+                document.getElementById("devices").style.pointerEvents = "all";
+                document.getElementById("chevronDevices").style.opacity = "1";
+                document.getElementById("devicesOk").style.right = "40px";
+                document.getElementById("status").style.pointerEvents = "all";
+                document.getElementById("chevronStatus").style.opacity = "1";
+                document.getElementById("statusConnected").style.right = "40px";
+                document.getElementById("plans").style.pointerEvents = "all";
+                document.getElementById("chevronPlans").style.opacity = "1";
+                document.getElementById("plansActive").style.right = "40px";
+            }, 31000);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.opacity = "0";
+                document.getElementById("statusBar").style.backgroundColor = "white";
+            }, 31010);
+            setTimeout(() => {
+                document.getElementById("homeSirenBtn").style.zIndex = "-1";
+            }, 31300);
+        }
+        function enableSirenAndHelp() {
+            document.getElementById("enableSirenAndHelpBtn").style.transform = "scale(0.9)";
+            document.getElementById("enableSirenBtn").style.pointerEvents = "none";
+            document.getElementById("menuBtn").style.pointerEvents = "none";
+            document.getElementById("devices").style.pointerEvents = "none";
+            document.getElementById("status").style.pointerEvents = "none";
+            document.getElementById("plans").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("enableSirenAndHelpBtn").style.transform = "scale(1)";
+                document.getElementById("sirenMenu").style.bottom = "-400px";
+                document.getElementById("black").style.opacity = "0";
+                document.getElementById("sirenBtn").style.transform = "scale(0)";
+                document.getElementById("homeSirenBtn").style.transform = "scale(1)";
+                document.getElementById("homeSirenBtn").style.zIndex = "1";
+                document.getElementById("menuBtn").style.transform = "scale(0)";
+                document.getElementById("chevronDevices").style.opacity = "0";
+                document.getElementById("devicesOk").style.right = "20px";
+                document.getElementById("chevronStatus").style.opacity = "0";
+                document.getElementById("statusConnected").style.right = "20px";
+                document.getElementById("chevronPlans").style.opacity = "0";
+                document.getElementById("plansActive").style.right = "20px";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("black").style.display = "none";
+                document.getElementById("sirenBtn").style.zIndex = "-1";
+                document.getElementById("notifying").style.top = "-1px";
+            }, 450);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.opacity = "1";
+                document.getElementById("statusBar").style.backgroundColor = "red";
+            }, 700);
+            setTimeout(() => {
+                document.getElementById("notifying").style.top = "-60px";
+            }, 4450);
+            setTimeout(() => {
+                document.getElementById("siren").play();
+                document.getElementById("homeSirenBtn").style.animation = "blink 0.5s linear infinite";
+                document.getElementById("statusBar").style.animation = "move 1s linear infinite";
+            }, 1000);
+            setTimeout(() => {
+                document.getElementById("notified").style.top = "-1px";
+            }, 10450);
+            setTimeout(() => {
+                document.getElementById("notified").style.top = "-60px";
+            }, 14450);
+            setTimeout(() => {
+                document.getElementById("siren").pause();
+                document.getElementById('siren').currentTime = 0;
+                document.getElementById("homeSirenBtn").style.transform = "scale(0)";
+                document.getElementById("sirenBtn").style.transform = "scale(1)";
+                document.getElementById("sirenBtn").style.zIndex = "1";
+                document.getElementById("homeSirenBtn").style.animation = "none";
+                document.getElementById("statusBar").style.animation = "none";
+                document.getElementById("enableSirenBtn").style.pointerEvents = "all";
+                document.getElementById("menuBtn").style.pointerEvents = "all";
+                document.getElementById("menuBtn").style.transform = "scale(1)";
+                document.getElementById("devices").style.pointerEvents = "all";
+                document.getElementById("chevronDevices").style.opacity = "1";
+                document.getElementById("devicesOk").style.right = "40px";
+                document.getElementById("status").style.pointerEvents = "all";
+                document.getElementById("chevronStatus").style.opacity = "1";
+                document.getElementById("statusConnected").style.right = "40px";
+                document.getElementById("plans").style.pointerEvents = "all";
+                document.getElementById("chevronPlans").style.opacity = "1";
+                document.getElementById("plansActive").style.right = "40px";
+            }, 31000);
+            setTimeout(() => {
+                document.getElementById("statusBar").style.opacity = "0";
+                document.getElementById("statusBar").style.backgroundColor = "white";
+            }, 31010);
+            setTimeout(() => {
+                document.getElementById("homeSirenBtn").style.zIndex = "-1";
+            }, 31300);
+        }
+        var audio = document.getElementById("siren");
+        audio.onended = function() {
+            document.getElementById("siren").play();
+        };
+        function menuOpen() {
+            setTimeout(() => {
+                document.getElementById("armScreen").style.height = "220px";
+                document.getElementById("armScreen").style.paddingTop = "0";
+                document.getElementById("menuBtn").style.marginTop = "0";
+                document.getElementById("vilniusPilaite").style.marginTop = "0";
+                document.getElementById("testOn").style.marginTop = "0";
+                document.getElementById("sirenBtn").style.marginTop = "0";
+                document.getElementById("homeSirenBtn").style.marginTop = "0";
+            }, 150);
+
+            document.getElementById("menuBtn").style.transform = "scale(0.8)";
+            document.getElementById("black2").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("menuBtn").style.transform = "scale(1)";
+                document.getElementById("menu").style.bottom = "-1px";
+                document.getElementById("black2").style.opacity = "0.1";
+            }, 150);
+        }
+        function closeMenu() {
+            document.getElementById("menu").style.bottom = "-500px";
+            document.getElementById("black2").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("black2").style.display = "none";
+            }, 300);
+        }
+        function dashboard() {
+            document.getElementById("dashboard").style.transform = "scale(0.9)";
+            setTimeout(() => {
+                document.getElementById("dashboard").style.transform = "scale(1)";
+                document.getElementById("menu").style.bottom = "-400px";
+                document.getElementById("black2").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("black2").style.display = "none";
+            }, 450);
+        }
+        function addDevice() {
+            document.getElementById("add").style.transform = "scale(0.9)";
+            setTimeout(() => {
+                document.getElementById("add").style.transform = "scale(1)";
+                document.getElementById("menu").style.bottom = "-400px";
+                document.getElementById("black2").style.opacity = "0";
+                document.getElementById("devicesList").style.left = "0";
+                document.getElementById("armScreen").style.marginLeft = "-100%";
+                document.getElementById("devices").style.marginLeft = "-100%";
+                document.getElementById("status").style.marginLeft = "-100%";
+                document.getElementById("plans").style.marginLeft = "-100%";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("black2").style.display = "none";
+            }, 450);
+        }
+        function addClose() {
+            document.getElementById("closeAdd").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("closeAdd").style.transform = "scale(1)";
+                document.getElementById("devicesList").style.left = "105%";
+                document.getElementById("armScreen").style.marginLeft = "0";
+                document.getElementById("devices").style.marginLeft = "0";
+                document.getElementById("status").style.marginLeft = "0";
+                document.getElementById("plans").style.marginLeft = "0";
+            }, 150);
+        }
+        function cantFindDevice() {
+            document.getElementById("cantFind").style.textDecoration = "none";
+            document.getElementById("black3").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("cantFind").style.textDecoration = "underline";
+                document.getElementById("helpMenu").style.bottom = "-1px";
+                document.getElementById("black3").style.opacity = "0.1";
+            }, 150);
+        }
+        function closeHelp() {
+            document.getElementById("helpMenu").style.bottom = "-300px";
+            document.getElementById("black3").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("black3").style.display = "none";
+            }, 300);
+        }
+        function testOpen() {
+            document.getElementById("test").style.transform = "scale(0.9)";
+            setTimeout(() => {
+                document.getElementById("test").style.transform = "scale(1)";
+                document.getElementById("menu").style.bottom = "-400px";
+                document.getElementById("black2").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("black4").style.display = "block";
+            }, 300);
+            setTimeout(() => {
+                document.getElementById("black2").style.display = "none";
+                document.getElementById("testMode").style.bottom = "-1px";
+                document.getElementById("black4").style.opacity = "0.1";
+            }, 450);
+        }
+        function closeTestMode() {
+            document.getElementById("testMode").style.bottom = "-400px";
+            document.getElementById("black4").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("black4").style.display = "none";
+            }, 300);
+        }
+        function settingsOpen() {
+            document.getElementById("settings").style.transform = "scale(0.9)";
+            setTimeout(() => {
+                document.getElementById("settings").style.transform = "scale(1)";
+                document.getElementById("menu").style.bottom = "-400px";
+                document.getElementById("black2").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("black5").style.display = "block";
+            }, 300);
+            setTimeout(() => {
+                document.getElementById("black2").style.display = "none";
+                document.getElementById("settingsDiv").style.bottom = "-1px";
+                document.getElementById("black5").style.opacity = "0.1";
+            }, 450);
+        }
+        function closeSettings() {
+            document.getElementById("settingsDiv").style.bottom = "-400px";
+            document.getElementById("black5").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("black5").style.display = "none";
+            }, 300);
+        }
+        function viewPin() {
+            document.getElementById("pin").style.transform = "scale(0.9)";
+            setTimeout(() => {
+                document.getElementById("pin").style.transform = "scale(1)";
+                document.getElementById("settingsDiv").style.bottom = "-400px";
+                document.getElementById("black5").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("black6").style.display = "block";
+            }, 300);
+            setTimeout(() => {
+                document.getElementById("black5").style.display = "none";
+                document.getElementById("pinDiv").style.bottom = "-1px";
+                document.getElementById("black6").style.opacity = "0.1";
+            }, 450);
+        }
+        function closePin() {
+            document.getElementById("pinDiv").style.bottom = "-400px";
+            document.getElementById("black6").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("black6").style.display = "none";
+            }, 300);
+        }
+        function openAddress() {
+            document.getElementById("address").style.transform = "scale(0.9)";
+            setTimeout(() => {
+                document.getElementById("address").style.transform = "scale(1)";
+                document.getElementById("settingsDiv").style.bottom = "-400px";
+                document.getElementById("black5").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("black7").style.display = "block";
+            }, 300);
+            setTimeout(() => {
+                document.getElementById("black5").style.display = "none";
+                document.getElementById("addressDiv").style.bottom = "-1px";
+                document.getElementById("black7").style.opacity = "0.1";
+            }, 450);
+        }
+        function closeAddress() {
+            document.getElementById("addressDiv").style.bottom = "-400px";
+            document.getElementById("black7").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("black7").style.display = "none";
+            }, 300);
+        }
+        function openHelpSupport() {
+            document.getElementById("helpSupport").style.transform = "scale(0.9)";
+            setTimeout(() => {
+                document.getElementById("helpSupport").style.transform = "scale(1)";
+                document.getElementById("menu").style.bottom = "-400px";
+                document.getElementById("black2").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("black8").style.display = "block";
+            }, 300);
+            setTimeout(() => {
+                document.getElementById("black2").style.display = "none";
+                document.getElementById("helpSupportDiv").style.bottom = "-1px";
+                document.getElementById("black8").style.opacity = "0.1";
+            }, 450);
+        }
+        function closeHelpSupport() {
+            document.getElementById("helpSupportDiv").style.bottom = "-400px";
+            document.getElementById("black8").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("black8").style.display = "none";
+            }, 300);
+        }
+        function devicesWindowOpen() {
+            setTimeout(() => {
+                document.getElementById("armScreen").style.height = "220px";
+                document.getElementById("armScreen").style.paddingTop = "0";
+                document.getElementById("menuBtn").style.marginTop = "0";
+                document.getElementById("vilniusPilaite").style.marginTop = "0";
+                document.getElementById("testOn").style.marginTop = "0";
+                document.getElementById("sirenBtn").style.marginTop = "0";
+                document.getElementById("homeSirenBtn").style.marginTop = "0";
+            }, 150);
+
+            document.getElementById("devices").style.transform = "scale(0.9)";
+            document.getElementById("black9").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("devices").style.transform = "scale(1)";
+                document.getElementById("devicesAll").style.bottom = "-1px";
+                document.getElementById("black9").style.opacity = "0.1";
+            }, 150);
+        }
+        function closeDevicesAll() {
+            document.getElementById("devicesAll").style.bottom = "-300px";
+            document.getElementById("black9").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("black9").style.display = "none";
+            }, 300);
+        }
+        function statusOpen() {
+            setTimeout(() => {
+                document.getElementById("armScreen").style.height = "220px";
+                document.getElementById("armScreen").style.paddingTop = "0";
+                document.getElementById("menuBtn").style.marginTop = "0";
+                document.getElementById("vilniusPilaite").style.marginTop = "0";
+                document.getElementById("testOn").style.marginTop = "0";
+                document.getElementById("sirenBtn").style.marginTop = "0";
+                document.getElementById("homeSirenBtn").style.marginTop = "0";
+            }, 150);
+
+            document.getElementById("status").style.transform = "scale(0.9)";
+            document.getElementById("black10").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("status").style.transform = "scale(1)";
+                document.getElementById("statusMenu").style.bottom = "-1px";
+                document.getElementById("black10").style.opacity = "0.1";
+            }, 150);
+        }
+        function closeStatus() {
+            document.getElementById("statusMenu").style.bottom = "-300px";
+            document.getElementById("black10").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("black10").style.display = "none";
+            }, 300);
+        }
+        function refreshStatus() {
+            document.getElementById("refreshStatusBtn").style.transform = "scale(0.9)";
+            document.getElementById("refreshStatusBtn").style.pointerEvents = "none";
+            document.getElementById("black10").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("refreshStatusBtn").style.transform = "scale(1)";
+                document.getElementById("refreshP").style.display = "none";
+                document.getElementById("refreshingP").style.display = "flex";
+                document.getElementById("connectedSpan").style.opacity = "0";
+                document.getElementById("satellite").style.animation = "blink 2s ease-in-out infinite";
+                document.getElementById("statusConnected").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("connectedSpan").style.display = "none";
+                document.getElementById("refreshingSpan").style.display = "inline";
+            }, 450);
+            setTimeout(() => {
+                document.getElementById("refreshingSpan").style.opacity = "1";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("refreshP").style.display = "flex";
+                document.getElementById("refreshingP").style.display = "none";
+                document.getElementById("refreshingSpan").style.opacity = "0";
+                document.getElementById("satellite").style.animation = "none";
+                document.getElementById("statusConnected").style.opacity = "1";
+            }, 6150);
+            setTimeout(() => {
+                document.getElementById("connectedSpan").style.display = "inline";
+                document.getElementById("refreshingSpan").style.display = "none";
+            }, 6450);
+            setTimeout(() => {
+                document.getElementById("connectedSpan").style.opacity = "1";
+                document.getElementById("refreshStatusBtn").style.pointerEvents = "all";
+                document.getElementById("black10").style.pointerEvents = "all";
+            }, 6500);
+        }
+        function plansOpen() {
+            setTimeout(() => {
+                document.getElementById("armScreen").style.height = "220px";
+                document.getElementById("armScreen").style.paddingTop = "0";
+                document.getElementById("menuBtn").style.marginTop = "0";
+                document.getElementById("vilniusPilaite").style.marginTop = "0";
+                document.getElementById("testOn").style.marginTop = "0";
+                document.getElementById("sirenBtn").style.marginTop = "0";
+                document.getElementById("homeSirenBtn").style.marginTop = "0";
+            }, 150);
+            
+            document.getElementById("plans").style.transform = "scale(0.9)";
+            document.getElementById("black11").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("plans").style.transform = "scale(1)";
+                document.getElementById("plansMenu").style.bottom = "-1px";
+                document.getElementById("black11").style.opacity = "0.1";
+            }, 150);
+        }
+        function closePlans() {
+            document.getElementById("plansMenu").style.bottom = "-300px";
+            document.getElementById("black11").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("black11").style.display = "none";
+            }, 300);
+        }
+        // function loadFunction() {
+        //     setTimeout(() => {
+        //         document.getElementById("load").style.backgroundColor = "rgba(27,151,208,255)";
+        //         document.getElementById("load").style.color = "white";
+        //     }, 1000);
+        //     setTimeout(() => {
+        //         document.getElementById("plus").style.width = "40px";
+        //         document.getElementById("plus").style.opacity = "1";
+        //         document.title = "ETO+";
+        //     }, 2000);
+        //     setTimeout(() => {
+        //         document.getElementById("load").style.opacity = "0";
+        //     }, 3000);
+        //     setTimeout(() => {
+        //         document.getElementById("load").style.display = "none";
+        //     }, 3300);
+        // }
+        // function sirenNow() {
+        //     document.getElementById("black").style.display = "block";
+        //     document.getElementById("exclamation").style.transform = "scale(0.8)";
+        //     setTimeout(() => {
+        //         document.getElementById("exclamation").style.transform = "scale(1.0)";
+        //     }, 100);
+        //     setTimeout(() => {
+        //         document.getElementById("black").style.opacity = "0.3";
+        //         document.getElementById("sirenConfirm").style.bottom = "-1px";
+        //         document.getElementById("protect").style.bottom = "420px";
+        //     }, 200);
+        // }
+        // function cancelSiren() {
+        //     document.getElementById("cancelSirenBtn").style.backgroundColor = "rgba(27,151,208,255)";
+        //     document.getElementById("cancelSirenBtn").style.color = "white";
+        //     setTimeout(() => {
+        //         document.getElementById("cancelSirenBtn").style.backgroundColor = "white";
+        //         document.getElementById("cancelSirenBtn").style.color = "rgba(27,151,208,255)";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("black").style.opacity = "0";
+        //         document.getElementById("sirenConfirm").style.bottom = "-400px";
+        //         document.getElementById("protect").style.bottom = "20px";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("black").style.display = "none";
+        //     }, 700);
+        // }
+        // function cancelSiren2() {
+        //     document.getElementById("black").style.opacity = "0";
+        //     document.getElementById("sirenConfirm").style.bottom = "-400px";
+        //     document.getElementById("protect").style.bottom = "20px";
+        //     setTimeout(() => {
+        //         document.getElementById("black").style.display = "none";
+        //     }, 300);
+        // }
+        // function activateSiren() {
+        //     document.getElementById("activeSirenBtn").style.backgroundColor = "white";
+        //     document.getElementById("activeSirenBtn").style.color = "rgba(27,151,208,255)";
+        //     setTimeout(() => {
+        //         document.getElementById("activeSirenBtn").style.backgroundColor = "rgba(27,151,208,255)";
+        //         document.getElementById("activeSirenBtn").style.color = "white";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("black").style.opacity = "0";
+        //         document.getElementById("sirenConfirm").style.bottom = "-400px";
+        //         document.getElementById("alarmPanel").style.pointerEvents = "none";
+        //         document.getElementById("protect").style.bottom = "20px";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("black").style.display = "none";
+        //         document.getElementById("animation").style.backgroundColor = "red";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.height = "20px";
+        //         document.getElementById("animation").style.margin = "15px";
+        //         document.getElementById("animation").style.marginLeft = "2.5%";
+        //     }, 1000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.opacity = "1";
+        //     }, 1200);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.animation = "blink 0.25s linear infinite";
+        //         document.getElementById("exclamation").style.animation = "blink2 0.25s linear infinite";
+        //         document.getElementById("siren").play();
+        //     }, 1500);
+        //     setTimeout(() => {
+        //         document.getElementById("siren").pause();
+        //         document.getElementById("animation").style.animation = "none";
+        //         document.getElementById("exclamation").style.animation = "none";
+        //         document.getElementById("animation").style.opacity = "0";
+        //         document.getElementById("alarmPanel").style.pointerEvents = "all";
+        //         document.getElementById('siren').currentTime = 0;
+        //     }, 35000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.height = "0";
+        //         document.getElementById("animation").style.margin = "0";
+        //         document.getElementById("animation").style.backgroundColor = "rgba(27,151,208,255)";
+        //     }, 35100);
+        // }
+        // function activateSirenAndNotify() {
+        //     document.getElementById("activeSirenAndNotifyBtn").style.backgroundColor = "white";
+        //     document.getElementById("activeSirenAndNotifyBtn").style.color = "rgba(27,151,208,255)";
+        //     setTimeout(() => {
+        //         document.getElementById("activeSirenAndNotifyBtn").style.backgroundColor = "rgba(27,151,208,255)";
+        //         document.getElementById("activeSirenAndNotifyBtn").style.color = "white";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("black").style.opacity = "0";
+        //         document.getElementById("sirenConfirm").style.bottom = "-400px";
+        //         document.getElementById("alarmPanel").style.pointerEvents = "none";
+        //         document.getElementById("protect").style.bottom = "20px";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("black").style.display = "none";
+        //         document.getElementById("animation").style.backgroundColor = "red";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.height = "20px";
+        //         document.getElementById("animation").style.margin = "15px";
+        //         document.getElementById("animation").style.marginLeft = "2.5%";
+        //     }, 1000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.opacity = "1";
+        //         document.getElementById("satellite").style.animation = "blink3 1s ease-in-out infinite";
+        //     }, 1200);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.animation = "blink 0.25s linear infinite";
+        //         document.getElementById("exclamation").style.animation = "blink2 0.25s linear infinite";
+        //         document.getElementById("siren").play();
+        //     }, 1500);
+        //     setTimeout(() => {
+        //         document.getElementById("satellite").style.animation = "none";
+        //         document.getElementById("alarmPanel").style.marginTop = "60px";
+        //         document.getElementById("statusDisarm").style.top = "250px";
+        //         document.getElementById("menuButtons").style.top = "60px";
+        //         document.getElementById("adress").style.top = "75px";
+        //     }, 11700);
+        //     setTimeout(() => {
+        //         document.getElementById("notified").style.right = "15px";
+        //     }, 11850);
+        //     setTimeout(() => {
+        //         document.getElementById("notified").style.right = "-210px";
+        //     }, 16900);
+        //     setTimeout(() => {
+        //         document.getElementById("alarmPanel").style.marginTop = "15px";
+        //         document.getElementById("statusDisarm").style.top = "205px";
+        //         document.getElementById("menuButtons").style.top = "15px";
+        //         document.getElementById("adress").style.top = "30px";
+        //     }, 17100);
+        //     setTimeout(() => {
+        //         document.getElementById("siren").pause();
+        //         document.getElementById("animation").style.animation = "none";
+        //         document.getElementById("exclamation").style.animation = "none";
+        //         document.getElementById("animation").style.opacity = "0";
+        //         document.getElementById("alarmPanel").style.pointerEvents = "all";
+        //         document.getElementById('siren').currentTime = 0;
+        //     }, 35000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.height = "0";
+        //         document.getElementById("animation").style.margin = "0";
+        //         document.getElementById("animation").style.backgroundColor = "rgba(27,151,208,255)";
+        //     }, 35100);
+        // }
+        // var audio = document.getElementById("siren");
+        // audio.onended = function() {
+        //     document.getElementById("siren").play();
+        // };
+        // function deviceAdd() {
+        //     document.getElementById("addDeviceDiv").style.backgroundColor = "rgba(27,151,208,255)";
+        //     document.getElementById("addDeviceDiv").style.color = "white";
+        //     document.getElementById("addDevice").style.display = "flex";
+        //     setTimeout(() => {
+        //         document.getElementById("addDeviceDiv").style.backgroundColor = "white";
+        //         document.getElementById("addDeviceDiv").style.color = "black";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("addDevice").style.opacity = "1";
+        //         document.getElementById("addDevice").style.transform = "scale(1.0)";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.opacity = "0";
+        //         document.getElementById("menu").style.top = "-380px";
+        //         document.getElementById("alarmPanel").style.marginTop = "15px";
+        //         document.getElementById("statusDisarm").style.top = "205px";
+        //         document.getElementById("menuButtons").style.top = "15px";
+        //         document.getElementById("adress").style.top = "30px";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.display = "none";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("addDevice").style.opacity = "0";
+        //         document.getElementById("addDevice").style.transform = "scale(0.8)";
+        //     }, 5700);
+        //     setTimeout(() => {
+        //         document.getElementById("addDevice").style.display = "none";
+        //     }, 6000);
+        // }
+        // function modeTest() {
+        //     document.getElementById("testModeDiv").style.backgroundColor = "rgba(27,151,208,255)";
+        //     document.getElementById("testModeDiv").style.color = "white";
+        //     document.getElementById("testMode").style.display = "flex";
+        //     setTimeout(() => {
+        //         document.getElementById("testModeDiv").style.backgroundColor = "white";
+        //         document.getElementById("testModeDiv").style.color = "black";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("testMode").style.opacity = "1";
+        //         document.getElementById("testModeDiv").style.display = "none";
+        //         document.getElementById("testModeDiv2").style.display = "flex";
+        //         document.getElementById("testMode").style.transform = "scale(1.0)";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.opacity = "0";
+        //         document.getElementById("menu").style.top = "-380px";
+        //         document.getElementById("alarmPanel").style.marginTop = "15px";
+        //         document.getElementById("statusDisarm").style.top = "205px";
+        //         document.getElementById("menuButtons").style.top = "15px";
+        //         document.getElementById("adress").style.top = "30px";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.display = "none";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("testMode").style.opacity = "0";
+        //         document.getElementById("testMode").style.transform = "scale(0.8)";
+        //     }, 5700);
+        //     setTimeout(() => {
+        //         document.getElementById("testMode").style.display = "none";
+        //         document.getElementById("testModeIndicator").style.opacity = "1";
+        //     }, 6000);
+        // }
+        // function modeTest2() {
+        //     document.getElementById("testModeDiv2").style.backgroundColor = "rgba(27,151,208,255)";
+        //     document.getElementById("testModeDiv2").style.color = "white";
+        //     document.getElementById("testMode2").style.display = "flex";
+        //     setTimeout(() => {
+        //         document.getElementById("testModeDiv2").style.backgroundColor = "white";
+        //         document.getElementById("testModeDiv2").style.color = "black";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("testMode2").style.opacity = "1";
+        //         document.getElementById("testModeDiv2").style.display = "none";
+        //         document.getElementById("testModeDiv").style.display = "flex";
+        //         document.getElementById("testMode2").style.transform = "scale(1.0)";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.opacity = "0";
+        //         document.getElementById("menu").style.top = "-380px";
+        //         document.getElementById("alarmPanel").style.marginTop = "15px";
+        //         document.getElementById("statusDisarm").style.top = "205px";
+        //         document.getElementById("menuButtons").style.top = "15px";
+        //         document.getElementById("adress").style.top = "30px";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("testModeIndicator").style.opacity = "0";
+        //     }, 1000);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.display = "none";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("testMode2").style.opacity = "0";
+        //         document.getElementById("testMode2").style.transform = "scale(0.8)";
+        //     }, 5700);
+        //     setTimeout(() => {
+        //         document.getElementById("testMode2").style.display = "none";
+        //     }, 6000);
+        // }
+        // function settings() {
+        //     document.getElementById("settingsDiv").style.backgroundColor = "rgba(27,151,208,255)";
+        //     document.getElementById("settingsDiv").style.color = "white";
+        //     document.getElementById("settings").style.display = "flex";
+        //     setTimeout(() => {
+        //         document.getElementById("settingsDiv").style.backgroundColor = "white";
+        //         document.getElementById("settingsDiv").style.color = "black";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("settings").style.opacity = "1";
+        //         document.getElementById("settings").style.transform = "scale(1.0)";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.opacity = "0";
+        //         document.getElementById("menu").style.top = "-380px";
+        //         document.getElementById("alarmPanel").style.marginTop = "15px";
+        //         document.getElementById("statusDisarm").style.top = "205px";
+        //         document.getElementById("menuButtons").style.top = "15px";
+        //         document.getElementById("adress").style.top = "30px";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.display = "none";
+        //     }, 700);
+        // }
+        // function closeSettings() {
+        //     document.getElementById("settings").style.opacity = "0";
+        //     document.getElementById("settings").style.transform = "scale(0.8)";
+        //     setTimeout(() => {
+        //         document.getElementById("settings").style.display = "none";
+        //     }, 300);
+        // }
+        // function changeLocation() {
+        //     document.getElementById("locationChangeDiv").style.backgroundColor = "rgba(27,151,208,255)";
+        //     document.getElementById("locationChangeDiv").style.color = "white";
+        //     document.getElementById("locationChange").style.display = "flex";
+        //     setTimeout(() => {
+        //         document.getElementById("locationChangeDiv").style.backgroundColor = "white";
+        //         document.getElementById("locationChangeDiv").style.color = "black";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("locationChange").style.opacity = "1";
+        //         document.getElementById("locationChange").style.transform = "scale(1.0)";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.display = "none";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("locationChange").style.opacity = "0";
+        //         document.getElementById("locationChange").style.transform = "scale(0.8)";
+        //     }, 5400);
+        //     setTimeout(() => {
+        //         document.getElementById("locationChange").style.display = "none";
+        //     }, 5700);
+        // }
+        // function pinView() {
+        //     document.getElementById("viewPinDiv").style.backgroundColor = "rgba(27,151,208,255)";
+        //     document.getElementById("viewPinDiv").style.color = "white";
+        //     document.getElementById("viewPin").style.display = "flex";
+        //     setTimeout(() => {
+        //         document.getElementById("viewPinDiv").style.backgroundColor = "white";
+        //         document.getElementById("viewPinDiv").style.color = "black";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("viewPin").style.opacity = "1";
+        //         document.getElementById("viewPin").style.transform = "scale(1.0)";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.display = "none";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("viewPin").style.opacity = "0";
+        //         document.getElementById("viewPin").style.transform = "scale(0.8)";
+        //     }, 5400);
+        //     setTimeout(() => {
+        //         document.getElementById("viewPin").style.display = "none";
+        //     }, 5700);
+        // }
+        // function help() {
+        //     document.getElementById("helpDiv").style.backgroundColor = "rgba(27,151,208,255)";
+        //     document.getElementById("helpDiv").style.color = "white";
+        //     document.getElementById("help").style.display = "flex";
+        //     setTimeout(() => {
+        //         document.getElementById("helpDiv").style.backgroundColor = "white";
+        //         document.getElementById("helpDiv").style.color = "black";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("help").style.opacity = "1";
+        //         document.getElementById("help").style.transform = "scale(1.0)";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.opacity = "0";
+        //         document.getElementById("menu").style.top = "-380px";
+        //         document.getElementById("alarmPanel").style.marginTop = "15px";
+        //         document.getElementById("statusDisarm").style.top = "205px";
+        //         document.getElementById("menuButtons").style.top = "15px";
+        //         document.getElementById("adress").style.top = "30px";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.display = "none";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("help").style.opacity = "0";
+        //         document.getElementById("help").style.transform = "scale(0.8)";
+        //     }, 5700);
+        //     setTimeout(() => {
+        //         document.getElementById("help").style.display = "none";
+        //     }, 6000);
+        // }
+        // function menuOpen() {
+        //     document.getElementById("black2").style.display = "block";
+        //     document.getElementById("bars").style.transform = "scale(0.8)";
+        //     setTimeout(() => {
+        //         document.getElementById("bars").style.transform = "scale(1.0)";
+        //     }, 100);
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.opacity = "0.3";
+        //         document.getElementById("menu").style.top = "15px";
+        //         document.getElementById("alarmPanel").style.marginTop = "410px";
+        //         document.getElementById("statusDisarm").style.top = "600px";
+        //         document.getElementById("menuButtons").style.top = "410px";
+        //         document.getElementById("adress").style.top = "425px";
+        //     }, 200);
+        // }
+        // function menuClose() {
+        //     document.getElementById("black2").style.opacity = "0";
+        //     document.getElementById("menu").style.top = "-380px";
+        //     document.getElementById("alarmPanel").style.marginTop = "15px";
+        //     document.getElementById("statusDisarm").style.top = "205px";
+        //     document.getElementById("menuButtons").style.top = "15px";
+        //     document.getElementById("adress").style.top = "30px";
+        //     setTimeout(() => {
+        //         document.getElementById("black2").style.display = "none";
+        //     }, 300);
+        // }
+        // function openStatus() {
+        //     document.getElementById("black3").style.display = "block";
+        //     document.getElementById("statusBtn").style.transform = "scale(0.8)";
+        //     setTimeout(() => {
+        //         document.getElementById("statusBtn").style.transform = "scale(1.0)";
+        //     }, 100);
+        //     setTimeout(() => {
+        //         document.getElementById("black3").style.opacity = "0.3";
+        //         document.getElementById("statusInfo").style.bottom = "-1px";
+        //         document.getElementById("protect").style.bottom = "360px";
+        //     }, 200);
+        //     document.getElementById("devices").style.opacity = "0";
+        //     document.getElementById("devices").style.transform = "scale(0.8)";
+        //     setTimeout(() => {
+        //         document.getElementById("devices").style.display = "none";
+        //     }, 300);
+        // }
+        // function closeStatus() {
+        //     document.getElementById("closeStatusBtn").style.backgroundColor = "rgba(27,151,208,255)";
+        //     document.getElementById("closeStatusBtn").style.color = "white";
+        //     setTimeout(() => {
+        //         document.getElementById("closeStatusBtn").style.backgroundColor = "white";
+        //         document.getElementById("closeStatusBtn").style.color = "rgba(27,151,208,255)";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("black3").style.opacity = "0";
+        //         document.getElementById("statusInfo").style.bottom = "-340px";
+        //         document.getElementById("protect").style.bottom = "20px";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("black3").style.display = "none";
+        //     }, 700);
+        // }
+        // function closeStatus2() {
+        //     document.getElementById("black3").style.opacity = "0";
+        //     document.getElementById("statusInfo").style.bottom = "-340px";
+        //     document.getElementById("protect").style.bottom = "20px";
+        //     setTimeout(() => {
+        //         document.getElementById("black3").style.display = "none";
+        //     }, 300);
+        // }
+        // function refreshStatus() {
+        //     document.getElementById("refreshStatusBtn").style.backgroundColor = "white";
+        //     document.getElementById("refreshStatusBtn").style.color = "rgba(27,151,208,255)";
+        //     setTimeout(() => {
+        //         document.getElementById("refreshStatusBtn").style.backgroundColor = "rgba(27,151,208,255)";
+        //         document.getElementById("refreshStatusBtn").style.color = "white";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("systemOk").style.display = "none";
+        //         document.getElementById("refreshingStatus").style.display = "block";
+        //         document.getElementById("recentStatus").style.display = "none";
+        //         document.getElementById("progressStatus").style.display = "block";
+        //         document.getElementById("satelliteStatus").style.borderColor = "darkgrey";
+        //         document.getElementById("satelliteStatus").style.color = "darkgrey";
+        //         document.getElementById("satellite").style.borderColor = "darkgrey";
+        //         document.getElementById("satellite").style.color = "darkgrey";
+        //         document.getElementById("refreshStatusBtn").style.opacity = "0";
+        //         document.getElementById("closeStatusBtn").style.opacity = "0";
+        //         document.getElementById("refreshStatusBtn").style.pointerEvents = "none";
+        //         document.getElementById("closeStatusBtn").style.pointerEvents = "none";
+        //         document.getElementById("statusInfo").style.bottom = "-125px";
+        //         document.getElementById("black3").style.pointerEvents = "none";
+        //         document.getElementById("protect").style.bottom = "235px";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "none";
+        //         document.getElementById("dot2").style.display = "none";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "inline";
+        //     }, 1000);
+        //     setTimeout(() => {
+        //         document.getElementById("dot2").style.display = "inline";
+        //     }, 1300);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "none";
+        //         document.getElementById("dot2").style.display = "none";
+        //     }, 1600);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "inline";
+        //     }, 1900);
+        //     setTimeout(() => {
+        //         document.getElementById("dot2").style.display = "inline";
+        //     }, 2100);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "none";
+        //         document.getElementById("dot2").style.display = "none";
+        //     }, 2400);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "inline";
+        //     }, 2700);
+        //     setTimeout(() => {
+        //         document.getElementById("dot2").style.display = "inline";
+        //     }, 3000);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "none";
+        //         document.getElementById("dot2").style.display = "none";
+        //     }, 3300);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "inline";
+        //     }, 3600);
+        //     setTimeout(() => {
+        //         document.getElementById("dot2").style.display = "inline";
+        //     }, 3900);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "none";
+        //         document.getElementById("dot2").style.display = "none";
+        //     }, 4200);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "inline";
+        //     }, 4500);
+        //     setTimeout(() => {
+        //         document.getElementById("dot2").style.display = "inline";
+        //     }, 4800);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "none";
+        //         document.getElementById("dot2").style.display = "none";
+        //     }, 5100);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "inline";
+        //     }, 5400);
+        //     setTimeout(() => {
+        //         document.getElementById("dot2").style.display = "inline";
+        //     }, 5700);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "none";
+        //         document.getElementById("dot2").style.display = "none";
+        //     }, 6000);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "inline";
+        //     }, 6300);
+        //     setTimeout(() => {
+        //         document.getElementById("dot2").style.display = "inline";
+        //     }, 6600);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "none";
+        //         document.getElementById("dot2").style.display = "none";
+        //     }, 6900);
+        //     setTimeout(() => {
+        //         document.getElementById("dot1").style.display = "inline";
+        //     }, 7200);
+        //     setTimeout(() => {
+        //         document.getElementById("dot2").style.display = "inline";
+        //     }, 7500);
+        //     setTimeout(() => {
+        //         document.getElementById("systemOk").style.display = "block";
+        //         document.getElementById("refreshingStatus").style.display = "none";
+        //         document.getElementById("recentStatus").style.display = "block";
+        //         document.getElementById("progressStatus").style.display = "none";
+        //         document.getElementById("satelliteStatus").style.borderColor = "green";
+        //         document.getElementById("satelliteStatus").style.color = "green";
+        //         document.getElementById("satellite").style.borderColor = "green";
+        //         document.getElementById("satellite").style.color = "green";
+        //         document.getElementById("refreshStatusBtn").style.pointerEvents = "all";
+        //         document.getElementById("closeStatusBtn").style.pointerEvents = "all";
+        //         document.getElementById("statusInfo").style.bottom = "-1px";
+        //         document.getElementById("protect").style.bottom = "360px";
+        //         document.getElementById("refreshStatusBtn").style.opacity = "1";
+        //         document.getElementById("closeStatusBtn").style.opacity = "1";
+        //         document.getElementById("black3").style.pointerEvents = "all";
+        //     }, 7800);
+        // }
+        // function openPlans() {
+        //     document.getElementById("black4").style.display = "block";
+        //     document.getElementById("plansBtn").style.transform = "scale(0.8)";
+        //     setTimeout(() => {
+        //         document.getElementById("plansBtn").style.transform = "scale(1.0)";
+        //     }, 100);
+        //     setTimeout(() => {
+        //         document.getElementById("black4").style.opacity = "0.3";
+        //         document.getElementById("plans").style.bottom = "-1px";
+        //         document.getElementById("protect").style.bottom = "300px";
+        //     }, 200);
+        //     document.getElementById("devices").style.opacity = "0";
+        //     document.getElementById("devices").style.transform = "scale(0.8)";
+        //     setTimeout(() => {
+        //         document.getElementById("devices").style.display = "none";
+        //     }, 300);
+        // }
+        // function closePlans() {
+        //     document.getElementById("closePlansBtn").style.backgroundColor = "rgba(27,151,208,255)";
+        //     document.getElementById("closePlansBtn").style.color = "white";
+        //     setTimeout(() => {
+        //         document.getElementById("closePlansBtn").style.backgroundColor = "white";
+        //         document.getElementById("closePlansBtn").style.color = "rgba(27,151,208,255)";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("black4").style.opacity = "0";
+        //         document.getElementById("plans").style.bottom = "-280px";
+        //         document.getElementById("protect").style.bottom = "20px";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("black4").style.display = "none";
+        //     }, 700);
+        // }
+        // function closePlans2() {
+        //     document.getElementById("black4").style.opacity = "0";
+        //     document.getElementById("plans").style.bottom = "-280px";
+        //     document.getElementById("protect").style.bottom = "20px";
+        //     setTimeout(() => {
+        //         document.getElementById("black4").style.display = "none";
+        //     }, 300);
+        // }
+        // function openDevices() {
+        //     document.getElementById("devicesBtn").style.transform = "scale(0.8)";
+        //     document.getElementById("devices").style.display = "block";
+        //     setTimeout(() => {
+        //         document.getElementById("devicesBtn").style.transform = "scale(1.0)";
+        //     }, 100);
+        //     setTimeout(() => {
+        //         document.getElementById("devices").style.opacity = "1";
+        //         document.getElementById("devices").style.transform = "scale(1.0)";
+        //     }, 700);
+        // }
+        // function closeDevices() {
+        //     document.getElementById("devices").style.opacity = "0";
+        //     document.getElementById("devices").style.transform = "scale(0.8)";
+        //     setTimeout(() => {
+        //         document.getElementById("devices").style.display = "none";
+        //     }, 300);
+        // }
+        // function arm() {
+        //     document.getElementById("alarmLock").style.transform = "scale(0.8)";
+        //     document.getElementById("alarmLock").style.pointerEvents = "none";
+        //     document.getElementById("alarmUnlock").style.pointerEvents = "none";
+        //     setTimeout(() => {
+        //         document.getElementById("alarmLock").style.transform = "scale(1)";
+        //     }, 150);
+        //     setTimeout(() => {
+        //         document.getElementById("alarmUnlock").style.opacity = "0";
+        //     }, 400);
+        //     setTimeout(() => {
+        //         document.getElementById("alarmUnlock").style.width = "0";
+        //         document.getElementById("alarmLock").style.marginLeft = "-245px";
+        //         document.getElementById("statusDisarm").style.opacity = "0";
+        //         document.getElementById("devicesBtn").style.opacity = "0";
+        //         document.getElementById("statusBtn").style.opacity = "0";
+        //         document.getElementById("plansBtn").style.opacity = "0";
+        //         document.getElementById("devicesBtn").style.pointerEvents = "none";
+        //         document.getElementById("statusBtn").style.pointerEvents = "none";
+        //         document.getElementById("plansBtn").style.pointerEvents = "none";
+        //         document.getElementById("exclamation").style.pointerEvents = "none";
+        //         document.getElementById("bars").style.pointerEvents = "none";
+        //         document.getElementById("exclamation").style.opacity = "0";
+        //         document.getElementById("bars").style.opacity = "0";
+        //     }, 700);
+        //     setTimeout(() => {
+        //         document.getElementById("statusChanging").style.opacity = "1";
+        //         document.getElementById("animation").style.width = "0";
+        //     }, 1000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.height = "20px";
+        //         document.getElementById("animation").style.margin = "15px";
+        //         document.getElementById("animation").style.marginLeft = "2.5%";
+        //     }, 1500);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.opacity = "1";
+        //     }, 1700);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "3.16%";
+        //         document.getElementById("countdown").play();
+        //     }, 2000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "6.32%";
+        //     }, 3000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "9.48%";
+        //     }, 4000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "12.64%";
+        //     }, 5000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "15.80%";
+        //     }, 6000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "18.96%";
+        //     }, 7000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "22.12%";
+        //     }, 8000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "25.28%";
+        //     }, 9000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "28.44%";
+        //     }, 10000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "31.60%";
+        //     }, 11000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "34.76%";
+        //     }, 12000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "37.92%";
+        //     }, 13000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "41.08%";
+        //     }, 14000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "44.24%";
+        //     }, 15000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "47.40%";
+        //     }, 16000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "50.56%";
+        //     }, 17000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "53.72%";
+        //     }, 18000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "56.88%";
+        //     }, 19000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "60.04%";
+        //     }, 20000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "63.20%";
+        //     }, 21000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "66.36%";
+        //     }, 22000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "69.52%";
+        //     }, 23000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "72.68%";
+        //     }, 24000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "75.84%";
+        //     }, 25000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "79.00%";
+        //     }, 26000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "82.16%";
+        //     }, 27000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "85.32%";
+        //     }, 28000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "88.48%";
+        //     }, 29000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "91.64%";
+        //     }, 30000);
+        //     setTimeout(() => {
+        //         document.getElementById("animation").style.width = "95%";
+        //     }, 31000);
+        // }
+        // function closeAlarm() {
+        //     document.getElementById("black").style.opacity = "0";
+        //     document.getElementById("lock").style.opacity = "0";
+        //     setTimeout(() => {document.getElementById("black").style.display = "none";}, 500);
+        //     setTimeout(() => {document.getElementById("lock").style.display = "none";}, 500);
+        // }
+        // function siren() {
+        //     document.getElementById("sirenManual").style.width = "100%";
+        //     setTimeout(() => {document.getElementById("sirenManual").style.opacity = "1";}, 300);
+        // }
+        // function sirenCancel() {
+        //     document.getElementById("sirenManual").style.opacity = "0";
+        //     setTimeout(() => {document.getElementById("sirenManual").style.width = "0";}, 200);
+        // }
+        // function sirenOn() {
+        //     document.getElementById("sirenManual").style.opacity = "0";
+        //     setTimeout(() => {document.getElementById("sirenManual").style.width = "0";}, 200);
+        //     setTimeout(() => {document.getElementById('siren').play();}, 500);
+        //     setTimeout(() => {document.getElementById("sirenaVeikia").style.display = "block";}, 500);
+        //     setTimeout(() => {document.getElementById("disableTouch").style.display = "block";}, 500);
+        //     setTimeout(() => {document.getElementById("red2").style.display = "block";}, 500);
+        //     setTimeout(() => {document.getElementById("red2").style.webkitAnimation = "blink 0.5s ease-in-out infinite";}, 500);
+        //     setTimeout(() => {document.getElementById("apsaugaIsjungta").style.display = "none";}, 500);
+        //     setTimeout(() => {document.getElementById("unlock").style.border = "5px solid red";}, 500);
+        //     setTimeout(() => {document.getElementById("unlock").style.webkitAnimation = "blink 0.5s ease-in-out infinite";}, 500);
+        //     setTimeout(() => {document.getElementById("exclamation").style.display = "flex";}, 500);
+        //     setTimeout(() => {document.getElementById("safe").style.backgroundColor = "red";}, 500);
+        //     setTimeout(() => {document.getElementById('siren').pause();}, 30500);
+        //     setTimeout(() => {document.getElementById('siren').currentTime = 0;}, 30500);
+        //     setTimeout(() => {document.getElementById("sirenaVeikia").style.display = "none";}, 30500);
+        //     setTimeout(() => {document.getElementById("apsaugaIsjungta").style.display = "block";}, 30500);
+        //     setTimeout(() => {document.getElementById("unlock").style.border = "5px solid black";}, 30500);
+        //     setTimeout(() => {document.getElementById("unlock").style.webkitAnimation = "none";}, 30500);
+        //     setTimeout(() => {document.getElementById("exclamation").style.display = "none";}, 30500);
+        //     setTimeout(() => {document.getElementById("disableTouch").style.display = "none";}, 30500);
+        //     setTimeout(() => {document.getElementById("safe").style.backgroundColor = "white";}, 30500);
+        //     setTimeout(() => {document.getElementById("red2").style.display = "none";}, 30500);
+        //     setTimeout(() => {document.getElementById("red2").style.webkitAnimation = "none";}, 30500);
+        // }
+        // function alarmOn() {
+        //     document.getElementById("black").style.opacity = "0";
+        //     document.getElementById("lock").style.opacity = "0";
+        //     document.getElementById('iseiti').play();
+        //     document.getElementById("ijungimas").style.display = "flex";
+        //     document.getElementById("isjungimas").style.display = "none";
+        //     setTimeout(() => {document.getElementById("black").style.display = "none";}, 500);
+        //     setTimeout(() => {document.getElementById("lock").style.display = "none";}, 500);
+        //     setTimeout(() => {document.getElementById("sirena").style.opacity = "0";
+        //     document.getElementById("apsaugaIsjungta").style.display = "none";
+        //     document.getElementById("apsaugaIjungiama").style.display = "block";
+        //     document.getElementById("ijungimas").style.webkitAnimation = "blink 1.5s ease-in-out infinite";}, 4500);
+        //     setTimeout(() => {document.getElementById('countdown').play();}, 4500);
+        //     setTimeout(() => {document.getElementById('red').style.width = "95%";}, 4500);
+        //     setTimeout(() => {document.getElementById("sirena").style.display = "none";}, 5000);
+        //     setTimeout(() => {document.getElementById('10sec').play();}, 24000);
+        //     setTimeout(() => {document.getElementById("apsaugaIjungta").style.display = "block";}, 35500);
+        //     setTimeout(() => {document.getElementById("apsaugaIjungiama").style.display = "none";}, 35500);
+        //     setTimeout(() => {document.getElementById('apsaugaOn').play();}, 33500);
+        //     setTimeout(() => {document.getElementById("menu").style.left = "-100%";}, 35000);
+        //     setTimeout(() => {document.getElementById("disableTouch").style.display = "none";}, 35000);
+        //     setTimeout(() => {document.getElementById("safe").style.backgroundColor = "rgba(27,151,208,255)";}, 35500);
+        //     setTimeout(() => {document.getElementById("red").style.backgroundColor = "rgba(27,151,208,255)";}, 35500);
+        //     setTimeout(() => {document.getElementById("atvyko").style.display = "block";}, 35500);
+        //     setTimeout(() => {document.getElementById("ijungimas").style.webkitAnimation = "none";}, 35500);
+        //     setTimeout(() => {document.getElementById("test1").style.display = "none";}, 35500);
+        //     setTimeout(() => {document.getElementById("test2").style.display = "none";}, 35500);
+        //     setTimeout(() => {document.getElementById("pinButton").style.display = "none";}, 35500);
+        // }
+        // function alarmOff() {
+        //     document.getElementById("atvyko").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "none";
+        //     document.getElementById("durysOpen").style.display = "block";
+        //     document.getElementById('ieiti').play();
+        //     setTimeout(() => {document.getElementById('countdown').play();}, 4500);
+        //     setTimeout(() => {document.getElementById("ijungimas").style.display = "none";}, 4500);
+        //     setTimeout(() => {document.getElementById("waiting").style.display = "block";}, 4500);
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "1";}, 4550);
+        //     setTimeout(() => {document.getElementById("isjungimas2").style.display = "flex";}, 4500);
+        //     setTimeout(() => {document.getElementById("isjungimas2").style.webkitAnimation = "blink 1.5s ease-in-out infinite";}, 4500);
+        //     setTimeout(() => {document.getElementById("red").style.backgroundColor = "red";}, 4500);
+        //     setTimeout(() => {document.getElementById("red").style.width = "0";}, 4500);
+        //     setTimeout(() => {document.getElementById('10sec').play();}, 24000);
+        //     setTimeout(() => {document.getElementById("isjungimas2").style.webkitAnimation = "none";}, 34000);
+        //     setTimeout(() => {document.getElementById("red2").style.display = "block";}, 37500);
+        //     setTimeout(() => {document.getElementById("red2").style.webkitAnimation = "blink 0.5s ease-in-out infinite";}, 37500);
+        //     setTimeout(() => {document.getElementById('siren').play();}, 37500);
+        //     setTimeout(() => {document.getElementById('call').play();}, 34500);
+        //     setTimeout(() => {document.getElementById("apsaugaIjungta").style.display = "none";}, 37500);
+        //     setTimeout(() => {document.getElementById("waiting").style.webkitAnimation = "blink 1s ease-in-out infinite";}, 37500);
+        //     setTimeout(() => {document.getElementById("sirenaVeikia").style.display = "block";}, 37500);
+        //     setTimeout(() => {document.getElementById("safe").style.backgroundColor = "red";}, 37500);
+        //     setTimeout(() => {document.getElementById("unlock2").style.border = "5px solid red";}, 37500);
+        //     setTimeout(() => {document.getElementById("unlock2").style.webkitAnimation = "blink 0.5s ease-in-out infinite";}, 37500);
+        //     setTimeout(() => {document.getElementById("exclamation").style.display = "flex";}, 37500);
+        // }
+        // function shutOff() {
+        //     document.getElementById('apsaugaOff').play();
+        //     document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     setTimeout(() => {document.getElementById("waiting").style.display = "none";}, 500);
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("red").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("sirena").style.display = "block";
+        //     document.getElementById("durysOpen").style.display = "none";
+        //     setTimeout(() => {document.getElementById("sirena").style.opacity = "1";}, 50);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 100);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 200);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 300);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 400);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 500);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 600);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 700);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 800);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 900);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 1000);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 1100);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 1200);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 1300);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 1400);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 1500);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 1600);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 1700);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 1800);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 1900);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 2000);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 2100);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 2200);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 2300);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 2400);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 2500);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 2600);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 2700);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 2800);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";}, 2900);
+
+        //     setTimeout(() => {document.getElementById("waiting").style.opacity = "0";
+        //     document.getElementById("waiting").style.webkitAnimation = "none";
+        //     document.getElementById("waiting").style.display = "none";
+        //     document.getElementById("sirenaVeikia").style.display = "none";
+        //     document.getElementById("jutikliaiOk").style.display = "block";
+        //     document.getElementById("apsaugaIsjungta").style.display = "block";
+        //     document.getElementById("apsaugaIjungta").style.display = "none";
+        //     document.getElementById("red2").style.display = "none";
+        //     document.getElementById("unlock2").style.border = "5px solid black";
+        //     document.getElementById("unlock2").style.webkitAnimation = "none";
+        //     document.getElementById("exclamation").style.display = "none";
+        //     document.getElementById("isjungimas2").style.webkitAnimation = "none";
+        //     document.getElementById('countdown').pause();
+        //     document.getElementById('siren').pause();
+        //     document.getElementById('siren').currentTime = 0;
+        //     document.getElementById("safe").style.backgroundColor = "white";
+        //     document.getElementById("durysOpen").style.display = "none";
+        //     location.replace('index.html')}, 3000);
+
+        // }
+        // function menuOpen() {
+        //     document.getElementById("menu").style.left = "0";
+        //     document.getElementById("disableTouch2").style.display = "block";
+        // }
+        // function menuClose() {
+        //     document.getElementById("menu").style.left = "-100%";
+        //     document.getElementById("disableTouch2").style.display = "none";
+        // }
+        // function helpOpen() {
+        //     document.getElementById("help").style.display = "flex";
+        //     setTimeout(() => {document.getElementById("help").style.opacity = "1";}, 50);
+        //     document.getElementById("menu").style.left = "-100%";
+        //     document.getElementById("disableTouch2").style.display = "none";
+        // }
+        // function helpClose() {
+        //     document.getElementById("help").style.opacity = "0";
+        //     setTimeout(() => {document.getElementById("help").style.display = "none";}, 500);
+        // }
+        // function addDeviceOpen() {
+        //     document.getElementById("addDevice").style.display = "flex";
+        //     setTimeout(() => {document.getElementById("addDevice").style.opacity = "1";}, 50);
+        //     document.getElementById("menu").style.left = "-100%";
+        //     document.getElementById("disableTouch2").style.display = "none";
+        // }
+        // function addDeviceClose() {
+        //     document.getElementById("addDevice").style.opacity = "0";
+        //     setTimeout(() => {document.getElementById("addDevice").style.display = "none";}, 500);
+        // }
+        // function deviceListOpen() {
+        //     document.getElementById("deviceList").style.left = "0";
+        //     document.getElementById("menu").style.left = "-100%";
+        //     document.getElementById("disableTouch2").style.display = "none";
+        // }
+        // function deviceListClose() {
+        //     document.getElementById("deviceList").style.left = "120%";
+        // }
+        // function testModeOpen() {
+        //     document.getElementById("testMode").style.display = "flex";
+        //     setTimeout(() => {document.getElementById("testMode").style.opacity = "1";}, 50);
+        //     document.getElementById("test1").style.display = "none";
+        //     document.getElementById("test2").style.display = "flex";
+        //     document.getElementById("menu").style.left = "-100%";
+        //     document.getElementById("disableTouch2").style.display = "none";
+        // }
+        // function testModeClose() {
+        //     document.getElementById("testMode").style.opacity = "0";
+        //     setTimeout(() => {document.getElementById("testMode").style.display = "none";}, 500);
+        // }
+        // function testMode2Open() {
+        //     document.getElementById("testMode2").style.display = "flex";
+        //     setTimeout(() => {document.getElementById("testMode2").style.opacity = "1";}, 50);
+        //     document.getElementById("test2").style.display = "none";
+        //     document.getElementById("test1").style.display = "flex";
+        //     document.getElementById("menu").style.left = "-100%";
+        //     document.getElementById("disableTouch2").style.display = "none";
+        // }
+        // function testMode2Close() {
+        //     document.getElementById("testMode2").style.opacity = "0";
+        //     setTimeout(() => {document.getElementById("testMode2").style.display = "none";}, 500);
+        // }
+        // function pinOpen() {
+        //     document.getElementById("pin").style.display = "flex";
+        //     setTimeout(() => {document.getElementById("pin").style.opacity = "1";}, 50);
+        //     document.getElementById("menu").style.left = "-100%";
+        //     document.getElementById("disableTouch2").style.display = "none";
+        // }
+        // function pinShow() {
+        //     document.getElementById("pinRodyti").style.display = "none";
+        //     document.getElementById("pinOk").style.display = "block";
+        //     document.getElementById("****").style.display = "none";
+        //     document.getElementById("9173").style.display = "block";
+        // }
+        // function pinClose() {
+        //     document.getElementById("pin").style.opacity = "0";
+        //     setTimeout(() => {document.getElementById("pin").style.display = "none";}, 500);
+        //     setTimeout(() => {document.getElementById("9173").style.display = "none";}, 500);
+        //     setTimeout(() => {document.getElementById("****").style.display = "block";}, 500);
+        //     setTimeout(() => {document.getElementById("pinOk").style.display = "none";}, 500);
+        //     setTimeout(() => {document.getElementById("pinRodyti").style.display = "block";}, 500);
+        // }
+        // function battery1() {
+        //     document.getElementById("baterija1").style.display = "none";
+        //     document.getElementById("baterija2").style.display = "block";
+        //     document.getElementById("draugu1").style.display = "none";
+        //     document.getElementById("draugu2").style.display = "block";
+        //     document.getElementById('ding').play();
+        //     document.getElementById("lowBattery").style.display = "flex";
+        //     setTimeout(() => {document.getElementById("lowBattery").style.opacity = "1";}, 50);
+        // }
+        // function lowBatteryClose() {
+        //     document.getElementById("lowBattery").style.opacity = "0";
+        //     setTimeout(() => {document.getElementById("lowBattery").style.display = "none";}, 500);
+        // }
+        // function battery2() {
+        //     document.getElementById("baterija2").style.display = "none";
+        //     document.getElementById("baterija3").style.display = "block";
+        //     document.getElementById("draugu2").style.display = "none";
+        //     document.getElementById("draugu3").style.display = "block";
+        //     document.getElementById('ding').play();
+        //     document.getElementById("lowBattery2").style.display = "flex";
+        //     setTimeout(() => {document.getElementById("lowBattery2").style.opacity = "1";}, 50);
+        // }
+        // function lowBattery2Close() {
+        //     document.getElementById("lowBattery2").style.opacity = "0";
+        //     setTimeout(() => {document.getElementById("lowBattery2").style.display = "none";}, 500);
+        // }
+        // function battery3() {
+        //     document.getElementById("baterija3").style.display = "none";
+        //     document.getElementById("baterija1").style.display = "block";
+        //     document.getElementById("draugu3").style.display = "none";
+        //     document.getElementById("draugu1").style.display = "block";
+        // }
+        // function dumai() {
+        //     document.getElementById("dumaiKyla").style.display = "block";
+        //     document.getElementById("dumu-detector").style.display = "none";
+        //     document.getElementById("dumaiOk").style.display = "none";
+        //     document.getElementById("dumai1").style.display = "block";
+        //     document.getElementById('panicSound').play();
+        //     document.getElementById('ding').play();
+        //     setTimeout(() => {document.getElementById('ding').play();}, 4500);
+        //     setTimeout(() => {document.getElementById('panicSound').pause();}, 3000);
+        //     setTimeout(() => {document.getElementById('smoke').play();}, 3000);
+        //     setTimeout(() => {document.getElementById('ding').play();}, 9000);
+        //     setTimeout(() => {document.getElementById('ding').play();}, 13500);
+        //     setTimeout(() => {document.getElementById('ding').play();}, 18000);
+        //     setTimeout(() => {document.getElementById("dumai1").style.display = "none";}, 20000);
+        //     setTimeout(() => {document.getElementById("dumai2").style.display = "block";}, 20000);
+        //     setTimeout(() => {document.getElementById("dumaiKyla").style.color = "orange";}, 20000);
+        //     setTimeout(() => {document.getElementById('ding').play();}, 22500);
+        //     setTimeout(() => {document.getElementById('ding').play();}, 28000);
+        //     setTimeout(() => {document.getElementById("dumai2").style.display = "none";}, 30000);
+        //     setTimeout(() => {document.getElementById("dumai3").style.display = "block";}, 30000);
+        //     setTimeout(() => {document.getElementById("dumaiKyla").style.display = "none";}, 30000);
+        //     setTimeout(() => {document.getElementById("dumaiPakile").style.display = "block";}, 30000);
+        //     setTimeout(() => {document.getElementById("sirenaVeikia").style.display = "block";}, 30000);
+        //     setTimeout(() => {document.getElementById("disableTouch").style.display = "block";}, 30000);
+        //     setTimeout(() => {document.getElementById("apsaugaIsjungta").style.display = "none";}, 30000);
+        //     setTimeout(() => {document.getElementById("unlock").style.border = "5px solid red";}, 30000);
+        //     setTimeout(() => {document.getElementById("unlock").style.webkitAnimation = "blink 0.5s ease-in-out infinite";}, 30000);
+        //     setTimeout(() => {document.getElementById("exclamation").style.display = "flex";}, 30000);
+        //     setTimeout(() => {document.getElementById("safe").style.backgroundColor = "red";}, 30000);
+        //     setTimeout(() => {document.getElementById("siren").play();}, 30000);
+        //     setTimeout(() => {document.getElementById("dumai2").style.display = "block";}, 60000);
+        //     setTimeout(() => {document.getElementById("dumai3").style.display = "none";}, 60000);
+        //     setTimeout(() => {document.getElementById("dumaiKyla").style.display = "block";}, 60000);
+        //     setTimeout(() => {document.getElementById("kyla").style.display = "none";}, 60000);
+        //     setTimeout(() => {document.getElementById("krenta").style.display = "inline";}, 60000);
+        //     setTimeout(() => {document.getElementById("dumaiPakile").style.display = "none";}, 60000);
+        //     setTimeout(() => {document.getElementById("sirenaVeikia").style.display = "none";}, 60000);
+        //     setTimeout(() => {document.getElementById("disableTouch").style.display = "none";}, 60000);
+        //     setTimeout(() => {document.getElementById("apsaugaIsjungta").style.display = "block";}, 60000);
+        //     setTimeout(() => {document.getElementById("unlock").style.border = "5px solid black";}, 60000);
+        //     setTimeout(() => {document.getElementById("unlock").style.webkitAnimation = "none";}, 60000);
+        //     setTimeout(() => {document.getElementById("exclamation").style.display = "none";}, 60000);
+        //     setTimeout(() => {document.getElementById("safe").style.backgroundColor = "white";}, 60000);
+        //     setTimeout(() => {document.getElementById('siren').pause();}, 60000);
+        //     setTimeout(() => {document.getElementById('siren').currentTime = 0;}, 60500);
+        //     setTimeout(() => {document.getElementById('mazeja').play();}, 60000);
+        //     setTimeout(() => {document.getElementById("dumai1").style.display = "block";}, 70000);
+        //     setTimeout(() => {document.getElementById("dumai2").style.display = "none";}, 70000);
+        //     setTimeout(() => {document.getElementById("dumaiKyla").style.color = "yellow";}, 70000);
+        //     setTimeout(() => {document.getElementById("dumai1").style.display = "none";}, 80000);
+        //     setTimeout(() => {document.getElementById("dumaiKyla").style.display = "none";}, 80000);
+        //     setTimeout(() => {document.getElementById("dumaiOk").style.display = "block";}, 80000);
+        //     setTimeout(() => {location.replace("index.html")}, 80500);
+        // }
+    </script>
+</body>
+</html>
