@@ -23,14 +23,14 @@
     <!-- VALIUTA: € -->
     <div id="hidden">
         <!-- Balansas: -->
-        <p id="currentBalance">0,00</p>
+        <p id="currentBalance">20,00</p>
         <!-- Skolos: -->
         <p id="currentDebt">0,00</p>
         <p id="returnUntil">202X-XX-XX 23:59</p>
         <p id="interestRate">0,00</p>
         <!-- Apyvarta: -->
-        <p id="fullOperations">118,50</p><!-- NEPAMIRŠTI PAKEISTI APYVARTOS IŠLAIDŲ KATEGORIJŲ !! -->
-        <p id="received">59,25</p>
+        <p id="fullOperations">138,50</p><!-- NEPAMIRŠTI PAKEISTI APYVARTOS IŠLAIDŲ KATEGORIJŲ !! -->
+        <p id="received">79,25</p>
         <p id="spent">59,25</p>
         <p id="currentMonth">2025 rugpjūtis</p>
         <p id="receivedBar"></p>
@@ -283,11 +283,11 @@
                 <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP">XX,XX  €</p>
             </div> -->
-            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija26()">
-                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
-                <p class="boldP">XX,XX  €</p>
-            </div> -->
-            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija25()">
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija26()">
+                <p>2025-08-27 <b>Marė Elzė Kasparavičienė (grynieji)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+20,00 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija25()">
                 <p>2025-08-26 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP islaidos">-4,50  €</p>
             </div>
@@ -1145,29 +1145,25 @@
         <h2 ontouchstart onclick="closeOperacija26()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
         <div class="operacijosDuomenys operacijosData">
             <h3>Data</h3>
-            <p>20XX-XX-XX, XXXXX</p>
+            <p>2025-08-27, trečiadienis</p>
         </div>
         <div class="operacijosDuomenys">
-            <h3>Gavėjas/Mokėtojas</h3>
-            <p>XXXXX</p>
+            <h3>Mokėtojas</h3>
+            <p>Marė Elzė Kasparavičienė (grynieji)</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
-            <p>XXXXX</p>
+            <p>Dovana</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Suma</h3>
-            <p class="boldP">XX,XX €</p>
+            <p class="boldP pajamos">+20,00 €</p>
         </div>
         <div class="isklotine">
             <h3>Išklotinė</h3>
-            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+            <div class="isklotinesDalis" style="border-radius: 25px;">
                 <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
-                <p class="boldP">XX,XX €</p>
-            </div>
-            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
-                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
-                <p class="boldP">XX,XX €</p>
+                <p class="boldP">20,00 €</p>
             </div>
         </div>
     </div>
