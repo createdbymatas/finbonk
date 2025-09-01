@@ -174,16 +174,16 @@ setTimeout(() => {
         document.getElementById('finbonkIsmoketi').style.display = 'flex';
     }
 }, 3);
-setTimeout(() => {
-    if (document.getElementById('gautaBar').style.width === '0%' && document.getElementById('isleistaBar').style.width === '0%'){
-        document.getElementById('emptyBar').style.width = '100%';
-        document.getElementById('emptyBar2').style.width = '100%';
-    }
-    else {
-        document.getElementById('emptyBar').style.width = '0%';
-        document.getElementById('emptyBar2').style.width = '0%';
-    }
-}, 4);
+// setTimeout(() => {
+//     if (document.getElementById('gautaBar').style.width === '0%' && document.getElementById('isleistaBar').style.width === '0%'){
+//         document.getElementById('emptyBar').style.width = '100%';
+//         document.getElementById('emptyBar2').style.width = '100%';
+//     }
+//     else {
+//         document.getElementById('emptyBar').style.width = '0%';
+//         document.getElementById('emptyBar2').style.width = '0%';
+//     }
+// }, 4);
 
 
 function loadFunction(){
