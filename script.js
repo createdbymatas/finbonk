@@ -1147,10 +1147,10 @@ function ismoketiSuma(){
 }
 function backToPortal(){
     document.getElementById('loading').style.display = 'flex';
-    document.getElementById('loader').style.animation = 'none';
+    document.getElementById('loader2').style.animation = 'none';
     setTimeout(() => {
         document.getElementById('loading').style.opacity = '1';
-        document.getElementById('loader').style.animation = 'spin 0.8s linear infinite';
+        document.getElementById('loader2').style.animation = 'spin 0.8s linear infinite';
     }, 10);
     setTimeout(() => {
         location.replace('https://createdbymatas.github.io/finbonk/');
