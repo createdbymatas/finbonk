@@ -1267,22 +1267,12 @@ function check(form)
         document.getElementById('istrinimas').style.color = 'transparent';
         document.getElementById('istrinimas').style.pointerEvents = 'none';
         setTimeout(() => {
-            document.getElementById('key1').style.opacity = '0.2';
-            document.getElementById('key2').style.opacity = '0.2';
-            document.getElementById('key3').style.opacity = '0.2';
-            document.getElementById('key4').style.opacity = '0.2';
-            document.getElementById('taskeliai').style.opacity = '0.2';
             document.getElementById('keypad').style.pointerEvents = 'none';
-            document.getElementById('prisijunkiteSuPin').style.opacity = '0.2';
+            document.getElementById('keypad').style.opacity = '0.2';
         }, 10);
         setTimeout(() => {
-            document.getElementById('key1').style.opacity = '1';
-            document.getElementById('key2').style.opacity = '1';
-            document.getElementById('key3').style.opacity = '1';
-            document.getElementById('key4').style.opacity = '1';
-            document.getElementById('taskeliai').style.opacity = '1';
+            document.getElementById('keypad').style.opacity = '1';
             document.getElementById('keypad').style.pointerEvents = 'all';
-            document.getElementById('prisijunkiteSuPin').style.opacity = '1';
             document.getElementById('userScreen').style.opacity = '0';
             document.getElementById('loginAlert').style.top = '15px';
 
@@ -1319,23 +1309,13 @@ function check(form)
         document.getElementById('istrinimas').style.color = 'transparent';
         document.getElementById('istrinimas').style.pointerEvents = 'none';
         setTimeout(() => {
-            document.getElementById('key1').style.opacity = '0.2';
-            document.getElementById('key2').style.opacity = '0.2';
-            document.getElementById('key3').style.opacity = '0.2';
-            document.getElementById('key4').style.opacity = '0.2';
-            document.getElementById('taskeliai').style.opacity = '0.2';
             document.getElementById('keypad').style.pointerEvents = 'none';
-            document.getElementById('prisijunkiteSuPin').style.opacity = '0.2';
+            document.getElementById('keypad').style.opacity = '0.2';
         }, 10);
         setTimeout(() => {
             document.getElementById('taskeliai').style.marginLeft = '-30px';
-            document.getElementById('key1').style.opacity = '1';
-            document.getElementById('key2').style.opacity = '1';
-            document.getElementById('key3').style.opacity = '1';
-            document.getElementById('key4').style.opacity = '1';
-            document.getElementById('taskeliai').style.opacity = '1';
+            document.getElementById('keypad').style.opacity = '1';
             document.getElementById('keypad').style.pointerEvents = 'all';
-            document.getElementById('prisijunkiteSuPin').style.opacity = '1';
             inputas = '';
             document.getElementById('kodas').value = '';
             document.getElementById('taskelis1').style.backgroundColor = '#202020';
