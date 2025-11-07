@@ -95,7 +95,7 @@ body{
 #pupulioBankas{
     width: 100%;
     position: absolute;
-    bottom: 17px;
+    bottom: 32px;
     left: 0;
     right: 0;
     margin: 0;
@@ -103,6 +103,19 @@ body{
     color: darkgrey;
     text-align: center;
     font-size: 17px;
+    cursor: default;
+}
+#infoAtnaujinama{
+    width: 100%;
+    position: absolute;
+    bottom: 17px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    opacity: 1;
+    color: darkgrey;
+    text-align: center;
+    font-size: 13px;
     cursor: default;
 }
 
