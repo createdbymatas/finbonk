@@ -174,16 +174,16 @@ setTimeout(() => {
         document.getElementById('finbonkIsmoketi').style.display = 'flex';
     }
 }, 3);
-// setTimeout(() => {
-//     if (document.getElementById('gautaBar').style.width === '0%' && document.getElementById('isleistaBar').style.width === '0%'){
-//         document.getElementById('emptyBar').style.width = '100%';
-//         document.getElementById('emptyBar2').style.width = '100%';
-//     }
-//     else {
-//         document.getElementById('emptyBar').style.width = '0%';
-//         document.getElementById('emptyBar2').style.width = '0%';
-//     }
-// }, 4);
+setTimeout(() => {
+    if (document.getElementById("fullOperations").innerHTML == "0,00"){
+        document.getElementById('emptyBar').style.width = '100%';
+        document.getElementById('emptyBar2').style.width = '100%';
+    }
+    else {
+        document.getElementById('emptyBar').style.width = '0';
+        document.getElementById('emptyBar2').style.width = '0';
+    }
+}, 4);
 
 
 function loadFunction(){
@@ -719,6 +719,11 @@ function logout(){
         document.getElementById('operacija28').style.right = '-100%';
         document.getElementById('operacija29').style.right = '-100%';
         document.getElementById('operacija30').style.right = '-100%';
+        document.getElementById('operacija31').style.right = '-100%';
+        document.getElementById('operacija32').style.right = '-100%';
+        document.getElementById('operacija33').style.right = '-100%';
+        document.getElementById('operacija34').style.right = '-100%';
+        document.getElementById('operacija35').style.right = '-100%';
         document.getElementById('ismoka').style.right = '-100%';
     }, 310);
     setTimeout(() => {
@@ -1114,6 +1119,66 @@ function openOperacija30(){
 }
 function closeOperacija30(){
     document.getElementById('operacija30').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija31(){
+    document.getElementById('operacija31').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija31(){
+    document.getElementById('operacija31').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija32(){
+    document.getElementById('operacija32').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija32(){
+    document.getElementById('operacija32').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija33(){
+    document.getElementById('operacija33').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija33(){
+    document.getElementById('operacija33').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija34(){
+    document.getElementById('operacija34').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija34(){
+    document.getElementById('operacija34').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija35(){
+    document.getElementById('operacija35').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija35(){
+    document.getElementById('operacija35').style.right = '-100%';
     closeSettings();
     closeNotifications();
     closeApps();
