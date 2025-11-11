@@ -23,15 +23,15 @@
     <!-- VALIUTA: € -->
     <div id="hidden">
         <!-- Balansas: -->
-        <p id="currentBalance">-5,81</p>
+        <p id="currentBalance">-6,16</p>
         <!-- Skolos: -->
-        <p id="currentDebt">5,81</p>
+        <p id="currentDebt">6,16</p> 
         <p id="returnUntil">2025-11-09 23:59</p>
-        <p id="interestRate">0,00</p>
+        <p id="interestRate">0,35</p>
         <!-- Apyvarta: -->
-        <p id="fullOperations">5,81</p><!-- NEPAMIRŠTI PAKEISTI APYVARTOS IŠLAIDŲ KATEGORIJŲ !! -->
+        <p id="fullOperations">6,16</p><!-- NEPAMIRŠTI PAKEISTI APYVARTOS IŠLAIDŲ KATEGORIJŲ !! -->
         <p id="received">0,00</p>
-        <p id="spent">5,81</p>
+        <p id="spent">6,16</p>
         <p id="currentMonth">2025 lapkritis</p>
         <p id="receivedBar"></p>
         <p id="spentBar"></p>
@@ -280,15 +280,15 @@
                 <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP">XX,XX €</p>
             </div> -->
-            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija32()">
-                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
-                <p class="boldP">XX,XX €</p>
-            </div> -->
-            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija31()">
-                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
-                <p class="boldP">XX,XX €</p>
-            </div> -->
-            <div ontouchstart class="operacija" style="border-radius: 25px;" onclick="openOperacija30()">
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija32()">
+                <p>2025-11-10 <b>FINBONK</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,18 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija31()">
+                <p>2025-11-10 <b>FINBONK</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,17 €</p>
+            </div>
+            <div ontouchstart class="operacija" style="border-radius: 5px 5px 25px 25px;" onclick="openOperacija30()">
                 <p>2025-11-06 <b>Caffeine Vilnius Vilnius 000LT</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP islaidos">-5,81 €</p>
             </div>
@@ -460,7 +460,7 @@
             </div> -->
             <div class="kategorija" style="border-radius: 5px 5px 25px 25px;">
                 <p><i class="fa-solid fa-piggy-bank"></i> Mokesčiai</p>
-                <p class="boldP">0,21 €</p>
+                <p class="boldP">0,56 €</p>
             </div>
         </div>
     </div>
@@ -1319,29 +1319,25 @@
         <h2 ontouchstart onclick="closeOperacija31()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
         <div class="operacijosDuomenys operacijosData">
             <h3>Data</h3>
-            <p>20XX-XX-XX, XXXXX</p>
+            <p>2025-11-10, pirmadienis</p>
         </div>
         <div class="operacijosDuomenys">
-            <h3>Gavėjas/Mokėtojas</h3>
-            <p>XXXXX</p>
+            <h3>Gavėjas</h3>
+            <p>FINBONK</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
-            <p>XXXXX</p>
+            <p>Palūkanos už negrąžintą 2025-11-06 skolą „Caffeine Vilnius Vilnius 000LT“</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Suma</h3>
-            <p class="boldP">0,00 €</p>
+            <p class="boldP islaidos">-0,17 €</p>
         </div>
         <div class="isklotine">
             <h3>Išklotinė</h3>
-            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+            <div class="isklotinesDalis" style="border-radius: 25px;">
                 <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
-                <p class="boldP">0,00 €</p>
-            </div>
-            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
-                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
-                <p class="boldP">0,00 €</p>
+                <p class="boldP">0,17 €</p>
             </div>
         </div>
     </div>
@@ -1349,29 +1345,25 @@
         <h2 ontouchstart onclick="closeOperacija32()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
         <div class="operacijosDuomenys operacijosData">
             <h3>Data</h3>
-            <p>20XX-XX-XX, XXXXX</p>
+            <p>2025-11-11, antradienis</p>
         </div>
         <div class="operacijosDuomenys">
-            <h3>Gavėjas/Mokėtojas</h3>
-            <p>XXXXX</p>
+            <h3>Gavėjas</h3>
+            <p>FINBONK</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
-            <p>XXXXX</p>
+            <p>Palūkanos už negrąžintą 2025-11-06 skolą „Caffeine Vilnius Vilnius 000LT“</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Suma</h3>
-            <p class="boldP">0,00 €</p>
+            <p class="boldP islaidos">-0,18 €</p>
         </div>
         <div class="isklotine">
             <h3>Išklotinė</h3>
-            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+            <div class="isklotinesDalis" style="border-radius: 25px;">
                 <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
-                <p class="boldP">0,00 €</p>
-            </div>
-            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
-                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
-                <p class="boldP">0,00 €</p>
+                <p class="boldP">0,18 €</p>
             </div>
         </div>
     </div>
