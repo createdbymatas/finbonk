@@ -108,12 +108,18 @@ receivedDot = receivedDot.replace(",", ".");
 let spentDot = document.getElementById('spent').innerHTML;
 spentDot = spentDot.replace(",", ".");
 
-let ismokMokest = Number(0.1+(currentBalanceDot*0.02));
-let suapvStringMokest = ismokMokest.toFixed(2);
-let suapvIsmokMokest = Number(suapvStringMokest);
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'decimal',
+  maximumFractionDigits: 2,
+  minimumFractionDigits: 2,
+})
+
+
+// let ismokMokest = Number(0.1+(currentBalanceDot*0.02));
+let ismokMokest = Number(0.1+(currentBalanceDot*0.01));
+let suapvIsmokMokest = formatter.format(Number(ismokMokest));
 let ismokSum = currentBalanceDot - suapvIsmokMokest;
-let suapvStringSum = ismokSum.toFixed(2);
-let suapvIsmokSum = Number(suapvStringSum);
+let suapvIsmokSum = formatter.format(Number(ismokSum));
 
 document.getElementById('balanceInOverview').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
 document.getElementById('balanceInWallet').innerHTML = document.getElementById('currentBalance').innerHTML + ' €';
