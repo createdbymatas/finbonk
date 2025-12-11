@@ -730,6 +730,11 @@ function logout(){
         document.getElementById('operacija33').style.right = '-100%';
         document.getElementById('operacija34').style.right = '-100%';
         document.getElementById('operacija35').style.right = '-100%';
+        document.getElementById('operacija36').style.right = '-100%';
+        document.getElementById('operacija37').style.right = '-100%';
+        document.getElementById('operacija38').style.right = '-100%';
+        document.getElementById('operacija39').style.right = '-100%';
+        document.getElementById('operacija40').style.right = '-100%';
         document.getElementById('ismoka').style.right = '-100%';
     }, 310);
     setTimeout(() => {
@@ -1185,6 +1190,66 @@ function openOperacija35(){
 }
 function closeOperacija35(){
     document.getElementById('operacija35').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija36(){
+    document.getElementById('operacija36').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija36(){
+    document.getElementById('operacija36').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija37(){
+    document.getElementById('operacija37').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija37(){
+    document.getElementById('operacija37').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija38(){
+    document.getElementById('operacija38').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija38(){
+    document.getElementById('operacija38').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija39(){
+    document.getElementById('operacija39').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija39(){
+    document.getElementById('operacija39').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija40(){
+    document.getElementById('operacija40').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija40(){
+    document.getElementById('operacija40').style.right = '-100%';
     closeSettings();
     closeNotifications();
     closeApps();
