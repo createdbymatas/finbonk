@@ -115,8 +115,7 @@ const formatter = new Intl.NumberFormat('en-US', {
 })
 
 
-// let ismokMokest = Number(0.1+(currentBalanceDot*0.02));
-let ismokMokest = Number(0.1+(currentBalanceDot*0.01));
+let ismokMokest = Number(0.1+(currentBalanceDot*0.02));
 let suapvIsmokMokest = formatter.format(Number(ismokMokest));
 let ismokSum = currentBalanceDot - suapvIsmokMokest;
 let suapvIsmokSum = formatter.format(Number(ismokSum));
