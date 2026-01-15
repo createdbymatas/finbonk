@@ -2,178 +2,64 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: 0.3s;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
+    font-family: "Ancizar Sans", sans-serif;
     -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
-    cursor: default;
-}
-::-webkit-scrollbar {
-    width: 0;
-}
-::placeholder {
-  color: darkgrey;
-  opacity: 1;
-}
-
-::-ms-input-placeholder {
-  color: darkgrey;
 }
 body{
-    background-color: #f2f2f2;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    background-color: #202020;
+    overflow: hidden;
+    padding: 15px;
+    width: 100vw;
 }
-img{
-    pointer-events: none;
+#hidden{
+    display: none;
 }
-button{
-    touch-action: manipulation;
-}
-hr{
-    border: none;
-    border-top: 1px solid lightgrey;
-    width: 100%;
-}
-
-.hidden{
-    opacity: 0;
-}
-
-/* krovimas */
 #loading{
     width: 100%;
     height: 100%;
     position: fixed;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    top: 0;
+    z-index: 30;
+    background-color: #202020;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
-    transform: scale(1);
-    background-color: #f2f2f2;
+    transition: none;
+    opacity: 1;
     cursor: wait;
     transition: none;
 }
-#createdByMatas{
+#loading h1{
+    font-size: 50px;
     position: absolute;
-    bottom: 30px;
+    transition: none;
+}
+#loader{
+    width: 50px;
+    height: 50px;
+    border: 7px solid #606060;
+    border-top-color: #F5F5DC;
+    border-radius: 100%;
+    animation: spin 0.8s linear infinite;
+    margin-top: 400px;
     opacity: 0;
-    color: black;
-    text-align: center;
-    cursor: wait;
+    transition: none;
 }
-.spin-loader{
-    border-radius: 80%;
-    display: block;
-    height: 50px;
+#loader2{
     width: 50px;
-    position: relative;
-    animation: spin 0.65s linear infinite;
-    -webkit-animation: spin 0.65s linear infinite;
-    background: lightgrey;
-    cursor: wait;
-}
-.spin-loader:before, .spin-loader:after{
-    content: "";
-    display: block;
-    position: absolute;
-}
-.spin-loader:before{
-    border-radius: 0 90px 90px 0;
     height: 50px;
-    width: 50%;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    background: black;
-    background-image: linear-gradient(lightgrey, black);
-}
-.spin-loader:after{
-    border-radius: 80%;
-    height: 40px;
-    width: 40px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    background: #f2f2f2;
-}
-.spin-loader2{
-    border-radius: 80%;
-    display: block;
-    height: 50px;
-    width: 50px;
-    position: relative;
-    /* animation: spin 0.65s linear infinite; */
-    /* -webkit-animation: spin 0.65s linear infinite; */
-    background: lightgrey;
-}
-.spin-loader2:before, .spin-loader2:after{
-    content: "";
-    display: block;
-    position: absolute;
-}
-.spin-loader2:before{
-    border-radius: 0 90px 90px 0;
-    height: 50px;
-    width: 50%;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    background: black;
-    background-image: linear-gradient(lightgrey, black);
-}
-.spin-loader2:after{
-    border-radius: 80%;
-    height: 40px;
-    width: 40px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    background: #f2f2f2;
-}
-#spin-loader3{
-    border-radius: 80%;
-    display: block;
-    height: 50px;
-    width: 50px;
-    position: relative;
-    background: lightgrey;
-}
-#spin-loader3:before, #spin-loader3:after{
-    content: "";
-    display: block;
-    position: absolute;
-}
-#spin-loader3:before{
-    border-radius: 0 90px 90px 0;
-    height: 50px;
-    width: 50%;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    background: black;
-    background-image: linear-gradient(lightgrey, black);
-}
-#spin-loader3:after{
-    border-radius: 80%;
-    height: 40px;
-    width: 40px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    background: #f2f2f2;
+    border: 7px solid #606060;
+    border-top-color: #F5F5DC;
+    border-radius: 100%;
+    animation: spin 0.8s linear infinite;
 }
 @keyframes spin {
     0%{
@@ -183,340 +69,161 @@ hr{
         transform: rotate(360deg);
     }
 }
-@-webkit-keyframes spin{
-    0%{
-        transform: rotate(0);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-}
-@keyframes spin2 {
-    0%{
-        transform: scale(0.7) rotate(0);
-    }
-    100%{
-        transform: scale(0.7) rotate(360deg);
-    }
-}
-@keyframes spin3 {
-    0%{
-        transform: scale(0.6) rotate(0);
-    }
-    100%{
-        transform: scale(0.6) rotate(360deg);
-    }
-}
-#downloadScriptSpinnerDiv{
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: scale(0.7);
-}
-#downloadAudioSpinnerDiv{
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: scale(0.7);
-}
-
-/* ekrano ispejimas */
-#screenSize{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 90;
-    background-color: #f2f2f2;
-    cursor: not-allowed;
-}
-#screenSizeTekstas1{
-    font-size: 25px;
-    text-align: center;
-    margin-bottom: 20px;
-    color: black;
-    cursor: not-allowed;
-    font-weight: 600;
-}
-#screenSizeTekstas2{
-    font-size: 17px;
-    text-align: center;
-    margin-bottom: 20px;
-    color: black;
-    cursor: not-allowed;
-}
-#sizeDiv{
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: not-allowed;
-}
-#computerIcon{
-    font-size: 70px;
+#ikeliama{
+    color: #F5F5DC;
     position: absolute;
-    color: black;
-    cursor: not-allowed;
-    margin-right: 120px;
-}
-#xIcon{
-    font-size: 30px;
-    color: red;
-    background-color: #f2f2f2;
-    border-radius: 100%;
-    margin-top: 60px;
-    z-index: 2;
-    margin-left: 70px;
-    cursor: not-allowed;
-}
-#phoneIcon{
-    font-size: 70px;
-    position: absolute;
-    color: black;
-    cursor: not-allowed;
-    margin-left: 120px;
-}
-#checkIcon{
-    font-size: 30px;
-    color: green;
-    background-color: #f2f2f2;
-    border-radius: 100%;
-    margin-top: 60px;
-    z-index: 2;
-    margin-left: 70px;
-    cursor: not-allowed;
-}
-
-
-/* inspect tool uzblokavimas */
-#accessDenied{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 95;
-    background-color: #f2f2f2;
-    color: black;
-    transition: 0.2s;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 15px;
-    cursor: not-allowed;
-    transform: scale(1.1);
+    font-size: 20px;
+    margin-top: 520px;
+    transition: none;
     opacity: 0;
 }
-.fa-ban{
-    color: red;
-    font-size: 70px;
-    cursor: not-allowed;
+#ikeliama2{
+    color: #F5F5DC;
+    position: absolute;
+    font-size: 20px;
+    margin-top: 120px;
+}
+#createdByMatas{
+    position: absolute;
+    bottom: 30px;
+    opacity: 0;
+    color: #F5F5DC;
+    text-align: center;
+    font-size: 20px;
     transition: none;
 }
-#accessDenied p{
-    margin-top: 20px;
-    cursor: not-allowed;
-}
-#accessDenied div{
-    font-size: 15px;
-    width: 275px;
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+#pupulioBankas{
+    width: 100%;
     position: absolute;
-    bottom: 15px;
-    right: 25px;
-    /* outline: 1px solid red; */
+    bottom: 32px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    opacity: 1;
+    color: darkgrey;
+    text-align: center;
+    font-size: 17px;
+    cursor: default;
 }
-#accessDenied div p{
-    margin-top: 0;
-}
-#uzdraustaRestart {
-    width: 50px;
-    height: 50px;
-    border:7px solid black;
-    border-radius: 50%;
-    position: relative;
-    transform:rotate(45deg);
-    box-sizing: border-box;
-    }
-#uzdraustaRestart::before {
-    content: "";
+#duomenysAtnaujinami{
+    width: 100%;
     position: absolute;
-    box-sizing: border-box;
-    inset:-7px;
-    border-radius: 50%;
-    border:7px solid black;
-    /* animation: prixClipFix 10s linear; */
-    animation: none;
-}
-
-@keyframes prixClipFix {
-    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
-    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
-    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
-    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
-    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
-}
-
-#noConnectionBg{
-    width: 100%;
-    height: 60px;
-    position: fixed;
-    bottom: -100px;
+    bottom: 17px;
     left: 0;
     right: 0;
-    z-index: 101;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
+    margin: 0;
+    opacity: 1;
+    color: darkgrey;
+    text-align: center;
+    font-size: 13px;
+    cursor: default;
 }
-#noConnection{
-    width: 135px;
-    height: 50px;
-    background-color: red;
-    color: white;
+
+#loginAlert{
+    width: 95%;
+    height: auto;
+    background-color: #454545;
+    border-radius: 25px;
+    border: 1px solid #F5F5DC;
+    box-shadow: 0 0 15px #202020;
+    position: fixed;
+    top: -100px;
+    left: 2.5%;
+    right: 2.5%;
+    z-index: 29;
+    color: #F5F5DC;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 15px;
-    padding-right: 0;
-    border-radius: 25px;
-    box-shadow: 0 0 5px red;
+    padding: 15px;
+    padding-left: 45px;
+    font-size: 17px;
+    transition: 0.3s;
+    cursor: default;
 }
-#noConnectionI{
+#loginAlert i{
+    position: absolute;
+    left: 15px;
     font-size: 20px;
-    animation: none;
 }
-#noConnection p{
-    width: 100px;
-    text-align: center;
-    font-size: 15px;
-}
-
-#badConnectionBg{
-    width: 100%;
-    height: 60px;
-    position: fixed;
-    bottom: -100px;
-    left: 0;
-    right: 0;
-    z-index: 101;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-}
-#badConnection{
-    width: 175px;
-    height: 50px;
-    background-color: red;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 15px;
-    padding-right: 0;
+#logoutAlert{
+    width: 95%;
+    height: auto;
+    background-color: #454545;
     border-radius: 25px;
-    box-shadow: 0 0 5px red;
-}
-#badConnectionI{
-    font-size: 20px;
-    animation: none;
-}
-#badConnection p{
-    width: 150px;
-    text-align: center;
-    font-size: 15px;
-}
-
-@keyframes connectionBlink{
-    0%{
-        opacity: 1;
-    }
-    10%{
-        opacity: 0;
-    }
-    20%{
-        opacity: 1;
-    }
-    30%{
-        opacity: 0;
-    }
-    40%{
-        opacity: 1;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-
-/* klaviaturos backgroundas */
-#display{
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+    border: 1px solid #F5F5DC;
+    box-shadow: 0 0 15px #202020;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 79;
-    background-image: url(images/ziema.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    transition: 0.2s;
-    /* display: none; */
+    top: -100%;
+    left: 2.5%;
+    right: 2.5%;
+    z-index: 29;
+    color: #F5F5DC;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+    padding-left: 45px;
+    font-size: 17px;
+    transition: 0.3s;
+    cursor: default;
 }
-#screen{
+#logoutAlert i{
+    position: absolute;
+    left: 15px;
+    font-size: 20px;
+}
+#userScreen{
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
+    z-index: 28;
+    background-color: #202020;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 80;
-    background-color: rgba(0, 0, 0, 0.75);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    transition: 0.2s;
-    /* display: none; */
-}
-/* klaviaturos meniu */
-#ivestiKoda{
-    color: white;
-    font-size: 20px;
+    transition: 0.1s;
+    opacity: 1;
+    text-align: center;
     transition: 0.3s;
 }
+#profilisLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+.profileIcon{
+    background-color: #F5F5DC;
+    font-size: 25px;
+    color: #202020;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 12px;
+    margin-right: 10px;
+}
+#userScreen p{
+    color: #F5F5DC;
+    font-size: 20px;
+    cursor: default;
+}
 #keypad{
-    width: 280px; 
-    height: 430px; 
+    width: 260px; 
+    height: 390px; 
     border-radius: 25px; 
-    border: 2px none; 
-    background-color: transparent; 
-    color: white; 
+    border: none; 
+    background-color: #202020; 
+    color: #F5F5DC; 
     font-size: 25px;
     margin: 10px auto;
     margin-top: 0;
@@ -526,46 +233,57 @@ hr{
     flex-direction: column;
     position: relative;
     transition: 0.3s;
-    overflow: hidden;
+}
+#keypad div{
+    transition: 0.3s;
+}
+#keypad form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
 }
 #keypad button{
-    width: 75px;
-    height: 75px;
-    border-radius: 50px;
-    border: none;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    border: 2px solid #202020;
     font-size: 30px;
-    background-color: rgba(220,220,220,0.3);
+    background-color: #F5F5DC;
     cursor: pointer;
     transition: 0.15s;
-    color: white;
+    color: #202020;
+}
+#keypad button:hover{
+    opacity: 0.7;
 }
 #keypad button:active{
-    background-color: rgba(255,255,255,0.7);
-    transform: scale(1.1);
+    opacity: 0.2;
 }
-#istrynimas:active{
+#keypad button p{
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: block;
+    transition: 0.01s;
+    color: #202020;
+    cursor: pointer;
+}
+#keypad button i{
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: block;
+    transition: 0.01s;
+    color: #202020;
+}
+#istrinimas:active{
     opacity: 0.5;
 }
 #keypad input{
     width: 0;
     height: 0;
     display: none;
-}
-.keypadSorting{
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-}
-.buttonLetters{
-    font-size: 10px;
-    margin-bottom: 5px;
-    display: block;
-    transition: 0.01s;
-    cursor: pointer;
-}
-#gerai{
-    pointer-events: none;
-    opacity: 0;
 }
 #taskeliai{
     width: 80%;
@@ -578,1260 +296,1700 @@ hr{
 #taskeliai div{
     width: 15px;
     height: 15px;
-    border: 1px solid white;
+    border: 1px solid #F5F5DC;
+    background-color: #202020;
     border-radius: 100%;
     transition: 0.15s;
 }
-.mygtukas:active{
-    transform: scale(0.9);
-}
-
-
-
-.separationLine1{
+nav{
     width: 100%;
-    height: 1px;
-    padding-left: 67.5px;
-    padding-right: 15px;
-}
-.separationLine2{
-    width: 100%;
-    height: 1px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* simtadienis */
-/* scenarijaus perziura ir atsisiuntimas, info perziura: islaidos, garso takeliu valdymas */
-#scenarijusDocs{
-    width: 100%;
-    height: 100%;
+    height: auto;
+    border-bottom: 1px solid #F5F5DC;
     position: fixed;
-    left: 0;
-    right: 0;
-    bottom: -100%;
-    z-index: 18;
-    background-color: #f2f2f2;
-    transition: 0.2s;
-}
-#scenarijusDocs h1{
-    font-weight: 600;
-    font-size: 22px;
-    margin-top: 16px;
-    margin-left: 15px;
-    margin-bottom: 15px;
-    color: black;
-}
-#scenarijusDocs div{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background-color: white;
-}
-#scenarijusDocs iframe{
-    width: 100%;
-    height: 100%;
-    position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    padding-top: 60px;
-}
-#downloadScenarijus{
-    font-size: 15px;
-    position: absolute;
-    top: 15px;
-    right: 60px;
-    z-index: 11;
-    transition: 0.15s;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    background-color: #DEDEDE;
-    color: black;
-}
-#downloadScenarijus:active{
-    opacity: 0.2;
-}
-#closeScenarijusDocs{
-    font-size: 15px;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    z-index: 11;
-    transition: 0.15s;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    background-color: #DEDEDE;
-    color: black;
-}
-#closeScenarijusDocs:active{
-    opacity: 0.2;
-}
-#islaidosSheets{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: -100%;
-    z-index: 18;
-    background-color: #f2f2f2;
-    transition: 0.2s;
-}
-#islaidosSheets h1{
-    font-weight: 600;
-    font-size: 22px;
-    margin-top: 16px;
-    margin-left: 15px;
-    margin-bottom: 15px;
-    color: black;
-}
-#islaidosSheets div{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background-color: white;
-}
-#islaidosSheets iframe{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding-top: 60px;
-}
-#closeIslaidosSheets{
-    font-size: 15px;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    z-index: 11;
-    transition: 0.15s;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    background-color: #DEDEDE;
-    color: black;
-}
-#closeIslaidosSheets:active{
-    opacity: 0.2;
-}
-#klaidosPranesimas{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: -100%;
-    z-index: 18;
-    background-color: #f2f2f2;
-    transition: 0.2s;
-}
-#klaidosPranesimas h1{
-    font-weight: 600;
-    font-size: 22px;
-    margin-top: 16px;
-    margin-left: 15px;
-    margin-bottom: 15px;
-    color: black;
-}
-#klaidosPranesimas p{
-    color: black;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-}
-#klaidosPranesimas span{
-    color: darkgrey;
-    font-size: 13px;
-}
-#closeKlaidosPranesimas{
-    font-size: 15px;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    z-index: 11;
-    transition: 0.15s;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    background-color: #DEDEDE;
-    color: black;
-}
-#closeKlaidosPranesimas:active{
-    opacity: 0.2;
-}
-#klaidosPranesimas input{
-    width: 95%;
-    height: 40px;
-    margin-left: 2.5%;
-    border-radius: 25px;
-    background-color: transparent;
-    border: 2px solid black;
-    color: black;
-    padding: 10px;
-    font-size: 15px;
-    margin-top: 5px;
-    pointer-events: none;
-    opacity: 0.6;
-}
-#klaidosPranesimas textarea{
-    width: 95%;
-    height: 100px;
-    margin-left: 2.5%;
-    border-radius: 25px;
-    background-color: transparent;
-    border: 2px solid black;
-    color: black;
-    padding: 10px;
-    font-size: 15px;
-    margin-top: 5px;
-    resize: none;
-}
-#klaidosPranesimas button{
-    width: 95%;
-    height: 40px;
-    margin-left: 2.5%;
-    border-radius: 25px;
-    background-color: transparent;
-    border: 2px solid black;
-    color: black;
-    padding: 5px;
-    font-size: 15px;
-    margin-top: 20px;
-    cursor: pointer;
-}
-#klaidosPranesimas button:active{
-    transform: scale(0.95);
-}
-#klaidosPranesimas form{
-    display: none;
-}
-#soundManager{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: -100%;
-    z-index: 18;
-    background-color: #f2f2f2;
-    transition: 0.2s;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    /* padding-bottom: 100px; */
-    padding-top: 75px;
-}
-#soundManagerNav{
-    width: 100%;
-    height: 60px;
-    top: 100%;
-    left: 0;
-    right: 0;
-    position: fixed;
-    z-index: 20;
-    background-color: #f2f2f2;
-    transition: 0.2s;
-}
-#soundManager h1{
-    font-weight: 600;
-    font-size: 22px;
-    padding-top: 16px;
-    margin-left: 15px;
-    margin-bottom: 15px;
-    color: black;
-}
-.soundTrackDiv{
-    width: 95%;
-    height: 50px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: white;
-    color: black;
-    padding-left: 15px;
-    margin-bottom: 15px;
-    margin-left: 2.5%;
-    border-radius: 30px;
-    position: relative;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.2s;
-}
-.soundTrackDiv:active{
-    opacity: 0.2;
-}
-.trackNo{
-    padding-right: 5px;
-    cursor: pointer;
-}
-.trackName{
-    font-size: 16px;
-    overflow: hidden;
-    white-space: nowrap;
-    display: inline-block;
-    text-overflow: ellipsis;
-    width: 100%;
-    padding-right: 95px;
-    cursor: pointer;
-}
-.trackDuration{
-    position: absolute;
-    right: 15px;
-    cursor: pointer;
-}
-#soundPlayer{
-    width: 95%;
-    height: 85px;
-    background-color: white;
-    box-shadow: 0 0 10px lightgrey;
-    position: fixed;
-    bottom: -100%;
-    left: 2.5%;
-    right: 2.5%;
-    border-radius: 25px;
     padding: 15px;
-    padding-right: 60px;
+    background-color: #202020;
+    z-index: 10;
 }
-#playingTrackName{
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: black;
-}
-#playingTrackName i {
-    padding-right: 5px;
-}
-#loadingAudio{
-    width: 50px;
-    height: 50px;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    transform: scale(0.6);
+#account{
     position: absolute;
+    right: 110px;
     top: 17.5px;
-    right: 5px;
-    z-index: 1;
-}
-#playBtn{
-    font-size: 15px;
-    transition: 0.15s;
-    position: absolute;
-    right: 15px;
-    top: 27.5px;
     cursor: pointer;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    background-color: #DEDEDE;
-    color: black;
+    transition: 0.3s;
+    font-weight: 400;
+    font-size: 17px;
 }
-#playBtn i{
-    cursor: pointer;
+#account:hover{
+    opacity: 0.7;
 }
-#playBtn:active{
+#account:active{
     opacity: 0.2;
 }
-#downloadAudioBtn{
-    font-size: 12px;
-    transition: 0.15s;
+#accountX{
     position: absolute;
+    right: 110px;
+    top: 17.5px;
     cursor: pointer;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    background-color: #DEDEDE;
-    color: black;
-    text-align: center;
-    padding: 4px;
+    transition: 0.3s;
+    font-weight: 400;
+    font-size: 17px;
+    display: none;
+}
+#accountX:hover{
+    opacity: 0.7;
+}
+#accountX:active{
+    opacity: 0.2;
+}
+#notifications{
+    color: #F5F5DC;
+    font-size: 22px;
+    position: absolute;
+    right: 60px;
+    top: 15.5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#notifications:hover{
+    opacity: 0.7;
+}
+#notifications:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+#notificationsX{
+    color: #F5F5DC;
+    font-size: 25px;
+    position: absolute;
+    right: 60.5px;
+    top: 15.5px;
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(0);
+}
+#notificationsX:hover{
+    opacity: 0.7;
+}
+#notificationsX:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+#apps{
+    color: #F5F5DC;
+    font-size: 25px;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#apps:hover{
+    opacity: 0.7;
+}
+#apps:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+#appsX{
+    color: #F5F5DC;
+    font-size: 25px;
+    position: absolute;
+    right: 21.5px;
+    top: 15.5px;
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(0);
+}
+#appsX:hover{
+    opacity: 0.7;
+}
+#appsX:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+h1{
+    color: #F5F5DC;
+    font-size: 20px;
     margin-left: 5px;
+    cursor: default;
 }
-#downloadAudioBtn:active{
-    opacity: 0.2;
+h2{
+    color: #F5F5DC;
+    font-size: 30px;
+    margin-top: 55px;
+    cursor: default;
 }
-#progressBg{
-    width: 100%;
-    height: 5px;
-    background-color: #e6e6e6;
-    border-radius: 25px;
-    cursor: pointer;
-    overflow: hidden;
-    transition: 0.1s;
+h3{
+    color: #F5F5DC;
+    font-size: 20px;
+    cursor: default;
 }
-#playProgress{
-    width: 0;
-    height: 5px;
-    background-color: darkgrey;
-    cursor: pointer;
-    transition: 0.1s;
+h4{
+    color: #F5F5DC;
+    font-size: 17px;
+    cursor: default;
 }
-#timePlayed {
+.boldP{
+    font-weight: 600;
+}
+.fa-chevron-right{
     font-size: 13px;
-    color: darkgrey;
-    margin-top: 5px;
 }
-#soundDuration {
-    font-size: 13px;
-    color: darkgrey;
-    position: absolute;
-    top: 57px;
-    right: 60px;
-}
-#closeSoundManager{
-    font-size: 15px;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    z-index: 11;
-    transition: 0.15s;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    background-color: #DEDEDE;
-    color: black;
-}
-#closeSoundManager:active{
-    opacity: 0.2;
-}
-@keyframes blink{
-    0%{
-        opacity: 1;
-    }
-    50%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-.atsisiustiScenariju{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
-    border: none;
-    background-color: transparent;
-    color: black;
-    border: 2px solid black;
+.fa-chevron-right2{
     font-size: 16px;
-    cursor: pointer;
 }
-.atsisiustiScenariju:active{
-    transform: scale(0.95);
+.fa-chevron-left{
+    font-size: 22px;
 }
-.daugiau{
-    width: auto;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
-    border: none;
-    background-color: transparent;
-    color: black;
-    border: 2px solid black;
-    font-size: 16px;
-    cursor: pointer;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-left: 7px;
-}
-.daugiau:active{
-    transform: scale(0.95);
-}
-#pinnedBackground{
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 19;
-    background-color: rgba(211, 211, 211, 0.75);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    opacity: 0;
-    display: none;
-}
-#pinnedBackgroundDaugiau{
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 16;
-    background-color: rgba(211, 211, 211, 0.75);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    opacity: 0;
-    display: none;
-}
-#atsisiunciamasScenarijusBg{
-    width: 30px;
-    height: 30px;
-    position: fixed;
-    top: 15px;
-    right: 60px;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 20;
-    opacity: 0;
-    overflow: hidden;
-    border-radius: 25px;
-}
-#atsisiunciamasScenarijus{
-    width: auto;
-    max-width: 95%;
-    height: 100px;
-    font-size: 15px;
-    border-radius: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #f2f2f2;
-    box-shadow: 0 0 10px lightgrey;
-    padding-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-#rodomaDaugiau{
-    width: 95%;
-    height: auto;
-    font-size: 16px;
-    border-radius: 25px;
-    background-color: #f2f2f2;
-    box-shadow: 0 0 10px lightgrey;
-    position: fixed;
-    bottom: -100%;
-    left: 2.5%;
-    right: 2.5%;
-    z-index: 17;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-#rodomaDaugiau button{
+#pinigines{
     width: 100%;
     height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px;
-    border: none;
-    background-color: transparent;
-    color: black;
-    border: 1.5px solid black;
-    font-size: 14px;
-    margin-top: 5px;
-    padding: 9px;
-    cursor: pointer;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 25px 25px 5px 5px;
+    padding: 15px;
+    margin-top: 10px;
+    position: relative;
 }
-#rodomaDaugiau button:active{
-    transform: scale(0.95);
+#pinigines p{
+    font-size: 17px;
 }
-#atsisiunciamasAudioBg{
-    width: 20px;
-    height: 20px;
-    position: fixed;
-    bottom: 65px;
-    left: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 20;
-    opacity: 0;
-    overflow: hidden;
-    border-radius: 25px;
-}
-#atsisiunciamasAudio{
-    width: auto;
-    max-width: 95%;
-    height: 100px;
-    font-size: 15px;
-    border-radius: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #f2f2f2;
-    box-shadow: 0 0 10px lightgrey;
-    padding-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-.pinnedBottom{
-    width: 95%;
-    height: auto;
-    background-color: rgba(242, 242, 242, 0.75);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    position: fixed;
-    bottom: 0;
-    left: 2.5%;
-    right: 2.5%;
-    padding: 10px;
+#finbonkPinigine{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 15;
-    box-shadow: 0 0 10px lightgrey;
-    border-radius: 25px;
-}
-
-
-/* simtadienis */
-#simtadienis{
-    width: 100%;
-    height: 100%;
-    background-color: #f2f2f2;
-    transition: 0.2s;
-    overflow: hidden;
-    overflow-y: scroll;
-    padding-top: 100vh;
-    display: none;
-}
-#topInfoSimtadienis{
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    top: 0;
-    left: 0;
-}
-#infoSimtadienis{
-    width: 100%;
-    height: 60px;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(242, 242, 242, 0.75);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    color: black;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    z-index: 10;
-}
-#infoSimtadienis i{
-    font-size: 1špx;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    z-index: 11;
-    transition: 0.15s;
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    background-color: #404040;
+    padding: 10px;
+    border-radius: 25px 25px 5px 5px;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+#finbonkPinigine:hover{
+    opacity: 0.7;
+}
+#finbonkPinigine:active{
+    opacity: 0.2;
+}
+#skolos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    cursor: default;
+    background-color: #404040;
+    padding: 10px;
+    border-radius: 5px 5px 25px 25px;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+#skolos div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#grazintiIki{
+    font-weight: 600;
+}
+#palukanos{
+    font-weight: 600;
+}
+#apyvarta{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#apyvarta:hover{
+    opacity: 0.7;
+}
+#apyvarta:active{
+    opacity: 0.2;
+}
+#apyvarta h3{
+    cursor: pointer;
+}
+#apyvarta p{
+    font-size: 17px;
+}
+#apyvartaMonth{
+    font-size: 19px;
+}
+#gautaIsleistaDiv{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+#apyvartosBar{
+    width: 100%;
+    height: 15px;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-top: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 100%;
-    background-color: #DEDEDE;
-    color: black;
 }
-#simtadienisTekstas{
-    font-size: 21px;
-    font-weight: 600;
-    color: black;
-    overflow: hidden;
-    white-space: nowrap;
-    display: inline-block;
-    text-overflow: ellipsis;
+#gautaBar{
+    height: 100%;
+    background-color: forestgreen;
+}
+#isleistaBar{
+    height: 100%;
+    background-color: crimson;
+}
+#emptyBar{
+    width: 0;
+    height: 100%;
+    background-color: grey;
+}
+
+
+#feeInfoBg{
     width: 100%;
-    position: absolute;
-    top: 17px;
-    padding-left: 60px;
-    padding-right: 15px;
-    z-index: 10;
-    opacity: 1;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #F5F5DC;
+    z-index: 40;
+    display: none;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
 }
-#simtadienisUzdarymas:active{
+#feeInfoBg div{
+    width: auto;
+    max-width: 90%;
+    height: auto;
+    border-radius: 25px;
+    background-color: #454545;
+    border: 1px solid #F5F5DC;
+    padding-top: 15px;
+    position: relative;
+    overflow: hidden;
+}
+#aboutFee{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+#feeInfoBg p{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#feeInfoBg button{
+    width: 100%;
+    height: auto;
+    color: #323232;
+    background-color: #F5F5DC;
+    padding: 15px;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+}
+#feeInfoBg button:hover{
+    opacity: 0.7;
+}
+#feeInfoBg button:active{
+    opacity: 0.2;
+}
+.feeQuestionI{
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+}
+.feeQuestionI:hover{
+    opacity: 0.7;
+}
+.feeQuestionI:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+
+#returnUntilInfoBg{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #F5F5DC;
+    z-index: 40;
+    display: none;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+}
+#returnUntilInfoBg div{
+    width: auto;
+    max-width: 90%;
+    height: auto;
+    border-radius: 25px;
+    background-color: #454545;
+    border: 1px solid #F5F5DC;
+    padding-top: 15px;
+    position: relative;
+    overflow: hidden;
+}
+#aboutReturnUntil{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+#returnUntilInfoBg p{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#returnUntilInfoBg button{
+    width: 100%;
+    height: auto;
+    color: #323232;
+    background-color: #F5F5DC;
+    padding: 15px;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+}
+#returnUntilInfoBg button:hover{
+    opacity: 0.7;
+}
+#returnUntilInfoBg button:active{
+    opacity: 0.2;
+}
+.returnUntilQuestionI{
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+}
+.returnUntilQuestionI:hover{
+    opacity: 0.7;
+}
+.returnUntilQuestionI:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+
+#interestRateInfoBg{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #F5F5DC;
+    z-index: 40;
+    display: none;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+}
+#interestRateInfoBg div{
+    width: auto;
+    max-width: 90%;
+    height: auto;
+    border-radius: 25px;
+    background-color: #454545;
+    border: 1px solid #F5F5DC;
+    padding-top: 15px;
+    position: relative;
+    overflow: hidden;
+}
+#aboutInterestRate{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+#interestRateInfoBg p{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#interestRateInfoBg button{
+    width: 100%;
+    height: auto;
+    color: #323232;
+    background-color: #F5F5DC;
+    padding: 15px;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+}
+#interestRateInfoBg button:hover{
+    opacity: 0.7;
+}
+#interestRateInfoBg button:active{
+    opacity: 0.2;
+}
+.interestRateQuestionI{
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+}
+.interestRateQuestionI:hover{
+    opacity: 0.7;
+}
+.interestRateQuestionI:active{
+    transform: scale(0.9);
     opacity: 0.2;
 }
 
 
-
-
-
-/* simtadienio informacija/objektai */
-.simtadienisIcon{
-    position: absolute;
-    width: 25px;
-    height: 100%;
+#settings{
+    width: 200px;
+    height: auto;
+    position: fixed;
+    top: 36px;
+    right: 81px;
+    background-color: #454545;
     border-radius: 25px;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 27.5px;
-    font-size: 20px;
-    color: black;
+    border: 1px solid #F5F5DC;
+    padding: 15px;
+    box-shadow: 0 0 15px #202020;
+    transition: 0.2s;
+    z-index: 13;
+    transform: scale(0.8);
+    opacity: 0;
+    pointer-events: none;
 }
-.pagrTekstas{
+#settings p{
+    font-size: 20px;
     font-weight: 600;
+    color: #F5F5DC;
+    text-align: center;
+    cursor: default;
+}
+#settings div{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    color: #F5F5DC;
+    background-color: #555555;
+    border-radius: 25px;
+    margin-top: 10px;
+    cursor: pointer;
     font-size: 17px;
-    color: black;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    display: inline-block;
-    text-overflow: ellipsis;
+    padding: 5px;
+    transition: 0.3s;
 }
-.antrTekstas{
-    color: grey;
-    font-size: 14px;
-    font-weight: 400;
-    width: 100%;
+#settings div:hover{
+    opacity: 0.7;
 }
-.pastabaTekstas{
-    color: black;
-    font-size: 13px;
-    font-weight: 400;
-    width: 100%;
-    position: relative;
-    margin-top: 7px;
-    padding-left: 17px;
+#settings div:active{
+    transform: scale(0.9);
+    opacity: 0.2;
 }
-.sauktukas{
-    position: absolute;
-    left: 0;
-    border: 1px solid black;
+#notifs{
+    width: 200px;
+    height: auto;
+    position: fixed;
+    top: 36px;
+    right: 36px;
+    background-color: #454545;
+    border-radius: 25px;
+    border: 1px solid #F5F5DC;
+    padding: 15px;
+    box-shadow: 0 0 15px #202020;
+    transition: 0.2s;
+    z-index: 12;
+    transform: scale(0.8);
+    opacity: 0;
+    pointer-events: none;
+}
+#notifs p{
+    font-size: 20px;
     font-weight: 600;
-    width: 13px;
-    height: 13px;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 10px;
-    margin-top: 1px;
+    color: #F5F5DC;
+    text-align: center;
+    cursor: default;
 }
-#girlianda{
+#notifs div{
     width: 100%;
-    height: 5px;
-    position: fixed;
-    top: -6px;
-    left: 0;
-    right: 0;
-    z-index: 18;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: auto;
+    text-align: center;
+    color: #F5F5DC;
+    background-color: #555555;
+    border-radius: 25px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 5px;
+    transition: 0.3s;
 }
-#girlianda2{
+#notifs div:hover{
+    opacity: 0.7;
+}
+#notifs div:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+#otherApps{
+    width: 200px;
+    height: auto;
+    position: fixed;
+    top: 36px;
+    right: -4px;
+    background-color: #454545;
+    border-radius: 25px;
+    border: 1px solid #F5F5DC;
+    padding: 15px;
+    box-shadow: 0 0 15px #202020;
+    transition: 0.2s;
+    z-index: 11;
+    transform: scale(0.8);
+    opacity: 0;
+    pointer-events: none;
+}
+#otherApps p{
+    font-size: 20px;
+    font-weight: 600;
+    color: #F5F5DC;
+    text-align: center;
+    cursor: default;
+}
+#otherApps div{
     width: 100%;
-    height: 5px;
-    position: fixed;
-    bottom: -6px;
-    left: 0;
-    right: 0;
-    z-index: 18;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: auto;
+    text-align: center;
+    color: #F5F5DC;
+    background-color: #555555;
+    border-radius: 25px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 5px;
+    transition: 0.3s;
 }
-#girlianda2 div{
-    animation-delay: 0.5s;
+#otherApps div:hover{
+    opacity: 0.7;
 }
-.zaliaGirlianda{
-    width: 10%;
-    height: 5px;
-    background-color: green;
-    box-shadow: 0 0 20px green;
-    animation: girliandaZalia 1s linear infinite;
+#otherApps div:active{
+    transform: scale(0.9);
+    opacity: 0.2;
 }
-.raudonaGirlianda{
-    width: 10%;
-    height: 5px;
-    background-color: red;
-    box-shadow: 0 0 20px red;
-    animation: girliandaRaudona 1s linear infinite;
-}
-@keyframes girliandaZalia{
-    0%{
-        box-shadow: 0 0 20px green;
-    }
-    49.99%{
-        box-shadow: 0 0 20px green;
-    }
-    50%{
-        box-shadow: none;
-    }
-    100%{
-        box-shadow: none;
-    }
-}
-@keyframes girliandaRaudona{
-    0%{
-        box-shadow: none;
-    }
-    49.99%{
-        box-shadow: none;
-    }
-    50%{
-        box-shadow: 0 0 20px red;
-    }
-    100%{
-        box-shadow: 0 0 20px red;
-    }
+.newWindow{
+    font-size: 13px;
 }
 
-.vardas{
+#profilioPaveikslelis{
     width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 80px;
-    padding-left: 67.5px;
-    padding-right: 15px;
-    position: relative;
-    margin-bottom: 5px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-}
-.vardasIcon{
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    border-radius: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 15px;
-    left: 30px;
-    font-size: 20px;
-    color: black;
-}
-.vardasAntrTekstas{
-    color: grey;
-    font-size: 14px;
-    font-weight: 400;
-    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 8;
+    padding: 15px;
+    transition: 0.3s;
     overflow: hidden;
-    white-space: nowrap;
+    overflow-y: scroll;
+}
+#profilioPaveikslelis h2{
+    cursor: pointer;
+    transition: 0.3s;
+}
+#profilioPaveikslelis h2:hover{
+    opacity: 0.7;
+}
+#profilioPaveikslelis h2:active{
+    opacity: 0.2;
+}
+#pictureSort{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 25px 25px 5px 5px;
+    padding: 15px;
+    margin-top: 10px;
+}
+#sortIcons{
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
+.icon{
+    width: 100px;
+    height: 100px;
+    background-color: #F5F5DC;
+    font-size: 50px;
+    color: #202020;
+    border-radius: 100%;
     display: inline-block;
-    text-overflow: ellipsis;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
 }
-.apie{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 5px;
-    padding-left: 67.5px;
-    padding-right: 15px;
-    position: relative;
-    margin-bottom: 5px;
-    padding-top: 7px;
-    padding-bottom: 7px;
+.icon:hover{
+    opacity: 0.7;
 }
-.pasiruosimas{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 5px;
-    padding-left: 67.5px;
-    padding-right: 15px;
-    position: relative;
-    margin-bottom: 5px;
-    padding-top: 7px;
-    padding-bottom: 7px;
+.icon:active{
+    transform: scale(0.9);
+    opacity: 0.2;
 }
-.zodziai{
+.icon i{
     width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 5px;
-    padding-left: 67.5px;
-    padding-right: 15px;
-    position: relative;
-    margin-bottom: 5px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-}
-.apranga{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 5px;
-    padding-left: 67.5px;
-    padding-right: 15px;
-    position: relative;
-    margin-bottom: 5px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-}
-.vaidinimas{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 5px;
-    padding-left: 67.5px;
-    padding-right: 15px;
-    position: relative;
-    margin-bottom: 5px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-}
-.papildomai{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 5px;
-    padding-left: 67.5px;
-    padding-right: 15px;
-    position: relative;
-    margin-bottom: 5px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-}
-.papildomai button{
-    width: 100%;
-    height: auto;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 30px;
-    border: none;
-    background-color: transparent;
-    color: black;
-    border: 1.5px solid black;
-    font-size: 14px;
+}
+#profilePicChangeBtn{
+    width: 100%;
+    height: auto;
+    color: #323232;
+    background-color: #F5F5DC;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
     margin-top: 5px;
-    padding: 9px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+    pointer-events: none;
+    opacity: 0.2;
+}
+#profilePicChangeBtn:hover{
+    opacity: 0.7;
+}
+#profilePicChangeBtn:active{
+    opacity: 0.2;
+}
+#profilePicChangeBtn h3{
+    color: #323232;
+    font-size: 17px;
     cursor: pointer;
 }
-.papildomai button:active{
-    transform: scale(0.95);
+#kontaktineInformacija{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 8;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#kontaktineInformacija h2{
+    cursor: pointer;
+    transition: 0.3s;
+}
+#kontaktineInformacija h2:hover{
+    opacity: 0.7;
+}
+#kontaktineInformacija h2:active{
+    opacity: 0.2;
+}
+#pilnasVardas{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 25px 25px 5px 5px;
+    padding: 15px;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#pilnasVardas p{
+    font-size: 20px;
+    text-align: right;
+}
+#lytisIvardziai{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#lytisIvardziai p{
+    font-size: 20px;
+    text-align: right;
+}
+#susietaSaskaita{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#susietaSaskaita p{
+    font-size: 20px;
+    text-align: right;
+}
+#elPastas{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#elPastas p{
+    font-size: 20px;
+    text-align: right;
+}
+#whatsapp{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#whatsapp p{
+    font-size: 20px;
+    text-align: right;
+}
+
+#mokescioSkaiciuokle{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 8;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: none;
+}
+#mokescioSkaiciuokle h2{
+    cursor: pointer;
+    transition: 0.3s;
+}
+#mokescioSkaiciuokle h2:hover{
+    opacity: 0.7;
+}
+#mokescioSkaiciuokle h2:active{
+    opacity: 0.2;
+}
+#ivestiSuma{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 25px 25px 5px 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#mokescioSkaiciuokle input{
+    width: 100%;
+    height: auto;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 5px;
+    color: #202020;
+    text-align: left;
+    background-color: #F5F5DC;
+    border: 2px solid #F5F5DC;
+    transition: 0.2s;
+    cursor: default;
+}
+::placeholder {
+    color: #202020;
+    opacity: 1;
+}
+::-ms-input-placeholder {
+    color: #202020;
+    opacity: 1;
+}
+::-webkit-input-placeholder{
+    color: #202020;
+    opacity: 1;
+}
+#calculateFeeBtn{
+    width: 100%;
+    height: auto;
+    color: #323232;
+    background-color: #F5F5DC;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+    pointer-events: none;
+    opacity: 0.2;
+}
+#calculateFeeBtn:hover{
+    opacity: 0.7;
+}
+#calculateFeeBtn:active{
+    opacity: 0.2;
+}
+#calculateFeeBtn h3{
+    color: #323232;
+    font-size: 17px;
+    cursor: pointer;
 }
 
 
 
-@media only screen and (max-width: 750px){
-    #screenSize{
+#finbonkWallet{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 5;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#finbonkWallet h2{
+    cursor: pointer;
+    transition: 0.3s;
+}
+#finbonkWallet h2:hover{
+    opacity: 0.7;
+}
+#finbonkWallet h2:active{
+    opacity: 0.2;
+}
+#finbonkBalansas{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 25px 25px 5px 5px;
+    padding: 15px;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#finbonkBalansas p{
+    font-size: 20px;
+}
+#finbonkIsmoketi{
+    width: 100%;
+    height: auto;
+    color: #323232;
+    background-color: #F5F5DC;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+}
+#finbonkIsmoketi:hover{
+    opacity: 0.7;
+}
+#finbonkIsmoketi:active{
+    opacity: 0.2;
+}
+#finbonkIsmoketi h3{
+    color: #323232;
+    font-size: 17px;
+    cursor: pointer;
+}
+#finbonkOperacijos{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+}
+#finbonkOperacijos p{
+    font-size: 17px;
+}
+.operacija{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: #404040;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+.operacija:hover{
+    opacity: 0.7;
+}
+.operacija:active{
+    opacity: 0.2;
+}
+.pajamos{
+    color: forestgreen;
+}
+.islaidos{
+    color: crimson;
+}
+
+#visaApyvarta{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 5;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#visaApyvarta h2{
+    cursor: pointer;
+    transition: 0.3s;
+}
+#visaApyvarta h2:hover{
+    opacity: 0.7;
+}
+#visaApyvarta h2:active{
+    opacity: 0.2;
+}
+#apyvartaSiMenesi{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 25px 25px 5px 5px;
+    padding: 15px;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#apyvartaSiMenesi p{
+    font-size: 20px;
+}
+#apyvartosRodikliai{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+}
+#apyvartosRodikliai p{
+    font-size: 17px;
+}
+#gautaIsleistaDiv2{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#apyvartosBar2{
+    width: 100%;
+    height: 15px;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#gautaBar2{
+    height: 100%;
+    background-color: forestgreen;
+}
+#isleistaBar2{
+    height: 100%;
+    background-color: crimson;
+}
+#emptyBar2{
+    width: 0;
+    height: 100%;
+    background-color: grey;
+}
+#apyvartosKategorijos{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+}
+#apyvartosKategorijos p{
+    font-size: 17px;
+}
+.kategorija{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+    background-color: #404040;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.operacijaWindow{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 7;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.operacijaWindow h2{
+    cursor: pointer;
+    transition: 0.3s;
+}
+.operacijaWindow h2:hover{
+    opacity: 0.7;
+}
+.operacijaWindow h2:active{
+    opacity: 0.2;
+}
+.operacijosDuomenys{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.operacijosDuomenys p{
+    font-size: 20px;
+    text-align: right;
+    cursor: default;
+}
+.operacijosData{
+    margin-top: 10px;
+    border-radius: 25px 25px 5px 5px;
+}
+.isklotine{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+}
+.isklotine p{
+    font-size: 17px;
+}
+.isklotinesDalis{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+    background-color: #404040;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+
+
+
+form{
+    display: none;
+}
+#ismoka{
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 6;
+    padding: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#ismoka h2{
+    cursor: pointer;
+    transition: 0.3s;
+}
+#ismoka h2:hover{
+    opacity: 0.7;
+}
+#ismoka h2:active{
+    opacity: 0.2;
+}
+.ismokosDuomenys{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ismokosDuomenys p{
+    font-size: 20px;
+    text-align: right;
+}
+.ismokosInformacija{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+}
+.ismokosInformacija p{
+    font-size: 17px;
+}
+#ismoketiBtn{
+    width: 100%;
+    height: auto;
+    color: #323232;
+    background-color: #F5F5DC;
+    border-radius: 5px 5px 25px 25px;
+    padding: 15px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+}
+#ismoketiBtn:hover{
+    opacity: 0.7;
+}
+#ismoketiBtn:active{
+    opacity: 0.2;
+}
+#ismoketiBtn h3{
+    color: #323232;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+#uzklausaIssiusta{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #F5F5DC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+#uzklausaIssiusta h1{
+    font-size: 35px;
+}
+#uzklausaIssiusta p{
+    font-size: 25px;
+    margin-top: 20px;
+}
+#uzklausaIssiusta button{
+    width: auto;
+    height: 40px;
+    background-color: #F5F5DC;
+    color: #202020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 25px;
+    border: none;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+#uzklausaIssiusta button:hover{
+    opacity: 0.7;
+}
+#uzklausaIssiusta button:active{
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+
+@media only screen and (max-width: 600px){
+    #createdByMatas{
+        font-size: 18px;
+    }
+
+    #loginAlert{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 10px;
+        padding-top: 32px;
+    }
+    #loginSuccessful{
+        position: absolute;
+        left: 40px;
+        top: 12px;
+    }
+    #loginAlert i{
+        top: 12px;
+    }
+    #likesLaikas{
+        width: 100%;
+        text-align: right;
+    }
+    #surname1{
         display: none;
     }
-}
-@media (prefers-color-scheme: dark) {
-    body{
-        background-color: #141414;
+    #surname2{
+        display: none;
+    }
+    #pilnasVardas{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    #pilnasVardas h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    #pilnasVardas p{
+        width: 100%;
+        text-align: right;
+    }
+    #lytisIvardziai{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    #lytisIvardziai h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    #lytisIvardziai p{
+        width: 100%;
+        text-align: right;
+    }
+    #susietaSaskaita{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    #susietaSaskaita h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    #susietaSaskaita p{
+        width: 100%;
+        text-align: right;
+    }
+    #elPastas{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    #elPastas h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    #elPastas p{
+        width: 100%;
+        text-align: right;
+    }
+    #whatsApp{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    #whatsApp h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    #whatsApp p{
+        width: 100%;
+        text-align: right;
+    }
+    .operacija{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-bottom: 30px;
+    }
+    .operacija .boldP{
+        position: absolute;
+        right: 15px;
+        bottom: 10px;
+    }
+    .operacijosDuomenys{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+    .operacijosDuomenys h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
     }
-    #loading{
-        background-color: #141414;
+    .operacijosDuomenys p{
+        width: 100%;
+        text-align: right;
     }
-    #createdByMatas{
-        color: white;
+    .ismokosDuomenys{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 35px;
     }
-    .spin-loader{
-        background: #464646;
+    .ismokosDuomenys h3{
+        position: absolute;
+        left: 15px;
+        top: 15px;
     }
-    .spin-loader:before{
-        background: white;
-        background-image: linear-gradient(#464646, white);
+    .ismokosDuomenys p{
+        width: 100%;
+        text-align: right;
     }
-    .spin-loader:after{
-        background: #141414;
+    #keypad button:hover{
+        opacity: 1;
     }
-    .spin-loader2{
-        background: #464646;
+    #keypad button:active{
+        opacity: 0.2;
     }
-    .spin-loader2:before{
-        background: white;
-        background-image: linear-gradient(#464646, white);
+    #account:hover{
+        opacity: 1;
     }
-    .spin-loader2:after{
-        background: #141414;
+    #account:active{
+        opacity: 0.2;
     }
-    #spin-loader3{
-        background: #464646;
+    #accountX:hover{
+        opacity: 1;
     }
-    #spin-loader3:before{
-        background: white;
-        background-image: linear-gradient(#464646, white);
+    #accountX:active{
+        opacity: 0.2;
     }
-    #spin-loader3:after{
-        background: #141414;
+    #notifications:hover{
+        opacity: 1;
     }
-    #screenSize{
-        background-color: #141414;
+    #notifications:active{
+        opacity: 0.2;
     }
-    #screenSizeTekstas1{
-        color: white;
+    #notificationsX:hover{
+        opacity: 1;
     }
-    #screenSizeTekstas2{
-        color: white;
+    #notificationsX:active{
+        opacity: 0.2;
     }
-    #computerIcon{
-        color: white;
+    #apps:hover{
+        opacity: 1;
     }
-    #xIcon{
-        background-color: #141414;
+    #apps:active{
+        opacity: 0.2;
     }
-    #phoneIcon{
-        color: white;
+    #appsX:hover{
+        opacity: 1;
     }
-    #checkIcon{
-        background-color: #141414;
+    #appsX:active{
+        opacity: 0.2;
     }
-    #accessDenied{
-        background-color: #141414;
-        color: white;
+    #finbonkPinigine:hover{
+        opacity: 1;
     }
-    #uzdraustaRestart {
-        border-color:white;
+    #finbonkPinigine:active{
+        opacity: 0.2;
     }
-    #uzdraustaRestart::before {
-        border-color:white;
+    #apyvarta:hover{
+        opacity: 1;
     }
-
-    hr{
-        border-top: 1px solid #464646;
+    #apyvarta:active{
+        opacity: 0.2;
     }
-
-
-
-    #scenarijusDocs{
-        background-color: #141414;
+    #feeInfoBg button:hover{
+        opacity: 1;
     }
-    #scenarijusDocs h1{
-        color: white;
+    #feeInfoBg button:active{
+        opacity: 0.2;
     }
-    #closeScenarijusDocs{
-        background-color: #282828;
-        color: white;
+    .feeQuestionI:hover{
+        opacity: 1;
     }
-    #downloadScenarijus{
-        background-color: #282828;
-        color: white;
+    .feeQuestionI:active{
+        transform: scale(0.9);
+        opacity: 0.2;
     }
-    #islaidosSheets{
-        background-color: #141414;
+    #returnUntilInfoBg button:hover{
+        opacity: 1;
     }
-    #islaidosSheets h1{
-        color: white;
+    #returnUntilInfoBg button:active{
+        opacity: 0.2;
     }
-    #closeIslaidosSheets{
-        background-color: #282828;
-        color: white;
+    .returnUntilQuestionI:hover{
+        opacity: 1;
     }
-     #klaidosPranesimas{
-        background-color: #141414;
+    .returnUntilQuestionI:active{
+        transform: scale(0.9);
+        opacity: 0.2;
     }
-    #klaidosPranesimas h1{
-        color: white;
+    #interestRateInfoBg button:hover{
+        opacity: 1;
     }
-    #klaidosPranesimas p{
-        color: white;
+    #interestRateInfoBg button:active{
+        opacity: 0.2;
     }
-    #closeKlaidosPranesimas{
-        background-color: #282828;
-        color: white;
+    .interestRateQuestionI:hover{
+        opacity: 1;
     }
-    #klaidosPranesimas input{
-        border-color: white;
-        color: white;
+    .interestRateQuestionI:active{
+        transform: scale(0.9);
+        opacity: 0.2;
     }
-    #klaidosPranesimas textarea{
-        border-color: white;
-        color: white;
+    #settings div:hover{
+        opacity: 1;
     }
-    #klaidosPranesimas button{
-        border-color: white;
-        color: white;
+    #settings div:active{
+        opacity: 0.2;
     }
-    #soundManager{
-        background-color: #141414;
+    #notifs div:hover{
+        opacity: 1;
     }
-    #soundManagerNav{
-        background-color: #141414;
+    #notifs div:active{
+        opacity: 0.2;
     }
-    #soundManager h1{
-        color: white;
+    #otherApps div:hover{
+        opacity: 1;
     }
-    .soundTrackDiv{
-        background-color: black;
-        color: white;
+    #otherApps div:active{
+        opacity: 0.2;
     }
-    #soundPlayer{
-        background-color: black;
-        box-shadow: 0 0 10px #464646;
+    #profilePicChangeBtn:hover{
+        opacity: 1;
     }
-    #playingTrackName{
-        color: white;
+    #profilePicChangeBtn:active{
+        opacity: 0.2;
     }
-    #playBtn{
-        background-color: #282828;
-        color: white;
+    .icon:hover{
+        opacity: 1;
     }
-    #downloadAudioBtn{
-        background-color: #282828;
-        color: white;
+    .icon:active{
+        transform: scale(0.9);
+        opacity: 0.2;
     }
-    #progressBg{
-        background-color: #191919;
+    #profilioPaveikslelis h2:hover{
+        opacity: 1;
     }
-    #closeSoundManager{
-        background-color: #282828;
-        color: white;
+    #profilioPaveikslelis h2:active{
+        opacity: 0.2;
     }
-    .atsisiustiScenariju{
-        color: white;
-        border: 2px solid white;
+    #kontaktineInformacija h2:hover{
+        opacity: 1;
     }
-    .daugiau{
-        color: white;
-        border: 2px solid white;
+    #kontaktineInformacija h2:active{
+        opacity: 0.2;
     }
-    #pinnedBackground{
-        background-color: rgba(44, 44, 44, 0.75);
+    #mokescioSkaiciuokle h2:hover{
+        opacity: 1;
     }
-    #pinnedBackgroundDaugiau{
-        background-color: rgba(44, 44, 44, 0.75);
+    #mokescioSkaiciuokle h2:active{
+        opacity: 0.2;
     }
-    #atsisiunciamasScenarijus{
-        background-color: #141414;
-        box-shadow: 0 0 10px #464646;
-        color: white;
+    #finbonkWallet h2:hover{
+        opacity: 1;
     }
-    #rodomaDaugiau{
-        background-color: #141414;
-        box-shadow: 0 0 10px #464646;
-        color: white;
+    #finbonkWallet h2:active{
+        opacity: 0.2;
     }
-    #atsisiunciamasAudio{
-        background-color: #141414;
-        box-shadow: 0 0 10px #464646;
-        color: white;
+    #finbonkIsmoketi:hover{
+        opacity: 1;
     }
-    .pinnedBottom{
-        background-color: rgba(20, 20, 20, 0.75);
-        box-shadow: 0 0 10px #464646;
+    #finbonkIsmoketi:active{
+        opacity: 0.2;
     }
-
-    #simtadienis{
-        background-color: #141414;
+    .operacija:hover{
+        opacity: 1;
     }
-    #infoSimtadienis{
-        background-color: rgba(20, 20, 20, 0.75);
-        color: white;
+    .operacija:active{
+        opacity: 0.2;
     }
-    #infoSimtadienis i{
-        background-color: #282828;
-        color: white;
+    #visaApyvarta h2:hover{
+        opacity: 1;
     }
-    #simtadienisTekstas{
-        color: white;
+    #visaApyvarta h2:active{
+        opacity: 0.2;
     }
-    #simtadienisTekstas2{
-        color: white;
+    .operacijaWindow h2:hover{
+        opacity: 1;
     }
-
-    .simtadienisIcon{
-        color: white;
+    .operacijaWindow h2:active{
+        opacity: 0.2;
     }
-    .pagrTekstas{
-        color: white;
+    #ismoka h2:hover{
+        opacity: 1;
     }
-    .vardasIcon{
-        color: white;
+    #ismoka h2:active{
+        opacity: 0.2;
     }
-    .pastabaTekstas{
-        color: white;
+    #ismoketiBtn:hover{
+        opacity: 1;
     }
-    .sauktukas{
-        border: 1px solid white;
+    #ismoketiBtn:active{
+        opacity: 0.2;
     }
-    .papildomai button{
-        color: white;
-        border: 1.5px solid white;
+    #uzklausaIssiusta button:hover{
+        opacity: 1;
     }
-    #rodomaDaugiau button {
-        color: white;
-        border: 1.5px solid white;
+    #uzklausaIssiusta button:active{
+        opacity: 0.2;
     }
 }

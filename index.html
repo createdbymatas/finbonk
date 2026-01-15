@@ -2,251 +2,1666 @@
 <html lang="lt">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="format-detection" content="telephone=no">
-    <meta property="og:image" content="https://raw.githubusercontent.com/createdbymatas/gsgIIb/main/images/thumbnail.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="800">
-    <meta property="og:image:height" content="471">
-    <meta property="og:title" content="GŠG IIIabc">
-    <meta property="og:description" content="Created by Matas">
-    <meta name="theme-color" content="#f2f2f2" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)" />
-    <title>GŠG IIIabc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jūsų FINBONK</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600;800&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/jpg" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/app.png">
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
+    <meta property="og:image" content="https://raw.githubusercontent.com/createdbymatas/finbonk/refs/heads/main/thumbnail.jpg">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta property="og:title" content="© FINBONK">
+    <meta property="og:description" content="Created by Matas">
+    <link rel="apple-touch-icon" href="thumbnail.jpg">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
-<body id="body">
-    <audio src="sounds/pradzia.mp3" id="audio1"></audio>
-    <audio src="sounds/rap.mp3" id="audio2"></audio>
-    <audio src="sounds/burtai.mp3" id="audio3"></audio>
-    <audio src="sounds/seseliai.mp3" id="audio4"></audio>
-    <audio src="sounds/sokis.mp3" id="audio5"></audio>
-    
+<body onload="loadFunction()">
+
+    <!-- BENDRŲ DUOMENŲ SUVEDIMAS -->
+    <!-- VALIUTA: € -->
+    <div id="hidden">
+        <!-- Balansas: -->
+        <p id="currentBalance">0,00</p>
+        <!-- Skolos: -->
+        <p id="currentDebt">0,00</p> 
+        <p id="returnUntil">202X-XX-XX 23:59</p>
+        <p id="interestRate">0,00</p>
+        <!-- Apyvarta: -->
+        <p id="fullOperations">0,00</p><!-- NEPAMIRŠTI PAKEISTI APYVARTOS IŠLAIDŲ KATEGORIJŲ !! -->
+        <p id="received">0,00</p>
+        <p id="spent">0,00</p>
+        <p id="currentMonth">2026 sausis</p>
+        <p id="receivedBar"></p>
+        <p id="spentBar"></p>
+    </div>
+    <!-- BENDRŲ DUOMENŲ SUVEDIMO PABAIGA -->
+
+
     <div id="loading">
-        <div class="spin-loader" aria-hidden="true"></div>
-        <p id="createdByMatas"><span id="raide1">C</span><span id="raide2">r</span><span id="raide3">e</span><span id="raide4">a</span><span id="raide5">t</span><span id="raide6">e</span><span id="raide7">d</span> <span id="raide8">b</span><span id="raide9">y</span> <span id="raide10">M</span><span id="raide11">a</span><span id="raide12">t</span><span id="raide13">a</span><span id="raide14">s</span></p>
+        <h1 id="jusuFinbonk">Jūsų FINBONK</h1>
+        <div id="loader"></div>
+        <p id="ikeliama">Įkeliama</p>
+        <p id="createdByMatas">Created by Matas</p>
     </div>
-    <div id="screenSize">
-        <p id="screenSizeTekstas1">Ekranas per didelis</p>
-        <p id="screenSizeTekstas2">Tinklalapis pritaikytas telefonui</p>
-        <div id="sizeDiv">
-            <i class="fa-solid fa-computer" id="computerIcon"></i>
-            <i class="fa-regular fa-circle-xmark" id="xIcon"></i>
-            <i class="fa-solid fa-mobile-screen-button" id="phoneIcon"></i>
-            <i class="fa-regular fa-circle-check" id="checkIcon"></i>
+    <p id="pupulioBankas">&copy; 2025 Pupulio bankas</p>
+    <p id="duomenysAtnaujinami">Duomenys atnaujinami per 72 darbo valandas</p>
+    <div id="loginAlert" onclick="hideLoginPopup()">
+        <i class="fa-regular fa-circle-check"></i>
+        <p class="boldP" id="loginSuccessful">Prisijungta sėkmingai</p>
+        <p id="likesLaikas">likęs prisijungimo laikas: <span id="loginTimeRemaining" class="boldP">60:00</span></p>
+    </div>
+    <div id="logoutAlert" onclick="hideLogoutPopup()">
+        <i class="fa-regular fa-circle-check"></i>
+        <p class="boldP" id="logoutSuccessful">Atsijungta sėkmingai</p>
+    </div>
+    <div id="userScreen">
+        <h1>Sveiki sugrįžę!</h1>
+        <div id="profilisLogin">
+            <i class="fa-solid fa-otter profileIcon"></i>
+            <p>Ieva Kasparavičiūtė</p>
+        </div>
+        <div id="keypad">
+            <p>Prisijunkite su PIN kodu:</p>
+            <input type="text" id="checkDigit" style="display: none;">
+            <form>
+                <input type="text" name="pin" id="kodas">
+                <div id="taskeliai">
+                    <div id="taskelis1"></div>
+                    <div id="taskelis2"></div>
+                    <div id="taskelis3"></div>
+                    <div id="taskelis4"></div>
+                    <div id="taskelis5"></div>
+                    <div id="taskelis6"></div>
+                </div>
+                <div style="width: 100%; display: flex; justify-content: space-around; align-items: center; opacity: 1;" id="key1">
+                    <button ontouchstart type="button" onclick="pirmas()" id="vienasY">1<i class="fa-solid fa-plus" style="opacity: 0;"></i></button>
+                    <button ontouchstart type="button" onclick="antras()" id="duY">2<p>A B C</p></button>
+                    <button ontouchstart type="button" onclick="trecias()" id="trysY">3<p>D E F</p></button>
+                </div>
+                <div style="width: 100%; display: flex; justify-content: space-around; align-items: center;" id="key2">
+                    <button ontouchstart type="button" onclick="ketvirtas()" id="keturiY">4<p>G H I</p></button>
+                    <button ontouchstart type="button" onclick="penktas()" id="penkiY">5<p>J K L</p></button>
+                    <button ontouchstart type="button" onclick="sestas()" id="sesiY">6<p>M N O</p></button>
+                </div>
+                <div style="width: 100%; display: flex; justify-content: space-around; align-items: center;" id="key3">
+                    <button ontouchstart type="button" onclick="septintas()" id="septyniY">7<p>P Q R S</p></button>
+                    <button ontouchstart type="button" onclick="astuntas()" id="astuoniY">8<p>T U V</p></button>
+                    <button ontouchstart type="button" onclick="devintas()" id="devyniY">9<p>W X Y Z</p></button>
+                </div>
+                <div style="width: 100%; display: flex; justify-content: space-around; align-items: center;" id="key4">
+                    <button ontouchstart type="button" onclick="check(this.form)" id="checkBtn" style="opacity: 0; pointer-events: none;">OK</button>
+                    <button ontouchstart type="button" onclick="nulinis()" id="nulisY">0<i class="fa-solid fa-plus"></i></button>
+                    <button ontouchstart type="button" onclick="istrinti()" id="istrinimas" style="font-size: 18px; border: none; background-color: transparent; color: transparent; pointer-events: none;">Trinti</button>
+                </div>
+            </form>
         </div>
     </div>
-    <div id="display"></div>
-    <div id="screen">
-        <p id="ivestiKoda">Įvesk kodą</p>
-        <form>
-            <div id="keypad">
-                <form style="width: 100%; height: 100%; display: flex; justify-content: space-around; align-items: center; flex-direction: column;">
-                    <input type="text" name="pin" id="kodas">
-                    <div id="taskeliai">
-                        <div id="taskelis1"></div>
-                        <div id="taskelis2"></div>
-                        <div id="taskelis3"></div>
-                        <div id="taskelis4"></div>
-                        <div id="taskelis5"></div>
-                        <div id="taskelis6"></div>
-                    </div>
-                    <div class="keypadSorting" style="display: flex;">
-                        <button type="button" onclick="pirmas()" id="vienasBtn" ontouchstart>1<i class="fa-solid fa-plus buttonLetters" style="opacity: 0; display: block;"></i></button>
-                        <button type="button" onclick="antras()" id="duBtn" ontouchstart>2<p class="buttonLetters">A B C</p></button>
-                        <button type="button" onclick="trecias()" id="trysBtn" ontouchstart>3<p class="buttonLetters">D E F</p></button>
-                    </div>
-                    <div class="keypadSorting" style="display: flex;">
-                        <button type="button" onclick="ketvirtas()" id="keturiBtn" ontouchstart>4<p class="buttonLetters">G H I</p></button>
-                        <button type="button" onclick="penktas()" id="penkiBtn" ontouchstart>5<p class="buttonLetters">J K L</p></button>
-                        <button type="button" onclick="sestas()" id="sesiBtn" ontouchstart>6<p class="buttonLetters">M N O</p></button>
-                    </div>
-                    <div class="keypadSorting" style="display: flex;">
-                        <button type="button" onclick="septintas()" id="septyniBtn" ontouchstart>7<p class="buttonLetters">P Q R S</p></button>
-                        <button type="button" onclick="astuntas()" id="astuoniBtn" ontouchstart>8<p class="buttonLetters">T U V</p></button>
-                        <button type="button" onclick="devintas()" id="devyniBtn" ontouchstart>9<p class="buttonLetters">W X Y Z</p></button>
-                    </div>
-                    <div class="keypadSorting" style="display: flex;">
-                        <button type="button" onclick="check(this.form)" id="gerai" ontouchstart></button>
-                        <button type="button" onclick="nulinis()" id="nulisBtn" ontouchstart>0<i class="fa-solid fa-plus buttonLetters" style="display: block;"></i></button>
-                        <button type="button" onclick="istrinti()" id="istrynimas" style="font-size: 18px; background-color: transparent; color: transparent; pointer-events: none;" ontouchstart>Trinti</button>
-                    </div>
-                </form>
+    <nav>
+        <h1>&copy; FINBONK</h1>
+        <h1 ontouchstart id="account" onclick="openSettings()"><i class="fa-solid fa-otter"></i> Ieva<span id="surname1"> Kasparavičiūtė</span></h1>
+        <h1 ontouchstart id="accountX" onclick="closeSettings()"><i class="fa-solid fa-xmark"></i> Ieva<span id="surname2"> Kasparavičiūtė</span></h1>
+        <i ontouchstart class="fa-solid fa-bell" id="notifications" onclick="openNotifications()"></i>
+        <i ontouchstart class="fa-solid fa-xmark" id="notificationsX" onclick="closeNotifications()"></i>
+        <i ontouchstart class="fa-solid fa-border-all" id="apps" onclick="openApps()"></i>
+        <i ontouchstart class="fa-solid fa-xmark" id="appsX" onclick="closeApps()"></i>
+    </nav>
+    <h2>Apžvalga</h2>
+    <div id="pinigines">
+        <h3>Piniginės</h3>
+        <div ontouchstart id="finbonkPinigine" onclick="openFinbonkWallet()">
+            <p class="boldP">FINBONK piniginė <i class="fa-solid fa-chevron-right"></i></p>
+            <p>balansas: <b id="balanceInOverview">XX,XX €</b></p>
+        </div>
+        <div id="skolos">
+            <div>
+                <p class="boldP">Skolos</p>
+                <p class="boldP" id="skolosSuma">XX,XX €</p>
             </div>
-        </form>
-    </div>
-
-    <div id="accessDenied">
-        <i class="fa-solid fa-ban" id="ban"></i>
-        <p style="font-size: 25px; font-weight: 600;">Prieiga uždrausta</p>
-        <p style="font-size: 17px;">Tinklalapyje negalima atlikti veiksmų, susijusių su programos kodo peržiūra ir apžiūrėjimo įrankio (angl.: Inspect Tool) naudojimu</p>
-        <div><p>Tinklalapis bus perkrautas... </p><span id="uzdraustaRestart"></span></div>
-    </div>
-
-    <div id="noConnectionBg">
-        <div id="noConnection">
-            <i  id="noConnectionI" class="fa-solid fa-tower-broadcast"></i>
-            <p>Nėra ryšio</p>
+            <p id="grazinimoTerminas">grąžinti iki: <span id="grazintiIki">20XX-XX-XX XX:XX</span> <i ontouchstart onclick="showReturnUntilInfo()" class="fa-regular fa-circle-question returnUntilQuestionI"></i></p>
+            <p id="priskaiciuotosPalukanos">priskaičiuotos palūkanos: <span id="palukanos">XX,XX €</span> <i ontouchstart onclick="showInterestRateInfo()" class="fa-regular fa-circle-question interestRateQuestionI"></i></p>
         </div>
     </div>
-    <div id="badConnectionBg">
-        <div id="badConnection">
-            <i  id="badConnectionI" class="fa-solid fa-tower-broadcast"></i>
-            <p>Nėra ryšio arba ryšys prastas</p>
+    <div ontouchstart id="apyvarta" onclick="openApyvarta()">
+        <h3>Apyvarta <i class="fa-solid fa-chevron-right fa-chevron-right2"></i></h3>
+        <p id="apyvartaMonth">Šį mėnesį (<span id="thisMonth">20XX XXXXX</span>): <b id="apyvartaThisMonth">XX,.XX €</b></p>
+        <div id="gautaIsleistaDiv">
+            <p>Gauta: <b id="gauta1">XX,XX €</b></p>
+            <p>Išleista: <b id="isleista1">XX,XX €</b></p>
+        </div>
+        <div id="apyvartosBar">
+            <div id="emptyBar"></div>
+            <div id="gautaBar"></div>
+            <div id="isleistaBar"></div>
         </div>
     </div>
 
+    <div id="feeInfoBg">
+        <div>
+            <p class="boldP" id="aboutFee"><i class="fa-regular fa-circle-question"></i> Apie aptarnavimo mokestį</p>
+            <p>Aptarnavimo mokestį sudaro:</p>
+            <p>• <span class="boldP">0,10 €</span> fiksuota suma</p>
+            <p>• <span class="boldP">2 %</span> tarifas</p>
+            <button ontouchstart onclick="hideFeeInfo()">Uždaryti</button>
+        </div>
+    </div>
+    <div id="returnUntilInfoBg">
+        <div>
+            <p class="boldP" id="aboutReturnUntil"><i class="fa-regular fa-circle-question"></i> Apie grąžinimo terminą</p>
+            <p>Grąžinti skolas reikia iki:</p>
+            <p>• savaitės, per kurią išleista suma, pabaigos</p>
+            <br>
+            <p>Laiku negrąžinus skolos skaičiuojamos palūkanos</p>
+            <button ontouchstart onclick="hideReturnUntilInfo()">Uždaryti</button>
+        </div>
+    </div>
+    <div id="interestRateInfoBg">
+        <div>
+            <p class="boldP" id="aboutInterestRate"><i class="fa-regular fa-circle-question"></i> Apie palūkanas</p>
+            <p>Laiku negrąžinus skolos skaičiuojamos palūkanos</p>
+            <br>
+            <p>Palūkanas sudaro:</p>
+            <p>• <span class="boldP">3 % / diena</span> tarifas</p>
+            <button ontouchstart onclick="hideInterestRateInfo()">Uždaryti</button>
+        </div>
+    </div>
 
 
 
+    <div id="settings">
+        <p>Paskyra</p>
+        <div style="pointer-events: none; opacity: 0.2;">
+            <i class="fa-solid fa-key"></i> Keisti PIN kodą
+        </div>
+        <div ontouchstart onclick="openProfileIcon()">
+            <i class="fa-solid fa-images"></i> Keisti profilio paveikslėlį
+        </div>
+        <div ontouchstart onclick="openContactInfo()">
+            <i class="fa-solid fa-id-card"></i> Peržiūrėti kontaktinę informaciją
+        </div>
+        <div ontouchstart onclick="logout()">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Atsijungti
+        </div>
+    </div>
+    <div id="notifs">
+        <p>Pranešimai</p>
+        <div style="pointer-events: none;">
+            Nėra pranešimų.
+        </div>
+    </div>
+    <div id="otherApps">
+        <p>Programos</p>
+        <div ontouchstart onclick="atidarytiKonsultacijas()">
+            <i class="fa-solid fa-handshake-angle"></i> Konsultacijos <i class="fa-solid fa-arrow-up-right-from-square newWindow"></i>
+        </div>
+        <div ontouchstart onclick="atidarytiKorteliuSkaitytuva()">
+            <i class="fa-solid fa-credit-card"></i> Banko kortelių skaitytuvas <i class="fa-solid fa-arrow-up-right-from-square newWindow"></i>
+        </div>
+    </div>
 
+    <div id="profilioPaveikslelis">
+        <h2 ontouchstart onclick="closeProfileIcon()"><i class="fa-solid fa-xmark"></i> Profilio paveikslėlis</h2>
+        <div id="pictureSort">
+            <h3>Pasirinkite profilio paveikslėlį:</h3>
+            <div id="sortIcons">
+                <div class="icon" id="kiwi" ontouchstart onclick="kiwiIcon()"><i class="fa-solid fa-kiwi-bird"></i></div>
+                <div class="icon" id="crow" ontouchstart onclick="crowIcon()"><i class="fa-solid fa-crow"></i></div>
+                <div class="icon" id="cow" ontouchstart onclick="cowIcon()"><i class="fa-solid fa-cow"></i></div>
+                <div class="icon" id="hippo" ontouchstart onclick="hippoIcon()"><i class="fa-solid fa-hippo"></i></div>
+                <div class="icon" id="dog" ontouchstart onclick="dogIcon()"><i class="fa-solid fa-dog"></i></div>
+                <div class="icon" id="cat" ontouchstart onclick="catIcon()"><i class="fa-solid fa-cat"></i></div>
+                <div class="icon" id="horse" ontouchstart onclick="horseIcon()"><i class="fa-solid fa-horse"></i></div>
+                <div class="icon" id="otter" ontouchstart onclick="otterIcon()"><i class="fa-solid fa-otter"></i></div>
+                <div class="icon" id="fish" ontouchstart onclick="fishIcon()"><i class="fa-solid fa-fish"></i></div>
+                <div class="icon" id="frog" ontouchstart onclick="frogIcon()"><i class="fa-solid fa-frog"></i></div>
+            </div>
+        </div>
+        <div ontouchstart id="profilePicChangeBtn" onclick="keistiPaveiksleli()">
+            <h3>Siųsti profilio paveikslėlio keitimo užklausą</h3>
+        </div>
+    </div>
+    <div id="kontaktineInformacija">
+        <h2 ontouchstart onclick="closeContactInfo()"><i class="fa-solid fa-xmark"></i> Kontaktinė informacija</h2>
+        <div id="pilnasVardas">
+            <h3>Pilnas vardas</h3>
+            <p>Ieva Kasparavičiūtė</p>
+        </div>
+        <div id="lytisIvardziai">
+            <h3>Lytis, įvardžiai</h3>
+            <p>Moteris, ji/ją/jos</p>
+        </div>
+        <div id="susietaSaskaita">
+            <h3>Susieta sąskaita</h3>
+            <p>LT037300010168803573, Swedbank AB</p>
+        </div>
+        <div id="elPastas">
+            <h3>El. paštas</h3>
+            <p>ievakasparav@gmail.com</p>
+        </div>
+       <div id="whatsapp">
+            <h3>WhatsApp</h3>
+            <p>Ieva</p>
+        </div>
+    </div>
+
+    <div id="mokescioSkaiciuokle">
+        <h2 ontouchstart onclick="closeFeeCalculator()"><i class="fa-solid fa-xmark"></i> Mokesčio skaičiuoklė</h2>
+        <div id="ivestiSuma">
+            <h3>Įveskite sumą</h3>
+        </div>
+        <input id="sumaMokesciui" type="number" type="number" inputmode="numeric" min="0.01" pattern="[0-9\.]+" placeholder="įveskite...">
+        <div ontouchstart id="calculateFeeBtn" onclick="calculateFee()">
+            <h3>Skaičiuoti mokestį</h3>
+        </div>
+    </div>
     
-
-    <div id="scenarijusDocs">
-        <h1>Scenarijus</h1>
-        <i id="downloadScenarijus" class="fa-solid fa-download" onclick="downloadScript()" ontouchstart></i>
-        <i id="closeScenarijusDocs" class="fa-solid fa-chevron-down" onclick="closeScript()" ontouchstart></i>
-        <div></div>
-        <iframe src="https://docs.google.com/file/d/1ua-Nz9Ul_FwWwA_c_ZTLu0tSxGIk0rV5/preview" frameborder="0"></iframe>
+    <div id="finbonkWallet">
+        <h2 ontouchstart onclick="closeFinbonkWallet()"><i class="fa-solid fa-chevron-left"></i> FINBONK piniginė</h2>
+        <div id="finbonkBalansas">
+            <h3>Balansas</h3>
+            <p class="boldP" id="balanceInWallet">XX,XX €</p>
+        </div>
+        <div ontouchstart id="finbonkIsmoketi" onclick="openIsmoka()">
+            <h3>Išmokėti balansą į sąskaitą LT037300010168803573, Swedbank AB</h3>
+        </div>
+        <div id="finbonkOperacijos">
+            <h3>Operacijos</h3>
+            <h4>2025 m. gruodis</h3>
+            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija40()">
+                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP">XX,XX €</p>
+            </div> -->
+            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija39()">
+                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP">XX,XX €</p>
+            </div> -->
+            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija38()">
+                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP">XX,XX €</p>
+            </div> -->
+            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija37()">
+                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP">XX,XX €</p>
+            </div> -->
+            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija36()">
+                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP">XX,XX €</p>
+            </div> -->
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija35()">
+                <p>2025-12-11 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-19,80 €</p>
+            </div>
+            <div ontouchstart class="operacija" style="border-radius: 5px 5px 25px 25px;" onclick="openOperacija34()">
+                <p>2025-12-08 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+19,80 €</p>
+            </div>
+            <br>
+            <h4>2025 m. lapkritis</h3>
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija33()">
+                <p>2025-11-11 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+6,16 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija32()">
+                <p>2025-11-10 <b>FINBONK</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,18 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija31()">
+                <p>2025-11-10 <b>FINBONK</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,17 €</p>
+            </div>
+            <div ontouchstart class="operacija" style="border-radius: 5px 5px 25px 25px;" onclick="openOperacija30()">
+                <p>2025-11-06 <b>Caffeine Vilnius Vilnius 000LT</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-5,81 €</p>
+            </div>
+            <br>
+            <h4>2025 m. spalis</h3>
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px" onclick="openOperacija29()">
+                <p>2025-10-19 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+4,18 €</p>
+            </div>
+            <div ontouchstart class="operacija" style="border-radius: 5px 5px 25px 25px;" onclick="openOperacija28()">
+                <p>2025-10-11 <b>Caffeine Vilnius Vilnius 000LT</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-4,18 €</p>
+            </div>
+            <br>
+            <h4>2025 m. rugsėjis</h3>
+            
+            <div ontouchstart class="operacija" style="border-radius: 25px;" onclick="openOperacija27()">
+                <p>2025-09-15 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-20,00 €</p>
+            </div>
+            <br>
+            <h4>2025 m. rugpjūtis</h3>
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija26()">
+                <p>2025-08-27 <b>Marė Elzė Kasparavičienė (grynieji)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+20,00 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija25()">
+                <p>2025-08-26 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-4,50 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija24()">
+                <p>2025-08-26 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+0,95  €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija23()">
+                <p>2025-08-25 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+4,50 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija22()">
+                <p>2025-08-25 <b>FINBONK</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,03  €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija21()">
+                <p>2025-08-19 <b>JUDU (Vilniaus viešasis transportas)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,92  €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija20()">
+                <p>2025-08-12 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-5,00  €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija19()">
+                <p>2025-08-12 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+5,00  €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija18()">
+                <p>2025-08-11 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-21,80  €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija17()">
+                <p>2025-08-11 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+4,70  €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija16()">
+                <p>2025-08-11 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+17,10 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija15()">
+                <p>2025-08-04 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-27,00  €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija14()">
+                <p>2025-08-04 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+10,00  €</p>
+            </div>
+            <div ontouchstart class="operacija" style="border-radius: 5px 5px 25px 25px;" onclick="openOperacija13()">
+                <p>2025-08-01 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+17,00  €</p>
+            </div>
+            <br> <!-- MĖNESIŲ PERSKYRIMAS  -->
+            <h4>2025 m. liepa</h3>
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija12()">
+                <p>2025-07-18 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-3,80 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija11()">
+                <p>2025-07-18 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+3,80 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija10()">
+                <p>2025-07-16 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-4,80 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija9()">
+                <p>2025-07-16 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+4,80 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija8()">
+                <p>2025-07-13 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+1,63 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija7()">
+                <p>2025-07-11 <b>JUDU (Vilniaus viešasis transportas)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,60 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija6()">
+                <p>2025-07-08 <b>JUDU (Vilniaus viešasis transportas)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,21 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija5()">
+                <p>2025-07-07 <b>JUDU (Vilniaus viešasis transportas)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,82 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija4()">
+                <p>2025-07-01 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+0,31 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija3()">
+                <p>2025-07-01 <b>Instagram pagalba</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-0,31 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija2()">
+                <p>2025-07-01 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP pajamos">+1,22 €</p>
+            </div>
+            <div ontouchstart class="operacija" style="border-radius: 5px 5px 25px 25px;" onclick="openOperacija1()">
+                <p>2025-07-01 <b>Instagram pagalba</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-1,22 €</p>
+            </div>
+        </div>
     </div>
 
-    <div id="islaidosSheets">
-        <h1>Finansai ir išlaidos</h1>
-        <i id="closeIslaidosSheets" class="fa-solid fa-chevron-down" onclick="closeExpenses()" ontouchstart></i>
-        <div></div>
-        <iframe src="https://docs.google.com/file/d/11ZO2qFMKdTPMzKyFi-yv-244f3XOedgMELxoV-SuVAA/preview" frameborder="0"></iframe>
+    <div id="visaApyvarta">
+        <h2 ontouchstart onclick="closeApyvarta()"><i class="fa-solid fa-chevron-left"></i> Apyvarta</h2>
+        <div id="apyvartaSiMenesi">
+            <h3>Šį mėnesį (<span id="thisMonth2">20XX XXXXX</span>)</h3>
+            <p class="boldP" id="apyvartaThisMonth2">XX,XX €</p>
+        </div>
+        <div id="apyvartosRodikliai">
+            <div id="gautaIsleistaDiv2">
+                <p>Gauta: <b id="gauta2">XX,XX €</b></p>
+                <p>Išleista: <b id="isleista2">XX,XX €</b></p>
+            </div>
+            <div id="apyvartosBar2">
+                <div id="emptyBar2"></div>
+                <div id="gautaBar2"></div>
+                <div id="isleistaBar2"></div>
+            </div>
+        </div>
+        <div id="apyvartosKategorijos">
+            <h3>Išlaidų kategorijos</h3>
+            <div class="kategorija" style="border-radius: 25px;">
+                <p>Išlaidų šį mėnesį nėra.</p>
+            </div>
+            <!-- <div class="kategorija" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-money-bill-transfer"></i> Išmokos</p>
+                <p class="boldP">19,50 €</p>
+            </div> -->
+            <!-- <div class="kategorija">
+                <p><i class="fa-solid fa-train-subway"></i> Viešasis transportas</p>
+                <p class="boldP">0,92 €</p>
+            </div> -->
+            <!-- <div class="kategorija" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-pizza-slice"></i> Maistas ir gėrimai</p>
+                <p class="boldP">5,60 €</p>
+            </div> -->
+            <!-- <div class="kategorija" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-hashtag"></i> Socialiniai tinklai</p>
+                <p class="boldP">1,43 €</p>
+            </div> -->
+            <!-- <div class="kategorija" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Mokesčiai</p>
+                <p class="boldP">0,30 €</p>
+            </div> -->
+        </div>
     </div>
 
-    <div id="klaidosPranesimas">
-        <h1>Pranešti apie klaidą</h1>
-        <i id="closeKlaidosPranesimas" class="fa-solid fa-chevron-down" onclick="cancelReportError()" ontouchstart></i>
-        <p style="margin-top: 20px;">Naudotojas</p>
-        <input type="text" id="errorName" value="...">
-        <p><span>Naudotojo vardas bus rodomas administratoriui pranešant apie klaidą.</span></p>
-        <p style="margin-top: 20px;">Pranešimas</p>
-        <textarea name="pranesimas" id="pranesimas" placeholder="rašyti čia..."></textarea>
-        <p id="emptyField" style="display: none;"><span style="color: red;">Privalomas teksto laukas</span></p>
-        <button onclick="sendError()" id="errorSend" ontouchstart><i class="fa-regular fa-paper-plane"></i> Siųsti</button>
-        <button id="errorSending" style="pointer-events: none; border: none; opacity: 0;"><i class="fa-solid fa-hourglass-half"></i> Siunčiama...</button>
 
-        <form id="forma" action="https://formsubmit.co/a62b43c00bf0241936f4ccc5f1f3a2fe" method="POST">
+
+    <div id="operacija1" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija1()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-01, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Instagram pagalba</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Post'o pavadinimo išrinkimas</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-1,22 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">1,20 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,02 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija2" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija2()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-01, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka iš sąskaitos LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+1,22 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">1,22 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija3" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija3()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-01, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Instagram pagalba</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Post'o pavadinimo išrinkimas</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-0,31 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,30 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,01 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija4" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija4()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-01, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka iš sąskaitos LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+0,31 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,31 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija5" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija5()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-07, pirmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>JUDU (Vilniaus viešasis transportas)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>4 x 30 min VVT bilietai</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-0,82 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,80 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,02 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija6" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija6()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-08, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>JUDU (Vilniaus viešasis transportas)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>1 x 30 min VVT bilietai</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-0,21 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,20 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,01 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija7" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija7()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-11, penktadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>JUDU (Vilniaus viešasis transportas)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>2 x 30 min VVT bilietai</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-0,60 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,40 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,20 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija8" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija8()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-13, sekmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka iš sąskaitos LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+1,63 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">1,63 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija9" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija9()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-16, trečiadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+4,80 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">5,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,20 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija10" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija10()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-16, trečiadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Išmoka į sąskaitą LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-4,80 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">4,80 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija11" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija11()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-18, penktadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+3,80 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">4,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,20 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija12" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija12()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-07-18, penktadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Išmoka į sąskaitą LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-3,80 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">3,80 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija13" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija13()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-01, penktadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+17,00 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">17,00 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija14" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija14()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-04, pirmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+10,00 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">10,00 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija15" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija15()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-04, pirmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Išmoka į sąskaitą LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-27,00 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">26,36 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,64 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija16" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija16()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-11, pirmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+17,10 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP pajamos">+17,10 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija17" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija17()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-11, pirmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+4,70 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">5,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-boxes-packing"></i> Pakavimo mokestis</p>
+                <p class="boldP">0,30 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija18" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija18()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-11, pirmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Išmoka į sąskaitą LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-21,80 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">21,26 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,54 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija19" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija19()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-12, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+5,00 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">5,00 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija20" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija20()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-12, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Išmoka į sąskaitą LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-5,00 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">4,80 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,20 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija21" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija21()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-19, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>JUDU (Vilniaus viešasis transportas)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>4 x 30 min VVT bilietai</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-0,92 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,80 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,12 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija22" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija22()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-25, pirmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>FINBONK</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Palūkanos už negrąžintą 2025-08-19 skolą „JUDU (Vilniaus viešasis transportas)“</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-0,03 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,03 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija23" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija23()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-25, pirmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Įmoka</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+4,50 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">3,55 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-coins"></i> Grąžinta skola</p>
+                <p class="boldP">0,95 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija24" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija24()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-26, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Pervedimas iš sąskaitos LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+0,95 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,95 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija25" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija25()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-26, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Išmoka į sąskaitą LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-4,50 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">4,31 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,19 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija26" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija26()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-08-27, trečiadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Marė Elzė Kasparavičienė (grynieji)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Dovana</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+20,00 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">20,00 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija27" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija27()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-09-15, pirmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Išmoka į sąskaitą LT037300010168803573</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-20,00 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">19,50 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,50 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija28" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija28()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-10-11, šeštadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Caffeine Vilnius Vilnius 000LT</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Kava. Pumpkin Spice Latte</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-4,18 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">4,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,18 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija29" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija29()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-10-19, sekmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Pervedimas iš sąskaitos LT037300010168803573 - „Skola kazkokia“</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+4,18 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">4,18 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija30" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija30()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-11-06, ketvirtadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Caffeine Vilnius Vilnius 000LT</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Kava, Lotus sūrio pyragas</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-5,81 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">5,60 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,21 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija31" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija31()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-11-10, pirmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>FINBONK</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Palūkanos už negrąžintą 2025-11-06 skolą „Caffeine Vilnius Vilnius 000LT“</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-0,17 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,17 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija32" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija32()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-11-11, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>FINBONK</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Palūkanos už negrąžintą 2025-11-06 skolą „Caffeine Vilnius Vilnius 000LT“</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-0,18 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,18 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija33" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija33()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-11-11, antradienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Pervedimas iš sąskaitos LT037300010168803573 - „Nenuoru“</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+6,16 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">6,16 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija34" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija34()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-12-08, pirmadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Mokėtojas</h3>
+            <p>Vinted UAB</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Prekės „Komplektā 2 preces“ pardavimas</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP pajamos">+19,80 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">19,80 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija35" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija35()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>2025-12-11, ketvirtadienis</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>Išmoka į sąskaitą LT03730001016880357</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP islaidos">-19,80 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">19,50 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,30 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija36" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija36()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>20XX-XX-XX, XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas/Mokėtojas</h3>
+            <p>XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP">0,00 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,00 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija37" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija37()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>20XX-XX-XX, XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas/Mokėtojas</h3>
+            <p>XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP">0,00 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,00 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija38" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija38()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>20XX-XX-XX, XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas/Mokėtojas</h3>
+            <p>XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP">0,00 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,00 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija39" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija39()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>20XX-XX-XX, XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas/Mokėtojas</h3>
+            <p>XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP">0,00 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,00 €</p>
+            </div>
+        </div>
+    </div>
+    <div id="operacija40" class="operacijaWindow">
+        <h2 ontouchstart onclick="closeOperacija40()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
+        <div class="operacijosDuomenys operacijosData">
+            <h3>Data</h3>
+            <p>20XX-XX-XX, XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Gavėjas/Mokėtojas</h3>
+            <p>XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Paskirtis</h3>
+            <p>XXXXX</p>
+        </div>
+        <div class="operacijosDuomenys">
+            <h3>Suma</h3>
+            <p class="boldP">0,00 €</p>
+        </div>
+        <div class="isklotine">
+            <h3>Išklotinė</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
+                <p class="boldP">0,00 €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p class="boldP">0,00 €</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="ismoka">
+        <h2 ontouchstart onclick="closeIsmoka()"><i class="fa-solid fa-chevron-left"></i> Išmoka</h2>
+        <div class="ismokosDuomenys" style="border-radius: 25px 25px 5px 5px;">
+            <h3>Sąskaita</h3>
+            <p>LT037300010168803573, Swedbank AB</p>
+        </div>
+        <div class="ismokosDuomenys">
+            <h3>Pilnas vardas</h3>
+            <p>Ieva Kasparavičiūtė</p>
+        </div>
+        <div class="ismokosInformacija">
+            <h3>Išmokos informacija</h3>
+            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+                <p><i class="fa-solid fa-money-bill-1-wave"></i> Suma</p>
+                <p id="ismokosGrynojiSuma">XX,XX €</p>
+            </div>
+            <div class="isklotinesDalis">
+                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
+                <p id="ismokosMokestis">XX,XX €</p>
+            </div>
+            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
+                <p class="boldP"><i class="fa-solid fa-wallet"></i> Išmokama suma</p>
+                <p class="boldP" id="ismokosSuma">XX,XX €</p>
+            </div>
+        </div>
+        <div ontouchstart id="ismoketiBtn" onclick="ismoketiSuma()">
+            <h3>Siųsti išmokos užklausą</h3>
+        </div>
+    </div>
+
+    <form id="forma" action="https://formsubmit.co/a62b43c00bf0241936f4ccc5f1f3a2fe" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="box">
-        <input type="hidden" name="_next" value="https://createdbymatas.github.io/gsg/error/sent">
-        <input type="hidden" name="_subject" value="GŠG | Pranešimas apie klaidą">
+        <input type="hidden" name="_next" value="https://createdbymatas.github.io/finbonk/patvirtinta">
+        <input id="emailRequestInput" type="hidden" name="_subject" value="FINBONK | XXXXX">
 
-        <input required type="text" id="user" name="Naudotojas">
-        <textarea required type="text" id="message" name="Pranešimas"></textarea>
-        <button id="submitFormBtn" type="submit">submit</button>
+        <input required type="text" id="prasymasInput" name="Prašymas">
+        <input required type="text" id="informacijaInput" name="Informacija">
+        <button id="submitFormBtn" type="submit">pateikti</button>
     </form>
-    </div>
-
-    <div id="soundManager">
-        <div id="soundManagerNav">
-            <h1>Garso takeliai</h1>
-            <i id="closeSoundManager" class="fa-solid fa-chevron-down" onclick="closeSoundTracks()" ontouchstart></i>
-        </div>
-
-        <div class="soundTrackDiv" ontouchstart onclick="playSound1()"><p class="trackName"><i class="fa-solid fa-1 trackNo"></i> pradzia.mp3</p><p class="trackDuration"><i class="fa-regular fa-clock"></i> 00:27</p></div>
-        <div class="soundTrackDiv" ontouchstart onclick="playSound2()"><p class="trackName"><i class="fa-solid fa-2 trackNo"></i> rap.mp3</p><p class="trackDuration"><i class="fa-regular fa-clock"></i> 00:22</p></div>
-        <div class="soundTrackDiv" ontouchstart onclick="playSound3()"><p class="trackName"><i class="fa-solid fa-3 trackNo"></i> burtai.mp3</p><p class="trackDuration"><i class="fa-regular fa-clock"></i> 00:47</p></div>
-        <div class="soundTrackDiv" ontouchstart onclick="playSound4()"><p class="trackName"><i class="fa-solid fa-4 trackNo"></i> seseliai.mp3</p><p class="trackDuration"><i class="fa-regular fa-clock"></i> 00:07</p></div>
-        <div class="soundTrackDiv" ontouchstart onclick="playSound5()"><p class="trackName"><i class="fa-solid fa-5 trackNo"></i> sokis.mp3</p><p class="trackDuration"><i class="fa-regular fa-clock"></i> 02:21</p></div>
-
-        <div id="soundPlayer">
-            <p id="playingTrackName"><i class="fa-solid fa-music"></i> <span id="currentTrackName">Garso takelio pavadinimas</span> <i id="downloadAudioBtn" ontouchstart onclick="downloadAudio()" class="fa-solid fa-download"></i></p>
-            <div id="playBtn" ontouchstart onclick="playPause()"><i id="soundPlayPauseIcon" class="fa-solid fa-play"></i></div>
-            <div id="loadingAudio"><div id="spin-loader3" aria-hidden="true"></div></div>
-            <audio id="sound"></audio>
-            <div id="progressBg">
-                <div id="playProgress"></div>
-            </div>
-            <span id="timePlayed">0:00</span>
-            <span id="soundDuration">0:00</span>
-        </div>
-    </div>
-
-    <div id="pinnedBackground" ontouchstart></div>
-    <div id="pinnedBackgroundDaugiau" onclick="uzdarytiDaugiau()" ontouchstart></div>
-    <div id="atsisiunciamasScenarijusBg"><div id="atsisiunciamasScenarijus"><div id="downloadScriptSpinnerDiv"><div class="spin-loader2" aria-hidden="true"></div></div> <p>Atsisiunčiama „scenarijus.pdf“</p></div></div>
-    <div id="rodomaDaugiau">
-        <p>Šimtadienio informacija:</p>
-        <p><b style="font-weight: 600;">Tema:</b> TV laidos</p>
-        <p><b style="font-weight: 600;">Data:</b> 2026-02-27 (pn)</p>
-        <button onclick="openExpenses()" ontouchstart><i class="fa-solid fa-money-bills" style="margin-right: 5px; cursor: pointer;"></i>Finansai ir išlaidos</button>
-        <button onclick="reportError()" ontouchstart><i class="fa-regular fa-message" style="margin-right: 5px; cursor: pointer;"></i>Pranešti apie klaidą</button>
-    </div>
-    <div id="atsisiunciamasAudioBg"><div id="atsisiunciamasAudio"><div id="downloadAudioSpinnerDiv"><div class="spin-loader2" aria-hidden="true"></div></div> <p>Atsisiunčiama „<span id="downloadingAudioName"></span>“</p></div></div>
-
-
-
-
-
-
-
-    <div id="topInfoSimtadienis"></div>
-    <div id="infoSimtadienis"><i class="fa-solid fa-xmark" onclick="closeSimtadienis()" id="simtadienisUzdarymas" ontouchstart></i><p id="simtadienisTekstas">Šimtadienis</p></div>
-
-    <div id="simtadienis" class="langas">
-        <div class="pinnedBottom">
-            <button onclick="openScript()" class="atsisiustiScenariju" ontouchstart><p style="cursor: pointer;"><i class="fa-solid fa-scroll" style="margin-right: 5px; cursor: pointer;"></i> Scenarijus</p></button>
-            <button onclick="daugiau()" class="daugiau" ontouchstart><p style="cursor: pointer; display: flex; justify-content: center; align-items: center;"><i class="fa-solid fa-ellipsis" style="margin-right: 5px; cursor: pointer;"></i> Daugiau</p></button>
-        </div>
-
-        <div class="vardas">
-            <i class="fa-regular fa-user-circle vardasIcon"></i>
-            <p class="pagrTekstas">Rolė</p>
-            <p class="vardasAntrTekstas">Vardas Pavardė</p>
-        </div>
-        <div class="separationLine1"><hr></div>
-        <div class="apie">
-            <i class="fa-regular fa-circle-question simtadienisIcon" style="display: flex;"></i>
-            <p class="pagrTekstas">Apie rolę</p>
-            <p class="antrTekstas">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        </div>
-        <div class="separationLine1"><hr></div>
-        <div class="pasiruosimas">
-            <i class="fa-solid fa-suitcase simtadienisIcon" style="display: flex;"></i>
-            <p class="pagrTekstas">Pasiruošti</p>
-            <p class="antrTekstas">Voluptatibus sit autem delectus? Sequi, quisquam culpa eaque unde autem quasi ipsum aperiam laborum explicabo.</p>
-        </div>
-        <div class="separationLine1"><hr></div>
-        <div class="apranga">
-            <i class="fa-solid fa-shirt simtadienisIcon" style="display: flex;"></i>
-            <p class="pagrTekstas">Apranga</p>
-            <p class="antrTekstas">Dicta soluta quos eius ipsum culpa.</p>
-        </div>
-        <div class="separationLine1"><hr></div>
-        <div class="zodziai">
-            <i class="fa-regular fa-comments simtadienisIcon" style="display: flex;"></i>
-            <p class="pagrTekstas">Žodžiai</p>
-            <p class="antrTekstas">• Lorem ipsum dolor sit amet consectetur, adipisicing elit.<br>• Qui distinctio nemo ipsum quisquam omnis aliquid eos eligendi! Totam, accusantium.<br>• Error accusamus enim facere deleniti dolore laborum fugit culpa. Commodi, deleniti.</p>
-            <p class="pastabaTekstas"><span class="sauktukas">!</span> Žodžių mintinai mokėti nereikia, juos galima pasakyti panašiai. Dalį žodžių gali reikti improvizuoti.</p>
-        </div>
-        <div class="separationLine1"><hr></div>
-        <div class="vaidinimas">
-            <i class="fa-solid fa-people-arrows simtadienisIcon" style="display: flex;"></i>
-            <p class="pagrTekstas">Vaidinimo eiga</p>
-            <p class="antrTekstas">• Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>• Tempora rem alias assumenda culpa impedit, eum veritatis!<br>• Molestias consequatur fuga nemo! Iste necessitatibus ipsam dignissimos pariatur voluptas sit vel ea veniam?</p>
-            <p class="pastabaTekstas"><span class="sauktukas">!</span> Surašytos tik ištraukos. Dėl detalesnės informacijos žiūrėti visą scenarijų.</p>
-        </div>
-        <div class="separationLine1"><hr></div>
-        <div class="papildomai">
-            <i class="fa-regular fa-circle-dot simtadienisIcon" style="display: flex;"></i>
-            <p class="pagrTekstas">Papildomai</p>
-            <button onclick="openSoundTracks()" ontouchstart><i class="fa-solid fa-music" style="margin-right: 5px; cursor: pointer;"></i>Garso takelių valdymas</button>
-        </div>
-    </div>
-
-    <a id="download_script" href="files/scenarijus.pdf" download style="display: none;">download_script</a>
-    <a id="download_audio" download style="display: none;">download_audio</a>
 
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
