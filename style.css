@@ -1209,6 +1209,34 @@ h4{
     font-size: 20px;
     text-align: right;
 }
+#pranesimas1MarkAsUnread{
+    width: 100%;
+    height: auto;
+    color: #323232;
+    background-color: #F5F5DC;
+    border-radius: 25px;
+    padding: 15px;
+    margin-top: 15px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+}
+#pranesimas1MarkAsUnread:hover{
+    opacity: 0.7;
+}
+#pranesimas1MarkAsUnread:active{
+    opacity: 0.2;
+}
+#pranesimas1MarkAsUnread h3{
+    color: #323232;
+    font-size: 17px;
+    cursor: pointer;
+}
 
 #mokescioSkaiciuokle{
     width: 100%;
@@ -2063,6 +2091,12 @@ form{
     #pranesimas1Date p{
         width: 100%;
         text-align: right;
+    }
+    #pranesimas1MarkAsUnread:hover{
+        opacity: 1;
+    }
+    #pranesimas1MarkAsUnread:active{
+        opacity: 0.2;
     }
     #finbonkWallet h2:hover{
         opacity: 1;

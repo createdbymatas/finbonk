@@ -1336,7 +1336,12 @@ function closePranesimas1(){
     closeNotifications();
     closeApps();
 }
-// document.cookie = "pranesimas1=read; expires=Sat, 01 Jan 2010 00:00:00 UTC";
+function pranesimas1MarkAsUnread(){
+    closePranesimas1();
+    document.getElementById("pran1Btn").style.fontWeight = "800";
+    document.getElementById("pran1Unread").style.display = "inline";
+    document.cookie = "pranesimas1=read; expires=Sat, 01 Jan 2000 00:00:00 UTC";
+}
 pran1 = getCookie("pranesimas1");
 if (pran1 != "") {
     document.getElementById("pran1Btn").style.fontWeight = "400";
