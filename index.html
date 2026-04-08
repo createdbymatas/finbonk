@@ -186,8 +186,11 @@
     </div>
     <div id="notifs">
         <p>Pranešimai</p>
-        <div style="pointer-events: none;">
+        <!-- <div style="pointer-events: none;">
             Nėra pranešimų.
+        </div> -->
+        <div ontouchstart onclick="openPranesimas1()" id="pran1Btn">
+            <span id="pran1Unread" style="margin-right: 5px; color: red;">&#x25CF;</span>Įkainių pakeitimai nuo 2026-04-15
         </div>
     </div>
     <div id="otherApps">
@@ -255,6 +258,33 @@
             <h3>Skaičiuoti mokestį</h3>
         </div>
     </div>
+
+
+    <div id="pranesimas1">
+        <h2 ontouchstart onclick="closePranesimas1()"><i class="fa-solid fa-xmark"></i> Pranešimas</h2>
+        <div id="pranesimas1Subj">
+            <h3>Įkainių pakeitimai nuo 2026-04-15</h3>
+        </div>
+        <p id="pranesimas1Text">
+            Gerb. kliente,<br>
+            Nuolat siekiame, kad Jūsų kasdienė bankininkystė būtų dar greitesnė, saugesnė ir patogesnė. Kurdami modernius skaitmeninius sprendimus ir aukščiausio lygio duomenų apsaugą bei kokybiškai teikdami paslaugas galime užtikrinti sklandų paslaugų veikimą bet kuriuo metu.<br>
+            Norime informuoti, kad nuo <b>2026-04-15</b> keičiame dalį mūsų paslaugų įkainių.<br>
+            <b>Kas svarbiausia Jums:</b><br>
+            <b>Kasdienės paslaugos:</b> Didinamas aptarnavimo mokestis - nuo šiol jis bus sudarytas iš <b>0,15 € fiksuotos sumos ir 2 % tarifo</b> (anksčiau - 0,10 € ir 2 % atitinkamai).<br>
+            <b>Nemokamos galimybės:</b> Primename, kad finansų apžvalga, mokytojų konsultacijų paslaugos, banko kortelių skaitytuvo programa ir kitos be galo naudingos funkcijos bei privalumai ir toliau išlieka <b>nemokami</b>.<br>
+            <b>Kodėl tai darome?</b> Šie pokyčiai padės mums toliau vystyti mobiliąją programėlę ir diegti inovacijas, kurios taupo Jūsų laiką bei leidžia kokybiškai tvarkyti jūsų finansus.<br>
+            Dėkojame, kad renkatės mus. Jūsų FINBONK
+        </p>
+        <div id="pranesimas1Sender">
+            <h3>Siuntėjas</h3>
+            <p>FINBONK (&copy; Pupulio bankas)</p>
+        </div>
+        <div id="pranesimas1Date">
+            <h3>Data</h3>
+            <p>2026-04-08</p>
+        </div>
+    </div>
+
     
     <div id="finbonkWallet">
         <h2 ontouchstart onclick="closeFinbonkWallet()"><i class="fa-solid fa-chevron-left"></i> FINBONK piniginė</h2>

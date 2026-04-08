@@ -734,7 +734,13 @@ function logout(){
         document.getElementById('operacija38').style.right = '-100%';
         document.getElementById('operacija39').style.right = '-100%';
         document.getElementById('operacija40').style.right = '-100%';
+        document.getElementById('operacija41').style.right = '-100%';
+        document.getElementById('operacija42').style.right = '-100%';
+        document.getElementById('operacija43').style.right = '-100%';
+        document.getElementById('operacija44').style.right = '-100%';
+        document.getElementById('operacija45').style.right = '-100%';
         document.getElementById('ismoka').style.right = '-100%';
+        document.getElementById('pranesimas1').style.top = '100%';
     }, 310);
     setTimeout(() => {
         document.getElementById('logoutAlert').style.top = '-100px';
@@ -1253,6 +1259,98 @@ function closeOperacija40(){
     closeNotifications();
     closeApps();
 }
+function openOperacija41(){
+    document.getElementById('operacija41').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija41(){
+    document.getElementById('operacija41').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija42(){
+    document.getElementById('operacija42').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija42(){
+    document.getElementById('operacija42').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija43(){
+    document.getElementById('operacija43').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija43(){
+    document.getElementById('operacija43').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija44(){
+    document.getElementById('operacija44').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija44(){
+    document.getElementById('operacija44').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function openOperacija45(){
+    document.getElementById('operacija45').style.right = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeOperacija45(){
+    document.getElementById('operacija45').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+
+
+function openPranesimas1(){
+    document.getElementById('pranesimas1').style.top = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+    document.cookie = "pranesimas1=read; expires=Sat, 01 Jan 2030 00:00:00 UTC";
+    document.getElementById("pran1Btn").style.fontWeight = "400";
+    document.getElementById("pran1Unread").style.display = "none";
+}
+function closePranesimas1(){
+    document.getElementById('pranesimas1').style.top = '100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+// document.cookie = "pranesimas1=read; expires=Sat, 01 Jan 2010 00:00:00 UTC";
+pran1 = getCookie("pranesimas1");
+if (pran1 != "") {
+    document.getElementById("pran1Btn").style.fontWeight = "400";
+    document.getElementById("pran1Unread").style.display = "none";
+}
+else {
+    document.getElementById("pran1Btn").style.fontWeight = "800";
+    document.getElementById("pran1Unread").style.display = "inline";
+    if (pran1 != "" && pran1 != null) {
+        document.getElementById("pran1Btn").style.fontWeight = "800";
+        document.getElementById("pran1Unread").style.display = "inline";
+    }
+}
+
 
 function openIsmoka(){
     document.getElementById('ismoka').style.right = '0';
