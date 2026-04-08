@@ -173,6 +173,12 @@ body{
     left: 15px;
     font-size: 20px;
 }
+#nameDot1{
+    display: none;
+}
+#nameDot2{
+    display: none;
+}
 #userScreen{
     width: 100%;
     height: 100%;
@@ -1797,6 +1803,12 @@ form{
     }
     #surname2{
         display: none;
+    }
+    #nameDot1{
+        display: inline;
+    }
+    #nameDot2{
+        display: inline;
     }
     #pilnasVardas{
         flex-direction: column;
