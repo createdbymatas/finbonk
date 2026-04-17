@@ -140,12 +140,16 @@ document.getElementById('isleista1').innerHTML = document.getElementById('spent'
 document.getElementById('gauta2').innerHTML = document.getElementById('received').innerHTML + ' €';
 document.getElementById('isleista2').innerHTML = document.getElementById('spent').innerHTML + ' €';
 
-document.getElementById('receivedBar').innerHTML = receivedDot * 100 / fullOperationsDot + '%';
+document.getElementById('receivedBar').innerHTML = formatter.format(Number(receivedDot * 100 / fullOperationsDot)) + '%';
 document.getElementById('gautaBar').style.width = document.getElementById('receivedBar').innerHTML;
+document.getElementById('gautaBar').innerHTML = formatter.format(Number(receivedDot * 100 / fullOperationsDot)).replace(".", ",") + ' %';
 document.getElementById('gautaBar2').style.width = document.getElementById('receivedBar').innerHTML;
-document.getElementById('spentBar').innerHTML = spentDot * 100 / fullOperationsDot + '%';
+document.getElementById('gautaBar2').innerHTML = formatter.format(Number(receivedDot * 100 / fullOperationsDot)).replace(".", ",") + ' %';
+document.getElementById('spentBar').innerHTML = formatter.format(Number(spentDot * 100 / fullOperationsDot)) + '%';
 document.getElementById('isleistaBar').style.width = document.getElementById('spentBar').innerHTML;
+document.getElementById('isleistaBar').innerHTML = formatter.format(Number(spentDot * 100 / fullOperationsDot)).replace(".", ",") + ' %';
 document.getElementById('isleistaBar2').style.width = document.getElementById('spentBar').innerHTML;
+document.getElementById('isleistaBar2').innerHTML = formatter.format(Number(spentDot * 100 / fullOperationsDot)).replace(".", ",") + ' %';
 
 document.getElementById('thisMonth').innerHTML = document.getElementById('currentMonth').innerHTML;
 document.getElementById('thisMonth2').innerHTML = document.getElementById('currentMonth').innerHTML;
@@ -289,6 +293,7 @@ function openNotifications(){
     document.getElementById('notifs').style.pointerEvents = 'all';
     document.getElementById('notifications').style.transform = 'scale(0)';
     document.getElementById('notificationsX').style.transform = 'scale(1)';
+    document.getElementById('unreadNotifs').style.opacity = '0';
     closeSettings();
     closeApps();
 }
@@ -298,6 +303,7 @@ function closeNotifications(){
     document.getElementById('notifs').style.top = '36px';
     document.getElementById('notifs').style.right = '36px';
     document.getElementById('notifs').style.pointerEvents = 'none';
+    document.getElementById('unreadNotifs').style.opacity = '1';
     document.getElementById('notifications').style.transform = 'scale(1)';
     document.getElementById('notificationsX').style.transform = 'scale(0)';
 }
@@ -1321,11 +1327,31 @@ function closeOperacija45(){
 }
 
 
+unreadNotifCount = 1;
+function checkUnreadNotifs(){
+    if(unreadNotifCount == 0){
+        document.getElementById("unreadNotifs").style.display = "none";
+    }
+    else{
+        document.getElementById("unreadNotifs").style.display = "block";
+    }
+}
+
 function openPranesimas1(){
     document.getElementById('pranesimas1').style.top = '0';
     closeSettings();
     closeNotifications();
     closeApps();
+    if (pran1 != "") {
+        
+    }
+    else {
+        unreadNotifCount -= 1;
+        if (pran1 != "" && pran1 != null) {
+            unreadNotifCount -= 1;
+        }
+    }
+    checkUnreadNotifs();
     document.cookie = "pranesimas1=read; expires=Sat, 01 Jan 2030 00:00:00 UTC";
     document.getElementById("pran1Btn").style.fontWeight = "400";
     document.getElementById("pran1Unread").style.display = "none";
@@ -1340,19 +1366,25 @@ function pranesimas1MarkAsUnread(){
     closePranesimas1();
     document.getElementById("pran1Btn").style.fontWeight = "800";
     document.getElementById("pran1Unread").style.display = "inline";
+    unreadNotifCount += 1;
+    checkUnreadNotifs();
     document.cookie = "pranesimas1=read; expires=Sat, 01 Jan 2000 00:00:00 UTC";
 }
 pran1 = getCookie("pranesimas1");
 if (pran1 != "") {
     document.getElementById("pran1Btn").style.fontWeight = "400";
     document.getElementById("pran1Unread").style.display = "none";
+    unreadNotifCount -= 1;
+    checkUnreadNotifs();
 }
 else {
     document.getElementById("pran1Btn").style.fontWeight = "800";
     document.getElementById("pran1Unread").style.display = "inline";
+    checkUnreadNotifs();
     if (pran1 != "" && pran1 != null) {
         document.getElementById("pran1Btn").style.fontWeight = "800";
         document.getElementById("pran1Unread").style.display = "inline";
+        checkUnreadNotifs();
     }
 }
 

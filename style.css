@@ -179,6 +179,15 @@ body{
 #nameDot2{
     display: none;
 }
+#unreadNotifs{
+    font-size: 17px;
+    color: red;
+    position: fixed;
+    right: 58px;
+    top: 8px;
+    z-index: 5;
+    transition: 0.2s;
+}
 #userScreen{
     width: 100%;
     height: 100%;
@@ -555,10 +564,18 @@ h4{
 #gautaBar{
     height: 100%;
     background-color: forestgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
 }
 #isleistaBar{
     height: 100%;
     background-color: crimson;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
 }
 #emptyBar{
     width: 0;
@@ -1528,10 +1545,18 @@ input::-webkit-inner-spin-button {
 #gautaBar2{
     height: 100%;
     background-color: forestgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
 }
 #isleistaBar2{
     height: 100%;
     background-color: crimson;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
 }
 #emptyBar2{
     width: 0;
