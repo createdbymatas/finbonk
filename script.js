@@ -187,10 +187,18 @@ setTimeout(() => {
     if (document.getElementById("fullOperations").innerHTML == "0,00"){
         document.getElementById('emptyBar').style.width = '100%';
         document.getElementById('emptyBar2').style.width = '100%';
+        document.getElementById('gautaBar').style.display = 'none';
+        document.getElementById('gautaBar2').style.display = 'none';
+        document.getElementById('isleistaBar').style.display = 'none';
+        document.getElementById('isleistaBar2').style.display = 'none';
     }
     else {
         document.getElementById('emptyBar').style.width = '0';
         document.getElementById('emptyBar2').style.width = '0';
+        document.getElementById('gautaBar').style.display = 'flex';
+        document.getElementById('gautaBar2').style.display = 'flex';
+        document.getElementById('isleistaBar').style.display = 'flex';
+        document.getElementById('isleistaBar2').style.display = 'flex';
     }
 }, 4);
 
