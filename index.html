@@ -23,15 +23,15 @@
     <!-- VALIUTA: € -->
     <div id="hidden">
         <!-- Balansas: -->
-        <p id="currentBalance">1,80</p>
+        <p id="currentBalance">0,37</p>
         <!-- Skolos: -->
         <p id="currentDebt">0,00</p> 
         <p id="returnUntil">202X-XX-XX 23:59</p>
         <p id="interestRate">0,00</p>
         <!-- Apyvarta: -->
-        <p id="fullOperations">1,80</p><!-- NEPAMIRŠTI PAKEISTI APYVARTOS IŠLAIDŲ KATEGORIJŲ !! -->
+        <p id="fullOperations">3,23</p><!-- NEPAMIRŠTI PAKEISTI APYVARTOS IŠLAIDŲ KATEGORIJŲ !! -->
         <p id="received">1,80</p>
-        <p id="spent">0,00</p>
+        <p id="spent">1,43</p>
         <p id="currentMonth">2026 birželis</p>
         <p id="receivedBar"></p>
         <p id="spentBar"></p>
@@ -310,11 +310,11 @@
                 <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP">XX,XX €</p>
             </div> -->
-            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija54()">
-                <p>20XX-XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
-                <p class="boldP">XX,XX €</p>
-            </div> -->
-            <div ontouchstart class="operacija" style="border-radius: 25px;" onclick="openOperacija53()">
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija54()">
+                <p>2026-06-02 <b>AMAZON LUXEMBOURG LU LU</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-1,43 €</p>
+            </div>
+            <div ontouchstart class="operacija" style="border-radius: 5px 5px 25px 25px;" onclick="openOperacija53()">
                 <p>2026-06-01 <b>Vinted UAB</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP pajamos">+1,80 €</p>
             </div>
@@ -567,9 +567,9 @@
         </div>
         <div id="apyvartosKategorijos">
             <h3>Išlaidų kategorijos</h3>
-            <div class="kategorija" style="border-radius: 25px;">
+            <!-- <div class="kategorija" style="border-radius: 25px;">
                 <p>Išlaidų šį mėnesį nėra.</p>
-            </div>
+            </div> -->
             <!-- <div class="kategorija" style="border-radius: 25px 25px 5px 5px;">
                 <p><i class="fa-solid fa-money-bill-transfer"></i> Išmokos</p>
                 <p class="boldP">1,81 €</p>
@@ -586,10 +586,10 @@
                 <p><i class="fa-solid fa-hashtag"></i> Socialiniai tinklai</p>
                 <p class="boldP">1,43 €</p>
             </div> -->
-            <!-- <div class="kategorija" style="border-radius: 25px 25px 5px 5px;">
+            <div class="kategorija" style="border-radius: 25px;">
                 <p><i class="fa-solid fa-book-bookmark"></i> Knygos</p>
-                <p class="boldP">35,68 €</p>
-            </div> -->
+                <p class="boldP">1,43 €</p>
+            </div>
             <!-- <div class="kategorija">
                 <p><i class="fa-solid fa-heart-circle-bolt"></i> Grožis ir sveikata</p>
                 <p class="boldP">36,26 €</p>
@@ -2085,29 +2085,25 @@
         <h2 ontouchstart onclick="closeOperacija54()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
         <div class="operacijosDuomenys operacijosData">
             <h3>Data</h3>
-            <p>20XX-XX-XX, XXXXX</p>
+            <p>2026-06-02, antradienis</p>
         </div>
         <div class="operacijosDuomenys">
-            <h3>Gavėjas/Mokėtojas</h3>
-            <p>XXXXX</p>
+            <h3>Gavėjas</h3>
+            <p>AMAZON LUXEMBOURG LU LU</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
-            <p>XXXXX</p>
+            <p>Pakartotinis užsakymas puslapyje (trūkstama suma pasikeitus prekių kainai) „amazon.de“, sudarytas iš: „Why Has Nobody ...“, „Rael Pimple Pat...“, „How to Talk to ...“, „Stop Overthinki...“</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Suma</h3>
-            <p class="boldP">0,00 €</p>
+            <p class="boldP islaidos">-1,43 €</p>
         </div>
         <div class="isklotine">
             <h3>Išklotinė</h3>
-            <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
+            <div class="isklotinesDalis" style="border-radius: 25px;">
                 <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
-                <p class="boldP">0,00 €</p>
-            </div>
-            <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
-                <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
-                <p class="boldP">0,00 €</p>
+                <p class="boldP">1,43 €</p>
             </div>
         </div>
     </div>
