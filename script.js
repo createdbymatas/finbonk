@@ -1595,7 +1595,7 @@ function closeOperacija65(){
 }
 
 
-unreadNotifCount = 1;
+unreadNotifCount = 2;
 function checkUnreadNotifs(){
     if(unreadNotifCount == 0){
         document.getElementById("unreadNotifs").style.display = "none";
@@ -1652,6 +1652,57 @@ else {
     if (pran1 != "" && pran1 != null) {
         document.getElementById("pran1Btn").style.fontWeight = "800";
         document.getElementById("pran1Unread").style.display = "inline";
+        checkUnreadNotifs();
+    }
+}
+
+function openPranesimas2(){
+    document.getElementById('pranesimas2').style.top = '0';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+    if (pran2 != "") {
+        
+    }
+    else {
+        unreadNotifCount -= 1;
+        if (pran2 != "" && pran2 != null) {
+            unreadNotifCount -= 1;
+        }
+    }
+    checkUnreadNotifs();
+    document.cookie = "pranesimas2=read; expires=Sat, 01 Jan 2030 00:00:00 UTC";
+    document.getElementById("pran2Btn").style.fontWeight = "400";
+    document.getElementById("pran2Unread").style.display = "none";
+}
+function closePranesimas2(){
+    document.getElementById('pranesimas2').style.top = '100%';
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function pranesimas2MarkAsUnread(){
+    closePranesimas2();
+    document.getElementById("pran2Btn").style.fontWeight = "800";
+    document.getElementById("pran2Unread").style.display = "inline";
+    unreadNotifCount += 1;
+    checkUnreadNotifs();
+    document.cookie = "pranesimas2=read; expires=Sat, 01 Jan 2000 00:00:00 UTC";
+}
+pran2 = getCookie("pranesimas2");
+if (pran2 != "") {
+    document.getElementById("pran2Btn").style.fontWeight = "400";
+    document.getElementById("pran2Unread").style.display = "none";
+    unreadNotifCount -= 1;
+    checkUnreadNotifs();
+}
+else {
+    document.getElementById("pran2Btn").style.fontWeight = "800";
+    document.getElementById("pran2Unread").style.display = "inline";
+    checkUnreadNotifs();
+    if (pran2 != "" && pran2 != null) {
+        document.getElementById("pran2Btn").style.fontWeight = "800";
+        document.getElementById("pran2Unread").style.display = "inline";
         checkUnreadNotifs();
     }
 }

@@ -192,7 +192,10 @@
         <!-- <div style="pointer-events: none;">
             Nėra pranešimų.
         </div> -->
-        <div ontouchstart onclick="openPranesimas1()" id="pran1Btn">
+        <div ontouchstart style="border-radius: 25px 25px 5px 5px;" onclick="openPranesimas2()" id="pran2Btn">
+            <span id="pran2Unread" style="margin-right: 5px; color: red;">&#x25CF;</span>Pardavimo per platformą „Vinted“ sąlygų pakeitimai
+        </div>
+        <div ontouchstart style="border-radius: 5px 5px 25px 25px;" onclick="openPranesimas1()" id="pran1Btn">
             <span id="pran1Unread" style="margin-right: 5px; color: red;">&#x25CF;</span>Įkainių pakeitimai nuo 2026-04-15
         </div>
     </div>
@@ -288,6 +291,34 @@
         </div>
 
         <div ontouchstart id="pranesimas1MarkAsUnread" onclick="pranesimas1MarkAsUnread()">
+            <h3>Žymėti pranešimą kaip neskaitytą</h3>
+        </div>
+    </div>
+    <div id="pranesimas2">
+        <h2 ontouchstart onclick="closePranesimas2()"><i class="fa-solid fa-xmark"></i> Pranešimas</h2>
+        <div id="pranesimas2Subj">
+            <h3>Pardavimo per platformą „Vinted“ sąlygų pakeitimai</h3>
+        </div>
+        <p id="pranesimas2Text">
+            Gerb. kliente,<br>
+            Nuolat siekiame, kad Jūsų kasdienė bankininkystė būtų dar patogesnė, integruojant vis daugiau skirtingų programų, platformų ir pritraukiant daugiau partnerių, su kuriais bendradarbiaujant galime teikti paslaugas per vienoje vietoje - per FINBONK.<br>
+            Visgi norime informuoti, kad nuo <b>2026-07-10 keičiasi pardavimo per platformą „Vinted“ sąlygos</b>.<br>
+            „Vinted“ pakeitus jų piniginės sąlygas, nuo šiol mokėjimo paslaugas teikia „Vinted Pay“ (anksčiau - „Adyen“). Naujasis mokėjimų paslaugos teikėjas nesuteikia galimybės mums tinkamai sudaryti bendradarbiavimo programos su juo ir teikti pervedimų paslaugas iš „Vinted“ piniginės į FINBONK piniginę.<br>
+            <b>Ką tai reiškia Jums?</b><br>
+            Apgailestaujame, tačiau dėl mums nepalankių „Vinted“ mokėjimo paslaugų teikėjo pokyčių <b>nuo 2026-07-10 FINBONK nebesuteiks mokėjimo paslaugų perkant / parduodant platformoje „Vinted“</b>.<br>
+            Dabar perkant / parduodant prekes „Vinted“ platformoje turėsite naudotis nebe FINBONK, o kito teikėjo (paskyros savininko) paslaugomis - jas teiks privatus asmuo <b>Živilė Kasparavičienė</b>, su kuriuo mokėjimų nutarimus (t.y. sąlygas, pervedimų terminus, mokesčius ir įkainius ir pan.) prašome derintis individualiai.<br><br>
+            Atsiprašome dėl susiklosčiusios situacijos ir dėkojame, kad renkatės mus. Jūsų FINBONK
+        </p>
+        <div id="pranesimas2Sender">
+            <h3>Siuntėjas</h3>
+            <p>FINBONK (&copy; Pupulio bankas)</p>
+        </div>
+        <div id="pranesimas2Date">
+            <h3>Data</h3>
+            <p>2026-07-09</p>
+        </div>
+
+        <div ontouchstart id="pranesimas2MarkAsUnread" onclick="pranesimas2MarkAsUnread()">
             <h3>Žymėti pranešimą kaip neskaitytą</h3>
         </div>
     </div>
