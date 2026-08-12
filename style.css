@@ -2088,6 +2088,7 @@ form{
     #pilnasVardas p{
         width: 100%;
         text-align: right;
+        margin-top: 5px;
     }
     #lytisIvardziai{
         flex-direction: column;
@@ -2103,6 +2104,7 @@ form{
     #lytisIvardziai p{
         width: 100%;
         text-align: right;
+        margin-top: 5px;
     }
     #susietaSaskaita{
         flex-direction: column;
@@ -2118,6 +2120,7 @@ form{
     #susietaSaskaita p{
         width: 100%;
         text-align: right;
+        margin-top: 5px;
     }
     #elPastas{
         flex-direction: column;
@@ -2133,21 +2136,23 @@ form{
     #elPastas p{
         width: 100%;
         text-align: right;
+        margin-top: 5px;
     }
-    #whatsApp{
+    #whatsapp{
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
         padding-top: 35px;
     }
-    #whatsApp h3{
+    #whatsapp h3{
         position: absolute;
         left: 15px;
         top: 15px;
     }
-    #whatsApp p{
+    #whatsapp p{
         width: 100%;
         text-align: right;
+        margin-top: 5px;
     }
     .operacija{
         flex-direction: column;
@@ -2174,6 +2179,7 @@ form{
     .operacijosDuomenys p{
         width: 100%;
         text-align: right;
+        margin-top: 5px;
     }
     .ismokosDuomenys{
         flex-direction: column;
@@ -2189,6 +2195,7 @@ form{
     .ismokosDuomenys p{
         width: 100%;
         text-align: right;
+        margin-top: 5px;
     }
     #keypad button:hover{
         opacity: 1;
