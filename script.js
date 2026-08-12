@@ -831,7 +831,7 @@ function copyGavejas() {
 function copySaskaita() {
     navigator.clipboard.writeText("LT507300010159683951");
     document.getElementById('copiedTextAlert').style.top = '15px';
-    document.getElementById('copyPlaceholder').innerHTML = 'Sąskaitos nr. nukopijuota';
+    document.getElementById('copyPlaceholder').innerHTML = 'Sąskaitos nr. nukopijuotas';
     setTimeout(() => {
         document.getElementById('copiedTextAlert').style.top = '-100px';
     }, 3010);
