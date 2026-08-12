@@ -385,7 +385,7 @@ function closeProfileIcon(){
     
     document.getElementById('profilePicChangeBtn').style.opacity = '0.2';
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'none';
-    document.getElementById('emailRequestInput').value = 'FINBONK | XXXXX'
+    document.getElementById('emailRequestInput').value = 'FINBONK · XXXXX'
     document.getElementById('prasymasInput').value = '';
     document.getElementById('informacijaInput').value = '';
 }
@@ -413,7 +413,7 @@ function kiwiIcon(){
     
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
-    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('emailRequestInput').value = 'FINBONK · Profilio paveikslėlio keitimas'
     document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
     document.getElementById('informacijaInput').value = 'fa-kiwi-bird';
 }
@@ -441,7 +441,7 @@ function crowIcon(){
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
-    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('emailRequestInput').value = 'FINBONK · Profilio paveikslėlio keitimas'
     document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
     document.getElementById('informacijaInput').value = 'fa-crow';
 }
@@ -469,7 +469,7 @@ function cowIcon(){
     
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
-    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('emailRequestInput').value = 'FINBONK · Profilio paveikslėlio keitimas'
     document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
     document.getElementById('informacijaInput').value = 'fa-cow';
 }
@@ -497,7 +497,7 @@ function hippoIcon(){
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
-    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('emailRequestInput').value = 'FINBONK · Profilio paveikslėlio keitimas'
     document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
     document.getElementById('informacijaInput').value = 'fa-hippo';
 }
@@ -525,7 +525,7 @@ function dogIcon(){
     
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
-    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('emailRequestInput').value = 'FINBONK · Profilio paveikslėlio keitimas'
     document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
     document.getElementById('informacijaInput').value = 'fa-dog';
 }
@@ -553,7 +553,7 @@ function catIcon(){
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
-    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('emailRequestInput').value = 'FINBONK · Profilio paveikslėlio keitimas'
     document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
     document.getElementById('informacijaInput').value = 'fa-cat';
 }
@@ -581,7 +581,7 @@ function horseIcon(){
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
-    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('emailRequestInput').value = 'FINBONK · Profilio paveikslėlio keitimas'
     document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
     document.getElementById('informacijaInput').value = 'fa-horse';
 }
@@ -609,7 +609,7 @@ function otterIcon(){
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
-    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('emailRequestInput').value = 'FINBONK · Profilio paveikslėlio keitimas'
     document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
     document.getElementById('informacijaInput').value = 'fa-otter';
 }
@@ -637,7 +637,7 @@ function fishIcon(){
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
-    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('emailRequestInput').value = 'FINBONK · Profilio paveikslėlio keitimas'
     document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
     document.getElementById('informacijaInput').value = 'fa-fish';
 }
@@ -665,7 +665,7 @@ function frogIcon(){
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
-    document.getElementById('emailRequestInput').value = 'FINBONK | Profilio paveikslėlio keitimas'
+    document.getElementById('emailRequestInput').value = 'FINBONK · Profilio paveikslėlio keitimas'
     document.getElementById('prasymasInput').value = 'pakeisti profilio paveikslėlį';
     document.getElementById('informacijaInput').value = 'fa-frog';
 }
@@ -1847,7 +1847,7 @@ function closeIsmoka(){
     closeApps();
 }
 function ismoketiSuma(){
-    document.getElementById('emailRequestInput').value = 'FINBONK | Išmoka'
+    document.getElementById('emailRequestInput').value = 'FINBONK · Išmoka'
     document.getElementById('prasymasInput').value = 'išmokėti sumą';
     document.getElementById('informacijaInput').value = document.getElementById('ismokosSuma').innerHTML;
     document.getElementById('loading').style.display = 'flex';
