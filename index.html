@@ -56,8 +56,12 @@
         <i class="fa-regular fa-circle-check"></i>
         <p class="boldP" id="logoutSuccessful">Atsijungta sėkmingai</p>
     </div>
+    <div id="copiedTextAlert" onclick="hideCopiedTextPopup()">
+        <i class="fa-regular fa-circle-check"></i>
+        <p class="boldP" id="copyPlaceholder"></p>
+    </div>
     <div id="userScreen">
-        <h1>Sveiki sugrįžę!</h1>
+        <h1>Malonu Jus vėl matyti,</h1>
         <div id="profilisLogin">
             <i class="fa-solid fa-otter profileIcon"></i>
             <p>Ieva Kasparavičiūtė</p>
@@ -105,15 +109,16 @@
         <p id="unreadNotifs">&#x25CF;</p>
         <i ontouchstart class="fa-solid fa-bell" id="notifications" onclick="openNotifications()"></i>
         <i ontouchstart class="fa-solid fa-xmark" id="notificationsX" onclick="closeNotifications()"></i>
-        <i ontouchstart class="fa-solid fa-border-all" id="apps" onclick="openApps()"></i>
+        <i ontouchstart class="fa-regular fa-window-restore" id="apps" onclick="openApps()"></i>
         <i ontouchstart class="fa-solid fa-xmark" id="appsX" onclick="closeApps()"></i>
     </nav>
     <h2>Apžvalga</h2>
     <div id="pinigines">
-        <h3>Piniginės</h3>
-        <div ontouchstart id="finbonkPinigine" onclick="openFinbonkWallet()">
-            <p class="boldP">FINBONK piniginė <i class="fa-solid fa-chevron-right"></i></p>
-            <p>balansas: <b id="balanceInOverview">XX,XX €</b></p>
+        <h3>&copy; FINBONK piniginė</h3>
+        <p id="balanceInOverview" style="font-size: 30px;">XX,XX €</p>
+        <button ontouchstart id="receivePayment"onclick="openReceivePaymentWindow()"><i class="fa-solid fa-arrow-down"></i> Gauti mokėjimą</button>
+        <div ontouchstart id="operations" onclick="openOperations()">
+            <p class="boldP">Operacijos <i class="fa-solid fa-chevron-right"></i></p>
         </div>
         <div id="skolos">
             <div>
@@ -136,6 +141,26 @@
             <div id="gautaBar"></div>
             <div id="isleistaBar"></div>
         </div>
+    </div>
+
+    <div id="receivePaymentWindowBg" ontouchstart onclick="closeReceivePaymentWindow()"></div>
+    <div id="receivePaymentWindow">
+        <p id="closeReceivePaymentWindowText" ontouchstart onclick="closeReceivePaymentWindow()">Norėdami uždaryti šį langą, spauskite čia</p>
+        <h1><i class="fa-solid fa-arrow-down"></i> Gauti mokėjimą</h1>
+        <p id="receivePaymentInfoText1">Norėdami gauti mokėjimą į savo &copy; FINBONK piniginę, atlikite šį pervedimą:</p>
+        <p id="receivePaymentInfoText2"><b>Gavėjas:</b> MATAS KASPARAVIČIUS <i onclick="copyGavejas()" class="fa-regular fa-copy"></i></p>
+        <p id="receivePaymentInfoText3"><b>Sąskaitos nr.:</b> LT507300010159683951 <i onclick="copySaskaita()" class="fa-regular fa-copy"></i></p>
+        <p id="receivePaymentInfoText4"><b>Bankas:</b> Swedbank AB</p>
+        <p id="receivePaymentInfoText5"><b>Paskirtis:</b> FINBONK (Ieva Kasparavičiūtė) <i onclick="copyPaskirtis()" class="fa-regular fa-copy"></i></p>
+        <p id="receivePaymentInfoText6"><i class="fa-solid fa-circle-exclamation"></i> Būtinai įsitikinkite, kad nurėdete tinkamą pervedimo paskirtį, kad mokėjimas būtų įskaitytas į jūsų sąskaitą</p>
+        <p id="receivePaymentInfoText7">Jei norite, kad pervedimą atliktų kitas žmogus, galite nukopijuoti žinutės tekstą su visa gavėjo informacija:</p>
+        <button ontouchstart id="copyReceivePaymentText" onclick="copyMessage()"><i class="fa-regular fa-copy" style="color: #f5f5f5;"></i> Kopijuoti informacijos tekstą - žinutę</button>
+        <pre style="display: none;" id="copyMessageTextP">Labas! Laukiu pervedimo - štai sąskaitos duomenys:
+Gavėjas: MATAS KASPARAVIČIUS,
+Sąskaitos nr.: LT507300010159683951,
+Bankas: Swedbank AB,
+Paskirtis: FINBONK (Ieva Kasparavičiūtė).
+Ačiū</pre>
     </div>
 
     <div id="feeInfoBg">
@@ -238,7 +263,7 @@
         </div>
         <div id="lytisIvardziai">
             <h3>Lytis, įvardžiai</h3>
-            <p>Moteris, ji/ją/jos</p>
+            <p>Moteris, ji / ją / jos</p>
         </div>
         <div id="susietaSaskaita">
             <h3>Susieta sąskaita</h3>
@@ -249,9 +274,10 @@
             <p>ievakasparav@gmail.com</p>
         </div>
        <div id="whatsapp">
-            <h3>WhatsApp</h3>
-            <p>Ieva</p>
+            <h3>„WhatsApp“</h3>
+            <p>Ieva, +370 621 81769</p>
         </div>
+        <p id="personalInfoChange"><i class="fa-regular fa-circle-question"></i> Norėdami pakeisti informaciją, susisiekite su &copy; FINBONK per „WhatsApp“</p>
     </div>
 
     <div id="mokescioSkaiciuokle">
@@ -325,7 +351,7 @@
 
     
     <div id="finbonkWallet">
-        <h2 ontouchstart onclick="closeFinbonkWallet()"><i class="fa-solid fa-chevron-left"></i> FINBONK piniginė</h2>
+        <h2 ontouchstart onclick="closeOperations()"><i class="fa-solid fa-chevron-left"></i> FINBONK piniginė</h2>
         <div id="finbonkBalansas">
             <h3>Balansas</h3>
             <p class="boldP" id="balanceInWallet">XX,XX €</p>

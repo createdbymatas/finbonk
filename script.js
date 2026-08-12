@@ -1,5 +1,5 @@
 // išjungti right-click
-document.addEventListener('contextmenu', (e) => e.preventDefault());
+// document.addEventListener('contextmenu', (e) => e.preventDefault());
 
 // išjungti f12, ctrl+shift+i, ctrl+shift+j, ctrl+u (inspect tool)
 function ctrlShiftKey(e, keyCode) {
@@ -356,25 +356,25 @@ function closeProfileIcon(){
     closeNotifications();
     closeApps();
 
-    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.backgroundColor = '#ebebeb';
     document.getElementById('kiwi').style.color = '#202020';
-    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.backgroundColor = '#ebebeb';
     document.getElementById('crow').style.color = '#202020';
-    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.backgroundColor = '#ebebeb';
     document.getElementById('cow').style.color = '#202020';
-    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.backgroundColor = '#ebebeb';
     document.getElementById('hippo').style.color = '#202020';
-    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.backgroundColor = '#ebebeb';
     document.getElementById('dog').style.color = '#202020';
-    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.backgroundColor = '#ebebeb';
     document.getElementById('cat').style.color = '#202020';
-    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.backgroundColor = '#ebebeb';
     document.getElementById('horse').style.color = '#202020';
-    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.backgroundColor = '#ebebeb';
     document.getElementById('otter').style.color = '#202020';
-    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.backgroundColor = '#ebebeb';
     document.getElementById('fish').style.color = '#202020';
-    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.backgroundColor = '#ebebeb';
     document.getElementById('frog').style.color = '#202020';
     
     document.getElementById('profilePicChangeBtn').style.opacity = '0.2';
@@ -384,25 +384,25 @@ function closeProfileIcon(){
     document.getElementById('informacijaInput').value = '';
 }
 function kiwiIcon(){
-    document.getElementById('kiwi').style.backgroundColor = '#404040';
-    document.getElementById('kiwi').style.color = '#F5F5DC';
-    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.backgroundColor = '#6f4827';
+    document.getElementById('kiwi').style.color = '#ebebeb';
+    document.getElementById('crow').style.backgroundColor = '#ebebeb';
     document.getElementById('crow').style.color = '#202020';
-    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.backgroundColor = '#ebebeb';
     document.getElementById('cow').style.color = '#202020';
-    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.backgroundColor = '#ebebeb';
     document.getElementById('hippo').style.color = '#202020';
-    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.backgroundColor = '#ebebeb';
     document.getElementById('dog').style.color = '#202020';
-    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.backgroundColor = '#ebebeb';
     document.getElementById('cat').style.color = '#202020';
-    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.backgroundColor = '#ebebeb';
     document.getElementById('horse').style.color = '#202020';
-    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.backgroundColor = '#ebebeb';
     document.getElementById('otter').style.color = '#202020';
-    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.backgroundColor = '#ebebeb';
     document.getElementById('fish').style.color = '#202020';
-    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.backgroundColor = '#ebebeb';
     document.getElementById('frog').style.color = '#202020';
     
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
@@ -412,25 +412,25 @@ function kiwiIcon(){
     document.getElementById('informacijaInput').value = 'fa-kiwi-bird';
 }
 function crowIcon(){
-    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.backgroundColor = '#ebebeb';
     document.getElementById('kiwi').style.color = '#202020';
-    document.getElementById('crow').style.backgroundColor = '#404040';
-    document.getElementById('crow').style.color = '#F5F5DC';
-    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.backgroundColor = '#6f4827';
+    document.getElementById('crow').style.color = '#ebebeb';
+    document.getElementById('cow').style.backgroundColor = '#ebebeb';
     document.getElementById('cow').style.color = '#202020';
-    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.backgroundColor = '#ebebeb';
     document.getElementById('hippo').style.color = '#202020';
-    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.backgroundColor = '#ebebeb';
     document.getElementById('dog').style.color = '#202020';
-    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.backgroundColor = '#ebebeb';
     document.getElementById('cat').style.color = '#202020';
-    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.backgroundColor = '#ebebeb';
     document.getElementById('horse').style.color = '#202020';
-    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.backgroundColor = '#ebebeb';
     document.getElementById('otter').style.color = '#202020';
-    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.backgroundColor = '#ebebeb';
     document.getElementById('fish').style.color = '#202020';
-    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.backgroundColor = '#ebebeb';
     document.getElementById('frog').style.color = '#202020';
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
@@ -440,25 +440,25 @@ function crowIcon(){
     document.getElementById('informacijaInput').value = 'fa-crow';
 }
 function cowIcon(){
-    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.backgroundColor = '#ebebeb';
     document.getElementById('kiwi').style.color = '#202020';
-    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.backgroundColor = '#ebebeb';
     document.getElementById('crow').style.color = '#202020';
-    document.getElementById('cow').style.backgroundColor = '#404040';
-    document.getElementById('cow').style.color = '#F5F5DC';
-    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.backgroundColor = '#6f4827';
+    document.getElementById('cow').style.color = '#ebebeb';
+    document.getElementById('hippo').style.backgroundColor = '#ebebeb';
     document.getElementById('hippo').style.color = '#202020';
-    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.backgroundColor = '#ebebeb';
     document.getElementById('dog').style.color = '#202020';
-    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.backgroundColor = '#ebebeb';
     document.getElementById('cat').style.color = '#202020';
-    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.backgroundColor = '#ebebeb';
     document.getElementById('horse').style.color = '#202020';
-    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.backgroundColor = '#ebebeb';
     document.getElementById('otter').style.color = '#202020';
-    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.backgroundColor = '#ebebeb';
     document.getElementById('fish').style.color = '#202020';
-    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.backgroundColor = '#ebebeb';
     document.getElementById('frog').style.color = '#202020';
     
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
@@ -468,25 +468,25 @@ function cowIcon(){
     document.getElementById('informacijaInput').value = 'fa-cow';
 }
 function hippoIcon(){
-    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.backgroundColor = '#ebebeb';
     document.getElementById('kiwi').style.color = '#202020';
-    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.backgroundColor = '#ebebeb';
     document.getElementById('crow').style.color = '#202020';
-    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.backgroundColor = '#ebebeb';
     document.getElementById('cow').style.color = '#202020';
-    document.getElementById('hippo').style.backgroundColor = '#404040';
-    document.getElementById('hippo').style.color = '#F5F5DC';
-    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.backgroundColor = '#6f4827';
+    document.getElementById('hippo').style.color = '#ebebeb';
+    document.getElementById('dog').style.backgroundColor = '#ebebeb';
     document.getElementById('dog').style.color = '#202020';
-    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.backgroundColor = '#ebebeb';
     document.getElementById('cat').style.color = '#202020';
-    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.backgroundColor = '#ebebeb';
     document.getElementById('horse').style.color = '#202020';
-    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.backgroundColor = '#ebebeb';
     document.getElementById('otter').style.color = '#202020';
-    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.backgroundColor = '#ebebeb';
     document.getElementById('fish').style.color = '#202020';
-    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.backgroundColor = '#ebebeb';
     document.getElementById('frog').style.color = '#202020';
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
@@ -496,25 +496,25 @@ function hippoIcon(){
     document.getElementById('informacijaInput').value = 'fa-hippo';
 }
 function dogIcon(){
-    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.backgroundColor = '#ebebeb';
     document.getElementById('kiwi').style.color = '#202020';
-    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.backgroundColor = '#ebebeb';
     document.getElementById('crow').style.color = '#202020';
-    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.backgroundColor = '#ebebeb';
     document.getElementById('cow').style.color = '#202020';
-    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.backgroundColor = '#ebebeb';
     document.getElementById('hippo').style.color = '#202020';
-    document.getElementById('dog').style.backgroundColor = '#404040';
-    document.getElementById('dog').style.color = '#F5F5DC';
-    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.backgroundColor = '#6f4827';
+    document.getElementById('dog').style.color = '#ebebeb';
+    document.getElementById('cat').style.backgroundColor = '#ebebeb';
     document.getElementById('cat').style.color = '#202020';
-    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.backgroundColor = '#ebebeb';
     document.getElementById('horse').style.color = '#202020';
-    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.backgroundColor = '#ebebeb';
     document.getElementById('otter').style.color = '#202020';
-    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.backgroundColor = '#ebebeb';
     document.getElementById('fish').style.color = '#202020';
-    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.backgroundColor = '#ebebeb';
     document.getElementById('frog').style.color = '#202020';
     
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
@@ -524,25 +524,25 @@ function dogIcon(){
     document.getElementById('informacijaInput').value = 'fa-dog';
 }
 function catIcon(){
-    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.backgroundColor = '#ebebeb';
     document.getElementById('kiwi').style.color = '#202020';
-    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.backgroundColor = '#ebebeb';
     document.getElementById('crow').style.color = '#202020';
-    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.backgroundColor = '#ebebeb';
     document.getElementById('cow').style.color = '##202020';
-    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.backgroundColor = '#ebebeb';
     document.getElementById('hippo').style.color = '#202020';
-    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.backgroundColor = '#ebebeb';
     document.getElementById('dog').style.color = '#202020';
-    document.getElementById('cat').style.backgroundColor = '#404040';
-    document.getElementById('cat').style.color = '#F5F5DC';
-    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.backgroundColor = '#6f4827';
+    document.getElementById('cat').style.color = '#ebebeb';
+    document.getElementById('horse').style.backgroundColor = '#ebebeb';
     document.getElementById('horse').style.color = '#202020';
-    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.backgroundColor = '#ebebeb';
     document.getElementById('otter').style.color = '#202020';
-    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.backgroundColor = '#ebebeb';
     document.getElementById('fish').style.color = '#202020';
-    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.backgroundColor = '#ebebeb';
     document.getElementById('frog').style.color = '#202020';
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
@@ -552,25 +552,25 @@ function catIcon(){
     document.getElementById('informacijaInput').value = 'fa-cat';
 }
 function horseIcon(){
-    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.backgroundColor = '#ebebeb';
     document.getElementById('kiwi').style.color = '#202020';
-    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.backgroundColor = '#ebebeb';
     document.getElementById('crow').style.color = '#202020';
-    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.backgroundColor = '#ebebeb';
     document.getElementById('cow').style.color = '#202020';
-    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.backgroundColor = '#ebebeb';
     document.getElementById('hippo').style.color = '#202020';
-    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.backgroundColor = '#ebebeb';
     document.getElementById('dog').style.color = '#202020';
-    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.backgroundColor = '#ebebeb';
     document.getElementById('cat').style.color = '#202020';
-    document.getElementById('horse').style.backgroundColor = '#404040';
-    document.getElementById('horse').style.color = '#F5F5DC';
-    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.backgroundColor = '#6f4827';
+    document.getElementById('horse').style.color = '#ebebeb';
+    document.getElementById('otter').style.backgroundColor = '#ebebeb';
     document.getElementById('otter').style.color = '#202020';
-    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.backgroundColor = '#ebebeb';
     document.getElementById('fish').style.color = '#202020';
-    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.backgroundColor = '#ebebeb';
     document.getElementById('frog').style.color = '#202020';
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
@@ -580,25 +580,25 @@ function horseIcon(){
     document.getElementById('informacijaInput').value = 'fa-horse';
 }
 function otterIcon(){
-    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.backgroundColor = '#ebebeb';
     document.getElementById('kiwi').style.color = '#202020';
-    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.backgroundColor = '#ebebeb';
     document.getElementById('crow').style.color = '#202020';
-    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.backgroundColor = '#ebebeb';
     document.getElementById('cow').style.color = '#202020';
-    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.backgroundColor = '#ebebeb';
     document.getElementById('hippo').style.color = '#202020';
-    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.backgroundColor = '#ebebeb';
     document.getElementById('dog').style.color = '#202020';
-    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.backgroundColor = '#ebebeb';
     document.getElementById('cat').style.color = '#202020';
-    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.backgroundColor = '#ebebeb';
     document.getElementById('horse').style.color = '#202020';
-    document.getElementById('otter').style.backgroundColor = '#404040';
-    document.getElementById('otter').style.color = '#F5F5DC';
-    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.backgroundColor = '#6f4827';
+    document.getElementById('otter').style.color = '#ebebeb';
+    document.getElementById('fish').style.backgroundColor = '#ebebeb';
     document.getElementById('fish').style.color = '#202020';
-    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('frog').style.backgroundColor = '#ebebeb';
     document.getElementById('frog').style.color = '#202020';
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
@@ -608,25 +608,25 @@ function otterIcon(){
     document.getElementById('informacijaInput').value = 'fa-otter';
 }
 function fishIcon(){
-    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.backgroundColor = '#ebebeb';
     document.getElementById('kiwi').style.color = '#202020';
-    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.backgroundColor = '#ebebeb';
     document.getElementById('crow').style.color = '#202020';
-    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.backgroundColor = '#ebebeb';
     document.getElementById('cow').style.color = '#202020';
-    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.backgroundColor = '#ebebeb';
     document.getElementById('hippo').style.color = '#202020';
-    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.backgroundColor = '#ebebeb';
     document.getElementById('dog').style.color = '#202020';
-    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.backgroundColor = '#ebebeb';
     document.getElementById('cat').style.color = '#202020';
-    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.backgroundColor = '#ebebeb';
     document.getElementById('horse').style.color = '#202020';
-    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.backgroundColor = '#ebebeb';
     document.getElementById('otter').style.color = '#202020';
-    document.getElementById('fish').style.backgroundColor = '#404040';
-    document.getElementById('fish').style.color = '#F5F5DC';
-    document.getElementById('frog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.backgroundColor = '#6f4827';
+    document.getElementById('fish').style.color = '#ebebeb';
+    document.getElementById('frog').style.backgroundColor = '#ebebeb';
     document.getElementById('frog').style.color = '#202020';
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
@@ -636,26 +636,26 @@ function fishIcon(){
     document.getElementById('informacijaInput').value = 'fa-fish';
 }
 function frogIcon(){
-    document.getElementById('kiwi').style.backgroundColor = '#F5F5DC';
+    document.getElementById('kiwi').style.backgroundColor = '#ebebeb';
     document.getElementById('kiwi').style.color = '#202020';
-    document.getElementById('crow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('crow').style.backgroundColor = '#ebebeb';
     document.getElementById('crow').style.color = '#202020';
-    document.getElementById('cow').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cow').style.backgroundColor = '#ebebeb';
     document.getElementById('cow').style.color = '#202020';
-    document.getElementById('hippo').style.backgroundColor = '#F5F5DC';
+    document.getElementById('hippo').style.backgroundColor = '#ebebeb';
     document.getElementById('hippo').style.color = '#202020';
-    document.getElementById('dog').style.backgroundColor = '#F5F5DC';
+    document.getElementById('dog').style.backgroundColor = '#ebebeb';
     document.getElementById('dog').style.color = '#202020';
-    document.getElementById('cat').style.backgroundColor = '#F5F5DC';
+    document.getElementById('cat').style.backgroundColor = '#ebebeb';
     document.getElementById('cat').style.color = '#202020';
-    document.getElementById('horse').style.backgroundColor = '#F5F5DC';
+    document.getElementById('horse').style.backgroundColor = '#ebebeb';
     document.getElementById('horse').style.color = '#202020';
-    document.getElementById('otter').style.backgroundColor = '#F5F5DC';
+    document.getElementById('otter').style.backgroundColor = '#ebebeb';
     document.getElementById('otter').style.color = '#202020';
-    document.getElementById('fish').style.backgroundColor = '#F5F5DC';
+    document.getElementById('fish').style.backgroundColor = '#ebebeb';
     document.getElementById('fish').style.color = '#202020';
-    document.getElementById('frog').style.backgroundColor = '#404040';
-    document.getElementById('frog').style.color = '#F5F5DC';
+    document.getElementById('frog').style.backgroundColor = '#6f4827';
+    document.getElementById('frog').style.color = '#ebebeb';
 
     document.getElementById('profilePicChangeBtn').style.opacity = '1';
     document.getElementById('profilePicChangeBtn').style.pointerEvents = 'all';
@@ -788,16 +788,71 @@ function logout(){
 function hideLogoutPopup(){
     document.getElementById('logoutAlert').style.top = '-100px';
 }
+function hideCopiedTextPopup(){
+    document.getElementById('copiedTextAlert').style.top = '-100px';
+}
 
 
 
-function openFinbonkWallet(){
+function openReceivePaymentWindow(){
+    document.getElementById('receivePaymentWindowBg').style.display = 'block';
+    setTimeout(() => {
+        document.getElementById('receivePaymentWindowBg').style.opacity = '1';
+        document.getElementById('receivePaymentWindow').style.bottom = '0';
+    }, 10);
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function closeReceivePaymentWindow(){
+    document.getElementById('receivePaymentWindow').style.bottom = '-100%';
+    document.getElementById('receivePaymentWindowBg').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('receivePaymentWindowBg').style.display = 'none';
+    }, 300);
+    closeSettings();
+    closeNotifications();
+    closeApps();
+}
+function copyGavejas() {
+    navigator.clipboard.writeText("MATAS KASPARAVIČIUS");
+    document.getElementById('copiedTextAlert').style.top = '15px';
+    document.getElementById('copyPlaceholder').innerHTML = 'Gavėjas nukopijuotas';
+    setTimeout(() => {
+        document.getElementById('copiedTextAlert').style.top = '-100px';
+    }, 3010);
+}
+function copySaskaita() {
+    navigator.clipboard.writeText("LT507300010159683951");
+    document.getElementById('copiedTextAlert').style.top = '15px';
+    document.getElementById('copyPlaceholder').innerHTML = 'Sąskaitos nr. nukopijuota';
+    setTimeout(() => {
+        document.getElementById('copiedTextAlert').style.top = '-100px';
+    }, 3010);
+}
+function copyPaskirtis() {
+    navigator.clipboard.writeText("FINBONK (Ieva Kasparavičiūtė)");
+    document.getElementById('copiedTextAlert').style.top = '15px';
+    document.getElementById('copyPlaceholder').innerHTML = 'Paskirtis nukopijuota';
+    setTimeout(() => {
+        document.getElementById('copiedTextAlert').style.top = '-100px';
+    }, 3010);
+}
+function copyMessage() {
+    navigator.clipboard.writeText(document.getElementById("copyMessageTextP").innerHTML);
+    document.getElementById('copiedTextAlert').style.top = '15px';
+    document.getElementById('copyPlaceholder').innerHTML = 'Informacijos tekstas - žinutė nukopijuota';
+    setTimeout(() => {
+        document.getElementById('copiedTextAlert').style.top = '-100px';
+    }, 3010);
+}
+function openOperations(){
     document.getElementById('finbonkWallet').style.right = '0';
     closeSettings();
     closeNotifications();
     closeApps();
 }
-function closeFinbonkWallet(){
+function closeOperations(){
     document.getElementById('finbonkWallet').style.right = '-100%';
     closeSettings();
     closeNotifications();
@@ -1873,12 +1928,12 @@ function check(form)
             document.getElementById('userScreen').style.display = 'none';
             inputas = '';
             document.getElementById('kodas').value = '';
-            document.getElementById('taskelis1').style.backgroundColor = '#202020';
-            document.getElementById('taskelis2').style.backgroundColor = '#202020';
-            document.getElementById('taskelis3').style.backgroundColor = '#202020';
-            document.getElementById('taskelis4').style.backgroundColor = '#202020';
-            document.getElementById('taskelis5').style.backgroundColor = '#202020';
-            document.getElementById('taskelis6').style.backgroundColor = '#202020';
+            document.getElementById('taskelis1').style.backgroundColor = '#ebebeb';
+            document.getElementById('taskelis2').style.backgroundColor = '#ebebeb';
+            document.getElementById('taskelis3').style.backgroundColor = '#ebebeb';
+            document.getElementById('taskelis4').style.backgroundColor = '#ebebeb';
+            document.getElementById('taskelis5').style.backgroundColor = '#ebebeb';
+            document.getElementById('taskelis6').style.backgroundColor = '#ebebeb';
         }, 3300);
         setTimeout(() => {
             document.getElementById('loginTimeRemaining').innerHTML = '59:59';
@@ -1907,12 +1962,12 @@ function check(form)
             document.getElementById('keypad').style.pointerEvents = 'all';
             inputas = '';
             document.getElementById('kodas').value = '';
-            document.getElementById('taskelis1').style.backgroundColor = '#202020';
-            document.getElementById('taskelis2').style.backgroundColor = '#202020';
-            document.getElementById('taskelis3').style.backgroundColor = '#202020';
-            document.getElementById('taskelis4').style.backgroundColor = '#202020';
-            document.getElementById('taskelis5').style.backgroundColor = '#202020';
-            document.getElementById('taskelis6').style.backgroundColor = '#202020';
+            document.getElementById('taskelis1').style.backgroundColor = '#ebebeb';
+            document.getElementById('taskelis2').style.backgroundColor = '#ebebeb';
+            document.getElementById('taskelis3').style.backgroundColor = '#ebebeb';
+            document.getElementById('taskelis4').style.backgroundColor = '#ebebeb';
+            document.getElementById('taskelis5').style.backgroundColor = '#ebebeb';
+            document.getElementById('taskelis6').style.backgroundColor = '#ebebeb';
         }, 3000);
         setTimeout(() => {
             document.getElementById('taskeliai').style.marginLeft = '100px';
@@ -1931,7 +1986,7 @@ function check(form)
 function pirmas() {
     inputas = inputas + 1;
     document.getElementById('kodas').value = inputas;
-    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.color = '#202020';
     document.getElementById('istrinimas').style.pointerEvents = 'all';
     taskeliai();
     
@@ -1939,63 +1994,63 @@ function pirmas() {
 function antras() {
     inputas = inputas + 2;
     document.getElementById('kodas').value = inputas;
-    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.color = '#202020';
     document.getElementById('istrinimas').style.pointerEvents = 'all';
     taskeliai();
 }
 function trecias() {
     inputas = inputas + 3;
     document.getElementById('kodas').value = inputas;
-    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.color = '#202020';
     document.getElementById('istrinimas').style.pointerEvents = 'all';
     taskeliai();
 }
 function ketvirtas() {
     inputas = inputas + 4;
     document.getElementById('kodas').value = inputas;
-    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.color = '#202020';
     document.getElementById('istrinimas').style.pointerEvents = 'all';
     taskeliai();
 }
 function penktas() {
     inputas = inputas + 5;
     document.getElementById('kodas').value = inputas;
-    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.color = '#202020';
     document.getElementById('istrinimas').style.pointerEvents = 'all';
     taskeliai();
 }
 function sestas() {
     inputas = inputas + 6;
     document.getElementById('kodas').value = inputas;
-    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.color = '#202020';
     document.getElementById('istrinimas').style.pointerEvents = 'all';
     taskeliai();
 }
 function septintas() {
     inputas = inputas + 7;
     document.getElementById('kodas').value = inputas;
-    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.color = '#202020';
     document.getElementById('istrinimas').style.pointerEvents = 'all';
     taskeliai();
 }
 function astuntas() {
     inputas = inputas + 8;
     document.getElementById('kodas').value = inputas;
-    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.color = '#202020';
     document.getElementById('istrinimas').style.pointerEvents = 'all';
     taskeliai();
 }
 function devintas() {
     inputas = inputas + 9;
     document.getElementById('kodas').value = inputas;
-    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.color = '#202020';
     document.getElementById('istrinimas').style.pointerEvents = 'all';
     taskeliai();
 }
 function nulinis() {
     inputas = inputas + 0;
     document.getElementById('kodas').value = inputas;
-    document.getElementById('istrinimas').style.color = '#F5F5DC';
+    document.getElementById('istrinimas').style.color = '#202020';
     document.getElementById('istrinimas').style.pointerEvents = 'all';
     taskeliai();
 }
@@ -2004,37 +2059,37 @@ function istrinti() {
     document.getElementById('kodas').value = '';
     document.getElementById('istrinimas').style.color = 'transparent';
     document.getElementById('istrinimas').style.pointerEvents = 'none';
-    document.getElementById('taskelis1').style.backgroundColor = '#202020';
-    document.getElementById('taskelis2').style.backgroundColor = '#202020';
-    document.getElementById('taskelis3').style.backgroundColor = '#202020';
-    document.getElementById('taskelis4').style.backgroundColor = '#202020';
-    document.getElementById('taskelis5').style.backgroundColor = '#202020';
-    document.getElementById('taskelis6').style.backgroundColor = '#202020';
+    document.getElementById('taskelis1').style.backgroundColor = '#ebebeb';
+    document.getElementById('taskelis2').style.backgroundColor = '#ebebeb';
+    document.getElementById('taskelis3').style.backgroundColor = '#ebebeb';
+    document.getElementById('taskelis4').style.backgroundColor = '#ebebeb';
+    document.getElementById('taskelis5').style.backgroundColor = '#ebebeb';
+    document.getElementById('taskelis6').style.backgroundColor = '#ebebeb';
 }
 function taskeliai(){
     if(inputas.length === 1)
         {
-            document.getElementById('taskelis1').style.backgroundColor = '#F5F5DC';
+            document.getElementById('taskelis1').style.backgroundColor = '#202020';
     }
     else if(inputas.length === 2)
         {
-            document.getElementById('taskelis2').style.backgroundColor = '#F5F5DC';
+            document.getElementById('taskelis2').style.backgroundColor = '#202020';
     }
     else if(inputas.length === 3)
         {
-            document.getElementById('taskelis3').style.backgroundColor = '#F5F5DC';
+            document.getElementById('taskelis3').style.backgroundColor = '#202020';
     }
     else if(inputas.length === 4)
         {
-            document.getElementById('taskelis4').style.backgroundColor = '#F5F5DC';
+            document.getElementById('taskelis4').style.backgroundColor = '#202020';
     }
     else if(inputas.length === 5)
         {
-            document.getElementById('taskelis5').style.backgroundColor = '#F5F5DC';
+            document.getElementById('taskelis5').style.backgroundColor = '#202020';
     }
     else if(inputas.length === 6)
         {
-            document.getElementById('taskelis6').style.backgroundColor = '#F5F5DC';
+            document.getElementById('taskelis6').style.backgroundColor = '#202020';
             document.getElementById('checkBtn').click();
     }
 }
