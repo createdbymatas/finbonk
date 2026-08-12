@@ -1,5 +1,5 @@
 // išjungti right-click
-// document.addEventListener('contextmenu', (e) => e.preventDefault());
+document.addEventListener('contextmenu', (e) => e.preventDefault());
 
 // išjungti f12, ctrl+shift+i, ctrl+shift+j, ctrl+u (inspect tool)
 function ctrlShiftKey(e, keyCode) {
@@ -235,36 +235,42 @@ function loadFunction(){
 }
 
 function showFeeInfo(){
-    document.getElementById('feeInfoBg').style.display = 'flex';
+    document.getElementById('feeInfoBg').style.display = 'block';
     setTimeout(() => {
         document.getElementById('feeInfoBg').style.opacity = '1';
+        document.getElementById('feeInfo').style.bottom = '0';
     }, 10);
 }
 function hideFeeInfo(){
+    document.getElementById('feeInfo').style.bottom = '-100%';
     document.getElementById('feeInfoBg').style.opacity = '0';
     setTimeout(() => {
         document.getElementById('feeInfoBg').style.display = 'none';
     }, 300);
 }
 function showReturnUntilInfo(){
-    document.getElementById('returnUntilInfoBg').style.display = 'flex';
+    document.getElementById('returnUntilInfoBg').style.display = 'block';
     setTimeout(() => {
         document.getElementById('returnUntilInfoBg').style.opacity = '1';
+        document.getElementById('returnUntilInfo').style.bottom = '0';
     }, 10);
 }
 function hideReturnUntilInfo(){
+    document.getElementById('returnUntilInfo').style.bottom = '-100%';
     document.getElementById('returnUntilInfoBg').style.opacity = '0';
     setTimeout(() => {
         document.getElementById('returnUntilInfoBg').style.display = 'none';
     }, 300);
 }
 function showInterestRateInfo(){
-    document.getElementById('interestRateInfoBg').style.display = 'flex';
+    document.getElementById('interestRateInfoBg').style.display = 'block';
     setTimeout(() => {
         document.getElementById('interestRateInfoBg').style.opacity = '1';
+        document.getElementById('interestRateInfo').style.bottom = '0';
     }, 10);
 }
 function hideInterestRateInfo(){
+    document.getElementById('interestRateInfo').style.bottom = '-100%';
     document.getElementById('interestRateInfoBg').style.opacity = '0';
     setTimeout(() => {
         document.getElementById('interestRateInfoBg').style.display = 'none';

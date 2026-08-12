@@ -163,36 +163,33 @@ Paskirtis: FINBONK (Ieva Kasparavičiūtė).
 Ačiū</pre>
     </div>
 
-    <div id="feeInfoBg">
-        <div>
-            <p class="boldP" id="aboutFee"><i class="fa-regular fa-circle-question"></i> Apie aptarnavimo mokestį</p>
-            <p>Aptarnavimo mokestį sudaro:</p>
-            <p>• <span class="boldP">0,15 €</span> fiksuota suma</p>
-            <p>• <span class="boldP">2 %</span> tarifas</p>
-            <button ontouchstart onclick="hideFeeInfo()">Uždaryti</button>
-        </div>
+    <div id="feeInfoBg" onclick="hideFeeInfo()"></div>
+    <div id="feeInfo">
+        <p id="feeInfoHideText" ontouchstart onclick="hideFeeInfo()">Norėdami uždaryti šį langą, spauskite čia</p>
+        <p class="boldP" id="aboutFee"><i class="fa-regular fa-circle-question"></i> Apie aptarnavimo mokestį</p>
+        <p>Aptarnavimo mokestį sudaro:</p>
+        <p>• <span class="boldP">0,15 €</span> fiksuota suma</p>
+        <p>• <span class="boldP">2 %</span> tarifas</p>
     </div>
-    <div id="returnUntilInfoBg">
-        <div>
-            <p class="boldP" id="aboutReturnUntil"><i class="fa-regular fa-circle-question"></i> Apie grąžinimo terminą</p>
-            <p>Grąžinti skolas reikia iki:</p>
-            <p>• savaitės, per kurią išleista suma, pabaigos</p>
-            <br>
-            <p>Laiku negrąžinus skolos skaičiuojamos palūkanos</p>
-            <button ontouchstart onclick="hideReturnUntilInfo()">Uždaryti</button>
-        </div>
+    <div id="returnUntilInfoBg" onclick="hideReturnUntilInfo()"></div>
+    <div id="returnUntilInfo">
+        <p id="returnUntilInfoHideText" ontouchstart onclick="hideReturnUntilInfo()">Norėdami uždaryti šį langą, spauskite čia</p>
+        <p class="boldP" id="aboutReturnUntil"><i class="fa-regular fa-circle-question"></i> Apie grąžinimo terminą</p>
+        <p>Grąžinti skolas reikia iki:</p>
+        <p>• savaitės, per kurią išleista suma, pabaigos</p>
+        <br>
+        <p>Laiku negrąžinus skolos skaičiuojamos palūkanos</p>
     </div>
-    <div id="interestRateInfoBg">
-        <div>
-            <p class="boldP" id="aboutInterestRate"><i class="fa-regular fa-circle-question"></i> Apie palūkanas</p>
-            <p>Laiku negrąžinus skolos skaičiuojamos palūkanos</p>
-            <br>
-            <p>Palūkanas sudaro:</p>
-            <p>• <span class="boldP">3 % / diena</span> tarifas</p>
-            <br>
-            <p><b>SVARBU:</b> Palūkanos skaičiuojamos nuo pradinės negrąžintos sumos</p>
-            <button ontouchstart onclick="hideInterestRateInfo()">Uždaryti</button>
-        </div>
+    <div id="interestRateInfoBg" onclick="hideInterestRateInfo()"></div>
+    <div id="interestRateInfo">
+        <p id="interestRateInfoHideText" ontouchstart onclick="hideInterestRateInfo()">Norėdami uždaryti šį langą, spauskite čia</p>
+        <p class="boldP" id="aboutInterestRate"><i class="fa-regular fa-circle-question"></i> Apie palūkanas</p>
+        <p>Laiku negrąžinus skolos skaičiuojamos palūkanos</p>
+        <br>
+        <p>Palūkanas sudaro:</p>
+        <p>• <span class="boldP">3 % / diena</span> tarifas</p>
+        <br>
+        <p><b>SVARBU:</b> Palūkanos skaičiuojamos nuo pradinės negrąžintos sumos</p>
     </div>
 
 
