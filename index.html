@@ -45,8 +45,6 @@
         <p id="ikeliama">Įkeliama</p>
         <p id="createdByMatas">Created by Matas</p>
     </div>
-    <p id="pupulioBankas">&copy; 2026 Pupulio bankas</p>
-    <p id="duomenysAtnaujinami">Duomenys įprastai atnaujinami per 72 darbo valandas</p>
     <div id="loginAlert" onclick="hideLoginPopup()">
         <i class="fa-regular fa-circle-check"></i>
         <p class="boldP" id="loginSuccessful">Prisijungta sėkmingai</p>
@@ -109,8 +107,6 @@
         <p id="unreadNotifs">&#x25CF;</p>
         <i ontouchstart class="fa-solid fa-bell" id="notifications" onclick="openNotifications()"></i>
         <i ontouchstart class="fa-solid fa-xmark" id="notificationsX" onclick="closeNotifications()"></i>
-        <i ontouchstart class="fa-regular fa-window-restore" id="apps" onclick="openApps()"></i>
-        <i ontouchstart class="fa-solid fa-xmark" id="appsX" onclick="closeApps()"></i>
     </nav>
     <h2>Apžvalga</h2>
     <div id="pinigines">
@@ -142,6 +138,24 @@
             <div id="isleistaBar"></div>
         </div>
     </div>
+
+    <div id="addOns">
+        <h3>Papildomos paslaugos</h3>
+        <div id="sortAddOns">
+            <div ontouchstart onclick="atidarytiKonsultacijas()"><i class="fa-solid fa-handshake-angle"></i> <p>Konsultacijos</p></div>
+            <div ontouchstart onclick="atidarytiKorteliuSkaitytuva()"><i class="fa-solid fa-credit-card"></i> <p>Banko kortelių skaitytuvas</p></div>
+        </div>
+    </div>
+    <div id="addOnsRedirectBg"></div>
+    <div id="addOnsRedirect">
+        <p class="boldP" id="aboutAddOnsRedirect"><i class="fa-solid fa-arrow-up-right-from-square"></i> Nukreipiama</p>
+        <div id="addOnsRedirectAdjust">
+            <div id="loaderMini"></div>
+            <p>Atidaroma Jūsų pasirinkta paslauga ...</p>
+        </div>
+    </div>
+    <p id="pupulioBankas">&copy; 2026 Pupulio bankas</p>
+    <p id="duomenysAtnaujinami">Duomenys įprastai atnaujinami per 72 darbo valandas</p>
 
     <div id="receivePaymentWindowBg" ontouchstart onclick="closeReceivePaymentWindow()"></div>
     <div id="receivePaymentWindow">
@@ -219,15 +233,6 @@ Ačiū</pre>
         </div>
         <div ontouchstart style="border-radius: 5px 5px 25px 25px;" onclick="openPranesimas1()" id="pran1Btn">
             <span id="pran1Unread" style="margin-right: 5px; color: red;">&#x25CF;</span>Įkainių pakeitimai nuo 2026-04-15
-        </div>
-    </div>
-    <div id="otherApps">
-        <p>Programos</p>
-        <div ontouchstart onclick="atidarytiKonsultacijas()">
-            <i class="fa-solid fa-handshake-angle"></i> Konsultacijos <i class="fa-solid fa-arrow-up-right-from-square newWindow"></i>
-        </div>
-        <div ontouchstart onclick="atidarytiKorteliuSkaitytuva()">
-            <i class="fa-solid fa-credit-card"></i> Banko kortelių skaitytuvas <i class="fa-solid fa-arrow-up-right-from-square newWindow"></i>
         </div>
     </div>
 
