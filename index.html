@@ -112,7 +112,8 @@
     <div id="pinigines">
         <h3>&copy; FINBONK piniginė</h3>
         <p id="balanceInOverview" style="font-size: 30px;">XX,XX €</p>
-        <button ontouchstart id="receivePayment"onclick="openReceivePaymentWindow()"><i class="fa-solid fa-arrow-down"></i> Gauti mokėjimą</button>
+        <button ontouchstart id="payOut" onclick="openIsmoka()"><i class="fa-solid fa-arrow-up"></i> Išmokėti</button>
+        <button ontouchstart id="receivePayment" onclick="openReceivePaymentWindow()"><i class="fa-solid fa-arrow-down"></i> Gauti mokėjimą</button>
         <div ontouchstart id="operations" onclick="openOperations()">
             <p class="boldP">Operacijos <i class="fa-solid fa-chevron-right"></i></p>
         </div>
@@ -140,7 +141,7 @@
     </div>
 
     <div id="addOns">
-        <h3>Papildomos paslaugos</h3>
+        <h3>Paslaugos</h3>
         <div id="sortAddOns">
             <div ontouchstart onclick="atidarytiKonsultacijas()"><i class="fa-solid fa-handshake-angle"></i> <p>Konsultacijos</p></div>
             <div ontouchstart onclick="atidarytiKorteliuSkaitytuva()"><i class="fa-solid fa-credit-card"></i> <p>Banko kortelių skaitytuvas</p></div>
@@ -167,7 +168,7 @@
         <p id="receivePaymentInfoText4"><b>Bankas:</b> Swedbank AB</p>
         <p id="receivePaymentInfoText5"><b>Paskirtis:</b> FINBONK (Ieva Kasparavičiūtė) <i onclick="copyPaskirtis()" class="fa-regular fa-copy"></i></p>
         <p id="receivePaymentInfoText6"><i class="fa-solid fa-circle-exclamation"></i> Būtinai įsitikinkite, jog nurodėte pateiktą pervedimo paskirtį, kad mokėjimas būtų įskaitytas į jūsų sąskaitą</p>
-        <p id="receivePaymentInfoText7">Jei norite, kad pervedimą atliktų kitas žmogus, galite nukopijuoti žinutės tekstą su visa gavėjo informacija:</p>
+        <p id="receivePaymentInfoText7">Jei norite, kad pervedimą atliktų kitas asmuo, galite nukopijuoti žinutės tekstą su visa gavėjo informacija ir ją išsiųsti mokėtojui:</p>
         <button ontouchstart id="copyReceivePaymentText" onclick="copyMessage()"><i class="fa-regular fa-copy" style="color: #f5f5f5;"></i> Kopijuoti informacijos tekstą - žinutę</button>
         <pre style="display: none;" id="copyMessageTextP">Labas! Laukiu pervedimo - prašau atlik jį į šią sąskaitą (būtinai nurodyk pateiktą pervedimo paskirtį):
 Gavėjas: MATAS KASPARAVIČIUS,
@@ -357,9 +358,6 @@ Ačiū</pre>
         <div id="finbonkBalansas">
             <h3>Balansas</h3>
             <p class="boldP" id="balanceInWallet">XX,XX €</p>
-        </div>
-        <div ontouchstart id="finbonkIsmoketi" onclick="openIsmoka()">
-            <h3>Išmokėti balansą į sąskaitą LT037300010168803573, Swedbank AB</h3>
         </div>
         <div id="finbonkOperacijos">
             <h3>Operacijos</h3>
@@ -2670,7 +2668,7 @@ Ačiū</pre>
     </div>
 
     <div id="ismoka">
-        <h2 ontouchstart onclick="closeIsmoka()"><i class="fa-solid fa-chevron-left"></i> Išmoka</h2>
+        <h2 ontouchstart onclick="closeIsmoka()"><i class="fa-solid fa-xmark"></i> Išmoka</h2>
         <div class="ismokosDuomenys" style="border-radius: 25px 25px 5px 5px;">
             <h3>Sąskaita</h3>
             <p>LT037300010168803573, Swedbank AB</p>

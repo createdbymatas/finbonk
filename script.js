@@ -177,10 +177,10 @@ setTimeout(() => {
 }, 2);
 setTimeout(() => {
     if (currentBalanceDot <= '0.00'){
-        document.getElementById('finbonkIsmoketi').style.display = 'none';
+        document.getElementById('payOut').style.display = 'none';
     }
     else {
-        document.getElementById('finbonkIsmoketi').style.display = 'flex';
+        document.getElementById('payOut').style.display = 'block';
     }
 }, 3);
 setTimeout(() => {
@@ -1690,12 +1690,12 @@ else {
 
 
 function openIsmoka(){
-    document.getElementById('ismoka').style.right = '0';
+    document.getElementById('ismoka').style.bottom = '0';
     closeSettings();
     closeNotifications();
 }
 function closeIsmoka(){
-    document.getElementById('ismoka').style.right = '-100%';
+    document.getElementById('ismoka').style.bottom = '-100%';
     closeSettings();
     closeNotifications();
 }
