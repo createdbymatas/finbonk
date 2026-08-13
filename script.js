@@ -816,7 +816,7 @@ function openReceivePaymentWindow(){
     closeNotifications();
 }
 function closeReceivePaymentWindow(){
-    document.getElementById('receivePaymentWindow').style.bottom = '-100%';
+    document.getElementById('receivePaymentWindow').style.bottom = '-200%';
     document.getElementById('receivePaymentWindowBg').style.opacity = '0';
     setTimeout(() => {
         document.getElementById('receivePaymentWindowBg').style.display = 'none';

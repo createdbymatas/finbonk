@@ -543,7 +543,7 @@ h4{
     width: 100%;
     height: auto;
     position: fixed;
-    bottom: -100%;
+    bottom: -200%;
     left: 0;
     right: 0;
     z-index: 40;
