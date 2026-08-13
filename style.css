@@ -237,6 +237,17 @@ body{
     transition: 0.3s;
     padding-bottom: 30px;
 }
+
+#puplis{
+    width: 30%;
+    position: fixed;
+    bottom: -200%;
+    left: 50%;
+    margin-left: -15%;
+    z-index: 1;
+    transition: 0.2s;
+}
+
 #profilisLogin{
     display: flex;
     justify-content: center;
@@ -2283,6 +2294,10 @@ form{
         width: 100%;
         text-align: right;
         margin-top: 5px;
+    }
+    #puplis{
+        width: 60%;
+        margin-left: -30%;
     }
     #keypad button:hover{
         opacity: 1;

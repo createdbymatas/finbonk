@@ -231,7 +231,35 @@ function loadFunction(){
     setTimeout(() => {
         document.getElementById('loading').style.display = 'none';
         document.getElementById('createdByMatas').style.opacity = '0';
+        puplis();
     }, 3100);
+}
+function puplis(){
+    document.getElementById('puplis').style.bottom = '-50%';
+    setTimeout(() => {
+        document.getElementById('puplis').style.bottom = '-30%';
+    }, 1000);
+    setTimeout(() => {
+        document.getElementById('puplis').style.bottom = '0';
+    }, 2000);
+    setTimeout(() => {
+        document.getElementById('puplis').style.transform = 'rotate(-30deg)';
+    }, 2500);
+    setTimeout(() => {
+        document.getElementById('puplis').style.transform = 'rotate(30deg)';
+    }, 2700);
+    setTimeout(() => {
+        document.getElementById('puplis').style.transform = 'rotate(-30deg)';
+    }, 2900);
+    setTimeout(() => {
+        document.getElementById('puplis').style.transform = 'rotate(30deg)';
+    }, 3100);
+    setTimeout(() => {
+        document.getElementById('puplis').style.transform = 'rotate(0)';
+    }, 3300);
+    setTimeout(() => {
+        document.getElementById('puplis').style.bottom = '-200%';
+    }, 3500);
 }
 
 function showFeeInfo(){
