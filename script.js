@@ -1590,6 +1590,23 @@ function checkUnreadNotifs(){
     }
 }
 
+pran1 = getCookie("pranesimas1");
+if (pran1 != "") {
+    document.getElementById("pran1Btn").style.fontWeight = "400";
+    document.getElementById("pran1Unread").style.display = "none";
+    unreadNotifCount -= 1;
+    checkUnreadNotifs();
+}
+else {
+    document.getElementById("pran1Btn").style.fontWeight = "800";
+    document.getElementById("pran1Unread").style.display = "inline";
+    checkUnreadNotifs();
+    if (pran1 != "" && pran1 != null) {
+        document.getElementById("pran1Btn").style.fontWeight = "800";
+        document.getElementById("pran1Unread").style.display = "inline";
+        checkUnreadNotifs();
+    }
+}
 function openPranesimas1(){
     document.getElementById('pranesimas1').style.top = '0';
     closeSettings();
@@ -1612,6 +1629,7 @@ function closePranesimas1(){
     document.getElementById('pranesimas1').style.top = '100%';
     closeSettings();
     closeNotifications();
+    checkUnreadNotifs();
 }
 function pranesimas1MarkAsUnread(){
     closePranesimas1();
@@ -1621,24 +1639,24 @@ function pranesimas1MarkAsUnread(){
     checkUnreadNotifs();
     document.cookie = "pranesimas1=read; expires=Sat, 01 Jan 2000 00:00:00 UTC";
 }
-pran1 = getCookie("pranesimas1");
-if (pran1 != "") {
-    document.getElementById("pran1Btn").style.fontWeight = "400";
-    document.getElementById("pran1Unread").style.display = "none";
+
+pran2 = getCookie("pranesimas2");
+if (pran2 != "") {
+    document.getElementById("pran2Btn").style.fontWeight = "400";
+    document.getElementById("pran2Unread").style.display = "none";
     unreadNotifCount -= 1;
     checkUnreadNotifs();
 }
 else {
-    document.getElementById("pran1Btn").style.fontWeight = "800";
-    document.getElementById("pran1Unread").style.display = "inline";
+    document.getElementById("pran2Btn").style.fontWeight = "800";
+    document.getElementById("pran2Unread").style.display = "inline";
     checkUnreadNotifs();
-    if (pran1 != "" && pran1 != null) {
-        document.getElementById("pran1Btn").style.fontWeight = "800";
-        document.getElementById("pran1Unread").style.display = "inline";
+    if (pran2 != "" && pran2 != null) {
+        document.getElementById("pran2Btn").style.fontWeight = "800";
+        document.getElementById("pran2Unread").style.display = "inline";
         checkUnreadNotifs();
     }
 }
-
 function openPranesimas2(){
     document.getElementById('pranesimas2').style.top = '0';
     closeSettings();
@@ -1661,6 +1679,7 @@ function closePranesimas2(){
     document.getElementById('pranesimas2').style.top = '100%';
     closeSettings();
     closeNotifications();
+    checkUnreadNotifs();
 }
 function pranesimas2MarkAsUnread(){
     closePranesimas2();
@@ -1669,23 +1688,6 @@ function pranesimas2MarkAsUnread(){
     unreadNotifCount += 1;
     checkUnreadNotifs();
     document.cookie = "pranesimas2=read; expires=Sat, 01 Jan 2000 00:00:00 UTC";
-}
-pran2 = getCookie("pranesimas2");
-if (pran2 != "") {
-    document.getElementById("pran2Btn").style.fontWeight = "400";
-    document.getElementById("pran2Unread").style.display = "none";
-    unreadNotifCount -= 1;
-    checkUnreadNotifs();
-}
-else {
-    document.getElementById("pran2Btn").style.fontWeight = "800";
-    document.getElementById("pran2Unread").style.display = "inline";
-    checkUnreadNotifs();
-    if (pran2 != "" && pran2 != null) {
-        document.getElementById("pran2Btn").style.fontWeight = "800";
-        document.getElementById("pran2Unread").style.display = "inline";
-        checkUnreadNotifs();
-    }
 }
 
 
