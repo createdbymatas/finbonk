@@ -231,7 +231,6 @@ function loadFunction(){
     setTimeout(() => {
         document.getElementById('loading').style.display = 'none';
         document.getElementById('createdByMatas').style.opacity = '0';
-        puplis();
     }, 3100);
 }
 function puplis(){
@@ -1823,6 +1822,7 @@ function check(form)
             document.getElementById('taskelis4').style.backgroundColor = '#ebebeb';
             document.getElementById('taskelis5').style.backgroundColor = '#ebebeb';
             document.getElementById('taskelis6').style.backgroundColor = '#ebebeb';
+            puplis();
         }, 3300);
         setTimeout(() => {
             document.getElementById('loginTimeRemaining').innerHTML = '59:59';
