@@ -1605,6 +1605,56 @@ function closeOperacija70(){
     closeSettings();
     closeNotifications();
 }
+function openOperacija71(){
+    document.getElementById('operacija71').style.right = '0';
+    closeSettings();
+    closeNotifications();
+}
+function closeOperacija71(){
+    document.getElementById('operacija71').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+}
+function openOperacija72(){
+    document.getElementById('operacija72').style.right = '0';
+    closeSettings();
+    closeNotifications();
+}
+function closeOperacija72(){
+    document.getElementById('operacija72').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+}
+function openOperacija73(){
+    document.getElementById('operacija73').style.right = '0';
+    closeSettings();
+    closeNotifications();
+}
+function closeOperacija73(){
+    document.getElementById('operacija73').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+}
+function openOperacija74(){
+    document.getElementById('operacija74').style.right = '0';
+    closeSettings();
+    closeNotifications();
+}
+function closeOperacija74(){
+    document.getElementById('operacija74').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+}
+function openOperacija75(){
+    document.getElementById('operacija75').style.right = '0';
+    closeSettings();
+    closeNotifications();
+}
+function closeOperacija75(){
+    document.getElementById('operacija75').style.right = '-100%';
+    closeSettings();
+    closeNotifications();
+}
 
 
 unreadNotifCount = 2;
