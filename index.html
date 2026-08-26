@@ -23,15 +23,15 @@
     <!-- VALIUTA: € -->
     <div id="hidden">
         <!-- Balansas: -->
-        <p id="currentBalance">4,43</p>
+        <p id="currentBalance">0,00</p>
         <!-- Skolos: -->
         <p id="currentDebt">0,00</p> 
         <p id="returnUntil">2026-00-00 23:59</p>
         <p id="interestRate">0,00</p>
         <!-- Apyvarta: -->
-        <p id="fullOperations">250,73</p><!-- NEPAMIRŠTI PAKEISTI APYVARTOS IŠLAIDŲ KATEGORIJŲ !! -->
+        <p id="fullOperations">255,16</p><!-- NEPAMIRŠTI PAKEISTI APYVARTOS IŠLAIDŲ KATEGORIJŲ !! -->
         <p id="received">127,58</p>
-        <p id="spent">123,15</p>
+        <p id="spent">127,58</p>
         <p id="currentMonth">2026 rugpjūtis</p>
         <p id="receivedBar"></p>
         <p id="spentBar"></p>
@@ -369,11 +369,11 @@ Ačiū</pre>
                 <p>XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP">XX,XX €</p>
             </div> -->
-            <!-- <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija74()">
-                <p>XX-XX <b>XXXXX</b> <i class="fa-solid fa-chevron-right"></i></p>
-                <p class="boldP">XX,XX €</p>
-            </div> -->
-            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija73()">
+            <div ontouchstart class="operacija" style="border-radius: 25px 25px 5px 5px;" onclick="openOperacija74()">
+                <p>08-26 <b>Ieva Kasparavičiūtė (Swedbank AB)</b> <i class="fa-solid fa-chevron-right"></i></p>
+                <p class="boldP islaidos">-4,43 €</p>
+            </div>
+            <div ontouchstart class="operacija" onclick="openOperacija73()">
                 <p>08-25 <b>Ieva Kasparavičiūtė (grynieji)</b> <i class="fa-solid fa-chevron-right"></i></p>
                 <p class="boldP pajamos">+10,00 €</p>
             </div>
@@ -714,7 +714,7 @@ Ačiū</pre>
             </div> -->
             <div class="kategorija" style="border-radius: 25px 25px 5px 5px;">
                 <p><i class="fa-solid fa-money-bill-transfer"></i> Išmokos</p>
-                <p class="boldP">20,00 €</p>
+                <p class="boldP">24,19 €</p>
             </div>
             <div class="kategorija">
                 <p><i class="fa-solid fa-umbrella-beach"></i> Kelionės ir atostogos</p>
@@ -750,7 +750,7 @@ Ačiū</pre>
             </div> -->
             <div class="kategorija" style="border-radius: 5px 5px 25px 25px;">
                 <p><i class="fa-solid fa-piggy-bank"></i> Mokesčiai</p>
-                <p class="boldP">0,57 €</p>
+                <p class="boldP">0,81 €</p>
             </div>
         </div>
     </div>
@@ -2771,29 +2771,29 @@ Ačiū</pre>
         <h2 ontouchstart onclick="closeOperacija74()"><i class="fa-solid fa-chevron-left"></i> Operacijos informacija</h2>
         <div class="operacijosDuomenys operacijosData">
             <h3>Data</h3>
-            <p>20XX-XX-XX, XXXXX</p>
+            <p>2026-08-26, trečiadienis</p>
         </div>
         <div class="operacijosDuomenys">
-            <h3>Gavėjas/Mokėtojas</h3>
-            <p>XXXXX</p>
+            <h3>Gavėjas</h3>
+            <p>Ieva Kasparavičiūtė (Swedbank AB)</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Paskirtis</h3>
-            <p>XXXXX</p>
+            <p>Išmoka į sąskaitą LT037300010168803573</p>
         </div>
         <div class="operacijosDuomenys">
             <h3>Suma</h3>
-            <p class="boldP">0,00 €</p>
+            <p class="boldP islaidos">-4,43 €</p>
         </div>
         <div class="isklotine">
             <h3>Išklotinė</h3>
             <div class="isklotinesDalis" style="border-radius: 25px 25px 5px 5px;">
                 <p><i class="fa-solid fa-tags"></i> Grynoji suma</p>
-                <p class="boldP">0,00 €</p>
+                <p class="boldP">4,19 €</p>
             </div>
             <div class="isklotinesDalis" style="border-radius: 5px 5px 25px 25px;">
                 <p><i class="fa-solid fa-piggy-bank"></i> Aptarnavimo mokestis <i ontouchstart class="fa-regular fa-circle-question feeQuestionI" onclick="showFeeInfo()"></i></p>
-                <p class="boldP">0,00 €</p>
+                <p class="boldP">0,24 €</p>
             </div>
         </div>
     </div>
